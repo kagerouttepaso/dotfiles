@@ -1,6 +1,6 @@
 #!/bin/sh
 PWD_DIR=`pwd`
-DOT_FILES=$(gitconfig vimrc zshrc vim tmux.conf)
+DOT_FILES=$( gitconfig vimrc zshrc vim tmux.conf )
 for file in ${DOT_FILES}
 do
     rm -rf ~/.${file}
