@@ -1,5 +1,6 @@
+#!/bin/sh
 PWD_DIR=`pwd`
-DOT_FILES=(gitconfig vimrc zshrc vim)
+DOT_FILES=$(gitconfig vimrc zshrc vim)
 for file in ${DOT_FILES}
 do
     rm -rf ~/.${file}
