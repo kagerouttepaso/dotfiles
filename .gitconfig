@@ -1,0 +1,11 @@
+[http]
+	proxy = http://172.16.2.9:80
+[user]
+	name = kitsunai
+	email = kitsunai@sanritz.co.jp
+[core]
+	editor = vim -c \"set fenc=utf-8\"
+[merge]
+	ff = false
+[pull]
+	rebase = true
