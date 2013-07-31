@@ -96,7 +96,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
   " NeoBundle 'AutoComplPop'
 
   " 補完 neocomplcache.vim : 究極のVim的補完環境
-  "NeoBundle 'Shougo/neocomplcache'
+  NeoBundle 'Shougo/neocomplcache'
 
   " neocomplcacheのsinpet補完
   "NeoBundle 'Shougo/neocomplcache-snippets-complete'
@@ -163,13 +163,13 @@ NeoBundleFetch 'Shougo/neobundle.vim'
   "NeoBundle 'Pydiction'
 
   " ソースコード上のメソッド宣言、変数宣言の一覧を表示
-  "NeoBundle 'taglist.vim'
+  NeoBundle 'taglist.vim'
 
   " エラーがある場所をhilight
   "NeoBundle 'errormarker.vim'
 
   " tagsを利用したソースコード閲覧・移動補助機能 tagsファイルの自動生成
-   "NeoBundle 'Source-Explorer-srcexpl.vim'
+   NeoBundle 'Source-Explorer-srcexpl.vim'
 
   " NERD_tree, taglist, srcexpl の統合
    "NeoBundle 'trinity.vim'
@@ -215,13 +215,13 @@ NeoBundleFetch 'Shougo/neobundle.vim'
   "NeoBundle 'DumbBuf'
 
   " minibufexpl.vim : タブエディタ風にバッファ管理ウィンドウを表示
-  "NeoBundle 'minibufexpl.vim'
+  NeoBundle 'minibufexpl.vim'
 
   " NERDTree : ツリー型エクスプローラ
   "NeoBundle 'The-NERD-tree'
 
   " vtreeexplorer.vim : ツリー状にファイルやディレクトリの一覧を表示
-  "NeoBundle 'vtreeexplorer'
+  NeoBundle 'vtreeexplorer'
 " }}}
 
 
