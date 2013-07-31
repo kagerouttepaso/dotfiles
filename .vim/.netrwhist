@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/var/lib/jenkins/jobs/tpip3release/workspace/TPIP3_image'
+let g:netrw_dirhist_2='/home/lucid/ltib/TPIP3_Image/driver/tpip3_vsync'
+let g:netrw_dirhist_3='/home/lucid/ltib/rpm/BUILD/linux-2.6.35.3/drivers/net/wireless/ath/carl9170'
+let g:netrw_dirhist_4='/home/lucid/ltib/TPIP3_Image/driver/ralink/2010_0709_RT2870_Linux_STA_v2.4.0.1'
+let g:netrw_dirhist_5='/home/lucid/ltib/rpm/BUILD/linux-2.6.35.3'
+let g:netrw_dirhist_6='/home/lucid/.vim'
