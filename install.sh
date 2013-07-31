@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 PWD_DIR=`pwd`
 DOT_FILES=( gitconfig vimrc zshrc vim tmux.conf )
 for file in ${DOT_FILES[@]}
