@@ -1,11 +1,18 @@
 [http]
 	proxy = http://172.16.2.9:80
 [user]
-	name = kitsunai
-	email = kitsunai@sanritz.co.jp
+[color]
+  ui = auto
+[alias]
+  ch = checkout
+  s = status
+  br = branch
+  m = merge
 [core]
 	editor = vim -c \"set fenc=utf-8\"
 [merge]
 	ff = false
 [pull]
 	rebase = true
+[credential]
+	helper = cache --timeout=3600
