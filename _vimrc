@@ -1,1 +1,1 @@
-source /home/lucid/dotfiles/.vimrc.bundle
+source ~/.vim/config/bundle
