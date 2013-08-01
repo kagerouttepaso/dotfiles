@@ -172,7 +172,7 @@ NeoBundle 'h1mesuke/vim-alignta'
    NeoBundle 'SrcExpl'
 
   " NERD_tree, taglist, srcexpl の統合
-  "NeoBundle 'trinity.vim'
+  NeoBundle 'Trinity'
 
   " NERDTree : ツリー型エクスプローラ
   "NeoBundle 'The-NERD-tree'
@@ -219,10 +219,13 @@ NeoBundle 'h1mesuke/vim-alignta'
   "NeoBundle 'DumbBuf'
 
   " minibufexpl.vim : タブエディタ風にバッファ管理ウィンドウを表示
-  NeoBundle 'minibufexpl.vim'
+  "NeoBundle 'minibufexpl.vim'
 
   " vtreeexplorer.vim : ツリー状にファイルやディレクトリの一覧を表示
   NeoBundle 'vtreeexplorer'
+
+  " buftabs.vim : ステータスバーにバッファ一覧を表示
+  NeoBundle 'buftabs'
 " }}}
 
 
