@@ -226,6 +226,9 @@ NeoBundle 'h1mesuke/vim-alignta'
 
   " buftabs.vim : ステータスバーにバッファ一覧を表示
   NeoBundle 'buftabs'
+
+  "  Kwbd.vim : レイアウトを崩さずにバッファを削除
+  NeoBundle 'rgarver/Kwbd.vim'
 " }}}
 
 
