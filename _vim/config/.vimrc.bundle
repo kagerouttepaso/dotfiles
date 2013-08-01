@@ -28,13 +28,13 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "NeoBundle 'xmledit'
 
 " Align : 高機能整形・桁揃えプラグイン
-"NeoBundle 'Align'
+NeoBundle 'Align'
 
 " フィルタリングと整形
 "NeoBundle 'godlygeek/tabular'
 
 " マルチバイト対応の整形
-"NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'h1mesuke/vim-alignta'
 
 " YankRing.vim : ヤンクの履歴を管理し、順々に参照、出力できるようにする
 "NeoBundle 'YankRing.vim'
@@ -133,7 +133,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
   "NeoBundle 'ruby-matchit'
 
   " grep.vim : 外部のgrep利用。:Grepで対話形式でgrep :Rgrepは再帰
-  "NeoBundle 'grep.vim'
+  NeoBundle 'grep.vim'
 
   " eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
   "NeoBundle 'eregex.vim'
@@ -169,10 +169,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
   "NeoBundle 'errormarker.vim'
 
   " tagsを利用したソースコード閲覧・移動補助機能 tagsファイルの自動生成
-   NeoBundle 'Source-Explorer-srcexpl.vim'
+   NeoBundle 'SrcExpl'
 
   " NERD_tree, taglist, srcexpl の統合
-   "NeoBundle 'trinity.vim'
+  "NeoBundle 'trinity.vim'
+
+  " NERDTree : ツリー型エクスプローラ
+  "NeoBundle 'The-NERD-tree'
+
 " }}}
 "
 " Syntax {{{
@@ -216,9 +220,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
   " minibufexpl.vim : タブエディタ風にバッファ管理ウィンドウを表示
   NeoBundle 'minibufexpl.vim'
-
-  " NERDTree : ツリー型エクスプローラ
-  "NeoBundle 'The-NERD-tree'
 
   " vtreeexplorer.vim : ツリー状にファイルやディレクトリの一覧を表示
   NeoBundle 'vtreeexplorer'
@@ -285,6 +286,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
   " https://github.com/airblade/vim-gitgutter
   NeoBundle 'airblade/vim-gitgutter'
+
+  " Doxygenのサポーターらしい
+  NeoBundle 'DoxygenToolkit.vim'
+
+  " Doxygenのサポーターらしい
+  "NeoBundle 'doxygen-support.vim'
 " }}}
 
 " ColorSchema{{{{
