@@ -4,8 +4,8 @@ source ~/.vim/config/.vimrc.bundle
 "
 "基本設定
 source ~/.vim/config/.vimrc.basic
-""StatusLine設定
-"source ~/.vim/config/.vimrc.statusline
+"StatusLine設定
+source ~/.vim/config/.vimrc.statusline
 "インデント設定
 source ~/.vim/config/.vimrc.indent
 "表示関連

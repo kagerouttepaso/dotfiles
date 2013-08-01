@@ -18,11 +18,11 @@ set t_Co=256
 " endif
 
 "入力モード時、ステータスラインのカラーを変更
-" augroup InsertHook
-" autocmd!
-" autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340 ctermfg=cyan
-" autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 ctermfg=white
-" augroup END
+ augroup InsertHook
+ autocmd!
+ autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340 ctermfg=cyan
+ autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 ctermfg=white
+ augroup END
 
 "自動的に QuickFix リストを表示する
 autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd cwin

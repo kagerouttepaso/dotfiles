@@ -279,7 +279,7 @@ NeoBundle 'h1mesuke/vim-alignta'
   "NeoBundle 'tpope/vim-fugitive'
 
   " ステータスラインをカッコよくする
-  NeoBundle 'Lokaltog/vim-powerline'
+  " NeoBundle 'Lokaltog/vim-powerline'
 
   " Redmine on Vim
   "NeoBundle 'mattn/vim-metarw-redmine'
