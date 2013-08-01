@@ -192,7 +192,7 @@ noremap 2 :bprev<CR>" バッファタブをステータスライン内に表示�
 " 現在のバッファをハイライト
 let g:buftabs_active_highlight_group="Visual"
 " ステータスライン
-set statusline=%=\ [%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
+set statusline=%=\ [%f]\[%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
 
 "nmap <C-h> <C-w>h " Ctrl+h, Ctrl+j, Ctrl+k, Ctrl+l でウィンドウ間を移動
 "nmap <C-l> <C-w>l
