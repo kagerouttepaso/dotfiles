@@ -186,8 +186,8 @@ map <silent> <leader>tl :Tlist<CR>        " taglistを開くショットカッ�
 "------------------------------------
 let g:buftabs_only_basename=1 " ファイル名だけ表示
 let g:buftabs_in_statusline=1 " ステータスラインに表示
-noremap <Space> :bnext<CR> " Space, Shift+Space でバッファを切り替え
-noremap <S-Space> :bprev<CR>" バッファタブをステータスライン内に表示する
+noremap 1 :bnext<CR> " Space, Shift+Space でバッファを切り替え
+noremap 2 :bprev<CR>" バッファタブをステータスライン内に表示する
 
 " 現在のバッファをハイライト
 let g:buftabs_active_highlight_group="Visual"
@@ -209,13 +209,8 @@ command! DD :Kwbd
 " Srcexp
 "------------------------------------
 " [Srcexpl] tagsを利用したソースコード閲覧・移動補助機能
-let g:SrcExpl_UpdateTags    = 1         " tagsをsrcexpl起動時に自動で作成（更新）
-let g:SrcExpl_RefreshTime   = 5         " 自動表示するまでの時間(0:off)
-"let g:SrcExpl_WinHeight     = 9         " プレビューウインドウの高さ
-"let g:SrcExpl_RefreshMapKey = "<Space>" " 手動表示のMAP
-"let g:SrcExpl_GoBackMapKey  = "<C-[>"   " 戻る機能のMAP
-" Source Explorerの機能ON/OFF
-" nmap <F8> :CMiniBufExplorer<CR>:SrcExplToggle<CR>:TMiniBufExplorer<CR>
+let g:SrcExpl_isUpdateTags   = 0         " tagsをsrcexpl起動時に自動で作成（更新）
+let g:SrcExpl_gobackKey = "<C-SPACE>"
 
 "------------------------------------
 " open-blowser.vim
