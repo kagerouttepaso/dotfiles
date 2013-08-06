@@ -233,7 +233,7 @@ NeoBundle 'h1mesuke/vim-alignta'
 
 
 " Encording {{{
-  "NeoBundle 'banyan/recognize_charcode.vim'
+  NeoBundle 'banyan/recognize_charcode.vim'
 " }}}
 
 " Utility {{{
@@ -281,7 +281,10 @@ NeoBundle 'h1mesuke/vim-alignta'
   "NeoBundle 'tsukkee/lingr-vim'
 
   " vimからGit操作する
-  "NeoBundle 'tpope/vim-fugitive'
+  NeoBundle 'tpope/vim-fugitive'
+
+  " tigよりすごいgitk的なもの
+  NeoBundle 'gregsexton/gitv'
 
   " ステータスラインをカッコよくする
   " NeoBundle 'Lokaltog/vim-powerline'

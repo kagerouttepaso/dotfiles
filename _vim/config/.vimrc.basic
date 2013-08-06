@@ -39,3 +39,11 @@ set helpfile=$VIMRUNTIME/doc/help.txt
 " ファイルタイプ判定をon
 filetype plugin on
 
+" 画面点滅させない
+set novisualbell
+if has("win32")
+  set vb t_vb=
+endi
+if has("win64")
+  set vb t_vb=
+endi
