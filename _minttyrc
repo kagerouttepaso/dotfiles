@@ -1,0 +1,10 @@
+BoldAsFont=yes
+FontHeight=12
+Locale=C
+Charset=UTF-8
+Font=ÇlÇr ÉSÉVÉbÉN
+CursorType=block
+AllowBlinking=no
+Term=xterm-256color
+Transparency=medium
+OpaqueWhenFocused=no

@@ -121,6 +121,7 @@ let Grep_Skip_Files = '*.bak *~'
 "------------------------------------
 " gregsexton/gitv
 "------------------------------------
+command! Tig :Gitv --all
 "ハッシュタグの取得
 function! s:gitv_get_current_hash()
   return matchstr(getline('.'), '\[\zs.\{7\}\ze\]$')
