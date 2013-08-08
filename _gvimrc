@@ -1,0 +1,27 @@
+" メニューが文字化けしてしまうことへの対策
+source $VIMRUNTIME/delmenu.vim
+set langmenu=ja_jp.utf-8
+source $VIMRUNTIME/menu.vim
+
+
+"ソリューションのミーティング用設定
+function! SolutionMT()
+  set guifont=MS_Gothic:h18:cSHIFTJIS
+  set transparency=255
+  colorscheme zellner
+  syntax off
+endfunction
+command! SolMt :call SolutionMT()
+
+function! EndSolutionMT()
+  set guifont=MS_Gothic:h12:cSHIFTJIS
+  set transparency=224
+  colorscheme yuroyoro256
+  syntax on
+endfunction
+command! ESolMt :call EndSolutionMT()
+
+gui
+"画面を半透明にする
+set transparency=224
+

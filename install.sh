@@ -1,4 +1,11 @@
 #!/bin/bash -x
+
+#need apps
+#tmux more than ver 1.7
+#zsh
+#git
+#ctags
+
 PWD_DIR=`pwd`
 DOT_FILES=( gitconfig vimrc zshrc vim tmux.conf )
 for file in ${DOT_FILES[@]}
@@ -7,10 +14,11 @@ do
     ln -s ${PWD_DIR}/_${file} ~/.${file}
 done
 
-
 if [ ! -d ~/.vim/bundle/neobundle.vim ] ; then
 git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
 fi
+
+echo "alias tmux='tmux -2'" >> ~/.bashrc
 
 #case "${OSTYPE}" in
 #freebsd*|darwin*)
