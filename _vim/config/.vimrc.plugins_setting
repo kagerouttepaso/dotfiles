@@ -6,7 +6,7 @@
 " YankRing.vim
 "------------------------------------
 " Yankの履歴参照
-nmap ,y ;YRShow<CR>
+"nmap ,y ;YRShow<CR>
 
 "------------------------------------
 " MiniBufExplorer
@@ -35,7 +35,7 @@ let g:Align_xstrlen = 3
 " 縦に表示する
 let g:treeExplVertical=1
 "<Leader>t<Space>でディレクトリツリー表示
-noremap <Leader>t<Space> :VSTreeExplore<CR>
+"noremap <Leader>t<Space> :VSTreeExplore<CR>
 "分割したウィンドウのサイズ
 let g:treeExplWinSize=30
 
@@ -121,13 +121,16 @@ let Grep_Skip_Files = '*.bak *~'
 "------------------------------------
 " gregsexton/gitv
 "------------------------------------
+"ハッシュタグの取得
 function! s:gitv_get_current_hash()
   return matchstr(getline('.'), '\[\zs.\{7\}\ze\]$')
 endfunction
 
+"ハッシュタグの取得
 autocmd FileType gitv call s:my_gitv_settings()
 function! s:my_gitv_settings()
   setlocal iskeyword+=/,-,.
+  "gitv上でgitコマンドを使う
   nnoremap <silent><buffer> C :<C-u>Git checkout <C-r><C-w><CR>
   nnoremap <buffer> <Space>me :<C-u>Git merge <C-r><C-w><CR>
   nnoremap <buffer> <Space>cp :<C-u>Git cherry-pick <C-r>=<SID>gitv_get_current_hash()<CR><CR>
@@ -140,7 +143,7 @@ endfunction
 " BufExplorer
 "------------------------------------
 "<Leader>l<Space>でBufferList
-nnoremap <Leader>l<Space> :BufExplorer<CR>
+"nnoremap <Leader>l<Space> :BufExplorer<CR>
 
 
 "------------------------------------
@@ -219,6 +222,7 @@ set statusline=%=\ [%f]\[%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%
 "------------------------------------
 " Kwbd.vim
 "------------------------------------
+"DDでウィンドウの形を変えずにバッファを閉じる
 command! DD :Kwbd
 
 
