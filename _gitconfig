@@ -1,5 +1,5 @@
 [http]
-	proxy = http://172.16.2.9:80
+	proxy = 172.16.2.9:80
 [user]
 [color]
   ui = auto

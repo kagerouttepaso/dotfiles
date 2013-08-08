@@ -118,6 +118,23 @@ let Grep_Skip_Files = '*.bak *~'
 "nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
 "nnoremap <Space>gb :<C-u>Gblame<Enter>
 
+"------------------------------------
+" gregsexton/gitv
+"------------------------------------
+function! s:gitv_get_current_hash()
+  return matchstr(getline('.'), '\[\zs.\{7\}\ze\]$')
+endfunction
+
+autocmd FileType gitv call s:my_gitv_settings()
+function! s:my_gitv_settings()
+  setlocal iskeyword+=/,-,.
+  nnoremap <silent><buffer> C :<C-u>Git checkout <C-r><C-w><CR>
+  nnoremap <buffer> <Space>me :<C-u>Git merge <C-r><C-w><CR>
+  nnoremap <buffer> <Space>cp :<C-u>Git cherry-pick <C-r>=<SID>gitv_get_current_hash()<CR><CR>
+  nnoremap <buffer> <Space>rb :<C-u>Git rebase <C-r>=<SID>gitv_get_current_hash()<CR><Space>
+  nnoremap <buffer> <Space>rv :<C-u>Git revert <C-r>=<SID>gitv_get_current_hash()<CR><CR>
+  nnoremap <buffer> <Space>rs :<C-u>Git reset --hard <C-r>=<SID>gitv_get_current_hash()<CR>
+endfunction
 
 "------------------------------------
 " BufExplorer
