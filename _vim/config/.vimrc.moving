@@ -74,6 +74,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
+nnoremap <BS> <C-w>h
 
 " git-diff-aware version of gf commands.
 " http://labs.timedia.co.jp/2011/04/git-diff-aware-gf-commands-for-vim.html
