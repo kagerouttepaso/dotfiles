@@ -1,5 +1,3 @@
-[http]
-	proxy = 172.16.2.9:80
 [color]
   ui = auto
 [alias]
