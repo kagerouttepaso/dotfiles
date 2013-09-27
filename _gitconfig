@@ -21,6 +21,7 @@
 	rebase = true
 [credential]
 	helper = cache --timeout=3600
+
 [user]
 	name = kitsunai
 	email = kitsunai@sanritz.co.jp
