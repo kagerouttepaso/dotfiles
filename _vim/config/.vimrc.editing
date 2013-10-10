@@ -34,10 +34,10 @@ command! Pt :set paste!
 " インサートモード中に<C-o>でyankした内容をputする
 inoremap <C-o> <ESC>:<C-U>YRPaste 'p'<CR>i
 
-" y9で行末までヤンク
-nmap y9 y$
-" y0で行頭までヤンク
-nmap y0 y^
+" y0で行末までヤンク
+nmap y0 y$
+" y9で行頭までヤンク
+nmap y9 y^
 
 "
 " 括弧を自動補完
