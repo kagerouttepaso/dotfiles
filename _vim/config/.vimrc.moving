@@ -11,8 +11,10 @@ nnoremap <Down> gj
 nnoremap <Up>   gk
 
 " 0, 9で行頭、行末へ
-nmap 9 ^
-nmap 0 $
+nnoremap 9 ^
+nnoremap 0 $
+vnoremap 9 ^
+vnoremap 0 $
 
 " insert mode での移動
 "inoremap  <C-e> <END>
@@ -42,6 +44,8 @@ command! Bw :bnext \| bdelete #
 "フレームサイズを怠惰に変更する
 map <kPlus> <C-W>+
 map <kMinus> <C-W>-
+nnoremap + <C-W>+
+nnoremap - <C-W>-
 
 " 前回終了したカーソル行に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
