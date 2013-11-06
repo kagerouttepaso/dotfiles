@@ -210,6 +210,9 @@ NeoBundle 'h1mesuke/vim-alignta'
   " ghc-mod
   NeoBundle 'eagletmt/ghcmod-vim'
 
+  " textile
+  NeoBundle 'kagerouttepaso/textile.vim'
+
   " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
   "NeoBundle 'scrooloose/syntastic'
 " }}}
