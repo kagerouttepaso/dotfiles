@@ -96,7 +96,17 @@ NeoBundle 'h1mesuke/vim-alignta'
   " NeoBundle 'AutoComplPop'
 
   " 補完 neocomplcache.vim : 究極のVim的補完環境
-  NeoBundle 'Shougo/neocomplcache'
+  function! s:meet_neocomplete_requirements()
+    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+  endfunction
+
+  if s:meet_neocomplete_requirements()
+    NeoBundle 'Shougo/neocomplete.vim'
+    NeoBundleFetch 'Shougo/neocomplcache.vim'
+  else
+    NeoBundleFetch 'Shougo/neocomplete.vim'
+    NeoBundle 'Shougo/neocomplcache.vim'
+  endif
 
   " neocomplcacheのsinpet補完
   "NeoBundle 'Shougo/neocomplcache-snippets-complete'
