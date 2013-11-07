@@ -27,8 +27,13 @@ set ttymouse=xterm2
 
 "ヤンクした文字は、システムのクリップボードに入れる"
 set clipboard=unnamed
-" 挿入モードでCtrl+kを押すとクリップボードの内容を貼り付けられるようにする "
-imap <C-p>  <ESC>"*pa
+"挿入モードでCtrl+pを押すとクリップボードの内容を貼り付けられるようにする "
+imap <C-p>  <C-r>0
+"選択モード中にCtrl+pで選択している場所を削除してコピーしていた文章を貼り付け
+vnoremap <C-p> di<C-r>1<Esc>
+"エンターキーで改行
+nnoremap <Enter> o <Esc>v^d
+
 
 " Ev/Rvでvimrcの編集と反映
 command! Ev edit $MYVIMRC

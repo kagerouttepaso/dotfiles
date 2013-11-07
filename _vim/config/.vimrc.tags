@@ -34,4 +34,4 @@ nnoremap tk  ;<C-u>pop<CR>
 "履歴一覧
 nnoremap tl  ;<C-u>tags<CR>
 "tags 作成"
-command! Ctags :!ctags -R ./
+command! Ctags :!ctags -R

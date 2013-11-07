@@ -16,38 +16,37 @@ options     word
 snippet     inlinecode
 abbr        @Inlide Code@
 options     word
-  @${1:#:code}@ ${2}
+  @${1}@ ${2}
 
 snippet     link
 abbr        "title":url
 options word
-  "${1:#:name}":http://${2:#:url} ${3}
+  "${1:#:name}":http://${2} ${3}
 
 snippet     codes
 abbr        lines of code
 options     head
   <pre>
-  ${1:#:code}
+  ${1}
   </pre>
-  ${2}
 
 snippet     title1
 abbr        h1. title
 options     head
-  h1. ${1:#title}
+  h1. ${1}
 
   ${2}
 
 snippet     title2
 abbr        h2. title
 options     head
-  h2. ${1:#title}
+  h2. ${1}
 
   ${2}
 
 snippet     title3
 abbr        h3. title
 options     head
-  h3. ${1:#title}
+  h3. ${1}
 
   ${2}
