@@ -230,15 +230,11 @@ map <silent> <leader>tl :Tlist<CR>        " taglistを開くショットカッ�
 "------------------------------------
 " buftabs.Vim
 "------------------------------------
-let g:buftabs_only_basename=1 " ファイル名だけ表示
-let g:buftabs_in_statusline=1 " ステータスラインに表示
-noremap 8 :bnext<CR> " Space, Shift+Space でバッファを切り替え
-noremap 7 :bprev<CR>" バッファタブをステータスライン内に表示する
+"let g:buftabs_only_basename=1 " ファイル名だけ表示
+"let g:buftabs_in_statusline=0 " ステータスラインに表示
 
 " 現在のバッファをハイライト
-let g:buftabs_active_highlight_group="Visual"
-" ステータスライン
-set statusline=%=\ [%f]\[%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
+"let g:buftabs_active_highlight_group="Visual"
 
 "nmap <C-h> <C-w>h " Ctrl+h, Ctrl+j, Ctrl+k, Ctrl+l でウィンドウ間を移動
 "nmap <C-l> <C-w>l
@@ -248,9 +244,13 @@ set statusline=%=\ [%f]\[%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%
 "------------------------------------
 " Kwbd.vim
 "------------------------------------
-"DDでウィンドウの形を変えずにバッファを閉じる
-command! DD :Kwbd
-
+"CBでウィンドウの形を変えずにバッファを閉じる
+command! QB :Kwbd
+function! QuitBuffer()
+  :Kwbd
+  :quit
+endfunction
+command! QQ :call QuitBuffer()
 
 "------------------------------------
 " Srcexp

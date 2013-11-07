@@ -238,7 +238,7 @@ NeoBundle 'vim-scripts/YankRing.vim'
   NeoBundle 'vtreeexplorer'
 
   " buftabs.vim : ステータスバーにバッファ一覧を表示
-  NeoBundle 'buftabs'
+  "NeoBundle 'buftabs'
 
   "  Kwbd.vim : レイアウトを崩さずにバッファを削除
   NeoBundle 'rgarver/Kwbd.vim'

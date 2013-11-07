@@ -34,6 +34,9 @@ vnoremap <C-p> di<C-r>1<Esc>
 "エンターキーで改行
 nnoremap <Enter> o <Esc>v^d
 
+"スペースで次のバッファへ、bで前のバッファへ
+noremap <Space> :bn<CR>
+noremap b :bp<CR>
 
 " Ev/Rvでvimrcの編集と反映
 command! Ev edit $MYVIMRC
