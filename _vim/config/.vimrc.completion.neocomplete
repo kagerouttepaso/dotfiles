@@ -41,13 +41,6 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" ユーザー定義スニペット保存ディレクトリ
-let g:neocomplete#snippets_dir = $HOME.'~/.vim/snippets'
-
-" スニペット
-imap <C-y> <Plug>(neocomplete#snippets_expand)
-smap <C-k> <Plug>(neocomplete#snippets_expand)
-
 " 補完を選択しpopupを閉じる
 " inoremap <expr><C-y> neocomplete#close_popup()
 " 補完をキャンセルしpopupを閉じる
@@ -58,8 +51,6 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><C-g>     neocomplete#undo_completion()
 " 補完候補の共通部分までを補完する
 inoremap <expr><C-s> neocomplete#complete_common_string()
-" SuperTab like snippets behavior.
-imap <expr><TAB> neocomplete#sources#snippets_complete#expandable() ? "\<Plug>(neocomplete#snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 " C-kを押すと行末まで削除
 " inoremap <C-k> <C-o>D
 " C-nでneocomplete補完

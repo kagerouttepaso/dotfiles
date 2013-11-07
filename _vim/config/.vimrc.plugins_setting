@@ -106,6 +106,31 @@ let Grep_Skip_Files = '*.bak *~'
 " " if文直後の(は自動で間に空白を入れる
 " inoremap <buffer><expr> ( search('¥<¥if¥%#', 'bcn')? ' (': '('
 
+"------------------------------------
+" Shougo/neosnippet.vim
+"------------------------------------
+" ユーザー定義スニペット保存ディレクトリ
+let g:neocomplete#snippets_dir = $HOME.'~/.vim/snippets'
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+" Plugin key-mappings.
+imap <C-y>     <Plug>(neosnippet_expand_or_jump)
+smap <C-y>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-y>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
 
 "------------------------------------
 " Fugitive.vim
@@ -511,6 +536,8 @@ command! TU :TrinityUpdateWindow
 "  setl dict+=~/.vim/dict/ruby.dict
 "endfunction
 "autocmd User Rails call SetUpRailsSetting()
+
+
 
 
 "------------------------------------

@@ -110,7 +110,7 @@ NeoBundle 'vim-scripts/YankRing.vim'
 
   " neocomplcacheのsinpet補完
   "NeoBundle 'Shougo/neocomplcache-snippets-complete'
-  "NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet.vim'
 
   " for rsense
   "NeoBundle 'm2ym/rsense'
