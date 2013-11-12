@@ -22,6 +22,8 @@ if [ ! -d ~/.oh-my-zsh ] ; then
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
+
+
 echo "alias tmux='tmux -2'" >> ~/.bashrc
 
 #case "${OSTYPE}" in
