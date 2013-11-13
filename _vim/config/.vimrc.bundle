@@ -109,7 +109,6 @@ NeoBundle 'vim-scripts/YankRing.vim'
   endif
 
   " neocomplcacheのsinpet補完
-  "NeoBundle 'Shougo/neocomplcache-snippets-complete'
   NeoBundle 'Shougo/neosnippet.vim'
 
   " for rsense
@@ -309,7 +308,8 @@ NeoBundle 'vim-scripts/YankRing.vim'
   "NeoBundle 'kana/vim-metarw'
 
   " https://github.com/airblade/vim-gitgutter
-  NeoBundle 'airblade/vim-gitgutter'
+  "NeoBundle 'airblade/vim-gitgutter'
+  NeoBundle 'sgur/vim-gitgutter'
 
   " Doxygenのサポーターらしい
   NeoBundle 'DoxygenToolkit.vim'
