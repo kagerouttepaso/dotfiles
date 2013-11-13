@@ -1,5 +1,3 @@
-[http]
-	proxy = 172.16.2.9:80
 [color]
   ui = auto
 [alias]
@@ -21,7 +19,6 @@
 	rebase = true
 [credential]
 	helper = cache --timeout=3600
-
 [user]
 	name = kitsunai
-	email = kitsunai@sanritz.co.jp
+	email = goth.wasawasa@gmail.com
