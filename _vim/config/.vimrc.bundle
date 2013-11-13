@@ -37,7 +37,7 @@ NeoBundle 'Align'
 NeoBundle 'h1mesuke/vim-alignta'
 
 " YankRing.vim : ヤンクの履歴を管理し、順々に参照、出力できるようにする
-"NeoBundle 'YankRing.vim'
+NeoBundle 'vim-scripts/YankRing.vim'
 
 " undo履歴を追える (need python support)
 "NeoBundle 'Gundo'
@@ -96,11 +96,20 @@ NeoBundle 'h1mesuke/vim-alignta'
   " NeoBundle 'AutoComplPop'
 
   " 補完 neocomplcache.vim : 究極のVim的補完環境
-  NeoBundle 'Shougo/neocomplcache'
+  function! s:meet_neocomplete_requirements()
+    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+  endfunction
+
+  if s:meet_neocomplete_requirements()
+    NeoBundle 'Shougo/neocomplete.vim'
+    NeoBundleFetch 'Shougo/neocomplcache.vim'
+  else
+    NeoBundleFetch 'Shougo/neocomplete.vim'
+    NeoBundle 'Shougo/neocomplcache.vim'
+  endif
 
   " neocomplcacheのsinpet補完
-  "NeoBundle 'Shougo/neocomplcache-snippets-complete'
-  "NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet.vim'
 
   " for rsense
   "NeoBundle 'm2ym/rsense'
@@ -139,7 +148,7 @@ NeoBundle 'h1mesuke/vim-alignta'
   "NeoBundle 'eregex.vim'
 
   " open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
-  "NeoBundle 'tyru/open-browser.vim'
+  NeoBundle 'tyru/open-browser.vim'
 
 " }}}
 
@@ -210,6 +219,9 @@ NeoBundle 'h1mesuke/vim-alignta'
   " ghc-mod
   NeoBundle 'eagletmt/ghcmod-vim'
 
+  " textile
+  NeoBundle 'kagerouttepaso/textile.vim'
+
   " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
   "NeoBundle 'scrooloose/syntastic'
 " }}}
@@ -225,7 +237,7 @@ NeoBundle 'h1mesuke/vim-alignta'
   NeoBundle 'vtreeexplorer'
 
   " buftabs.vim : ステータスバーにバッファ一覧を表示
-  NeoBundle 'buftabs'
+  "NeoBundle 'buftabs'
 
   "  Kwbd.vim : レイアウトを崩さずにバッファを削除
   NeoBundle 'rgarver/Kwbd.vim'
@@ -296,7 +308,8 @@ NeoBundle 'h1mesuke/vim-alignta'
   "NeoBundle 'kana/vim-metarw'
 
   " https://github.com/airblade/vim-gitgutter
-  NeoBundle 'airblade/vim-gitgutter'
+  "NeoBundle 'airblade/vim-gitgutter'
+  NeoBundle 'sgur/vim-gitgutter'
 
   " Doxygenのサポーターらしい
   NeoBundle 'DoxygenToolkit.vim'

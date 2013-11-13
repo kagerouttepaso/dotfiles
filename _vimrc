@@ -28,3 +28,5 @@ source ~/.vim/config/.vimrc.encoding
 source ~/.vim/config/.vimrc.misc
 "プラグインに依存するアレ
 source ~/.vim/config/.vimrc.plugins_setting
+"tab周りの設定
+source ~/.vim/config/.vimrc.tab

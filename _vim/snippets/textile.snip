@@ -1,0 +1,53 @@
+snippet     strong
+abbr        *strong*
+options word
+  *${1}* ${2}
+
+snippet     italic
+abbr        _italic_
+options     word
+  _${1}_ ${2}
+
+snippet     underline
+abbr        +underline+
+options     word
+  +${1}+ ${2}
+
+snippet     inlinecode
+abbr        @Inlide Code@
+options     word
+  @${1}@ ${2}
+
+snippet     link
+abbr        "title":url
+options word
+  "${1:#:name}":http://${2} ${3}
+
+snippet     codes
+abbr        lines of code
+options     head
+  <pre><code class="${1:plaintext}">
+  ${2}
+  </code></pre>
+  ${3}
+
+snippet     title1
+abbr        h1. title
+options     head
+  h1. ${1}
+
+  ${2}
+
+snippet     title2
+abbr        h2. title
+options     head
+  h2. ${1}
+
+  ${2}
+
+snippet     title3
+abbr        h3. title
+options     head
+  h3. ${1}
+
+  ${2}
