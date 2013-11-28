@@ -8,3 +8,5 @@ noremap ; :
 " :でもexコマンドに入れるようにしておく
 " noremap : ;
 
+"自作のシンタックス定義
+au BufNewFile,BufRead *.cmm setfiletype cmm
