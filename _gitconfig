@@ -25,3 +25,5 @@
 [user]
 	name = kitsunai
 	email = kitsunai@sanritz.co.jp
+[push]
+	default = simple
