@@ -12,7 +12,7 @@ tar -zxvf tmux-1.8.tar.gz
 bzip2 -cd vim-7.4.tar.bz2 | tar -xvf -
 rm *.tar.bz*
 
-RPM_FILES=( libevent-2.0.21-stable tmux-1.8 vim74 )
+RPM_FILES=( libevent-2.0.21-stable tmux-1.8 )
 for file in ${RPM_FILES[@]}
 do
     cd ${file}
@@ -22,4 +22,8 @@ do
     cd ..
 done
 
-
+cd vim74
+./configure --enable-luainterp=yes
+make
+sudo make install
+cd ..
