@@ -21,6 +21,4 @@
 	helper = cache --timeout=3600
 [user]
 	name = kitsunai
-	email = kitsunai@sanritz.co.jp
-[http]
-	proxy = http://172.16.2.9:80
+	email = goth.wasawasa@gmail.com
