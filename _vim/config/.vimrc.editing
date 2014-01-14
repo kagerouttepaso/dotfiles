@@ -55,7 +55,10 @@ nmap y9 y^
 " 保存時に行末の空白を除去する
 function! BufWriteFile()
   if (&filetype == "markdown")
-    "markdownは改行を考慮して何もしない
+    "markdownは改行を考慮して処理
+    :%s/\([^ ]\)  $/\1{{line_feed_code}}/ge
+    :%s/\s\+$//ge
+    :%s/{{line_feed_code}}$/  /ge
   else
     :%s/\s\+$//ge
   endif
