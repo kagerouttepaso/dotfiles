@@ -21,11 +21,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " -- でメソッドチェーン整形
 "NeoBundle 'c9s/cascading.vim'
 
-" visually indent guide
-"NeoBundle 'nathanaelkane/vim-indent-guides'
-
-" XMLとかHTMLとかの編集機能を強化する
-"NeoBundle 'xmledit'
 
 " Align : 高機能整形・桁揃えプラグイン
 NeoBundle 'Align'
@@ -316,6 +311,9 @@ NeoBundle 'vim-scripts/YankRing.vim'
 
   " Doxygenのサポーターらしい
   "NeoBundle 'doxygen-support.vim'
+
+  "テンプレートファイルを作成する
+  NeoBundle 'kagerouttepaso/sonictemplate-vim'
 " }}}
 
 " ColorSchema{{{{
