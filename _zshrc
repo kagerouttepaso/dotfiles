@@ -85,4 +85,8 @@ if [ "${ARCHz}" = "cygwin" ]; then
             cd /cygdrive/c/Users/`id -un`/Desktop/
         fi
     }
+elif [ "${ARCHz}" = "linux" ]; then
+    tmuxx(){
+        tmux attach -d
+    }
 fi

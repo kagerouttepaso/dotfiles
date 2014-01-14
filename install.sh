@@ -6,11 +6,26 @@
 #git
 #ctags
 
+
+if [ ! -d ~/.backup ]; then
+    mkdir ~/.backup
+fi
+
 PWD_DIR=`pwd`
-DOT_FILES=( gitconfig vimrc zshrc vim tmux.conf minttyrc )
+DOT_FILES=( gitconfig vimrc zshrc vim tmux.conf minttyrc bashrc bash_aliases )
 for file in ${DOT_FILES[@]}
 do
-    rm -rf ~/.${file}
+    if [ -L ~/.${file} ]; then
+        rm -f ~/.${file}
+    elif [ -d ~/.${file} ]; then
+        rm -rf ~/.backup/.${file}
+        cp -r ~/.${file} ~/.backup/.${file}
+        rm -rf ~/.${file}
+    elif [ -f ~/.${file} ]; then
+        rm -rf ~/.backup/.${file}
+        cp ~/.${file} ~/.backup/.${file}
+        rm -f ~/.${file}
+    fi
     ln -s ${PWD_DIR}/_${file} ~/.${file}
 done
 
@@ -24,10 +39,6 @@ fi
 
 
 
-if [ ! -f bash.lock ] ; then
-    touch bash.lock
-    echo "alias tmux='tmux -2'" >> ~/.bashrc
-fi
 
 #case "${OSTYPE}" in
 #freebsd*|darwin*)
