@@ -53,7 +53,14 @@ nmap y9 y^
 "vnoremap ' "zdi'<C-R>z'<ESC>
 
 " 保存時に行末の空白を除去する
-autocmd BufWritePre * :%s/\s\+$//ge
+function! BufWriteFile()
+  if (&filetype == "markdown")
+    "markdownは改行を考慮して何もしない
+  else
+    :%s/\s\+$//ge
+  endif
+endfunction
+autocmd BufWritePre * :call BufWriteFile()
 " 保存時にtabをスペースに変換する
 "autocmd BufWritePre * :%s/\t/  /ge
 

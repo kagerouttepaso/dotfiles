@@ -24,7 +24,10 @@ fi
 
 
 
-echo "alias tmux='tmux -2'" >> ~/.bashrc
+if [ ! -f bash.lock ] ; then
+    touch bash.lock
+    echo "alias tmux='tmux -2'" >> ~/.bashrc
+fi
 
 #case "${OSTYPE}" in
 #freebsd*|darwin*)

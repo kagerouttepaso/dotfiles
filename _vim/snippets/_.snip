@@ -1,4 +1,7 @@
 snippet     filename
 abbr        CurrentFileName
 options     head
-  `expand("%")`${1}
+  Filename : `expand("%")`
+  No : `line(".")`
+  ${1}
+
