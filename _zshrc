@@ -85,6 +85,7 @@ if [ "${ARCHz}" = "cygwin" ]; then
             cd /cygdrive/c/Users/`id -un`/Desktop/
         fi
     }
+    export DISPLAY=:0.0
 elif [ "${ARCHz}" = "linux" ]; then
     tmuxx(){
         tmux attach -d
