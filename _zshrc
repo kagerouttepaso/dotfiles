@@ -13,6 +13,8 @@ ZSH_THEME="robbyrussell"
 alias tmux="tmux -2"
 alias sshx="ssh -XC"
 
+stty stop undef
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
