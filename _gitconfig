@@ -24,3 +24,4 @@
 	email = kitsunai@sanritz.co.jp
 [http]
 	proxy = http://172.16.2.9:80
+	postBuffer = 524288000

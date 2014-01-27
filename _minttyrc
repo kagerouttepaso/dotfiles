@@ -8,3 +8,5 @@ AllowBlinking=no
 Term=xterm-256color
 Transparency=medium
 OpaqueWhenFocused=no
+CopyOnSelect=no
+CopyAsRTF=no
