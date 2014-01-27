@@ -22,3 +22,5 @@
 [user]
 	name = kitsunai
 	email = goth.wasawasa@gmail.com
+[http]
+	postBuffer = 524288000
