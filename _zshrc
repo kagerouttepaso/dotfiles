@@ -50,6 +50,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+source ~/.my_proxy_setting
 
 
 #check arch

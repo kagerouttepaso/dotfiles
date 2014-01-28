@@ -115,6 +115,8 @@ fi
 
 
 # my setting
+source ~/.my_proxy_setting
+
 md2html()
 {
     if [ "$1" = "" ]; then
