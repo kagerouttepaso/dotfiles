@@ -29,6 +29,10 @@ do
     ln -s ${PWD_DIR}/_${file} ~/.${file}
 done
 
+if [ ! -f ~/.my_proxy_setting ]; then
+    touch ~/.my_proxy_setting
+fi
+
 if [ ! -d ~/.vim/bundle/neobundle.vim ] ; then
 git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
 fi
