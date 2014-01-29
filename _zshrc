@@ -1,5 +1,9 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+PATH=$PATH:~/dotfiles/autojump/bin
+fpath=(~/dotfiles/autojump/bin $fpath)
+source ~/dotfiles/autojump/bin/autojump.zsh
+
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
