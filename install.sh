@@ -34,14 +34,16 @@ if [ ! -f ~/.my_proxy_setting ]; then
 fi
 
 if [ ! -d ~/.vim/bundle/neobundle.vim ] ; then
-git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
+    git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
 fi
 
 if [ ! -d ~/.oh-my-zsh ] ; then
-git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
-
+if [ ! -d ${PWD_DIR}/autojump ]; then
+    git clone https://github.com/joelthelion/autojump.git
+fi
 
 
 #case "${OSTYPE}" in
