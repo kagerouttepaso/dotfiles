@@ -16,6 +16,8 @@ ZSH_THEME="xiong-chiamiov-plus"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tmux="tmux -2"
 alias sshx="ssh -XC"
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
 
 stty stop undef
 

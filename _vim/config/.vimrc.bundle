@@ -106,6 +106,9 @@ NeoBundle 'vim-scripts/YankRing.vim'
   " neocomplcacheのsinpet補完
   NeoBundle 'Shougo/neosnippet.vim'
 
+  "snipetのテンプレート集
+  NeoBundle 'honza/vim-snippets'
+
   " for rsense
   "NeoBundle 'm2ym/rsense'
   "NeoBundle 'taichouchou2/vim-rsense'
@@ -158,7 +161,8 @@ NeoBundle 'vim-scripts/YankRing.vim'
   "NeoBundle 'SQLUtilities'
 
   " vim-ruby : VimでRubyを扱う際の最も基本的な拡張機能
-  "NeoBundle 'vim-ruby/vim-ruby'
+  NeoBundle 'vim-ruby/vim-ruby'
+
 
   " rails.vim : rails的なアレ
   "NeoBundle 'tpope/vim-rails'
