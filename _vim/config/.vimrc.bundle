@@ -105,6 +105,8 @@ NeoBundle 'vim-scripts/YankRing.vim'
 
   " neocomplcacheのsinpet補完
   NeoBundle 'Shougo/neosnippet.vim'
+  NeoBundle 'Shougo/neosnippet-snippets'
+
 
   "snipetのテンプレート集
   NeoBundle 'honza/vim-snippets'
