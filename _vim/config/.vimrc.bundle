@@ -111,9 +111,6 @@ NeoBundle 'vim-scripts/YankRing.vim'
   "snipetのテンプレート集
   NeoBundle 'honza/vim-snippets'
 
-  "snipetのテンプレート集
-  NeoBundle 'honza/vim-snippets'
-
   " for rsense
   "NeoBundle 'm2ym/rsense'
   "NeoBundle 'taichouchou2/vim-rsense'
