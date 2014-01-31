@@ -53,8 +53,8 @@ let g:treeExplWinSize=30
 " grep.vim
 "------------------------------------
 " 検索外のディレクトリ、ファイルパターン
-let Grep_Skip_Dirs = '.svn .git .hg'
-let Grep_Skip_Files = '*.bak *~'
+let Grep_Skip_Dirs = '.svn .git .hg patches'
+let Grep_Skip_Files = '*.bak *~ tags'
 
 "------------------------------------
 " surround.vim
