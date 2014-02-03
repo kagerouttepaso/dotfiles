@@ -22,17 +22,18 @@ let g:neocomplete#max_list = 20
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
-    \ 'vimshell' : $HOME.'~/.vimshell_hist',
-    \ 'scala' : $HOME.'~/.vim/bundle/vim-scala/dict/scala.dict',
-    \ 'java' : $HOME.'~/.vim/dict/java.dict',
-    \ 'c' : $HOME.'~/.vim/dict/c.dict',
-    \ 'cpp' : $HOME.'~/.vim/dict/cpp.dict',
-    \ 'javascript' : $HOME.'~/.vim/dict/javascript.dict',
-    \ 'ocaml' : $HOME.'~/.vim/dict/ocaml.dict',
-    \ 'perl' : $HOME.'~/.vim/dict/perl.dict',
-    \ 'php' : $HOME.'~/.vim/dict/php.dict',
-    \ 'scheme' : $HOME.'~/.vim/dict/scheme.dict',
-    \ 'vim' : $HOME.'~/.vim/dict/vim.dict'
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scala' : $HOME.'/.vim/bundle/vim-scala/dict/scala.dict',
+    \ 'c' : $HOME.'/.vim/dict/c.dict',
+    \ 'cpp' : $HOME.'/.vim/dict/cpp.dict',
+    \ 'java' : $HOME.'/.vim/dict/java.dict',
+    \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
+    \ 'lua' : $HOME.'/.vim/dict/lua.dict',
+    \ 'ocaml' : $HOME.'/.vim/dict/ocaml.dict',
+    \ 'perl' : $HOME.'/.vim/dict/perl.dict',
+    \ 'php' : $HOME.'/.vim/dict/php.dict',
+    \ 'scheme' : $HOME.'/.vim/dict/scheme.dict',
+    \ 'vim' : $HOME.'/.vim/dict/vim.dict'
     \ }
 
 " Define keyword.
