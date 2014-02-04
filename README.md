@@ -95,50 +95,50 @@ cdcyg     |move to desktop
 
 command   |mean
 :--       |:--
-<C-p>     |貼付け
-<C-j>     |<Down>
-<C-k>     |<Up>
-<C-h>     |<Left>
-<C-l>     |<Right>
-jj        |<esc>
-,         |,<Space>
+`<C-p>`     |貼付け
+`<C-j>`     |`<Down>`
+`<C-k>`     |`<Up>`
+`<C-h>`     |`<Left>`
+`<C-l>`     |`<Right>`
+`jj`        |`<esc>`
+`,`         |`,<Space>`
 
 
 **ノーマルモード**  
 
-command   |mean
-:--       |:--
-スペース  |次のバッファへ
-b         |前のバッファへ
-<C-g><C-g>|カーソル下の単語をバッファを対象にGrep
-<C-g><C-r>|カーソル下の単語をカレントフォルダから再帰的にGrep
-tt        |タグジャンプ
-tb        |現在開いているバッファを閉じてタグスタックをひとつ戻す
-Ctags     |:!ctags -R
-0         |行末へ
-9         |行頭へ
-+         |フレームサイズ増加
--         |フレームサイズ減少
-gb        |最後に編集された位置に移動
-(         |対応するカッコに移動
-)         |対応するカッコに移動
-vy        |カーソル位置の単語をヤンク
-<C-j>     |<C-w>j
-<C-k>     |<C-w>k
-<C-l>     |<C-w>l
-<C-h>     |<C-w>h
-t1~t9     |対応したタブ番号へ飛ぶ
-tn        |次のタブへ
-tp        |前のタブへ
-tr        |バッファをタブ展開
+command    |mean
+:--        |:--
+`<Space>`    |次のバッファへ
+`b`          |前のバッファへ
+`<C-g><C-g>` |カーソル下の単語をバッファを対象にGrep
+`<C-g><C-r>` |カーソル下の単語をカレントフォルダから再帰的にGrep
+`tt`         |タグジャンプ
+`tb`         |現在開いているバッファを閉じてタグスタックをひとつ戻す
+`Ctags`      |:!ctags -R
+`0`          |行末へ
+`9`          |行頭へ
+`+`          |フレームサイズ増加
+`-`          |フレームサイズ減少
+`gb`         |最後に編集された位置に移動
+`(`          |対応するカッコに移動
+`)`          |対応するカッコに移動
+`vy`         |カーソル位置の単語をヤンク
+`<C-j>`      |`<C-w>j`
+`<C-k>`      |`<C-w>k`
+`<C-l>`      |`<C-w>l`
+`<C-h>`      |`<C-w>h`
+`t1~t9`      |対応したタブ番号へ飛ぶ
+`tn`         |次のタブへ
+`tp`         |前のタブへ
+`tr`         |バッファをタブ展開
 
 **ビジュアルモード**  
 
 command   |mean
 :--       |:--
-0         |行末へ
-v         |行末へ
-9         |行頭へ
+`0`         |行末へ
+`v`         |行末へ
+`9`         |行頭へ
 
 **コマンド**  
 
@@ -159,15 +159,15 @@ command   |mean
 :--       |:--
 f         |[unite]
 [unite]u  |`<C-u>Unite -no-split<Space>`
-[unite]a  |全部乗せ`<C-u>Unite -buffer-name=all buffer file_mru bookmark file grep`. find`.<CR><C-r><C-w><CR>*<C-r><C-w>*<CR>
-[unite]b  |バッファ一覧`<C-u>Unite buffer<CR>
-[unite]h  |最近使用したファイル一覧`<C-u>Unite buffer file_mru<CR>
-[unite]d  |カレントディレクトリからファイル一覧`<C-u>Unite -buffer-name=files file<CR>
-[unite]c  |現在のバッファのカレントディレクトリからファイル一覧`<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-[unite]r  |レジスタ一覧`<C-u>Unite register<CR>
-[unite]g  |グレップ検索`<C-u>UniteWithCursorWord grep`. -buffer-name=serch-buffer<CR>
-[unite]f  |ファイル検索`<C-u>Unite find`. -buffer-name=serch-file<CR>*<C-r><C-w>*<CR>
-[unite]s  |`<C-u>Unite source<CR>
+[unite]a  |全部乗せ`<C-u>Unite -buffer-name=all buffer file_mru bookmark file grep:. find:.<CR><C-r><C-w><CR>*<C-r><C-w>*<CR>`
+[unite]b  |バッファ一覧`<C-u>Unite buffer<CR>`
+[unite]h  |最近使用したファイル一覧`<C-u>Unite buffer file_mru<CR>`
+[unite]d  |カレントディレクトリからファイル一覧`<C-u>Unite -buffer-name=files file<CR>`
+[unite]c  |現在のバッファのカレントディレクトリからファイル一覧`<C-u>UniteWithBufferDir -buffer-name=files file<CR>`
+[unite]r  |レジスタ一覧`<C-u>Unite register<CR>`
+[unite]g  |グレップ検索`<C-u>UniteWithCursorWord grep:. -buffer-name=serch-buffer<CR>`
+[unite]f  |ファイル検索`<C-u>Unite find:. -buffer-name=serch-file<CR>*<C-r><C-w>*<CR>`
+[unite]s  |`<C-u>Unite source<CR>`
 
 memo
 ----
