@@ -25,12 +25,8 @@ set notagbsearch
 nnoremap t  <Nop>
 "「飛ぶ」
 nnoremap tt  g<C-]>
-"「進む」
-nnoremap tj  ;<C-u>tag<CR>
 "「戻る」
-nnoremap tk  ;<C-u>pop<CR>
-"履歴一覧
-nnoremap tl  ;<C-u>tags<CR>
+nnoremap tb  :<C-u>QB<CR>:pop<CR>
 "tags 作成"
-command! Ctags :!ctags -R
+command! Ctags :!ctags -R <CR>
 
