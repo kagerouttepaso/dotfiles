@@ -15,3 +15,4 @@ FontIsBold=no
 FontSmoothing=full
 BoldAsColour=yes
 IMECursorColour=255,0,0
+BellTaskbar=no

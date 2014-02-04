@@ -20,4 +20,4 @@
 	postBuffer = 524288000
 [merge "ours"]
   name = "Keep ours merge"
-  driver = ture
+  driver = true
