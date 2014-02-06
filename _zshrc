@@ -22,7 +22,16 @@ alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias sshconfig="vim ~/.ssh/config"
 
+alias gitc="git checkout"
+alias gitb="git branch"
+alias gitr="git remote"
+alias gitrebase="git rebase"
+alias gitm="git merge"
+
 stty stop undef
+
+#ヒストリに重複を許さない
+setopt hist_ignore_all_dups
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -131,3 +140,4 @@ elif [ "${ARCHz}" = "linux" ]; then
         gnome-open ${folder_path}/${filename_without_extension}.html >& /dev/null
     }
 fi
+
