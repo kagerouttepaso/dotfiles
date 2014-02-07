@@ -5,7 +5,7 @@ startup_message off
 autodetach on
 
 #ステータスバー表示
-hardstatus alwayslastline '[%m/%d %02c:%s] %{= .g}%H%{-} %L=%-w%45L>%{=u g.}%n %t%{-}%+w %= [current %-17]'
+hardstatus alwayslastline '[%m/%d %02c:%s] %{= .g}%H%{-} %L=%-w%45L>%{=u g.}%n %t%{-}%+w %= [current %-]'
 #hardstatus alwayslastline '%{= .b}%H%{-} %L=%-w%45L>%{=u b.}%n %t%{-}%+w %-17<%=%m/%d %02c:%s'
 # hardstatus string description:
 #
@@ -55,7 +55,6 @@ escape ^A^a
 
 #bind
 bind x 'kill'
-bind ^x
 bind j focus down
 bind k focus up
 bind h focus left

@@ -90,24 +90,24 @@ fi
 
 
 if [ "${ARCHz}" = "cygwin" ]; then
-    cdcyg(){
-        CD_DIR=""
-        printf "which directory do you want to go in?
-        a ) Desktop
-        s ) WORK
-        Please enter >"
-        read CD_DIR
-        if [ "${CD_DIR}" = "a" ] ; then
-            echo " cd Desktop"
-            cd /cygdrive/c/Users/`id -un`/Desktop/
-        elif [ "${CD_DIR}" = "s" ] ; then
-            echo " cd WORK"
-            cd /cygdrive/d/WORK/
-        elif [ "${CD_DIR}" = "" ] ; then
-            echo " cd Desktop"
-            cd /cygdrive/c/Users/`id -un`/Desktop/
-        fi
-    }
+#    cdcyg(){
+#        CD_DIR=""
+#        printf "which directory do you want to go in?
+#        a ) Desktop
+#        s ) WORK
+#        Please enter >"
+#        read CD_DIR
+#        if [ "${CD_DIR}" = "a" ] ; then
+#            echo " cd Desktop"
+#            cd /cygdrive/c/Users/`id -un`/Desktop/
+#        elif [ "${CD_DIR}" = "s" ] ; then
+#            echo " cd WORK"
+#            cd /cygdrive/d/WORK/
+#        elif [ "${CD_DIR}" = "" ] ; then
+#            echo " cd Desktop"
+#            cd /cygdrive/c/Users/`id -un`/Desktop/
+#        fi
+#    }
     export DISPLAY=:0.0
 elif [ "${ARCHz}" = "linux" ]; then
     tmuxx(){
