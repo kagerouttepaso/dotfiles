@@ -338,7 +338,7 @@ NeoBundle 'vim-scripts/YankRing.vim'
   NeoBundle 'Shougo/unite-outline'
   "NeoBundle 'basyura/unite-rails'
   "NeoBundle 'thinca/vim-unite-history'
-  "NeoBundle 'tsukkee/unite-tag'
+  NeoBundle 'tsukkee/unite-tag'
   "NeoBundle 'choplin/unite-vim_hacks'
 
 " }}}
