@@ -116,32 +116,4 @@ fi
 
 # my setting
 source ~/.my_proxy_setting
-
-md2html()
-{
-    if [ "$1" = "" ]; then
-        echo need markdown file path
-        exit
-    fi
-    full_path="$1"
-    filename=${full_path##*/}
-    filename_without_extension=${filename%.*}
-    if [ ${full_path%/*} = ${full_path} ]; then
-        folder_path="."
-    else
-        folder_path=${full_path%/*}
-    fi
-    extension=${folder_path##*.}
-
-    #echo ファイル名
-    #echo $filename
-    #echo 拡張子抜き
-    #echo $filename_without_extension
-    #echo フォルダパス
-    #echo $folder_path
-    #echo 拡張子
-    #echo $extension
-
-    pandoc -t html ${full_path} -s -o ${folder_path}/${filename_without_extension}.html
-    gnome-open ${folder_path}/${filename_without_extension}.html >& /dev/null
-}
+source ~/.bash/bash_aliases
