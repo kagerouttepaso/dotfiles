@@ -1,6 +1,6 @@
 BoldAsFont=yes
 FontHeight=16
-Locale=ja_JP
+Locale=C
 Charset=UTF-8
 Font=Inconsolata
 CursorType=block
