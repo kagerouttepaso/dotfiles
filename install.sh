@@ -12,7 +12,7 @@ if [ ! -d ~/.backup ]; then
 fi
 
 PWD_DIR=`pwd`
-DOT_FILES=( gitconfig vimrc gvimrc zshrc vim screenrc tmux.conf minttyrc bash )
+DOT_FILES=( gitconfig vimrc gvimrc zshrc vim screenrc tmux.conf minttyrc bash bashrc)
 for file in ${DOT_FILES[@]}
 do
     if [ -L ~/.${file} ]; then
