@@ -1,4 +1,5 @@
 " メニューが文字化けしてしまうことへの対策
+gui
 source $VIMRUNTIME/delmenu.vim
 set langmenu=ja_jp.utf-8
 source $VIMRUNTIME/menu.vim
@@ -21,10 +22,18 @@ function! EndSolutionMT()
 endfunction
 command! ESolMt :call EndSolutionMT()
 
-gui
 "画面を半透明にする
 set transparency=224
 "イカスフォントを使用する
 set guifont=Inconsolata:h15
 "全角と半角のある文字は全角で表示
 set ambiwidth=double
+colorscheme yuroyoro256
+
+set novisualbell
+if has("win32")
+  set vb t_vb=
+endi
+if has("win64")
+  set vb t_vb=
+endi
