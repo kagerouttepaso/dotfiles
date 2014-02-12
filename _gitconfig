@@ -21,3 +21,5 @@
 [merge "ours"]
   name = "Keep ours merge"
   driver = true
+[push]
+	default = matching
