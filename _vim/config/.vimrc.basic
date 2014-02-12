@@ -55,3 +55,7 @@ endi
 if has("win64")
   set vb t_vb=
 endi
+
+"香り屋版のvimrcを読み込まない
+let g:gvimrc_local_finish=1
+let g:vimrc_local_finish=1
