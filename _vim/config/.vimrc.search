@@ -36,4 +36,10 @@ nnoremap <silent> <C-g><C-r> :<C-u>Rgrep<Space><C-r><C-w> *<Enter><CR>
 let Grep_Skip_Dirs = '.svn .git .hg patches'
 let Grep_Skip_Files = '*.bak *~ tags *.pe32 *.efi *.pdb *.obj *.map *.lib *.dll *.sec *.Fv *.dummy *.ffs *.idb'
 
-
+"if has("win32") || has("win64")
+"  let Grgp_Path = 'C:\MinGW\msys\1.0\bin\grep.exe'
+"  let Fgrep_Path = 'C:\MinGW\msys\1.0\bin\grep.exe -F'
+"  let Egrep_Path = 'C:\MinGW\msys\1.0\bin\grep.exe -E'
+"  let Grep_Find_Path = 'C:\MinGW\msys\1.0\bin\find.exe'
+"  let Grep_Shell_Quote_Char = ""
+"endif

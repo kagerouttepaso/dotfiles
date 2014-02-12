@@ -1,7 +1,7 @@
 
 "vunlde.vimで管理してるpluginを読み込む
 source ~/.vim/config/.vimrc.bundle
-"
+
 "基本設定
 source ~/.vim/config/.vimrc.basic
 "StatusLine設定
