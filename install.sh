@@ -6,6 +6,7 @@
 #git
 #ctags
 
+git submodule update
 
 if [ ! -d ~/.backup ]; then
     mkdir ~/.backup
@@ -33,29 +34,4 @@ if [ ! -f ~/.my_proxy_setting ]; then
     touch ~/.my_proxy_setting
 fi
 
-if [ ! -d ~/.vim/bundle/neobundle.vim ] ; then
-    git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
-fi
 
-if [ ! -d ~/.oh-my-zsh ] ; then
-    git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-fi
-
-if [ ! -d ${PWD_DIR}/autojump ]; then
-    git clone https://github.com/joelthelion/autojump.git
-fi
-
-
-#case "${OSTYPE}" in
-#freebsd*|darwin*)
-#    if [ ! -e ~/bin ];then
-#        mkdir ~/bin
-#    fi
-#    cp bin/tmuxx $HOME/bin/
-#    cp bin/reattach-to-user-namespace $HOME/bin
-#    echo "alias tmux='tmuxx'" >> ~/.bashrc
-#    echo "alias tm='tmuxx'" >> ~/.bashrc
-#    echo "alias tma='tmux attach'" >> ~/.bashrc
-#    echo "alias tml='tmux list-window'" >> ~/.bashrc
-#  ;;
-#esac
