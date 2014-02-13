@@ -37,6 +37,15 @@ Windows環境
 Windows環境でも基本的に必要パッケージをインストールして**やること**のコマンドを入れれば問題ない。  
 x11のパッケージセットをインストールすればssh接続先のクリップボードの共有もできる用になっています  
 
+####入れるパッケージ
+- git
+- zsh
+- ctags
+- x11すべて
+- curl
+- openssh
+
+
 ### teraterm
 [設定ファイル](./windows/TERATERM.INI) を読みこめばいい感じになる  
 
@@ -182,7 +191,7 @@ f         |[unite]
 [unite]o  |アウトラインを展開`<C-u>Unite outline -vertical -buffer-name=outline -no-start-insert<CR>`
 
 ### teratermとscreen
-キーバインドを変更してある。とりあえず[tmux.conf](./_tmux.conf])と[screenrc](./_screenrc)を見てください。  
+キーバインドを変更してある。とりあえず[tmux.conf](./_tmux.conf)と[screenrc](./_screenrc)を見てください。  
 バインドはteratermが`Ctrl+o`screenが`ctrl+a`にバインドされてます
 
 memo
