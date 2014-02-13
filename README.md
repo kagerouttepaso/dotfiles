@@ -27,18 +27,24 @@ cd dotfiles
 ubuntu12.04以上ならこっちを`git clone`してchefを走らせたほうが賢明です  
 [Chef_work][Chef_work]
 
-Cygwin
-------
-Windows環境でも基本的に必要パッケージをインストールして**やること**のコマンドを入れれば問題ない。  
-
+Windows環境
+-----------
 ### フォントの設定
-フォントのインストールを行うとかっこいいCygwin環境を構築できる。  
+フォントのインストールを行うとかっこいいCygwin、teraterm環境を構築できる。  
 インストールの仕方は[Help][Font_Install]を参照  
+
+### Cygwin
+Windows環境でも基本的に必要パッケージをインストールして**やること**のコマンドを入れれば問題ない。  
+x11のパッケージセットをインストールすればssh接続先のクリップボードの共有もできる用になっています  
+
+### teraterm
+[設定ファイル](./windows/TERATERM.INI) を読みこめばいい感じになる  
 
 ### 香り屋版Gvimへの対応
 1. 一度Cygwinからvimを起動して必要なプラグインをダウンロード
 2. `C:\Users\UserName`以下に、dotfileのファイルを下記の表のとおりにシンボリックリンクをはりつける
 3. シンボリックリンクを貼るのには[このアプリ][Linux_shell_extension]を使用するといい感じです
+4. minGWをcygwinより先にパス指定しておかないと、vimprocとかがうまく動かないような気がする
 
 dotfiles    | `C:\Users\UserName`
 :--         |:--
