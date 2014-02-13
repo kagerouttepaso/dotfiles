@@ -46,6 +46,8 @@ x11のパッケージセットをインストールすればssh接続先のク�
 3. シンボリックリンクを貼るのには[このアプリ][Linux_shell_extension]を使用するといい感じです
 4. minGWをcygwinより先にパス指定しておかないと、vimprocとかがうまく動かないような気がする
 
+Windows上だとrgrepがうまく動かないのでUniteGrepを使ってください
+
 dotfiles    | `C:\Users\UserName`
 :--         |:--
 `./_vimrc`  | `_vimrc`
@@ -174,9 +176,14 @@ f         |[unite]
 [unite]d  |カレントディレクトリからファイル一覧`<C-u>Unite -buffer-name=files file<CR>`
 [unite]c  |現在のバッファのカレントディレクトリからファイル一覧`<C-u>UniteWithBufferDir -buffer-name=files file<CR>`
 [unite]r  |レジスタ一覧`<C-u>Unite register<CR>`
-[unite]g  |グレップ検索`<C-u>UniteWithCursorWord grep:. -buffer-name=serch-buffer<CR>`
-[unite]f  |ファイル検索`<C-u>Unite find:. -buffer-name=serch-file<CR>*<C-r><C-w>*<CR>`
-[unite]s  |`<C-u>Unite source<CR>`
+[unite]g  |グレップ検索`<C-u>Unite grep:. -buffer-name=serch-buffer -no-quit<CR><C-r><C-w><CR>`
+[unite]f  |ファイル検索`<C-u>Unite find:. -buffer-name=serch-file -no-quit<CR>*<C-r><C-w>*<CR>`
+[unite]s  |ソースリスト`<C-u>Unite source<CR>`
+[unite]o  |アウトラインを展開`<C-u>Unite outline -vertical -buffer-name=outline -no-start-insert<CR>`
+
+### teratermとscreen
+キーバインドを変更してある。とりあえず[tmux.conf](./_tmux.conf])と[screenrc](./_screenrc)を見てください。  
+バインドはteratermが`Ctrl+o`screenが`ctrl+a`にバインドされてます
 
 memo
 ----
