@@ -1,3 +1,6 @@
 [submodule "_vim/bundle/neobundle.vim"]
 	path = _vim/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim.git
+[submodule "autojump"]
+	path = autojump
+	url = https://github.com/joelthelion/autojump.git
