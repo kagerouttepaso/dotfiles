@@ -11,9 +11,12 @@ git submodule update
 if [ ! -d ~/.backup ]; then
     mkdir ~/.backup
 fi
+if [ ! -f ${PWD_DIR}/_my_proxy_setting ]; then
+    touch ${PWD_DIR}/_my_proxy_setting
+fi
 
 PWD_DIR=`pwd`
-DOT_FILES=( gitconfig vimrc gvimrc zshrc vim screenrc tmux.conf minttyrc bash bashrc)
+DOT_FILES=( my_proxy_setting gitconfig vimrc gvimrc zshrc vim screenrc tmux.conf minttyrc bash bashrc)
 for file in ${DOT_FILES[@]}
 do
     if [ -L ~/.${file} ]; then
@@ -30,8 +33,5 @@ do
     ln -s ${PWD_DIR}/_${file} ~/.${file}
 done
 
-if [ ! -f ~/.my_proxy_setting ]; then
-    touch ~/.my_proxy_setting
-fi
 
 
