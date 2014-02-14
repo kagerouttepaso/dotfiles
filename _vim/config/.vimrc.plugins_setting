@@ -542,5 +542,6 @@ endfunction
 " thinca/vim-fontzoom
 "------------------------------------
 let g:fontzoom_no_default_key_mappings=1
-nnoremap <C-;> :Fontzoom +1<CR>
-nnoremap <C--> :Fontzoom -1<CR>
+
+nnoremap <F11> :Fontzoom +1<CR>
+nnoremap <F12> :Fontzoom -1<CR>
