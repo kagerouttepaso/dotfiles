@@ -50,10 +50,20 @@ x11のパッケージセットをインストールすればssh接続先のク�
 [設定ファイル](./windows/TERATERM.INI) を読みこめばいい感じになる  
 
 ### 香り屋版Gvimへの対応
-1. 一度Cygwinからvimを起動して必要なプラグインをダウンロード
-2. `C:\Users\UserName`以下に、dotfileのファイルを下記の表のとおりにシンボリックリンクをはりつける
-3. シンボリックリンクを貼るのには[このアプリ][Linux_shell_extension]を使用するといい感じです
-4. minGWをcygwinより先にパス指定しておかないと、vimprocとかがうまく動かないような気がする
+1. [MinGw][Mingw_download]をダウンロードしてインストール。  
+   更にパスを通しておく（デフォルトの場合は`C:/MinGW/bin`と`C:/MinGW/msys/1.0/bin`になる)
+   もし、cygwinにパスを通している場合は、
+   minGWをcygwinより先にパス指定しておかないと、vimprocとかがうまく動かないような気がする
+2. Source Treeをダウンロードしてインストール、この`Dotfiles`を好きなところにCloneしてくる。  
+3. `C:\Users\UserName`以下に、dotfileのファイルを下記の表のとおりにシンボリックリンクをはりつける  
+   `.vim`は、Windowsだと1文字目に.がつく名前をしてできないので、Cygwinを使ってリネームする  
+   シンボリックリンクを貼るのには[このアプリ][Linux_shell_extension]を使用するといい感じです
+4. [香り屋版Gvim][Kaoriya_gvim_download]をダウンロードして起動。  
+   ここで色々エラーが出るけど気にしない。
+   ﾌﾟﾗｷﾞﾝのインストールするか聞かれるけどNOを選択。  
+   `:NeobundleInstall`でプラグインをインストール!!
+5. 快適なGvimライフへようこそ  
+   当然上のフォントの設定はしておくこと
 
 Windows上だとrgrepがうまく動かないのでUniteGrepを使ってください
 
@@ -202,3 +212,5 @@ cygwinでctagsを使うときはExuburantCtagsを使わないとうまく行か�
 [Chef_work]: https://github.com/kagerouttepaso/chef_work "#:title"
 [Linux_Shell_Extension]: http://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html#download "シンボリックリンクを貼れるイカスソフト"
 [Font_Install]: https://github.com/kagerouttepaso/dotfiles/blob/master/font/README.md "Fontのインストール"
+[MinGW_Download]: http://sourceforge.net/projects/mingw/files/ "mingw_download"
+[Kaoriya_Gvim_Download]: http://www.kaoriya.net/software/vim/ "Download Kaoriya Gvim"
