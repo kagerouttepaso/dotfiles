@@ -1,10 +1,12 @@
 #!/bin/bash -x
+PWD_DIR=`pwd`
 
 #need apps
 #tmux more than ver 1.7
 #zsh
 #git
 #ctags
+
 
 git submodule init
 git submodule update
@@ -17,7 +19,6 @@ if [ ! -f ${PWD_DIR}/_my_proxy_setting ]; then
     touch ${PWD_DIR}/_my_proxy_setting
 fi
 
-PWD_DIR=`pwd`
 DOT_FILES=( my_proxy_setting gitconfig vimrc gvimrc zshrc vim screenrc tmux.conf minttyrc bash bashrc)
 for file in ${DOT_FILES[@]}
 do
