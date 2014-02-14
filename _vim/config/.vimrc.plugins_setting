@@ -536,3 +536,11 @@ endfunction
 "------------------------------------
 "let g:metarw_redmine_server = 'http://redmine.dev.scaleout.jp'
 "let g:metarw_redmine_apikey = '2ed945f405865ec799ff91b7bb364215f932c51c'
+
+
+"------------------------------------
+" thinca/vim-fontzoom
+"------------------------------------
+let g:fontzoom_no_default_key_mappings=1
+nnoremap <C-;> :Fontzoom +1<CR>
+nnoremap <C--> :Fontzoom -1<CR>

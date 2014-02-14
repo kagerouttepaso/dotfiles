@@ -1,4 +1,3 @@
-
 if has('vim_starting')
   set nocompatible               " Be iMproved
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -331,6 +330,7 @@ NeoBundle 'vim-scripts/YankRing.vim'
   NeoBundle 'yuroyoro/yuroyoro256.vim'
 " }}}
 
+
 " Unite {{{{
   " unite.vim : - すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
   NeoBundle 'Shougo/unite.vim'
@@ -343,7 +343,11 @@ NeoBundle 'vim-scripts/YankRing.vim'
   "NeoBundle 'choplin/unite-vim_hacks'
 
 " }}}
-"
+
+" gvim  {{{{
+  NeoBundle 'thinca/vim-fontzoom'
+" }}}
+
 " NeoBundle 'gmarik/vundle'
 
 
@@ -358,3 +362,4 @@ filetype plugin indent on     " Required!
 " Installation check.
 NeoBundleCheck
 
+" vim:set foldmethod=marker:
