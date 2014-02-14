@@ -6,11 +6,13 @@
 #git
 #ctags
 
+git submodule init
 git submodule update
 
 if [ ! -d ~/.backup ]; then
     mkdir ~/.backup
 fi
+
 if [ ! -f ${PWD_DIR}/_my_proxy_setting ]; then
     touch ${PWD_DIR}/_my_proxy_setting
 fi
