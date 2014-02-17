@@ -403,7 +403,11 @@ nnoremap <silent> [unite]r  :<C-u>Unite register<CR>
 " グレップ検索
 nnoremap <silent> [unite]g  :<C-u>Unite grep:. -buffer-name=serch-buffer -no-quit<CR><C-r><C-w><CR>
 " ファイル検索
-nnoremap <silent> [unite]f  :<C-u>Unite find:. -buffer-name=serch-file -no-quit<CR>*<C-r><C-w>*<CR>
+if has("win32") || has("win64")
+  nnoremap <silent> [unite]f  :<C-u>UniteWithCursorWord everything/async -no-quit<CR>
+else
+  nnoremap <silent> [unite]f  :<C-u>Unite find:. -buffer-name=serch-file -no-quit<CR>*<C-r><C-w>*<CR>
+endi
 " すべてのソースを表示
 nnoremap <silent> [unite]s  :<C-u>Unite source<CR>
 " アウトラインを展開

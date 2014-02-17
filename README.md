@@ -58,11 +58,13 @@ x11のパッケージセットをインストールすればssh接続先のク�
 3. `C:\Users\UserName`以下に、dotfileのファイルを下記の表のとおりにシンボリックリンクをはりつける  
    `.vim`は、Windowsだと1文字目に.がつく名前をしてできないので、Cygwinを使ってリネームする  
    シンボリックリンクを貼るのには[このアプリ][Linux_shell_extension]を使用するといい感じです
-4. [香り屋版Gvim][Kaoriya_gvim_download]をダウンロードして起動。  
+4. Windows上のファイル検索にはunite-everythingを使うので、その準備を行う。  
+   手順は[unite-everythingのヘルプ][unite-everything_install]を参照
+5. [香り屋版Gvim][Kaoriya_gvim_download]をダウンロードして起動。  
    ここで色々エラーが出るけど気にしない。
    ﾌﾟﾗｷﾞﾝのインストールするか聞かれるけどNOを選択。  
    `:NeobundleInstall`でプラグインをインストール!!
-5. 快適なGvimライフへようこそ  
+6. 快適なGvimライフへようこそ  
    当然上のフォントの設定はしておくこと
 
 Windows上だとrgrepがうまく動かないのでUniteGrepを使ってください
@@ -214,3 +216,4 @@ cygwinでctagsを使うときはExuburantCtagsを使わないとうまく行か�
 [Font_Install]: https://github.com/kagerouttepaso/dotfiles/blob/master/font/README.md "Fontのインストール"
 [MinGW_Download]: http://sourceforge.net/projects/mingw/files/ "mingw_download"
 [Kaoriya_Gvim_Download]: http://www.kaoriya.net/software/vim/ "Download Kaoriya Gvim"
+[unite-everything_install]: https://github.com/sgur/unite-everything "unite-everythingのインストール"

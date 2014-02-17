@@ -15,7 +15,7 @@ endfunction
 command! SolMt :call SolutionMT()
 
 function! EndSolutionMT()
-  set guifont=Inconsolata:h13
+  set guifont=Inconsolata:h15
   set transparency=214
   colorscheme yuroyoro256
   syntax on
@@ -25,7 +25,7 @@ command! ESolMt :call EndSolutionMT()
 "画面を半透明にする
 set transparency=214
 "イカスフォントを使用する
-set guifont=Inconsolata:h13
+set guifont=Inconsolata:h15
 "全角と半角のある文字は全角で表示
 set ambiwidth=double
 colorscheme yuroyoro256
