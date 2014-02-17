@@ -210,6 +210,12 @@ memo
 ----
 cygwinでctagsを使うときはExuburantCtagsを使わないとうまく行かなそう
 
+todo
+----
+* yankroundのヘルプ追加
+* vim-overのヘルプ追加
+* UniteEverythingのヘルプ追加
+
 
 [Chef_work]: https://github.com/kagerouttepaso/chef_work "#:title"
 [Linux_Shell_Extension]: http://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html#download "シンボリックリンクを貼れるイカスソフト"
