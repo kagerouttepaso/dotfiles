@@ -161,6 +161,11 @@ command      |mean
 `<C-h>`      |`<C-w>h`
 `gl`         |`:GitGutterNextHunk`
 `gh`         |`:GitGutterPrevHunk`
+`<C-p>`      |ペーストするレジスタを一つ古いものにする(ペーストした直後のみ)
+`<C-n>`      |ペーストするレジスタを一つ新しいものにする(ペーストした直後のみ)
+`ss`         |置換開始
+`sw`         |カーソル以下の単語を置換
+
 
 **ビジュアルモード**  
 
@@ -169,6 +174,8 @@ command     |mean
 `0`         |行末へ
 `v`         |行末へ
 `9`         |行頭へ
+`sw`        |文書全体で、選択した文章を置換
+`ss`        |選択した範囲を置換
 
 **コマンド**  
 
@@ -183,6 +190,8 @@ TT        |TagList起動
 TA        |上記3つを起動
 Rgrep     |カーソル下の単語をカレントディレクトリからgrep
 Bgrep     |カーソル下の単語をバッファからgrep
+VimShell  |VimShellの起動
+VimFiler  |VimFilerの起動
 
 **Unite**  
 Grepの検索エンジンにはagが使えればそちらを使う  
@@ -198,7 +207,8 @@ f         |[unite]
 [unite]c  |現在のバッファのカレントディレクトリからファイル一覧`<C-u>UniteWithBufferDir -buffer-name=files file<CR>`
 [unite]r  |レジスタ一覧`<C-u>Unite register<CR>`
 [unite]g  |グレップ検索`<C-u>Unite grep:. -buffer-name=serch-buffer -no-quit<CR><C-r><C-w><CR>`
-[unite]f  |ファイル検索`<C-u>Unite find:. -buffer-name=serch-file -no-quit<CR>*<C-r><C-w>*<CR>`
+[unite]f  |ファイル検索(win以外)`<C-u>Unite find:. -buffer-name=serch-file -no-quit<CR>*<C-r><C-w>*<CR>`
+[unite]f  |ファイル検索(win) **日本語が文字化けしてしまう…**<`2`>`<C-u>UniteWithCursorWord everything/async -no-quit<CR>`
 [unite]s  |ソースリスト`<C-u>Unite source<CR>`
 [unite]o  |アウトラインを展開`<C-u>Unite outline -vertical -buffer-name=outline -no-start-insert<CR>`
 
@@ -212,9 +222,7 @@ cygwinでctagsを使うときはExuburantCtagsを使わないとうまく行か�
 
 todo
 ----
-* yankroundのヘルプ追加
-* vim-overのヘルプ追加
-* UniteEverythingのヘルプ追加
+
 
 
 [Chef_work]: https://github.com/kagerouttepaso/chef_work "#:title"
