@@ -86,9 +86,6 @@ NeoBundle 'vim-scripts/YankRing.vim'
 "NeoBundle 'taku-o/vim-toggle'
 
 " Completion {{{
-  " 補完 autocomplpop.vim : insertmodeで自動で補完をpopup
-  " NeoBundle 'AutoComplPop'
-
   " 補完 neocomplcache.vim : 究極のVim的補完環境
   function! s:meet_neocomplete_requirements()
     return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
@@ -108,7 +105,7 @@ NeoBundle 'vim-scripts/YankRing.vim'
 
 
   "snipetのテンプレート集
-  NeoBundle 'honza/vim-snippets'
+  "NeoBundle 'honza/vim-snippets'
 
   " for rsense
   "NeoBundle 'm2ym/rsense'
@@ -186,6 +183,8 @@ NeoBundle 'vim-scripts/YankRing.vim'
   " NERDTree : ツリー型エクスプローラ
   "NeoBundle 'The-NERD-tree'
 
+  " vtreeexplorer.vim : ツリー状にファイルやディレクトリの一覧を表示
+  NeoBundle 'vtreeexplorer'
 " }}}
 
 " Syntax {{{
@@ -232,9 +231,6 @@ NeoBundle 'vim-scripts/YankRing.vim'
 
   " minibufexpl.vim : タブエディタ風にバッファ管理ウィンドウを表示
   "NeoBundle 'minibufexpl.vim'
-
-  " vtreeexplorer.vim : ツリー状にファイルやディレクトリの一覧を表示
-  NeoBundle 'vtreeexplorer'
 
   " buftabs.vim : ステータスバーにバッファ一覧を表示
   "NeoBundle 'buftabs'
