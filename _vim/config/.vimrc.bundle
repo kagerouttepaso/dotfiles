@@ -187,7 +187,7 @@ NeoBundle 'vim-scripts/YankRing.vim'
   "NeoBundle 'The-NERD-tree'
 
 " }}}
-"
+
 " Syntax {{{
   " haml
   NeoBundle 'haml.zip'
@@ -242,7 +242,6 @@ NeoBundle 'vim-scripts/YankRing.vim'
   "  Kwbd.vim : レイアウトを崩さずにバッファを削除
   NeoBundle 'rgarver/Kwbd.vim'
 " }}}
-
 
 " Encording {{{
   NeoBundle 'banyan/recognize_charcode.vim'
@@ -330,7 +329,6 @@ NeoBundle 'vim-scripts/YankRing.vim'
   NeoBundle 'yuroyoro/yuroyoro256.vim'
 " }}}
 
-
 " Unite {{{{
   " unite.vim : - すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
   NeoBundle 'Shougo/unite.vim'
@@ -345,7 +343,15 @@ NeoBundle 'vim-scripts/YankRing.vim'
 " }}}
 
 " gvim  {{{{
+  " Gvim上でフォントのサイズを変更する
   NeoBundle 'thinca/vim-fontzoom'
+" }}}
+
+" windows {{{{
+if has("win32") || has("win64")
+  " Uniteでeverythingの呼び出す
+  NeoBundle 'sgur/unite-everything'
+endi
 " }}}
 
 " NeoBundle 'gmarik/vundle'
