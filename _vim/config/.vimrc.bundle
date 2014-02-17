@@ -356,6 +356,9 @@ endif
 
 " NeoBundle 'gmarik/vundle'
 
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimshell'
+
 
 
 filetype plugin indent on     " Required!
