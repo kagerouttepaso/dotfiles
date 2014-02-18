@@ -77,8 +77,8 @@ NeoBundle 'h1mesuke/vim-alignta'
 " 「foo」 or 【bar】などをtext-objectに
 "NeoBundle 'textobj-jabraces'
 
-" 改造したmonday.vim(git rebase -i とかtrue/falseとか)
-" NeoBundle 'yuroyoro/monday'
+" 改造したmonday.vim
+NeoBundle 'kagerouttepaso/monday'
 
 " <C-a>でtrue/false切替。他色々
 "NeoBundle 'taku-o/vim-toggle'
@@ -351,6 +351,7 @@ NeoBundle 'h1mesuke/vim-alignta'
   "NeoBundle 'mrkn256.vim'
   "NeoBundle 'tomasr/molokai'
   NeoBundle 'yuroyoro/yuroyoro256.vim'
+  NeoBundle 'chriskempson/tomorrow-theme'
 " }}}
 
 " Unite {{{{
