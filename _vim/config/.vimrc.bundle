@@ -331,8 +331,8 @@ NeoBundle 'kagerouttepaso/monday'
   " vim-over : かっちょいい置換
   NeoBundle 'osyo-manga/vim-over'
   " ssで置換開始
-  vnoremap <silent>ss :OverCommandLine<CR>s//g<Left><Left>
-  nnoremap <silent>ss :OverCommandLine<CR>%s//g<Left><Left>
+  vnoremap <silent>ss :OverCommandLine<CR>s///g<Left><Left><Left>
+  nnoremap <silent>ss :OverCommandLine<CR>%s///g<Left><Left><Left>
   " swでカーソル以下の単語を置換
   nnoremap <silent>sw :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
   " virtualモード中は選択した文章で置き換え
