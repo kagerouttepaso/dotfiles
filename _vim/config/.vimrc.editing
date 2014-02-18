@@ -62,7 +62,7 @@ function! BufWriteFile()
     :%s/{{line_feed_code}}$/  /ge
     call setpos(".", pos)
   else
-    :%s/\s\+$//ge
+    ":%s/\s\+$//ge
   endif
 endfunction
 autocmd BufWritePre * :call BufWriteFile()
