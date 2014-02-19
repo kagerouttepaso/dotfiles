@@ -5,6 +5,8 @@
   s = status
   br = branch
   m = merge
+  di = diff --color-words
+  sta = status --short --branch
 [core]
 	editor = vim -c \"set fenc=utf-8\"
 [merge]
