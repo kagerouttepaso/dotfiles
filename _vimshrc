@@ -1,0 +1,9 @@
+alias git="--encoding=UTF8 git"
+alias vimrc="vim ~/.vimrc"
+alias sshconfig="vim ~/.ssh/config"
+
+alias gitc="--encoding=UTF8 git checkout"
+alias gitb="--encoding=UTF8 git branch"
+alias gitr="--encoding=UTF8 git remote"
+alias gitrebase="--encoding=UTF8 git rebase"
+alias gitm="--encoding=UTF8 git merge"
