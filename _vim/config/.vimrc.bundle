@@ -380,6 +380,9 @@ NeoBundle 'kagerouttepaso/monday'
   "NeoBundle 'tomasr/molokai'
   NeoBundle 'yuroyoro/yuroyoro256.vim'
   NeoBundle 'chriskempson/tomorrow-theme'
+  NeoBundle 'nanotech/jellybeans.vim'
+  NeoBundle 'altercation/vim-colors-solarized'
+  NeoBundle 'w0ng/vim-hybrid'
 " }}}
 
 " Unite {{{{
