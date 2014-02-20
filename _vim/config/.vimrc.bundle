@@ -22,7 +22,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 
 " Align : 高機能整形・桁揃えプラグイン
-NeoBundle 'Align'
+"NeoBundle 'Align'
 
 " フィルタリングと整形
 "NeoBundle 'godlygeek/tabular'
@@ -265,10 +265,6 @@ NeoBundle 'kagerouttepaso/monday'
   call vimshell#set_execute_file('html,xhtml', 'gexe chrome')
 
   autocmd FileType vimshell
-        \ call vimshell#altercmd#define('g', 'git')
-        \| call vimshell#altercmd#define('i', 'iexe')
-        \| call vimshell#altercmd#define('l', 'll')
-        \| call vimshell#altercmd#define('ll', 'ls -l')
         \| call vimshell#hook#add('chpwd', 'my_chpwd', 'g:my_chpwd')
 
   function! g:my_chpwd(args, context)
@@ -384,6 +380,9 @@ NeoBundle 'kagerouttepaso/monday'
   "NeoBundle 'tomasr/molokai'
   NeoBundle 'yuroyoro/yuroyoro256.vim'
   NeoBundle 'chriskempson/tomorrow-theme'
+  NeoBundle 'nanotech/jellybeans.vim'
+  NeoBundle 'altercation/vim-colors-solarized'
+  NeoBundle 'w0ng/vim-hybrid'
 " }}}
 
 " Unite {{{{
@@ -415,7 +414,49 @@ if has("win32") || has("win64")
 endif
 " }}}
 
-" NeoBundle 'gmarik/vundle'
+"test {{{{
+"tagsの非同期読み込み
+"NeoBundle 'alpaca-tc/alpaca_tags'
+"ソースのレイアウト修正に便利なやつ
+NeoBundle 'junegunn/vim-easy-align'
+vmap <Enter> <Plug>(EasyAlign)
+vmap <Leader><Enter> <Plug>(LiveEasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
+nmap <Leader><Leader>a <Plug>(LiveEasyAlign)
+let g:easy_align_delimiters = {
+\ '>': { 'pattern': '>>\|=>\|>' },
+\ '/': { 'pattern': '//\+\|/\*\|\*/', 'ignore_groups': ['String'] },
+\ '#': { 'pattern': '#\+', 'ignore_groups': ['String'], 'delimiter_align': 'l' },
+\ ']': {
+\     'pattern':       '[[\]]',
+\     'left_margin':   0,
+\     'right_margin':  0,
+\     'stick_to_left': 0
+\   },
+\ ')': {
+\     'pattern':       '[()]',
+\     'left_margin':   0,
+\     'right_margin':  0,
+\     'stick_to_left': 0
+\   },
+\ 'd': {
+\     'pattern': ' \(\S\+\s*[;=]\)\@=',
+\     'left_margin': 0,
+\     'right_margin': 0
+\   }
+\ }
+"インデントのラインを表示
+NeoBundle 'Yggdroot/indentLine'
+let g:indentLine_collor_term=239
+let g:indentLine_collor_gui="#A4E57E"
+let g:indentLine_char="|"
+"VIMSHELとかのカラー編集
+NeoBundle 'itchyny/landscape.vim'
+let g:landscape_highlight_url        = 1
+let g:landscape_highlight_todo       = 1
+let g:landscape_highlight_full_space = 0
+let g:unite_cursor_line_highlight    = 'CursorLine'
+"}}}
 
 
 
