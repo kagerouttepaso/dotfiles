@@ -16,6 +16,7 @@ command! SolMt :call SolutionMT()
 
 function! EndSolutionMT()
   set guifont=Inconsolata:h15
+  colorscheme hybrid
   colorscheme jellybeans
   set transparency=230
   syntax on
@@ -28,6 +29,7 @@ command! ESolMt :call EndSolutionMT()
 "colorscheme hybrid
 "set transparency=230
 
+colorscheme hybrid
 colorscheme jellybeans
 set transparency=230
 
