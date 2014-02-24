@@ -65,7 +65,10 @@ function! BufWriteFile()
     ":%s/\s\+$//ge
   endif
 endfunction
-autocmd BufWritePre * :call BufWriteFile()
+augroup autoReplaseOnSave
+  autocmd!
+  autocmd BufWritePre * :call BufWriteFile()
+augroup END
 " 保存時にtabをスペースに変換する
 "autocmd BufWritePre * :%s/\t/  /ge
 
