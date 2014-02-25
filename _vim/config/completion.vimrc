@@ -19,12 +19,12 @@ function! s:meet_neocomplete_requirements()
 endfunction
 if s:meet_neocomplete_requirements()
   " 新しく追加した neocomplete の設定
-  source ~/.vim/config/.vimrc.completion.neocomplete
+  source ~/.vim/config/completion.neocomplete.vimrc
 else
   " 今までの neocomplcache の設定
-  source ~/.vim/config/.vimrc.completion.neocomplcache
+  source ~/.vim/config/completion.neocomplcache.vimrc
 endif
 
 " 補完にAutoComplPopを使う
-" source ~/dotfiles/.vimrc.completion.autocomplpop
+" source ~/dotfiles/completion.autocomplpop
 
