@@ -535,6 +535,8 @@ if has("win32") || has("win64")
   let g:unite_source_everything_sort_by_full_path=1
   "サーチ対象はフルパス
   let g:unite_source_everything_full_path_search=1
+  let g:unite_source_everything_limit=1000
+  let g:unite_source_everything_ignore_pattern=""
 endif
 " }}}
 
