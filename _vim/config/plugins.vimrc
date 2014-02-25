@@ -2,128 +2,6 @@
 " プラグインごとの設定 Plugins
 "-------------------------------------------------------------------------------
 
-"------------------------------------
-" YankRing.vim
-"------------------------------------
-" Yankの履歴参照
-"nmap ,y ;YRShow<CR>
-
-"------------------------------------
-" MiniBufExplorer
-"------------------------------------
-"set minibfexp
-"let g:miniBufExplMapWindowNavVim=1 "hjklで移動
-"let g:miniBufExplSplitBelow=0  " Put new window above
-"let g:miniBufExplMapWindowNavArrows=1
-"let g:miniBufExplMapCTabSwitchBufs=1
-"let g:miniBufExplModSelTarget=1
-"let g:miniBufExplSplitToEdge=1
-"let g:miniBufExplMaxSize = 10
-
-":MtでMiniBufExplorerの表示トグル
-"command! Mt :TMiniBufExplorer
-
-"------------------------------------
-" Align
-"------------------------------------
-" Alignを日本語環境で使用するための設定
-let g:Align_xstrlen = 3
-
-"------------------------------------
-" VTreeExplorer
-"------------------------------------
-" 縦に表示する
-let g:treeExplVertical=1
-"<Leader>t<Space>でディレクトリツリー表示
-"noremap <Leader>t<Space> :VSTreeExplore<CR>
-"分割したウィンドウのサイズ
-let g:treeExplWinSize=30
-
-"------------------------------------
-" NERD_commenter.vim
-"------------------------------------
-" コメントの間にスペースを空ける
-"let NERDSpaceDelims = 1
-"<Leader>xでコメントをトグル(NERD_commenter.vim)
-"map <Leader>x, c<space>
-""未対応ファイルタイプのエラーメッセージを表示しない
-"let NERDShutUp=1
-
-
-"------------------------------------
-" surround.vim
-"------------------------------------
-" s, ssで選択範囲を指定文字でくくる
-"nmap s <Plug>Ysurround
-"nmap ss <Plug>Yssurround
-"let g:surround_{char2nr('e')} = "begin \r end"
-"let g:surround_{char2nr('d')} = "do \r end"
-"let g:surround_{char2nr("-")} = ":\r"
-
-"------------------------------------
-" smartchr.vim
-"------------------------------------
-" inoremap <expr> = smartchr#loop('=', '==', '=>')
-" inoremap <expr> . smartchr#loop('.',  '->', '=>')
-
-"
-" " 演算子の間に空白を入れる
-" inoremap <buffer><expr> + smartchr#one_of(' + ', ' ++ ', '+')
-" inoremap <buffer><expr> +=  smartchr#one_of(' += ')
-" " inoremap <buffer><expr> - smartchr#one_of(' - ', ' -- ', '-')
-" inoremap <buffer><expr> -=  smartchr#one_of(' -= ')
-" " inoremap <buffer><expr> / smartchr#one_of(' / ', ' // ', '/')
-" inoremap <buffer><expr> /=  smartchr#one_of(' /= ')
-" inoremap <buffer><expr> * smartchr#one_of(' * ', ' ** ', '*')
-" inoremap <buffer><expr> *=  smartchr#one_of(' *= ')
-" inoremap <buffer><expr> & smartchr#one_of(' & ', ' && ', '&')
-" inoremap <buffer><expr> % smartchr#one_of(' % ', '%')
-" inoremap <buffer><expr> =>  smartchr#one_of(' => ')
-" inoremap <buffer><expr> <-   smartchr#one_of(' <-  ')
-" inoremap <buffer><expr> <Bar> smartchr#one_of(' <Bar> ', ' <Bar><Bar> ', '<Bar>')
-" inoremap <buffer><expr> , smartchr#one_of(', ', ',')
-" " 3項演算子の場合は、後ろのみ空白を入れる
-" inoremap <buffer><expr> ? smartchr#one_of('? ', '?')
-" " inoremap <buffer><expr> : smartchr#one_of(': ', '::', ':')
-
-" " =の場合、単純な代入や比較演算子として入力する場合は前後にスペースをいれる。
-" " 複合演算代入としての入力の場合は、直前のスペースを削除して=を入力
-" inoremap <buffer><expr> = search('¥(&¥<bar><bar>¥<bar>+¥<bar>-¥<bar>/¥<bar>>¥<bar><¥) ¥%#', 'bcn')? '<bs>= '  : search('¥(*¥<bar>!¥)¥%#', 'bcn') ? '= '  : smartchr#one_of(' = ', ' == ', '=')
-
-" " 下記の文字は連続して現れることがまれなので、二回続けて入力したら改行する
-" inoremap <buffer><expr> } smartchr#one_of('}', '}<cr>')
-" inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
-" "()は空白入れる
-" inoremap <buffer><expr> ( smartchr#one_of('( ')
-" inoremap <buffer><expr> ) smartchr#one_of(' )')
-
-" " if文直後の(は自動で間に空白を入れる
-" inoremap <buffer><expr> ( search('¥<¥if¥%#', 'bcn')? ' (': '('
-
-"------------------------------------
-" Shougo/neosnippet.vim
-"------------------------------------
-" ユーザー定義スニペット保存ディレクトリ
-let g:neosnippet#snippets_directory="~/.vim/snippets"
-
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> pumvisible() ?
-      \ "\<C-n>" : neosnippet#jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: "\<TAB>"
-smap <expr><TAB> neosnippet#jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \ : "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
 
 "------------------------------------
 " Fugitive.vim
@@ -136,30 +14,6 @@ endif
 "nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
 "nnoremap <Space>gb :<C-u>Gblame<Enter>
 
-"------------------------------------
-" gregsexton/gitv
-"------------------------------------
-command! Tig :Gitv --all
-"ハッシュタグの取得
-function! s:gitv_get_current_hash()
-  return matchstr(getline('.'), '\[\zs.\{7\}\ze\]$')
-endfunction
-
-"ハッシュタグの取得
-augroup setFiletypeGitv
-  autocmd!
-  autocmd FileType gitv call s:my_gitv_settings()
-augroup END
-function! s:my_gitv_settings()
-  setlocal iskeyword+=/,-,.
-  "gitv上でgitコマンドを使う
-  nnoremap <silent><buffer> C :<C-u>Git checkout <C-r><C-w><CR>
-  nnoremap <buffer> <Space>me :<C-u>Git merge <C-r><C-w><CR>
-  nnoremap <buffer> <Space>cp :<C-u>Git cherry-pick <C-r>=<SID>gitv_get_current_hash()<CR><CR>
-  nnoremap <buffer> <Space>rb :<C-u>Git rebase <C-r>=<SID>gitv_get_current_hash()<CR><Space>
-  nnoremap <buffer> <Space>rv :<C-u>Git revert <C-r>=<SID>gitv_get_current_hash()<CR><CR>
-  nnoremap <buffer> <Space>rs :<C-u>Git reset --hard <C-r>=<SID>gitv_get_current_hash()<CR>
-endfunction
 
 "------------------------------------
 " BufExplorer
@@ -205,64 +59,6 @@ endfunction
 "------------------------------------
 " nmap U :<C-u>GundoToggle<CR>
 
-"------------------------------------
-" taglist.Vim
-"------------------------------------
-" 関数一覧
-"set tags=tags
-"set tags+=~/.tags
-"let Tlist_Ctags_Cmd = '/Applications/MacVim.app/Contents/MacOS/ctags' " ctagsのパス
-let Tlist_Show_One_File = 1               " 現在編集中のソースのタグしか表示しない
-let Tlist_Exit_OnlyWindow = 1             " taglistのウィンドーが最後のウィンドーならばVimを閉じる
-"let Tlist_Use_Right_Window = 1            " 右側でtaglistのウィンドーを表示h
-let Tlist_Enable_Fold_Column = 1          " 折りたたみ
-"let Tlist_Auto_Open = 1                   " 自動表示
-let Tlist_Auto_Update = 1
-let Tlist_WinWidth = 30
-map <silent> <leader>tl :Tlist<CR>        " taglistを開くショットカットキー
-"nmap <F7> :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
-"nmap <Leader>tl :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
-"
-"------------------------------------
-" buftabs.Vim
-"------------------------------------
-"let g:buftabs_only_basename=1 " ファイル名だけ表示
-"let g:buftabs_in_statusline=0 " ステータスラインに表示
-
-" 現在のバッファをハイライト
-"let g:buftabs_active_highlight_group="Visual"
-
-"nmap <C-h> <C-w>h " Ctrl+h, Ctrl+j, Ctrl+k, Ctrl+l でウィンドウ間を移動
-"nmap <C-l> <C-w>l
-"nmap <C-j> <C-w>j
-"nmap <C-k> <C-w>k
-
-"------------------------------------
-" Kwbd.vim
-"------------------------------------
-"CBでウィンドウの形を変えずにバッファを閉じる
-command! QB :Kwbd
-function! QuitBuffer()
-  :Kwbd
-  :quit
-endfunction
-command! QQ :call QuitBuffer()
-
-"------------------------------------
-" Srcexp
-"------------------------------------
-" [Srcexpl] tagsを利用したソースコード閲覧・移動補助機能
-let g:SrcExpl_isUpdateTags   = 0         " tagsをsrcexpl起動時に自動で作成（更新）
-let g:SrcExpl_gobackKey = "<C-SPACE>"
-
-"------------------------------------
-" Trinity
-"------------------------------------
-command! TA :TrinityToggleAll
-command! TN :TrinityToggleNERDTree
-command! TS :TrinityToggleSourceExplorer
-command! TT :TrinityToggleTagList
-command! TU :TrinityUpdateWindow
 
 "------------------------------------
 " open-blowser.vim
@@ -378,70 +174,6 @@ command! TU :TrinityUpdateWindow
 "
 "
 "------------------------------------
-" unite.vim
-"------------------------------------
-" Start insert.
-let g:unite_enable_start_insert = 1
-let g:unite_source_file_mru_limit = 200
-
-" The prefix key.
-nnoremap    [unite]   <Nop>
-nmap    f [unite]
-
-nnoremap [unite]u  :<C-u>Unite -no-split<Space>
-
-" 全部乗せ
-nnoremap <silent> [unite]a  :<C-u>Unite -buffer-name=all buffer file_mru bookmark file grep:. find:.<CR><C-r><C-w><CR>*<C-r><C-w>*<CR>
-" バッファ一覧
-nnoremap <silent> [unite]b  :<C-u>Unite buffer<CR>
-" 最近使用したファイル一覧
-nnoremap <silent> [unite]h  :<C-u>Unite buffer file_mru<CR>
-" カレントディレクトリからファイル一覧
-nnoremap <silent> [unite]d  :<C-u>Unite -buffer-name=files file<CR>
-" 現在のバッファのカレントディレクトリからファイル一覧
-nnoremap <silent> [unite]c  :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-" レジスタ一覧
-nnoremap <silent> [unite]r  :<C-u>Unite register<CR>
-" グレップ検索
-nnoremap <silent> [unite]g  :<C-u>Unite grep:. -buffer-name=serch-buffer -no-quit<CR><C-r><C-w><CR>
-" ファイル検索
-if has("win32") || has("win64")
-  nnoremap <silent> [unite]f  :<C-u>UniteWithCursorWord everything/async -no-quit<CR>
-else
-  nnoremap <silent> [unite]f  :<C-u>Unite find:. -buffer-name=serch-file -no-quit<CR>*<C-r><C-w>*<CR>
-endif
-" すべてのソースを表示
-nnoremap <silent> [unite]s  :<C-u>Unite source<CR>
-" アウトラインを展開
-nnoremap <silent> [unite]o  :<C-u>Unite outline -vertical -buffer-name=outline -no-start-insert<CR>
-
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-  let g:unite_source_grep_recursive_opt = ''
-endif
-
-augroup setFiletypeUnite
-  autocmd!
-  autocmd FileType unite call s:unite_my_settings()
-augroup END
-function! s:unite_my_settings()
-  " Overwrite settings.
-  "
-  " ESCキーを2回押すと終了する
-  nmap <buffer> <ESC>      <Plug>(unite_exit)
-  nmap <buffer> <ESC><ESC> <Plug>(unite_exit)
-  "インサートモード終了
-  imap <buffer> jj      <Plug>(unite_insert_leave)
-  imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-endfunction
-
-"
-"" unite-plugins
-"cnoremap UH Unite help<Enter>
-"cnoremap UO Unite outline<Enter>
-
-"------------------------------------
 " quickrun.vim
 "------------------------------------
 "let g:quickrun_config = {}
@@ -544,11 +276,3 @@ endfunction
 "let g:metarw_redmine_server = 'http://redmine.dev.scaleout.jp'
 "let g:metarw_redmine_apikey = '2ed945f405865ec799ff91b7bb364215f932c51c'
 
-
-"------------------------------------
-" thinca/vim-fontzoom
-"------------------------------------
-let g:fontzoom_no_default_key_mappings=1
-
-nnoremap <F11> :Fontzoom +1<CR>
-nnoremap <F12> :Fontzoom -1<CR>
