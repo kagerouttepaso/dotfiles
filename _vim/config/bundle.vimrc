@@ -264,16 +264,19 @@ NeoBundle 'kagerouttepaso/monday'
   call vimshell#set_execute_file('txt,vim,c,h,cpp,d,xml,java', 'vim')
   call vimshell#set_execute_file('html,xhtml', 'gexe chrome')
 
-  autocmd FileType vimshell
-        \| call vimshell#hook#add('chpwd', 'my_chpwd', 'g:my_chpwd')
 
   function! g:my_chpwd(args, context)
   "  call vimshell#execute('ls')
   endfunction
 
-  autocmd FileType int-* call s:interactive_settings()
   function! s:interactive_settings()
   endfunction
+  augroup bundle_vimshell
+    autocmd!
+    autocmd FileType int-* call s:interactive_settings()
+    autocmd FileType vimshell
+          \| call vimshell#hook#add('chpwd', 'my_chpwd', 'g:my_chpwd')
+  augroup END
 
   " vimfiler : vimのファイラ
   NeoBundle 'Shougo/vimfiler'

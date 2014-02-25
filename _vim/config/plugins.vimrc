@@ -146,7 +146,10 @@ function! s:gitv_get_current_hash()
 endfunction
 
 "ハッシュタグの取得
-autocmd FileType gitv call s:my_gitv_settings()
+augroup setFiletypeGitv
+  autocmd!
+  autocmd FileType gitv call s:my_gitv_settings()
+augroup END
 function! s:my_gitv_settings()
   setlocal iskeyword+=/,-,.
   "gitv上でgitコマンドを使う
@@ -418,18 +421,19 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt = ''
 endif
 
-autocmd FileType unite call s:unite_my_settings()
+augroup setFiletypeUnite
+  autocmd!
+  autocmd FileType unite call s:unite_my_settings()
+augroup END
 function! s:unite_my_settings()
   " Overwrite settings.
   "
   " ESCキーを2回押すと終了する
   nmap <buffer> <ESC>      <Plug>(unite_exit)
   nmap <buffer> <ESC><ESC> <Plug>(unite_exit)
-
   "インサートモード終了
   imap <buffer> jj      <Plug>(unite_insert_leave)
   imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-
 endfunction
 
 "
