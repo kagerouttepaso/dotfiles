@@ -117,44 +117,44 @@ endif
 " 改造したmonday.vim Ctrl+a or Ctrl+x の大幅な拡張
 NeoBundle 'kagerouttepaso/monday'
 
-  " for rsense
-  "NeoBundle 'm2ym/rsense'
-  "NeoBundle 'taichouchou2/vim-rsense'
+" for rsense
+"NeoBundle 'm2ym/rsense'
+"NeoBundle 'taichouchou2/vim-rsense'
 
-  " rubyでrequire先を補完する
-  " NeoBundle 'ujihisa/neco-ruby'
+" rubyでrequire先を補完する
+" NeoBundle 'ujihisa/neco-ruby'
 
-  " A neocomplcache plugin for English, using look command
-  " NeoBundle 'ujihisa/neco-look'
+" A neocomplcache plugin for English, using look command
+" NeoBundle 'ujihisa/neco-look'
 " }}}
 
 " Searching/Moving{{{
-  " smooth_scroll.vim : スクロールを賢く
-  "NeoBundle 'Smooth-Scroll'
+" smooth_scroll.vim : スクロールを賢く
+"NeoBundle 'Smooth-Scroll'
 
-  " vim-smartword : 単語移動がスマートな感じで
-  "NeoBundle 'smartword'
+" vim-smartword : 単語移動がスマートな感じで
+"NeoBundle 'smartword'
 
-  " camelcasemotion : CamelCaseやsnake_case単位でのワード移動
-  "NeoBundle 'camelcasemotion'
+" camelcasemotion : CamelCaseやsnake_case単位でのワード移動
+"NeoBundle 'camelcasemotion'
 
-  " <Leader><Leader>w/fなどで、motion先をhilightする
-  "NeoBundle 'EasyMotion'
+" <Leader><Leader>w/fなどで、motion先をhilightする
+"NeoBundle 'EasyMotion'
 
-  " matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
-  "NeoBundle 'matchit.zip'
+" matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
+"NeoBundle 'matchit.zip'
 
-  " ruby用のmatchit拡張
-  "NeoBundle 'ruby-matchit'
+" ruby用のmatchit拡張
+"NeoBundle 'ruby-matchit'
 
-  " grep.vim : 外部のgrep利用。:Grepで対話形式でgrep :Rgrepは再帰
-  NeoBundle 'grep.vim'
+" grep.vim : 外部のgrep利用。:Grepで対話形式でgrep :Rgrepは再帰
+NeoBundle 'grep.vim'
 
-  " eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
-  "NeoBundle 'eregex.vim'
+" eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
+"NeoBundle 'eregex.vim'
 
-  " open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
-  NeoBundle 'tyru/open-browser.vim'
+" open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
+NeoBundle 'tyru/open-browser.vim'
 
 " }}}
 
@@ -224,41 +224,41 @@ let g:treeExplWinSize=30
 " }}}
 
 " Syntax {{{
-  " haml
-  NeoBundle 'haml.zip'
+" haml
+NeoBundle 'haml.zip'
 
-  " JavaScript
-  NeoBundle 'JavaScript-syntax'
+" JavaScript
+NeoBundle 'JavaScript-syntax'
 
-  " jQuery
-  NeoBundle 'jQuery'
+" jQuery
+NeoBundle 'jQuery'
 
-  " nginx conf
-  NeoBundle 'nginx.vim'
+" nginx conf
+NeoBundle 'nginx.vim'
 
-  " markdown
-  NeoBundle 'tpope/vim-markdown'
+" markdown
+NeoBundle 'tpope/vim-markdown'
 
-  " coffee script
-  NeoBundle 'kchmck/vim-coffee-script'
+" coffee script
+NeoBundle 'kchmck/vim-coffee-script'
 
-  " python
-  NeoBundle 'yuroyoro/vim-python'
+" python
+NeoBundle 'yuroyoro/vim-python'
 
-  " scala
-  NeoBundle 'yuroyoro/vim-scala'
+" scala
+NeoBundle 'yuroyoro/vim-scala'
 
-  " clojure
-  NeoBundle 'jondistad/vimclojure'
+" clojure
+NeoBundle 'jondistad/vimclojure'
 
-  " ghc-mod
-  NeoBundle 'eagletmt/ghcmod-vim'
+" ghc-mod
+NeoBundle 'eagletmt/ghcmod-vim'
 
-  " textile
-  NeoBundle 'kagerouttepaso/textile.vim'
+" textile
+NeoBundle 'kagerouttepaso/textile.vim'
 
-  " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
-  "NeoBundle 'scrooloose/syntastic'
+" syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
+"NeoBundle 'scrooloose/syntastic'
 " }}}
 
 " Buffer {{{
@@ -284,7 +284,7 @@ command! QQ :call QuitBuffer()
 " }}}
 
 " Encording {{{
-  NeoBundle 'banyan/recognize_charcode.vim'
+NeoBundle 'banyan/recognize_charcode.vim'
 " }}}
 
 " Utility {{{
@@ -324,13 +324,13 @@ NeoBundle 'Shougo/vimfiler'
 
 " vimproc : vimから非同期実行。vimshelleで必要
 NeoBundle 'Shougo/vimproc', {
-    \ 'build' : {
-    \     'windows' : 'make -f make_mingw32.mak',
-    \     'cygwin' : 'make -f make_cygwin.mak',
-    \     'mac' : 'make -f make_mac.mak',
-    \     'unix' : 'make -f make_unix.mak',
-    \    },
-    \ }
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 
 " vim-altercmd : Ex command拡張
 "NeoBundle 'tyru/vim-altercmd'
@@ -433,21 +433,21 @@ vnoremap <silent>sw y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g'
 " <C-l> を <C-f> に
 " <C-h> を <C-b> に割り当てる
 let g:over_command_line_key_mappings = {
-\  "\<C-l>" : "\<C-f>",
-\  "\<C-h>" : "\<C-b>",
-\}
+      \  "\<C-l>" : "\<C-f>",
+      \  "\<C-h>" : "\<C-b>",
+      \}
 " }}}
 
 " ColorSchema{{{{
-  " color schema 256
-  "NeoBundle 'desert256.vim'
-  "NeoBundle 'mrkn256.vim'
-  "NeoBundle 'tomasr/molokai'
-  NeoBundle 'yuroyoro/yuroyoro256.vim'
-  NeoBundle 'chriskempson/tomorrow-theme'
-  NeoBundle 'nanotech/jellybeans.vim'
-  NeoBundle 'altercation/vim-colors-solarized'
-  NeoBundle 'w0ng/vim-hybrid'
+" color schema 256
+"NeoBundle 'desert256.vim'
+"NeoBundle 'mrkn256.vim'
+"NeoBundle 'tomasr/molokai'
+NeoBundle 'yuroyoro/yuroyoro256.vim'
+NeoBundle 'chriskempson/tomorrow-theme'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'w0ng/vim-hybrid'
 " }}}
 
 " Unite {{{{
@@ -469,7 +469,7 @@ nnoremap [unite]  <Nop>
 nmap     f        [unite]
 nnoremap [unite]u :<C-u>Unite -no-split<Space>
 " 全部乗せ
-nnoremap <silent> [unite]a  :<C-u>Unite -buffer-name=all buffer file_mru bookmark file grep:. find:.<CR><C-r><C-w><CR>*<C-r><C-w>*<CR>
+nnoremap <silent>[unite]a  :<C-u>Unite -buffer-name=all buffer file_mru bookmark file grep:. find:.<CR><C-r><C-w><CR>*<C-r><C-w>*<CR>
 " バッファ一覧
 nnoremap <silent>[unite]b  :<C-u>Unite buffer -winheight=10<CR>
 " 最近使用したファイル一覧
@@ -479,17 +479,17 @@ nnoremap <silent>[unite]d  :<C-u>Unite -buffer-name=files file -winheight=15<CR>
 " 現在のバッファのカレントディレクトリからファイル一覧
 nnoremap <silent>[unite]c  :<C-u>UniteWithBufferDir -buffer-name=files file -winheight=15<CR>
 " レジスタ一覧
-nnoremap <silent> [unite]r  :<C-u>Unite register<CR>
+nnoremap <silent>[unite]r  :<C-u>Unite register<CR>
 " グレップ検索
-nnoremap <silent> [unite]g  :<C-u>Unite grep:. -buffer-name=serch-buffer -no-quit<CR><C-r><C-w><CR>
+nnoremap <silent>[unite]g  :<C-u>Unite grep:. -buffer-name=serch-buffer -no-quit<CR><C-r><C-w><CR>
 " ファイル検索
 if has("win32") || has("win64")
-  nnoremap <silent> [unite]f  :<C-u>UniteWithCursorWord everything/async -no-quit<CR>
+  nnoremap <silent>[unite]f  :<C-u>UniteWithCursorWord everything/async -no-quit<CR>
 else
-  nnoremap <silent> [unite]f  :<C-u>Unite find:. -buffer-name=serch-file -no-quit<CR>*<C-r><C-w>*<CR>
+  nnoremap <silent>[unite]f  :<C-u>Unite find:. -buffer-name=serch-file -no-quit<CR>*<C-r><C-w>*<CR>
 endif
 " すべてのソースを表示
-nnoremap <silent> [unite]s  :<C-u>Unite source<CR>
+nnoremap <silent>[unite]s  :<C-u>Unite source<CR>
 " アウトラインを展開
 nnoremap <silent>[unite]t :<C-u>Unite outline -vertical -winwidth=40 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>
 nnoremap <silent>[unite]o :<C-u>Unite outline -vertical -winwidth=40 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>
@@ -550,28 +550,28 @@ vmap <Leader><Enter> <Plug>(LiveEasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
 nmap <Leader><Leader>a <Plug>(LiveEasyAlign)
 let g:easy_align_delimiters = {
-\ '"': { 'pattern': '["]' },
-\ '>': { 'pattern': '>>\|=>\|>' },
-\ '/': { 'pattern': '//\+\|/\*\|\*/', 'ignore_groups': ['String'] },
-\ '#': { 'pattern': '#\+', 'ignore_groups': ['String'], 'delimiter_align': 'l' },
-\ ']': {
-\     'pattern':       '[[\]]',
-\     'left_margin':   0,
-\     'right_margin':  0,
-\     'stick_to_left': 0
-\   },
-\ ')': {
-\     'pattern':       '[()]',
-\     'left_margin':   0,
-\     'right_margin':  0,
-\     'stick_to_left': 0
-\   },
-\ 'd': {
-\     'pattern': ' \(\S\+\s*[;=]\)\@=',
-\     'left_margin': 0,
-\     'right_margin': 0
-\   }
-\ }
+      \ '"': { 'pattern': '["]' },
+      \ '>': { 'pattern': '>>\|=>\|>' },
+      \ '/': { 'pattern': '//\+\|/\*\|\*/', 'ignore_groups': ['String'] },
+      \ '#': { 'pattern': '#\+', 'ignore_groups': ['String'], 'delimiter_align': 'l' },
+      \ ']': {
+      \     'pattern':       '[[\]]',
+      \     'left_margin':   0,
+      \     'right_margin':  0,
+      \     'stick_to_left': 0
+      \   },
+      \ ')': {
+      \     'pattern':       '[()]',
+      \     'left_margin':   0,
+      \     'right_margin':  0,
+      \     'stick_to_left': 0
+      \   },
+      \ 'd': {
+      \     'pattern': ' \(\S\+\s*[;=]\)\@=',
+      \     'left_margin': 0,
+      \     'right_margin': 0
+      \   }
+      \ }
 
 "インデントのラインを表示
 NeoBundle 'Yggdroot/indentLine'
@@ -585,6 +585,35 @@ let g:landscape_highlight_url        = 1
 let g:landscape_highlight_todo       = 1
 let g:landscape_highlight_full_space = 0
 "let g:unite_cursor_line_highlight    = 'CursorLine'
+
+"かっこいいステータスライン
+"NeoBundle 'itchyny/lightline.vim'
+"vimをリスタート
+NeoBundle 'tyru/restart.vim'
+"fyletypeの自動切り替え
+NeoBundle 'Shougo/context_filetype.vim'
+NeoBundle 'osyo-manga/vim-precious'
+let g:precious_enable_switchers = {
+\	"*" : {
+\		"setfiletype" : 0
+\	},
+\	"vim" : {
+\		"setfiletype" : 1
+\	},
+\	"help" : {
+\		"setfiletype" : 1
+\	},
+\	"markdown" : {
+\		"setfiletype" : 1
+\	},
+\}
+"単語を色付けすることができる
+NeoBundle 't9md/vim-quickhl'
+nmap gm <Plug>(quickhl-manual-this)
+xmap gm <Plug>(quickhl-manual-this)
+nmap gM <Plug>(quickhl-manual-reset)
+xmap gM <Plug>(quickhl-manual-reset)
+nmap gj <Plug>(quickhl-cword-toggle)
 "}}}
 
 
