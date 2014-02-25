@@ -14,6 +14,7 @@ augroup myFiletypes
   autocmd!
   autocmd BufNewFile,BufRead *.cmm setfiletype cmm
   autocmd BufNewFile,BufRead *.uni setfiletype uni
+"  autocmd BufNewFile,BufRead *.vfr setfiletype vfr
   autocmd BufNewFile,BufRead *.vfr setfiletype cpp
   autocmd BufNewFile,BufRead *.hfr setfiletype cpp
 augroup END
