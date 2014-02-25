@@ -471,13 +471,13 @@ nnoremap [unite]u :<C-u>Unite -no-split<Space>
 " 全部乗せ
 nnoremap <silent> [unite]a  :<C-u>Unite -buffer-name=all buffer file_mru bookmark file grep:. find:.<CR><C-r><C-w><CR>*<C-r><C-w>*<CR>
 " バッファ一覧
-nnoremap <silent> [unite]b  :<C-u>Unite buffer<CR>
+nnoremap <silent>[unite]b  :<C-u>Unite buffer -winheight=10<CR>
 " 最近使用したファイル一覧
-nnoremap <silent> [unite]h  :<C-u>Unite buffer file_mru<CR>
+nnoremap <silent>[unite]h  :<C-u>Unite buffer file_mru -winheight=10<CR>
 " カレントディレクトリからファイル一覧
-nnoremap <silent> [unite]d  :<C-u>Unite -buffer-name=files file<CR>
+nnoremap <silent>[unite]d  :<C-u>Unite -buffer-name=files file -winheight=15<CR>
 " 現在のバッファのカレントディレクトリからファイル一覧
-nnoremap <silent> [unite]c  :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent>[unite]c  :<C-u>UniteWithBufferDir -buffer-name=files file -winheight=15<CR>
 " レジスタ一覧
 nnoremap <silent> [unite]r  :<C-u>Unite register<CR>
 " グレップ検索
@@ -491,7 +491,10 @@ endif
 " すべてのソースを表示
 nnoremap <silent> [unite]s  :<C-u>Unite source<CR>
 " アウトラインを展開
-nnoremap <silent> [unite]o  :<C-u>Unite outline -vertical -buffer-name=outline -no-start-insert<CR>
+nnoremap <silent>[unite]t :<C-u>Unite outline -vertical -winwidth=40 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>
+nnoremap <silent>[unite]o :<C-u>Unite outline -vertical -winwidth=40 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>
+
+
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
