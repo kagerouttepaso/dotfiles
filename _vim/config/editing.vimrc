@@ -89,8 +89,11 @@ inoremap <expr> ,dt strftime('%H:%M:%S')
 map <Leader>j !python -m json.tool<CR>
 
 " quickfixウィンドウではq/ESCで閉じる
-autocmd FileType qf nnoremap <buffer> q :ccl<CR>
-autocmd FileType qf nnoremap <buffer> <ESC> :ccl<CR>
+augroup closeQuickfixWindow
+  autocmd!
+  autocmd FileType qf nnoremap <buffer> q :ccl<CR>
+  autocmd FileType qf nnoremap <buffer> <ESC> :ccl<CR>
+augroup END
 
 " cwでquickfixウィンドウの表示をtoggleするようにした
 function! s:toggle_qf_window()

@@ -9,5 +9,10 @@ noremap ; :
 " noremap : ;
 
 "自作のシンタックス定義
-au BufNewFile,BufRead *.cmm setfiletype cmm
-au BufNewFile,BufRead *.uni setfiletype uni
+
+augroup myFiletypes
+  autocmd!
+  autocmd BufNewFile,BufRead *.cmm setfiletype cmm
+  autocmd BufNewFile,BufRead *.uni setfiletype uni
+  autocmd BufNewFile,BufRead *.vfr setfiletype cpp
+augroup END

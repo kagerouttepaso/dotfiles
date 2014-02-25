@@ -6,16 +6,19 @@ set encoding=utf-8    " デフォルトエンコーディング
 
 " 文字コード認識はbanyan/recognize_charcode.vimへ
 
-" cvsの時は文字コードをeuc-jpに設定
-autocmd FileType cvs :set fileencoding=euc-jp
-" 以下のファイルの時は文字コードをutf-8に設定
-autocmd FileType svn :set fileencoding=utf-8
-autocmd FileType js :set fileencoding=utf-8
-autocmd FileType css :set fileencoding=utf-8
-autocmd FileType html :set fileencoding=utf-8
-autocmd FileType xml :set fileencoding=utf-8
-autocmd FileType java :set fileencoding=utf-8
-autocmd FileType scala :set fileencoding=utf-8
+augroup setFileEncode
+  autocmd!
+  " cvsの時は文字コードをeuc-jpに設定
+  autocmd FileType cvs :set fileencoding=euc-jp
+  " 以下のファイルの時は文字コードをutf-8に設定
+  autocmd FileType svn :set fileencoding=utf-8
+  autocmd FileType js :set fileencoding=utf-8
+  autocmd FileType css :set fileencoding=utf-8
+  autocmd FileType html :set fileencoding=utf-8
+  autocmd FileType xml :set fileencoding=utf-8
+  autocmd FileType java :set fileencoding=utf-8
+  autocmd FileType scala :set fileencoding=utf-8
+augroup END
 
 " ワイルドカードで表示するときに優先度を低くする拡張子
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
