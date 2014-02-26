@@ -491,8 +491,8 @@ endif
 " すべてのソースを表示
 nnoremap <silent>[unite]s  :<C-u>Unite source<CR>
 " アウトラインを展開
-nnoremap <silent>[unite]t :<C-u>Unite outline -vertical -winwidth=40 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>
-nnoremap <silent>[unite]o :<C-u>Unite outline -vertical -winwidth=40 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>
+nnoremap <silent>[unite]t :<C-u>Unite outline -vertical -winwidth=50 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>
+nnoremap <silent>[unite]o :<C-u>Unite outline -vertical -winwidth=50 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>
 
 
 if executable('ag')
