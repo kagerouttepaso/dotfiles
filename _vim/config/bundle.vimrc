@@ -510,6 +510,8 @@ function! s:unite_my_settings()
   " ESCキーを2回押すと終了する
   nmap     <buffer><ESC>      <Plug>(unite_exit)
   nmap     <buffer><ESC><ESC> <Plug>(unite_exit)
+  imap     <buffer><C-q>      <Plug>(unite_exit)
+  nmap     <buffer><C-q>      <Plug>(unite_exit)
   "インサートモード終了
   imap     <buffer>jj         <Plug>(unite_insert_leave)
   imap     <buffer><C-w>      <Plug>(unite_delete_backward_path)
@@ -595,8 +597,10 @@ let g:landscape_highlight_full_space = 0
 
 "かっこいいステータスライン
 "NeoBundle 'itchyny/lightline.vim'
+
 "vimをリスタート
 NeoBundle 'tyru/restart.vim'
+
 "fyletypeの自動切り替え
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'osyo-manga/vim-precious'
@@ -614,6 +618,7 @@ let g:precious_enable_switchers = {
 \		"setfiletype" : 1
 \	},
 \}
+
 "単語を色付けすることができる
 NeoBundle 't9md/vim-quickhl'
 nmap gm <Plug>(quickhl-manual-this)
