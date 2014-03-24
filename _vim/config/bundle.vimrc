@@ -584,12 +584,6 @@ let g:easy_align_delimiters = {
       \   }
       \ }
 
-"インデントのラインを表示
-NeoBundle 'Yggdroot/indentLine'
-let g:indentLine_collor_term=239
-let g:indentLine_collor_gui="#A4E57E"
-let g:indentLine_char="|"
-
 "VIMSHELとかのカラー編集
 NeoBundle 'itchyny/landscape.vim'
 let g:landscape_highlight_url        = 1
