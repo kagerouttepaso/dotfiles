@@ -464,6 +464,7 @@ NeoBundle 'Shougo/neomru.vim'
 " Start insert.
 let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_limit = 200
+let g:unite_source_grep_max_candidates = 2000
 " The prefix key.
 nnoremap [unite]  <Nop>
 nmap     f        [unite]
