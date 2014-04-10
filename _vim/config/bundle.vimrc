@@ -497,7 +497,7 @@ nnoremap <silent>[unite]o :<C-u>Unite outline -vertical -winwidth=50 -buffer-nam
 
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_default_opts = '-i --nogroup --nocolor --column --line-numbers'
   let g:unite_source_grep_recursive_opt = ''
 endif
 augroup setFiletypeUnite
