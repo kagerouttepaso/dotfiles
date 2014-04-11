@@ -63,7 +63,7 @@ setopt hist_ignore_all_dups
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git cp svn tmuxinator bundler gem git-extras knife screen)
+plugins=(ssh-agent rbenv git cp svn tmuxinator bundler gem git-extras knife screen)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -141,4 +141,6 @@ elif [ "${ARCHz}" = "linux" ]; then
         gnome-open ${folder_path}/${filename_without_extension}.html >& /dev/null
     }
 fi
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
