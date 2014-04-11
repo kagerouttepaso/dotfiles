@@ -141,4 +141,6 @@ elif [ "${ARCHz}" = "linux" ]; then
         gnome-open ${folder_path}/${filename_without_extension}.html >& /dev/null
     }
 fi
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
