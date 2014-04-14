@@ -25,6 +25,3 @@ else
   source ~/.vim/config/completion.neocomplcache.vimrc
 endif
 
-" 補完にAutoComplPopを使う
-" source ~/dotfiles/completion.autocomplpop
-

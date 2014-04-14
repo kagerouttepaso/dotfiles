@@ -464,6 +464,7 @@ NeoBundle 'Shougo/neomru.vim'
 " Start insert.
 let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_limit = 200
+let g:unite_source_grep_max_candidates = 2000
 " The prefix key.
 nnoremap [unite]  <Nop>
 nmap     f        [unite]
@@ -497,7 +498,7 @@ nnoremap <silent>[unite]o :<C-u>Unite outline -vertical -winwidth=50 -buffer-nam
 
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_default_opts = '-i --nogroup --nocolor --column --line-numbers'
   let g:unite_source_grep_recursive_opt = ''
 endif
 augroup setFiletypeUnite
@@ -583,12 +584,6 @@ let g:easy_align_delimiters = {
       \     'right_margin': 0
       \   }
       \ }
-
-"インデントのラインを表示
-NeoBundle 'Yggdroot/indentLine'
-let g:indentLine_collor_term=239
-let g:indentLine_collor_gui="#A4E57E"
-let g:indentLine_char="|"
 
 "VIMSHELとかのカラー編集
 NeoBundle 'itchyny/landscape.vim'
