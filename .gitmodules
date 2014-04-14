@@ -2,8 +2,8 @@
 	path = _vim/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim.git
 [submodule "autojump"]
-	path = autojump
+	path = _autojump
 	url = https://github.com/joelthelion/autojump.git
 [submodule "oh-my-zsh"]
-	path = oh-my-zsh
+	path = _oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git

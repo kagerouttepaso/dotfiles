@@ -68,6 +68,6 @@ if [ -d $HOME/./rbenv ]; then
 fi
 
 # autojump configuration
-# if you  use autojump, you must source autojump.* in ~/dotfiles/autojump/bin/
-PATH=$PATH:~/dotfiles/autojump/bin
-fpath=(~/dotfiles/autojump/bin $fpath)
+# if you  use autojump, you must source autojump.* in ~/.autojump/bin/
+PATH=$PATH:~/.autojump/bin
+fpath=(~/.autojump/bin $fpath)
