@@ -6,7 +6,7 @@ PWD_DIR=`pwd`
 #zsh
 #git
 #ctags
-
+#ag
 
 git submodule init
 git submodule update
@@ -19,7 +19,7 @@ if [ ! -f ${PWD_DIR}/_my_proxy_setting ]; then
     touch ${PWD_DIR}/_my_proxy_setting
 fi
 
-DOT_FILES=( my_proxy_setting gitconfig vimrc gvimrc vimshrc zshrc vim screenrc tmux.conf minttyrc bash bashrc)
+DOT_FILES=(autojump my_proxy_setting gitconfig vimrc gvimrc vimshrc zshrc vim screenrc tmux.conf minttyrc bash bashrc)
 for file in ${DOT_FILES[@]}
 do
     if [ -L ~/.${file} ]; then

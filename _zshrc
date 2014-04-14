@@ -1,10 +1,13 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/dotfiles/oh-my-zsh
 
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/.bash/bash_aliases
+
 #autojump configuration
-PATH=$PATH:~/dotfiles/autojump/bin
-fpath=(~/dotfiles/autojump/bin $fpath)
-source ~/dotfiles/autojump/bin/autojump.zsh
+source ~/.autojump/bin/autojump.zsh
 
 
 # Set name of the theme to load.
@@ -13,21 +16,6 @@ source ~/dotfiles/autojump/bin/autojump.zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="dst"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias tmux="tmux -2"
-alias tmuxx="bash ~/.bash/run_tmux.sh"
-alias sshx="ssh -XC"
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
-alias sshconfig="vim ~/.ssh/config"
-
-alias gitc="git checkout"
-alias gitb="git branch"
-alias gitr="git remote"
-alias gitrebase="git rebase"
-alias gitm="git merge"
 
 stty stop undef
 
@@ -69,78 +57,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-source ~/.my_proxy_setting
-
-
-#check arch
-if [ -x /usr/bin/uname ] || [ -x /bin/uname ] ; then
-    echo `uname -sr`
-    if [[ "`uname -sr`" =~ Linux ]] ; then
-        export ARCHz="linux"
-        echo Linux
-    elif [[ "`uname -sr`" =~ CYGWIN ]] ; then
-        export ARCHz="cygwin"
-        echo Cygwin
-    else
-        export ARCHz="dummy"
-    fi
-else
-export ARCHz="dummy"
-fi
-
-
-if [ "${ARCHz}" = "cygwin" ]; then
-#    cdcyg(){
-#        CD_DIR=""
-#        printf "which directory do you want to go in?
-#        a ) Desktop
-#        s ) WORK
-#        Please enter >"
-#        read CD_DIR
-#        if [ "${CD_DIR}" = "a" ] ; then
-#            echo " cd Desktop"
-#            cd /cygdrive/c/Users/`id -un`/Desktop/
-#        elif [ "${CD_DIR}" = "s" ] ; then
-#            echo " cd WORK"
-#            cd /cygdrive/d/WORK/
-#        elif [ "${CD_DIR}" = "" ] ; then
-#            echo " cd Desktop"
-#            cd /cygdrive/c/Users/`id -un`/Desktop/
-#        fi
-#    }
-    export DISPLAY=:0.0
-elif [ "${ARCHz}" = "linux" ]; then
-    tmuxx(){
-        tmux attach -d
-    }
-    md2html(){
-        if [ "$1" = "" ]; then
-            echo need markdown file path
-            exit
-        fi
-        full_path="$1"
-        filename=${full_path##*/}
-        filename_without_extension=${filename%.*}
-        if [ ${full_path%/*} = ${full_path} ]; then
-            folder_path="."
-        else
-            folder_path=${full_path%/*}
-        fi
-        extension=${folder_path##*.}
-
-        #echo ファイル名
-        #echo $filename
-        #echo 拡張子抜き
-        #echo $filename_without_extension
-        #echo フォルダパス
-        #echo $folder_path
-        #echo 拡張子
-        #echo $extension
-
-        pandoc -t html ${full_path} -s -o ${folder_path}/${filename_without_extension}.html
-        gnome-open ${folder_path}/${filename_without_extension}.html >& /dev/null
-    }
-fi
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
