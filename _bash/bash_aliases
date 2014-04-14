@@ -1,3 +1,27 @@
+#define  alias
+
+if [ -x /usr/bin/tmux ] || [ -x /bin/tmux ] ; then
+    alias tmux='tmux -2'
+    alias tmuxx='bash ~/.bash/run_tmux.sh'
+fi
+if [ -x /usr/bin/ssh ] || [ -x /bin/ssh ] ; then
+    alias sshx="ssh -XC"
+    if [ -x /usr/bin/vim ] || [ -x /bin/vim ] ; then
+        alias sshconfig="vim ~/.ssh/config"
+    fi
+fi
+if [ -x /usr/bin/git ] || [ -x /bin/git ] ; then
+    alias gitc="git checkout"
+    alias gitb="git branch"
+    alias gitr="git remote"
+    alias gitrebase="git rebase"
+    alias gitm="git merge"
+fi
+if [ -x /usr/bin/vim ] || [ -x /bin/vim ] ; then
+    alias zshrc="vim ~/.zshrc"
+    alias vimrc="vim ~/.vimrc"
+fi
+
 #check arch and export ARCHz
 if [ -x /usr/bin/uname ] || [ -x /bin/uname ] ; then
     echo `uname -sr`
@@ -13,20 +37,6 @@ if [ -x /usr/bin/uname ] || [ -x /bin/uname ] ; then
 else
 export ARCHz="dummy"
 fi
-
-#define  alias
-alias tmux='tmux -2'
-alias tmuxx='bash ~/.bash/run_tmux.sh'
-alias sshx="ssh -XC"
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
-alias sshconfig="vim ~/.ssh/config"
-
-alias gitc="git checkout"
-alias gitb="git branch"
-alias gitr="git remote"
-alias gitrebase="git rebase"
-alias gitm="git merge"
 
 # define
 if [ "${ARCHz}" = "cygwin" ]; then
@@ -62,7 +72,7 @@ elif [ "${ARCHz}" = "linux" ]; then
 fi
 
 # define ebenv
-if [ -d $HOME/./rbenv ]; then
+if [ -d $HOME/.rbenv ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
 fi
