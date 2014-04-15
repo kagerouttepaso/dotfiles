@@ -16,6 +16,7 @@ if [ -x /usr/bin/git ] || [ -x /bin/git ] ; then
     alias gitr="git remote"
     alias gitrebase="git rebase"
     alias gitm="git merge"
+    alias gitf="git fetch && get fetch -p"
 fi
 if [ -x /usr/bin/vim ] || [ -x /bin/vim ] ; then
     alias zshrc="vim ~/.zshrc"
