@@ -15,7 +15,7 @@ endfunction
 command! SolMt :call SolutionMT()
 
 function! EndSolutionMT()
-  set guifont=Inconsolata:h15
+  set guifont=Inconsolata:h13
   colorscheme jellybeans
   set transparency=220
   syntax on
@@ -32,7 +32,7 @@ colorscheme jellybeans
 set transparency=220
 
 "イカスフォントを使用する
-set guifont=Inconsolata:h15
+set guifont=Inconsolata:h13
 "全角と半角のある文字は全角で表示
 set ambiwidth=double
 
