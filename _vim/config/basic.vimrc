@@ -30,7 +30,7 @@ set clipboard=unnamed
 "挿入モードでCtrl+pを押すとクリップボードの内容を貼り付けられるようにする "
 imap <C-p>  <C-r>0
 "選択モード中にCtrl+pで選択している場所を削除してコピーしていた文章を貼り付け
-"vnoremap <C-p> di<C-r>0<Esc>
+vnoremap <C-p> c<C-r>0<Esc>
 "エンターキーで改行
 "nnoremap <Enter> o <Esc>v^d
 "ctrl + q でバッファ閉じる
