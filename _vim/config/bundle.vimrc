@@ -423,6 +423,7 @@ xmap gp <Plug>(yankround-gp)
 nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
+autocmd ColorScheme * highlight YankRoundRegion guibg=#302028
 
 " vim-over : かっちょいい置換
 NeoBundle 'osyo-manga/vim-over'
@@ -633,6 +634,8 @@ NeoBundle 'kana/vim-operator-replace'
 map _  <Plug>(operator-replace)
 
 
+"カラースキームのテスト
+NeoBundle 'cocopon/colorswatch.vim'
 "}}}
 
 
