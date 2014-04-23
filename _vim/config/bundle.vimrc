@@ -414,10 +414,13 @@ NeoBundle 'kagerouttepaso/sonictemplate-vim'
 NeoBundle 'LeafCage/yankround.vim'
 " 貼り付け文字列をハイライト
 let g:yankround_use_region_hl=1
-nmap p     <Plug>(yankround-p)
-nmap P     <Plug>(yankround-P)
-nmap gp    <Plug>(yankround-gp)
-nmap gP    <Plug>(yankround-gP)
+nmap p <Plug>(yankround-p)
+vmap p <Plug>(yankround-p)
+xmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+xmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
 
@@ -623,8 +626,14 @@ xmap gm <Plug>(quickhl-manual-this)
 nmap gM <Plug>(quickhl-manual-reset)
 xmap gM <Plug>(quickhl-manual-reset)
 nmap gj <Plug>(quickhl-cword-toggle)
-"}}}
 
+"レジスタを汚さない置換ペースト
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'kana/vim-operator-replace'
+map _  <Plug>(operator-replace)
+
+
+"}}}
 
 
 
