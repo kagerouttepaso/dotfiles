@@ -414,12 +414,16 @@ NeoBundle 'kagerouttepaso/sonictemplate-vim'
 NeoBundle 'LeafCage/yankround.vim'
 " 貼り付け文字列をハイライト
 let g:yankround_use_region_hl=1
-nmap p     <Plug>(yankround-p)
-nmap P     <Plug>(yankround-P)
-nmap gp    <Plug>(yankround-gp)
-nmap gP    <Plug>(yankround-gP)
+nmap p <Plug>(yankround-p)
+vmap p <Plug>(yankround-p)
+xmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+xmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
+autocmd ColorScheme * highlight YankRoundRegion guibg=#302028
 
 " vim-over : かっちょいい置換
 NeoBundle 'osyo-manga/vim-over'
@@ -427,9 +431,9 @@ NeoBundle 'osyo-manga/vim-over'
 vnoremap <silent>ss :OverCommandLine<CR>s///g<Left><Left><Left>
 nnoremap <silent>ss :OverCommandLine<CR>%s///g<Left><Left><Left>
 " swでカーソル以下の単語を置換
-nnoremap <silent>sw :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
+nnoremap <silent>sS :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
 " virtualモード中は選択した文章で置き換え
-vnoremap <silent>sw y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
+vnoremap <silent>sS y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
 " <C-l> を <C-f> に
 " <C-h> を <C-b> に割り当てる
 let g:over_command_line_key_mappings = {
@@ -483,6 +487,8 @@ nnoremap <silent>[unite]c  :<C-u>UniteWithBufferDir -buffer-name=files file -win
 nnoremap <silent>[unite]r  :<C-u>Unite register<CR>
 " グレップ検索
 nnoremap <silent>[unite]g  :<C-u>Unite grep:. -buffer-name=serch-buffer -no-quit<CR><C-r><C-w><CR>
+" グレップ検索
+nnoremap <silent>[unite]G  :<C-u>Unite grep  -no-quit<CR>
 " ファイル検索
 if has("win32") || has("win64")
   nnoremap <silent>[unite]f  :<C-u>UniteWithCursorWord everything/async -no-quit<CR>
@@ -623,8 +629,16 @@ xmap gm <Plug>(quickhl-manual-this)
 nmap gM <Plug>(quickhl-manual-reset)
 xmap gM <Plug>(quickhl-manual-reset)
 nmap gj <Plug>(quickhl-cword-toggle)
-"}}}
 
+"レジスタを汚さない置換ペースト
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'kana/vim-operator-replace'
+map _  <Plug>(operator-replace)
+
+
+"カラースキームのテスト
+NeoBundle 'cocopon/colorswatch.vim'
+"}}}
 
 
 
