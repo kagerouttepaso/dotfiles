@@ -10,6 +10,15 @@ if [ -x /usr/bin/ssh ] || [ -x /bin/ssh ] ; then
         alias sshconfig="vim ~/.ssh/config"
     fi
 fi
+
+if [ -x /usr/bin/docker.io ] || [ -x /bin/docker.io ] ; then
+    alias docker="docker.io"
+    if [ -x /usr/bin/sed ] || [ -x /bin/sed ] ; then
+        alias docker_all_rm=" docker.io ps -a | grep 'ago'       | sed -e 's/\\(^[^ ]*\\).*/\\1/g' | xargs docker.io rm"
+        alias docker_week_rm="docker.io ps -a | grep 'weeks ago' | sed -e 's/\\(^[^ ]*\\).*/\\1/g' | xargs docker.io rm"
+    fi
+fi
+
 if [ -x /usr/bin/git ] || [ -x /bin/git ] ; then
     alias gitc="git checkout"
     alias gitb="git branch"
