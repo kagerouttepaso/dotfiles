@@ -14,8 +14,13 @@ fi
 if [ -x /usr/bin/docker.io ] || [ -x /bin/docker.io ] ; then
     alias docker="docker.io"
     if [ -x /usr/bin/sed ] || [ -x /bin/sed ] ; then
-        alias docker_all_rm=" docker.io ps -a | grep 'ago'       | sed -e 's/\\(^[^ ]*\\).*/\\1/g' | xargs docker.io rm"
-        alias docker_week_rm="docker.io ps -a | grep 'weeks ago' | sed -e 's/\\(^[^ ]*\\).*/\\1/g' | xargs docker.io rm"
+        alias docker_rm_ago="      docker.io ps -a  | grep 'ago'       | sed -e 's/\\(^[^ ]*\\).*/\\1/g'           | xargs docker.io rm"
+        alias docker_rm_weeksago=" docker.io ps -a  | grep 'weeks ago' | sed -e 's/\\(^[^ ]*\\).*/\\1/g'           | xargs docker.io rm"
+        alias docker_rm_noneimage="docker.io images | grep '<none>'    | sed -e 's/^.*<none>* *\\([^ ]*\\) .*/\\1/'| xargs docker.io rmi"
+        docker_image_rm()
+        {
+            docker.io images | grep "$1"| grep -vE "(REPOSITORY|<none>)" | sed -e "s/^\([^ ]*\) *\([^ ]*\) .*/\1:\2/" | xargs docker.io rmi
+        }
     fi
 fi
 
