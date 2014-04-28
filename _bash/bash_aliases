@@ -1,19 +1,19 @@
 #define  alias
 
-if [ -x /usr/bin/tmux ] || [ -x /bin/tmux ] ; then
+if builtin command -v tmux >> /dev/null ; then
     alias tmux='tmux -2'
     alias tmuxx='bash ~/.bash/run_tmux.sh'
 fi
-if [ -x /usr/bin/ssh ] || [ -x /bin/ssh ] ; then
+if builtin command -v ssh >> /dev/null ; then
     alias sshx="ssh -XC"
     if [ -x /usr/bin/vim ] || [ -x /bin/vim ] ; then
         alias sshconfig="vim ~/.ssh/config"
     fi
 fi
 
-if [ -x /usr/bin/docker.io ] || [ -x /bin/docker.io ] ; then
+if builtin command -v docker.io >> /dev/null ; then
     alias docker="docker.io"
-    if [ -x /usr/bin/sed ] || [ -x /bin/sed ] ; then
+    if builtin command -v sed >> /dev/null ; then
         alias docker_rm_ago="      docker.io ps -a  | grep 'ago'       | sed -e 's/\\(^[^ ]*\\).*/\\1/g'           | xargs docker.io rm"
         alias docker_rm_weeksago=" docker.io ps -a  | grep 'weeks ago' | sed -e 's/\\(^[^ ]*\\).*/\\1/g'           | xargs docker.io rm"
         alias docker_rm_noneimage="docker.io images | grep '<none>'    | sed -e 's/^.*<none>* *\\([^ ]*\\) .*/\\1/'| xargs docker.io rmi"
@@ -24,7 +24,7 @@ if [ -x /usr/bin/docker.io ] || [ -x /bin/docker.io ] ; then
     fi
 fi
 
-if [ -x /usr/bin/git ] || [ -x /bin/git ] ; then
+if builtin command -v git >> /dev/null ; then
     alias gitc="git checkout"
     alias gitb="git branch"
     alias gitr="git remote"
@@ -32,13 +32,13 @@ if [ -x /usr/bin/git ] || [ -x /bin/git ] ; then
     alias gitm="git merge"
     alias gitf="git fetch && git fetch -p"
 fi
-if [ -x /usr/bin/vim ] || [ -x /bin/vim ] ; then
+if builtin command -v vim >> /dev/null ; then
     alias zshrc="vim ~/.zshrc"
     alias vimrc="vim ~/.vimrc"
 fi
 
 #check arch and export ARCHz
-if [ -x /usr/bin/uname ] || [ -x /bin/uname ] ; then
+if builtin command -v uname >> /dev/null ; then
     echo `uname -sr`
     if [[ "`uname -sr`" =~ Linux ]] ; then
         export ARCHz="linux"
