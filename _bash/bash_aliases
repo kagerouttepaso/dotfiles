@@ -13,14 +13,16 @@ fi
 
 if builtin command -v docker.io >> /dev/null ; then
     alias docker="docker.io"
+fi
+if builtin command -v docker >> /dev/null ; then
     if builtin command -v sed >> /dev/null ; then
-        alias docker_rm_ago="      docker.io ps -a  | grep 'ago'       | sed -e 's/^\\([^ ]*\\).*$/\\1/'            | xargs -n1 -r docker.io rm"
-        alias docker_rm_weeksago=" docker.io ps -a  | grep 'weeks ago' | sed -e 's/^\\([^ ]*\\).*$/\\1/'            | xargs -n1 -r docker.io rm"
-        alias docker_rm_noneimage="docker.io images | grep '<none>'    | sed -e 's/^.*<none>* *\\([^ ]*\\) .*$/\\1/'| xargs -n1 -r docker.io rmi"
+        alias docker_rm_ago="      docker ps -a  | grep 'ago'       | sed -e 's/^\\([^ ]*\\).*$/\\1/'            | xargs -n1 -r docker rm"
+        alias docker_rm_weeksago=" docker ps -a  | grep 'weeks ago' | sed -e 's/^\\([^ ]*\\).*$/\\1/'            | xargs -n1 -r docker rm"
+        alias docker_rm_noneimage="docker images | grep '<none>'    | sed -e 's/^.*<none>* *\\([^ ]*\\) .*$/\\1/'| xargs -n1 -r docker rmi"
         alias docker_clean="docker_rm_ago && docker_rm_noneimage"
         docker_image_rm()
         {
-            docker.io images | grep "$1"| grep -vE "(REPOSITORY|<none>)" | sed -e "s/^\([^ ]*\) *\([^ ]*\) .*/\1:\2/" | xargs docker.io rmi
+            docker images | grep "$1"| grep -vE "(REPOSITORY|<none>)" | sed -e "s/^\([^ ]*\) *\([^ ]*\) .*/\1:\2/" | xargs docker rmi
         }
     fi
 fi
