@@ -310,16 +310,16 @@ let g:vimshell_execute_file_list['pl'] = 'perl'
 let g:vimshell_execute_file_list['py'] = 'python'
 call vimshell#set_execute_file('txt,vim,c,h,cpp,d,xml,java', 'vim')
 call vimshell#set_execute_file('html,xhtml', 'gexe chrome')
-function! g:my_chpwd(args, context)
-  "  call vimshell#execute('ls')
+function! VimShell_My_chpwd(args, context)
+    call vimshell#execute('ls')
 endfunction
-function! s:interactive_settings()
+function! VimShell_Interactive_settings()
 endfunction
 augroup bundle_vimshell
   autocmd!
-  autocmd FileType int-* call s:interactive_settings()
+  autocmd FileType int-* call VimShell_Interactive_settings()
   autocmd FileType vimshell
-        \| call vimshell#hook#add('chpwd', 'my_chpwd', 'g:my_chpwd')
+        \| call vimshell#hook#add('chpwd', 'my_chpwd', 'VimShell_My_chpwd')
 augroup END
 
 " vimfiler : vimのファイラ
