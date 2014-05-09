@@ -19,7 +19,7 @@ set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 "set modelines=0                  " モードラインは無効
 
 " OSのクリップボードを使用する
-set clipboard+=unnamed,unnamedplus,autoselect
+set clipboard=unnamed,unnamedplus,autoselect
 " ターミナルでマウスを使用できるようにする
 set mouse=a
 set guioptions+=a
