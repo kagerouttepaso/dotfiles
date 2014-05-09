@@ -4,7 +4,9 @@
 source ~/.bash/bash_aliases
 
 #autojump configuration
-source ~/.autojump/bin/autojump.zsh
+if [ -f ~/.autojump/bin/autojump.zsh ]; then
+    source ~/.autojump/bin/autojump.zsh
+fi
 
 
 # Set name of the theme to load.
@@ -63,6 +65,7 @@ if builtin command -v rbenv >> /dev/null ; then
 fi
 if builtin command -v git >> /dev/null ; then
     plugins+=(git git-extras)
+    alias gserch="cat $ZSH/plugins/git/git.plugin.zsh |grep alias| grep "
 fi
 if builtin command -v ruby >> /dev/null ; then
     plugins+=(bundler gem ruby knife)
