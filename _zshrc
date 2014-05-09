@@ -64,7 +64,7 @@ if builtin command -v rbenv >> /dev/null ; then
     plugins+=(rbenv)
 fi
 if builtin command -v git >> /dev/null ; then
-    plugins+=(git git-extras)
+    plugins+=(git git-flow)
     alias gserch="cat $ZSH/plugins/git/git.plugin.zsh |grep alias| grep "
 fi
 if builtin command -v ruby >> /dev/null ; then
