@@ -108,4 +108,6 @@ fi
 
 # my setting
 source ~/.bash/bash_aliases
-source ~/.autojump/bin/autojump.bash
+if [ -f ~/.autojump/bin/autojump.bash ]; then
+    source ~/.autojump/bin/autojump.bash
+fi
