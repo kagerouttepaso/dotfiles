@@ -29,8 +29,6 @@ set ttymouse=xterm2
 " undoファイルの格納場所
 set undodir=$DOTVIM_DIR/undo
 " tmpフォルダ
-let $TMP = $DOTVIM_DIR."/tmp"
-let $TEMP = $DOTVIM_DIR."/tmp"
 
 "ヤンクした文字は、システムのクリップボードに入れる"
 "set clipboard=unnamed
