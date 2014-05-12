@@ -53,7 +53,8 @@ x11のパッケージセットをインストールすればssh接続先のク�
    手順は[unite-everythingのヘルプ][unite-everything_install]を参照
 5. [香り屋版Gvim][Kaoriya_gvim_download]をダウンロードして起動。  
    ここで色々エラーが出るけど気にしない。
-   ﾌﾟﾗｷﾞﾝのインストールするか聞かれるのでYESを選択。  
+   ﾌﾟﾗｷﾞﾝのインストールするか聞かれるけどNOを選択。  
+   `:NeobundleInstall`でプラグインをインストール!!
 6. 快適なGvimライフへようこそ
 
 Windows上だとrgrepがうまく動かないのでUniteGrepを使ってください
