@@ -1,9 +1,8 @@
 if has('vim_starting')
   set nocompatible               " Be iMproved
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set runtimepath+=$DOTVIM_DIR./bundle/neobundle.vim/
 endif
-
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#rc(expand($DOTVIM_DIR.'/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -40,7 +39,7 @@ endif
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 " ユーザー定義スニペット保存ディレクトリ
-let g:neosnippet#snippets_directory="~/.vim/snippets"
+let g:neosnippet#snippets_directory=$DOTVIM_DIR."/snippets"
 " Plugin key-mappings.
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -228,6 +227,7 @@ NeoBundle 'banyan/recognize_charcode.vim'
 
 " vimshell : vimのshell
 NeoBundle 'Shougo/vimshell.git'
+let g:vimshell_vimshrc_path = expand($DOTVIM_DIR.'/vimshrc')
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 "let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
 if has('win32') || has('win64')
