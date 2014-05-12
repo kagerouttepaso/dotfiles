@@ -6,6 +6,10 @@ elseif isdirectory($HOME."/dotfiles/_vim")
   let $DOTVIM_DIR = $HOME."/dotfiles/_vim"
 endif
 
+if has("win64") || has("win32")
+  let $TMP = $VIM."/tmp"
+endif
+
 "vunlde.vimで管理してるpluginを読み込む
 source $DOTVIM_DIR/config/bundle.vimrc
 
