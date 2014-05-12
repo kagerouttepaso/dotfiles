@@ -8,74 +8,18 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Recommended to install
-" After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
-
-" NERD_commenter.vim :最強コメント処理 (<Leader>c<space>でコメントをトグル)
-"NeoBundle 'scrooloose/nerdcommenter.git'
-
-" 自動閉じタグ
-" NeoBundle 'yuroyoro/vim-autoclose'
-
-" -- でメソッドチェーン整形
-"NeoBundle 'c9s/cascading.vim'
-
-
-" Align : 高機能整形・桁揃えプラグイン
-"NeoBundle 'Align'
-
-" フィルタリングと整形
-"NeoBundle 'godlygeek/tabular'
-
-" マルチバイト対応の整形
-"NeoBundle 'h1mesuke/vim-alignta'
-
-" undo履歴を追える (need python support)
-"NeoBundle 'Gundo'
-
-" surround.vim : テキストを括弧で囲む／削除する
-"NeoBundle 'tpope/surround.vim'
-
-" smartchr.vim : ==などの前後を整形
-"NeoBundle 'smartchr'
-
-" vim-operator-user : 簡単にoperatorを定義できるようにする
-"NeoBundle 'operator-user'
-
-" operator-camelize : camel-caseへの変換
-"NeoBundle 'operator-camelize'
-
-" operator-replace : yankしたものでreplaceする
-"NeoBundle 'operator-replace'
-
-" textobj-user : 簡単にVimエディタのテキストオブジェクトをつくれる
-"NeoBundle 'textobj-user'
-
-" vim-textobj-syntax : syntax hilightされたものをtext-objectに
-"NeoBundle 'kana/vim-textobj-syntax.git'
-
-" vim-textobj-plugins : いろんなものをtext-objectにする
-"NeoBundle 'thinca/vim-textobj-plugins.git'
-
-" vim-textobj-lastpat : 最後に検索されたパターンをtext-objectに
-"NeoBundle 'kana/vim-textobj-lastpat.git'
-
-" vim-textobj-indent : インデントされたものをtext-objectに
-"NeoBundle 'kana/vim-textobj-indent.git'
-
-" vim-textobj-function : 関数の中身をtext-objectに
-"NeoBundle 'kana/vim-textobj-function.git'
-
-" vim-textobj-fold : 折りたたまれたアレをtext-objectに
-" NeoBundle 'kana/vim-textobj-fold.git'
-"NeoBundle 'textobj-rubyblock'
-
-" vim-textobj-entire : buffer全体をtext-objectに
-"NeoBundle 'textobj-entire'
-
-" 「foo」 or 【bar】などをtext-objectに
-"NeoBundle 'textobj-jabraces'
-
+" vimproc : vimから非同期実行
+if has("win64") || has("win32")
+else
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+endif
 
 " Completion {{{
 
@@ -116,10 +60,6 @@ endif
 
 " 改造したmonday.vim Ctrl+a or Ctrl+x の大幅な拡張
 NeoBundle 'kagerouttepaso/monday'
-
-" for rsense
-"NeoBundle 'm2ym/rsense'
-"NeoBundle 'taichouchou2/vim-rsense'
 
 " rubyでrequire先を補完する
 " NeoBundle 'ujihisa/neco-ruby'
@@ -198,29 +138,29 @@ map <silent><leader>tl       :Tlist<CR>        " taglistを開くショットカ
 "NeoBundle 'errormarker.vim'
 
 " tagsを利用したソースコード閲覧・移動補助機能 tagsファイルの自動生成
-NeoBundle 'SrcExpl'
-let g:SrcExpl_isUpdateTags = 0         " tagsをsrcexpl起動時に自動で作成（更新）
-let g:SrcExpl_gobackKey    = "<C-SPACE>"
+"NeoBundle 'SrcExpl'
+"let g:SrcExpl_isUpdateTags = 0         " tagsをsrcexpl起動時に自動で作成（更新）
+"let g:SrcExpl_gobackKey    = "<C-SPACE>"
 
-" NERD_tree, taglist, srcexpl の統合
-NeoBundle 'Trinity'
-command! TA :TrinityToggleAll
-command! TN :TrinityToggleNERDTree
-command! TS :TrinityToggleSourceExplorer
-command! TT :TrinityToggleTagList
-command! TU :TrinityUpdateWindow
+"" NERD_tree, taglist, srcexpl の統合
+"NeoBundle 'Trinity'
+"command! TA :TrinityToggleAll
+"command! TN :TrinityToggleNERDTree
+"command! TS :TrinityToggleSourceExplorer
+"command! TT :TrinityToggleTagList
+"command! TU :TrinityUpdateWindow
 
 " NERDTree : ツリー型エクスプローラ
 "NeoBundle 'The-NERD-tree'
 
-" vtreeexplorer.vim : ツリー状にファイルやディレクトリの一覧を表示
-NeoBundle 'vtreeexplorer'
-" 縦に表示する
-let g:treeExplVertical=1
-"<Leader>t<Space>でディレクトリツリー表示
-"noremap <Leader>t<Space> :VSTreeExplore<CR>
-"分割したウィンドウのサイズ
-let g:treeExplWinSize=30
+"" vtreeexplorer.vim : ツリー状にファイルやディレクトリの一覧を表示
+"NeoBundle 'vtreeexplorer'
+"" 縦に表示する
+"let g:treeExplVertical=1
+""<Leader>t<Space>でディレクトリツリー表示
+""noremap <Leader>t<Space> :VSTreeExplore<CR>
+""分割したウィンドウのサイズ
+"let g:treeExplWinSize=30
 " }}}
 
 " Syntax {{{
@@ -267,12 +207,6 @@ NeoBundle 'ekalinin/Dockerfile.vim'
 " Buffer {{{
 " DumbBuf.vim : quickbufっぽくbufferを管理。 "<Leader>b<Space>でBufferList
 "NeoBundle 'DumbBuf'
-
-" minibufexpl.vim : タブエディタ風にバッファ管理ウィンドウを表示
-"NeoBundle 'minibufexpl.vim'
-
-" buftabs.vim : ステータスバーにバッファ一覧を表示
-"NeoBundle 'buftabs'
 
 "  Kwbd.vim : レイアウトを崩さずにバッファを削除
 NeoBundle 'rgarver/Kwbd.vim'
@@ -325,15 +259,6 @@ augroup END
 " vimfiler : vimのファイラ
 NeoBundle 'Shougo/vimfiler'
 
-" vimproc : vimから非同期実行。vimshelleで必要
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
 
 " vim-altercmd : Ex command拡張
 "NeoBundle 'tyru/vim-altercmd'
