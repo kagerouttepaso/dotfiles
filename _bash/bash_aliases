@@ -1,4 +1,8 @@
 #define  alias
+if [ -f ~/.my_proxy_setting ]; then
+    source ~/.my_proxy_setting
+fi
+
 
 if builtin command -v tmux >> /dev/null ; then
     alias tmux='tmux -2'
