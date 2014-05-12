@@ -1,6 +1,6 @@
 if has('vim_starting')
   set nocompatible               " Be iMproved
-  set runtimepath+=$DOTVIM_DIR./bundle/neobundle.vim/
+  set runtimepath+=$DOTVIM_DIR/bundle/neobundle.vim/
 endif
 call neobundle#rc(expand($DOTVIM_DIR.'/bundle/'))
 
@@ -39,7 +39,7 @@ endif
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 " ユーザー定義スニペット保存ディレクトリ
-let g:neosnippet#snippets_directory=$DOTVIM_DIR."/snippets"
+let g:neosnippet#snippets_directory=$DOTVIM_DIR"/snippets"
 " Plugin key-mappings.
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
