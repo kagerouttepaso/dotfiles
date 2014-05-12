@@ -2,6 +2,9 @@
 if [ -f ~/.my_proxy_setting ]; then
     source ~/.my_proxy_setting
 fi
+if [ -d ~/local/bin ]; then
+    PATH=~/local/bin:$PATH
+fi
 
 
 if builtin command -v tmux >> /dev/null ; then
