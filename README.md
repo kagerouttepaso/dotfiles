@@ -29,12 +29,8 @@ ubuntu12.04以上ならこっちを`git clone`してchefを走らせたほうが
 
 Windows環境
 -----------
-### フォントの設定
-フォントのインストールを行うとかっこいいCygwin、teraterm環境を構築できる。  
-インストールの仕方は[Help][Font_Install]を参照  
-
 ### Cygwin
-Windows環境でも基本的に必要パッケージをインストールして**やること**のコマンドを入れれば問題ない。  
+Windows環境でも基本的に必要パッケージをインストールして**やること** のコマンドを入れれば問題ない。  
 x11のパッケージセットをインストールすればssh接続先のクリップボードの共有もできる用になっています  
 
 ####入れるパッケージ
@@ -44,28 +40,21 @@ x11のパッケージセットをインストールすればssh接続先のク�
 - x11すべて
 - curl
 - openssh
+- tmux
 
 
 ### teraterm
 [設定ファイル](./windows/TERATERM.INI) を読みこめばいい感じになる  
 
 ### 香り屋版Gvimへの対応
-1. [MinGw][Mingw_download]をダウンロードしてインストール。  
-   更にパスを通しておく（デフォルトの場合は`C:/MinGW/bin`と`C:/MinGW/msys/1.0/bin`になる)
-   もし、cygwinにパスを通している場合は、
-   minGWをcygwinより先にパス指定しておかないと、vimprocとかがうまく動かないような気がする
-2. Source Treeをダウンロードしてインストール、この`Dotfiles`を好きなところにCloneしてくる。  
-3. `C:\Users\UserName`以下に、dotfileのファイルを下記の表のとおりにシンボリックリンクをはりつける  
-   `.vim`は、Windowsだと1文字目に.がつく名前をしてできないので、Cygwinを使ってリネームする  
-   シンボリックリンクを貼るのには[このアプリ][Linux_shell_extension]を使用するといい感じです
+1. Source Treeをダウンロードしてインストール、この`Dotfiles`を好きなところにCloneしてくる。  
+2. [install.bat](./install.bat) を管理者権限で実行
 4. Windows上のファイル検索にはunite-everythingを使うので、その準備を行う。  
    手順は[unite-everythingのヘルプ][unite-everything_install]を参照
 5. [香り屋版Gvim][Kaoriya_gvim_download]をダウンロードして起動。  
    ここで色々エラーが出るけど気にしない。
-   ﾌﾟﾗｷﾞﾝのインストールするか聞かれるけどNOを選択。  
-   `:NeobundleInstall`でプラグインをインストール!!
-6. 快適なGvimライフへようこそ  
-   当然上のフォントの設定はしておくこと
+   ﾌﾟﾗｷﾞﾝのインストールするか聞かれるのでYESを選択。  
+6. 快適なGvimライフへようこそ
 
 Windows上だとrgrepがうまく動かないのでUniteGrepを使ってください
 
@@ -74,6 +63,12 @@ dotfiles    | `C:\Users\UserName`
 `./_vimrc`  | `_vimrc`
 `./_gvimrc` | `_gvimrc`
 `./_vim`    | `.vim`
+
+### その他メモ
+- シンボリックリンクを貼るのには[このアプリ][Linux_shell_extension]を使用するといい感じです
+- フォントのインストールを行うとかっこいいCygwin、teraterm環境を構築できる。  
+  インストールの仕方は[Help][Font_Install]を参照  
+  [install.bat](./install.bat)を実行すれば自動で入る
 
 コマンド
 --------
