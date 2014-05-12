@@ -6,6 +6,7 @@ elseif isdirectory($HOME."/dotfiles/_vim")
   let $DOTVIM_DIR = $HOME."/dotfiles/_vim"
 endif
 
+
 "vunlde.vimで管理してるpluginを読み込む
 source $DOTVIM_DIR/config/bundle.vimrc
 

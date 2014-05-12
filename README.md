@@ -49,11 +49,13 @@ x11のパッケージセットをインストールすればssh接続先のク�
 ### 香り屋版Gvimへの対応
 1. Source Treeをダウンロードしてインストール、この`Dotfiles`を好きなところにCloneしてくる。  
 2. [install.bat](./install.bat) を管理者権限で実行
-4. Windows上のファイル検索にはunite-everythingを使うので、その準備を行う。  
    手順は[unite-everythingのヘルプ][unite-everything_install]を参照
-5. [香り屋版Gvim][Kaoriya_gvim_download]をダウンロードして起動。  
-   ここで色々エラーが出るけど気にしない。
-   ﾌﾟﾗｷﾞﾝのインストールするか聞かれるのでYESを選択。  
+3. [香り屋版Gvim][Kaoriya_gvim_download]をダウンロード  
+4. [Windows版ag](http://blog.kowalczyk.info/software/the-silver-searcher-for-windows.html)をダウンロードしてくる  
+   ダウンロードしてきた実行ファイルはgvimのファルダにつっこむ
+5. gvimを起動ここで色々エラーが出るけど気にしない。
+   ﾌﾟﾗｷﾞﾝのインストールするか聞かれるけどNOを選択。  
+   `:NeobundleInstall`でプラグインをインストール!!
 6. 快適なGvimライフへようこそ
 
 Windows上だとrgrepがうまく動かないのでUniteGrepを使ってください
