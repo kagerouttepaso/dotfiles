@@ -73,7 +73,7 @@ endif
 " 改造したmonday.vim Ctrl+a or Ctrl+x の大幅な拡張
 NeoBundleLazy 'kagerouttepaso/monday' , { 
       \ 'autoload' : { 
-      \ 'commands'  : [ 'Increase', 'Decrease' ]
+      \ 'commands'  : [ 'call' ]
       \}}
 if neobundle#tap('kagerouttepaso/monday') "{{{
   function! neobundle#hooks.on_source(bundle)
@@ -152,9 +152,10 @@ if neobundle#tap('taglist.vim') "{{{
     "nmap <F7> :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
     "nmap <Leader>tl :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
   endfunction
-  map <silent><leader>tl       :Tlist<CR>        " taglistを開くショットカットキー
   call neobundle#untap()
-endif "}}}
+endif
+map <silent><leader>tl       :Tlist<CR>        " taglistを開くショットカットキー
+"}}}
 
 
 " tagsを利用したソースコード閲覧・移動補助機能 tagsファイルの自動生成
@@ -236,15 +237,16 @@ NeoBundleLazy 'rgarver/Kwbd.vim' , {
 if neobundle#tap('rgarver/Kwbd.vim') "{{{
   function! neobundle#hooks.on_source(bundle)
   endfunction
-  "CBでウィンドウの形を変えずにバッファを閉じる
-  command! QB :Kwbd
-  function! QuitBuffer()
-    :Kwbd
-    :quit
-  endfunction
-  command! QQ :call QuitBuffer()
   call neobundle#untap()
-endif "}}}
+endif
+"CBでウィンドウの形を変えずにバッファを閉じる
+command! QB :Kwbd
+function! QuitBuffer()
+  :Kwbd
+  :quit
+endfunction
+command! QQ :call QuitBuffer()
+"}}}
 
 
 " }}}
@@ -523,12 +525,13 @@ if neobundle#tap('thinca/vim-fontzoom') "{{{
     " デフォルトキーマップを使用しない
     let g:fontzoom_no_default_key_mappings=1
   endfunction
-  " F11でフォントズーム
-  nnoremap <F11> :Fontzoom +1<CR>
-  " F12でフォント小さく
-  nnoremap <F12> :Fontzoom -1<CR>
   call neobundle#untap()
-endif "}}}
+endif
+" F11でフォントズーム
+nnoremap <F11> :Fontzoom +1<CR>
+" F12でフォント小さく
+nnoremap <F12> :Fontzoom -1<CR>
+"}}}
 " }}}
 
 " windows {{{{
@@ -562,8 +565,6 @@ NeoBundleLazy 'junegunn/vim-easy-align' , {
       \ 'autoload' : {
       \ 'mappings'  : [
       \   '<Plug>(EasyAlign)',
-      \   '<Plug>(LiveEasyAlign)',
-      \   '<Plug>(EasyAlign)',
       \   '<Plug>(LiveEasyAlign)' ],
       \}}
 if neobundle#tap('junegunn/vim-easy-align') "{{{
@@ -592,13 +593,13 @@ if neobundle#tap('junegunn/vim-easy-align') "{{{
           \   }
           \ }
   endfunction
-  vmap <Enter> <Plug>(EasyAlign)
-  vmap <Leader><Enter> <Plug>(LiveEasyAlign)
-  nmap <Leader>a <Plug>(EasyAlign)
-  nmap <Leader><Leader>a <Plug>(LiveEasyAlign)
   call neobundle#untap()
-endif "}}}
-
+endif
+vmap <Enter> <Plug>(EasyAlign)
+vmap <Leader><Enter> <Plug>(LiveEasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
+nmap <Leader><Leader>a <Plug>(LiveEasyAlign)
+"}}}
 
 "VIMSHELとかのカラー編集
 NeoBundle 'itchyny/landscape.vim'
@@ -648,23 +649,20 @@ endif "}}}
 "単語を色付けすることができる
 NeoBundleLazy 't9md/vim-quickhl' , {
       \ 'autoload' : {
-      \ 'mappings'  : [
-      \   '<Plug>(quickhl-manual-this)',
-      \   '<Plug>(quickhl-manual-this)',
-      \   '<Plug>(quickhl-manual-reset)',
-      \   '<Plug>(quickhl-manual-reset)',
-      \   '<Plug>(quickhl-cword-toggle)'], 
+      \   'mappings'  : [ '<Plug>(quickhl-']
       \}}
 if neobundle#tap('t9md/vim-quickhl') "{{{
   function! neobundle#hooks.on_source(bundle)
   endfunction
+  call neobundle#untap()
+endif 
 nmap gm <Plug>(quickhl-manual-this)
 xmap gm <Plug>(quickhl-manual-this)
 nmap gM <Plug>(quickhl-manual-reset)
 xmap gM <Plug>(quickhl-manual-reset)
 nmap gj <Plug>(quickhl-cword-toggle)
-  call neobundle#untap()
-endif "}}}
+"}}}
+
 
 "レジスタを汚さない置換ペースト
 NeoBundle 'kana/vim-operator-user'
