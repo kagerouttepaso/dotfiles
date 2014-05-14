@@ -82,6 +82,9 @@ fi
 if builtin command -v vagrant >> /dev/null ; then
     plugins+=(vagrant)
 fi
+if builtin command -v mosh >> /dev/null ; then
+    plugins+=(mosh)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
