@@ -20,7 +20,15 @@ if [ ! -f ${PWD_DIR}/_my_proxy_setting ]; then
 fi
 
 
-DOT_FILES=(oh-my-zsh autojump my_proxy_setting gitconfig vimrc gvimrc zshrc vim screenrc tmux.conf tmux-powerline tmux tmux-powerlinerc minttyrc bash bashrc)
+DOT_FILES=(oh-my-zsh autojump my_proxy_setting gitconfig vimrc gvimrc zshrc vim screenrc tmux.conf tmux-powerline tmux tmux-powerlinerc bash bashrc)
+if builtin command -v uname >> /dev/null ; then
+    #if [[ "`uname -sr`" =~ Linux ]] ; then
+    if [[ "`uname -sr`" =~ CYGWIN ]] ; then
+        DOT_FILES+=( minttyrc )
+    elif [[ "`uname -sr`" =~ Darwin ]] ; then
+        DOT_FILES+=( profile )
+    fi
+fi
 for file in ${DOT_FILES[@]}
 do
     if [ -L ~/.${file} ]; then
@@ -36,6 +44,3 @@ do
     fi
     ln -s ${PWD_DIR}/_${file} ~/.${file}
 done
-
-
-
