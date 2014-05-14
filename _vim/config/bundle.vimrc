@@ -11,6 +11,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " vimproc : vimから非同期実行
 if has("win64") || has("win32")
+  " win環境は香り屋バンドル版を使う
 else
 NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
@@ -23,23 +24,29 @@ NeoBundle 'Shougo/vimproc.vim', {
 endif
 
 " Completion {{{
-
-" 補完 neocomplcache.vim : 究極のVim的補完環境
 " 補完 neocomplete.vim : 究極のVim的補完環境
 function! s:meet_neocomplete_requirements()
   return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 endfunction
 if s:meet_neocomplete_requirements()
-  NeoBundleFetch 'Shougo/neocomplcache.vim'
-else
-  NeoBundle      'Shougo/neocomplcache.vim'
-endif
-
-NeoBundle 'Shougo/neocomplete', {
+NeoBundle 'Shougo/neocomplete.vim', {
       \ 'depends' : 'Shougo/context_filetype.vim',
       \ 'disabled' : !has('lua'),
       \ 'vim_version' : '7.3.885'
       \ }
+if neobundle#tap('Shougo/neocomplete.vim') "{{{
+  function! neobundle#hooks.on_source(bundle)
+    source $DOTVIM_DIR/config/completion.neocomplete.vimrc
+  endfunction
+  call neobundle#untap()
+else
+endif "}}}
+else
+  " 今までの neocomplcache の設定
+  NeoBundle 'Shougo/neocomplcache.vim'
+  source $DOTVIM_DIR/config/completion.neocomplcache.vimrc
+endif
+
 
 " neocomplcacheのsinpet補完
 NeoBundle 'Shougo/neosnippet.vim'
