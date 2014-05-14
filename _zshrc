@@ -79,6 +79,9 @@ fi
 if builtin command -v docker.io >> /dev/null ; then
     plugins+=(docker)
 fi
+if builtin command -v vagrant >> /dev/null ; then
+    plugins+=(vagrant)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
