@@ -2,8 +2,7 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
   set runtimepath+=$DOTVIM_DIR/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand($DOTVIM_DIR.'/bundle/'))
-
+call neobundle#begin(expand('~/.vim/bundle'))
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -226,7 +225,7 @@ NeoBundle 'banyan/recognize_charcode.vim'
 " Utility {{{
 
 " vimshell : vimのshell
-NeoBundle 'Shougo/vimshell.git'
+NeoBundle 'Shougo/vimshell'
 let g:vimshell_vimshrc_path = expand($DOTVIM_DIR.'/vimshrc')
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 "let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
@@ -239,11 +238,19 @@ else
 endif
 " Initialize execute file list.
 let g:vimshell_execute_file_list = {}
-let g:vimshell_execute_file_list['rb'] = 'ruby'
-let g:vimshell_execute_file_list['pl'] = 'perl'
-let g:vimshell_execute_file_list['py'] = 'python'
-call vimshell#set_execute_file('txt,vim,c,h,cpp,d,xml,java', 'vim')
-call vimshell#set_execute_file('html,xhtml', 'gexe chrome')
+let g:vimshell_execute_file_list['rb']    = 'ruby'
+let g:vimshell_execute_file_list['pl']    = 'perl'
+let g:vimshell_execute_file_list['py']    = 'python'
+let g:vimshell_execute_file_list['txt']   = 'vim'
+let g:vimshell_execute_file_list['vim']   = 'vim'
+let g:vimshell_execute_file_list['c']     = 'vim'
+let g:vimshell_execute_file_list['h']     = 'vim'
+let g:vimshell_execute_file_list['cpp']   = 'vim'
+let g:vimshell_execute_file_list['d']     = 'vim'
+let g:vimshell_execute_file_list['xml']   = 'vim'
+let g:vimshell_execute_file_list['java']  = 'vim'
+let g:vimshell_execute_file_list['html']  = 'gexe chrome'
+let g:vimshell_execute_file_list['xhtml'] = 'gexe chrome'
 function! VimShell_My_chpwd(args, context)
     call vimshell#execute('ls')
 endfunction
@@ -408,7 +415,9 @@ nnoremap <silent>[unite]b  :<C-u>Unite buffer -winheight=10<CR>
 " 最近使用したファイル一覧
 nnoremap <silent>[unite]h  :<C-u>Unite buffer file_mru -winheight=10<CR>
 " カレントディレクトリからファイル一覧
-nnoremap <silent>[unite]d  :<C-u>Unite -buffer-name=files file -winheight=15<CR>
+nnoremap <silent>[unite]d  :<C-u>Unite -buffer-name=pwd_files file -winheight=15<CR>
+" カレントディレクトリからファイル一覧
+nnoremap <silent>[unite]D  :<C-u>Unite -buffer-name=git_files file_rec/async:! -winheight=15<CR>
 " 現在のバッファのカレントディレクトリからファイル一覧
 nnoremap <silent>[unite]c  :<C-u>UniteWithBufferDir -buffer-name=files file -winheight=15<CR>
 " レジスタ一覧
@@ -569,6 +578,7 @@ NeoBundle 'cocopon/colorswatch.vim'
 "}}}
 
 
+call neobundle#end()
 
 filetype plugin indent on     " Required!
 "
@@ -581,3 +591,7 @@ filetype plugin indent on     " Required!
 NeoBundleCheck
 
 " vim:set foldmethod=marker:
+if !has('vim_starting')
+  " Call on_source hook when reloading .vimrc.
+  call neobundle#call_hook('on_source')
+endif
