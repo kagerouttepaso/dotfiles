@@ -2,15 +2,18 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
   set runtimepath+=$DOTVIM_DIR/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand($DOTVIM_DIR.'/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle'))
+
+let g:is_windows = has('win32') || has('win64')
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " vimproc : vimから非同期実行
 if has("win64") || has("win32")
+  " win環境は香り屋バンドル版を使う
 else
-NeoBundle 'Shougo/vimproc', {
+NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
       \     'cygwin' : 'make -f make_cygwin.mak',
@@ -21,19 +24,29 @@ NeoBundle 'Shougo/vimproc', {
 endif
 
 " Completion {{{
-
-" 補完 neocomplcache.vim : 究極のVim的補完環境
 " 補完 neocomplete.vim : 究極のVim的補完環境
 function! s:meet_neocomplete_requirements()
   return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 endfunction
 if s:meet_neocomplete_requirements()
-  NeoBundle      'Shougo/neocomplete.vim'
-  NeoBundleFetch 'Shougo/neocomplcache.vim'
+NeoBundle 'Shougo/neocomplete.vim', {
+      \ 'depends' : 'Shougo/context_filetype.vim',
+      \ 'disabled' : !has('lua'),
+      \ 'vim_version' : '7.3.885'
+      \ }
+if neobundle#tap('Shougo/neocomplete.vim') "{{{
+  function! neobundle#hooks.on_source(bundle)
+    source $DOTVIM_DIR/config/completion.neocomplete.vimrc
+  endfunction
+  call neobundle#untap()
 else
-  NeoBundleFetch 'Shougo/neocomplete.vim'
-  NeoBundle      'Shougo/neocomplcache.vim'
+endif "}}}
+else
+  " 今までの neocomplcache の設定
+  NeoBundle 'Shougo/neocomplcache.vim'
+  source $DOTVIM_DIR/config/completion.neocomplcache.vimrc
 endif
+
 
 " neocomplcacheのsinpet補完
 NeoBundle 'Shougo/neosnippet.vim'
@@ -58,83 +71,91 @@ if has('conceal')
 endif
 
 " 改造したmonday.vim Ctrl+a or Ctrl+x の大幅な拡張
-NeoBundle 'kagerouttepaso/monday'
+NeoBundleLazy 'kagerouttepaso/monday' , { 
+      \ 'autoload' : { 
+      \ 'commands'  : [ 'Increase', 'Decrease' ]
+      \}}
+if neobundle#tap('kagerouttepaso/monday') "{{{
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  call neobundle#untap()
+endif "}}}
 
-" rubyでrequire先を補完する
-" NeoBundle 'ujihisa/neco-ruby'
-
-" A neocomplcache plugin for English, using look command
-" NeoBundle 'ujihisa/neco-look'
 " }}}
 
 " Searching/Moving{{{
-" smooth_scroll.vim : スクロールを賢く
-"NeoBundle 'Smooth-Scroll'
-
-" vim-smartword : 単語移動がスマートな感じで
-"NeoBundle 'smartword'
-
-" camelcasemotion : CamelCaseやsnake_case単位でのワード移動
-"NeoBundle 'camelcasemotion'
-
-" <Leader><Leader>w/fなどで、motion先をhilightする
-"NeoBundle 'EasyMotion'
-
-" matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
-"NeoBundle 'matchit.zip'
-
-" ruby用のmatchit拡張
-"NeoBundle 'ruby-matchit'
-
 " grep.vim : 外部のgrep利用。:Grepで対話形式でgrep :Rgrepは再帰
-NeoBundle 'grep.vim'
+NeoBundleLazy 'grep.vim' , {
+      \ 'autoload' : {
+      \ 'commands'  : ['Grep', 'Rgrep', 'Fgrep', 'Rfgrep', 'Egrep', 'Regrep', 'Agrep', 'Ragrep',],
+      \}}
+if neobundle#tap('grep.vim') "{{{
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  call neobundle#untap()
+endif "}}}
 
-" eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
-"NeoBundle 'eregex.vim'
 
 " open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
-NeoBundle 'tyru/open-browser.vim'
+NeoBundleLazy 'tyru/open-browser.vim' , {
+      \ 'autoload' : {
+      \ 'commands'  : ['OpenBrowser', 'OpenBrowserSearch'],
+      \}}
+if neobundle#tap('tyru/open-browser.vim') "{{{
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
 
 " }}}
 
 " Programming {{{
 " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
-NeoBundle 'thinca/vim-quickrun'
+NeoBundleLazy 'thinca/vim-quickrun' , {
+      \ 'autoload' : {
+      \ 'commands'  : ['QuickRun'],
+      \}}
+if neobundle#tap('thinca/vim-quickrun') "{{{
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  call neobundle#untap()
+endif "}}}
 
-" perldocやphpmanual等のリファレンスをvim上で見る
-"NeoBundle 'thinca/vim-ref'
-
-" SQLUtilities : SQL整形、生成ユーティリティ
-"NeoBundle 'SQLUtilities'
 
 " vim-ruby : VimでRubyを扱う際の最も基本的な拡張機能
-NeoBundle 'vim-ruby/vim-ruby'
-
-" rails.vim : rails的なアレ
-"NeoBundle 'tpope/vim-rails'
-
-" Pydiction : Python用の入力補完
-"NeoBundle 'Pydiction'
+NeoBundleLazy 'vim-ruby/vim-ruby' , {
+      \ 'autoload' : {
+      \ 'filetypes' : ['ruby'],
+      \}}
+if neobundle#tap('vim-ruby/vim-ruby') "{{{
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  call neobundle#untap()
+endif "}}}
 
 " ソースコード上のメソッド宣言、変数宣言の一覧を表示
-NeoBundle 'taglist.vim'
-" 関数一覧
-"set tags=tags
-"set tags+=~/.tags
-"let Tlist_Ctags_Cmd = '/Applications/MacVim.app/Contents/MacOS/ctags' " ctagsのパス
-let Tlist_Show_One_File      = 1     " 現在編集中のソースのタグしか表示しない
-let Tlist_Exit_OnlyWindow    = 1     " taglistのウィンドーが最後のウィンドーならばVimを閉じる
-"let Tlist_Use_Right_Window = 1      " 右側でtaglistのウィンドーを表示h
-let Tlist_Enable_Fold_Column = 1     " 折りたたみ
-"let Tlist_Auto_Open = 1             " 自動表示
-let Tlist_Auto_Update        = 1
-let Tlist_WinWidth           = 30
-map <silent><leader>tl       :Tlist<CR>        " taglistを開くショットカットキー
-"nmap <F7> :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
-"nmap <Leader>tl :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
+NeoBundleLazy 'taglist.vim' , {
+      \ 'autoload' : {
+      \ 'commands'  : ['Tlist'],
+      \}}
+if neobundle#tap('taglist.vim') "{{{
+  function! neobundle#hooks.on_source(bundle)
+    "let Tlist_Ctags_Cmd = '/Applications/MacVim.app/Contents/MacOS/ctags' " ctagsのパス
+    let Tlist_Show_One_File      = 1     " 現在編集中のソースのタグしか表示しない
+    let Tlist_Exit_OnlyWindow    = 1     " taglistのウィンドーが最後のウィンドーならばVimを閉じる
+    "let Tlist_Use_Right_Window = 1      " 右側でtaglistのウィンドーを表示h
+    let Tlist_Enable_Fold_Column = 1     " 折りたたみ
+    "let Tlist_Auto_Open = 1             " 自動表示
+    let Tlist_Auto_Update        = 1
+    let Tlist_WinWidth           = 30
+    "nmap <F7> :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
+    "nmap <Leader>tl :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
+  endfunction
+  map <silent><leader>tl       :Tlist<CR>        " taglistを開くショットカットキー
+  call neobundle#untap()
+endif "}}}
 
-" エラーがある場所をhilight
-"NeoBundle 'errormarker.vim'
 
 " tagsを利用したソースコード閲覧・移動補助機能 tagsファイルの自動生成
 "NeoBundle 'SrcExpl'
@@ -208,14 +229,23 @@ NeoBundle 'ekalinin/Dockerfile.vim'
 "NeoBundle 'DumbBuf'
 
 "  Kwbd.vim : レイアウトを崩さずにバッファを削除
-NeoBundle 'rgarver/Kwbd.vim'
-"CBでウィンドウの形を変えずにバッファを閉じる
-command! QB :Kwbd
-function! QuitBuffer()
-  :Kwbd
-  :quit
-endfunction
-command! QQ :call QuitBuffer()
+NeoBundleLazy 'rgarver/Kwbd.vim' , {
+      \ 'autoload' : {
+      \ 'commands'  : ['Kwbd'],
+      \}}
+if neobundle#tap('rgarver/Kwbd.vim') "{{{
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  "CBでウィンドウの形を変えずにバッファを閉じる
+  command! QB :Kwbd
+  function! QuitBuffer()
+    :Kwbd
+    :quit
+  endfunction
+  command! QQ :call QuitBuffer()
+  call neobundle#untap()
+endif "}}}
+
 
 " }}}
 
@@ -226,35 +256,54 @@ NeoBundle 'banyan/recognize_charcode.vim'
 " Utility {{{
 
 " vimshell : vimのshell
-NeoBundle 'Shougo/vimshell.git'
-let g:vimshell_vimshrc_path = expand($DOTVIM_DIR.'/vimshrc')
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-"let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
-if has('win32') || has('win64')
-  " Display user name on Windows.
-  let g:vimshell_prompt = $USERNAME."% "
-else
-  " Display user name on Linux.
-  let g:vimshell_prompt = $USER."% "
-endif
-" Initialize execute file list.
-let g:vimshell_execute_file_list = {}
-let g:vimshell_execute_file_list['rb'] = 'ruby'
-let g:vimshell_execute_file_list['pl'] = 'perl'
-let g:vimshell_execute_file_list['py'] = 'python'
-call vimshell#set_execute_file('txt,vim,c,h,cpp,d,xml,java', 'vim')
-call vimshell#set_execute_file('html,xhtml', 'gexe chrome')
-function! VimShell_My_chpwd(args, context)
-    call vimshell#execute('ls')
-endfunction
-function! VimShell_Interactive_settings()
-endfunction
-augroup bundle_vimshell
-  autocmd!
-  autocmd FileType int-* call VimShell_Interactive_settings()
-  autocmd FileType vimshell
-        \| call vimshell#hook#add('chpwd', 'my_chpwd', 'VimShell_My_chpwd')
-augroup END
+NeoBundleLazy 'Shougo/vimshell',{
+      \ 'autoload' : {
+      \   'commands' : [ 'VimShell', 'VimShellExecute', 'VimShellInteractive',
+      \                   'VimShellTerminal', 'VimShellPop'],
+      \   'mappings' : ['<Plug>(vimshell_']
+      \ }}
+if neobundle#tap('Shougo/vimshell') "{{{
+  function! neobundle#hooks.on_source(bundle)
+    let g:vimshell_vimshrc_path = expand($DOTVIM_DIR.'/vimshrc')
+    let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+    "let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
+    if has('win32') || has('win64')
+      " Display user name on Windows.
+      let g:vimshell_prompt = $USERNAME."% "
+    else
+      " Display user name on Linux.
+      let g:vimshell_prompt = $USER."% "
+    endif
+    " Initialize execute file list.
+    let g:vimshell_execute_file_list = {}
+    let g:vimshell_execute_file_list['rb']    = 'ruby'
+    let g:vimshell_execute_file_list['pl']    = 'perl'
+    let g:vimshell_execute_file_list['py']    = 'python'
+    let g:vimshell_execute_file_list['txt']   = 'vim'
+    let g:vimshell_execute_file_list['vim']   = 'vim'
+    let g:vimshell_execute_file_list['c']     = 'vim'
+    let g:vimshell_execute_file_list['h']     = 'vim'
+    let g:vimshell_execute_file_list['cpp']   = 'vim'
+    let g:vimshell_execute_file_list['d']     = 'vim'
+    let g:vimshell_execute_file_list['xml']   = 'vim'
+    let g:vimshell_execute_file_list['java']  = 'vim'
+    let g:vimshell_execute_file_list['html']  = 'gexe chrome'
+    let g:vimshell_execute_file_list['xhtml'] = 'gexe chrome'
+    function! VimShell_My_chpwd(args, context)
+      call vimshell#execute('ls')
+    endfunction
+    function! VimShell_Interactive_settings()
+    endfunction
+    augroup bundle_vimshell
+      autocmd!
+      autocmd FileType int-* call VimShell_Interactive_settings()
+      autocmd FileType vimshell
+            \| call vimshell#hook#add('chpwd', 'my_chpwd', 'VimShell_My_chpwd')
+    augroup END
+  endfunction
+  call neobundle#untap()
+endif "}}}
+  
 
 " vimfiler : vimのファイラ
 NeoBundle 'Shougo/vimfiler'
@@ -408,7 +457,9 @@ nnoremap <silent>[unite]b  :<C-u>Unite buffer -winheight=10<CR>
 " 最近使用したファイル一覧
 nnoremap <silent>[unite]h  :<C-u>Unite buffer file_mru -winheight=10<CR>
 " カレントディレクトリからファイル一覧
-nnoremap <silent>[unite]d  :<C-u>Unite -buffer-name=files file -winheight=15<CR>
+nnoremap <silent>[unite]d  :<C-u>Unite -buffer-name=pwd_files file -winheight=15<CR>
+" カレントディレクトリからファイル一覧
+nnoremap <silent>[unite]D  :<C-u>Unite -buffer-name=git_files file_rec/async:! -winheight=15<CR>
 " 現在のバッファのカレントディレクトリからファイル一覧
 nnoremap <silent>[unite]c  :<C-u>UniteWithBufferDir -buffer-name=files file -winheight=15<CR>
 " レジスタ一覧
@@ -462,26 +513,43 @@ endfunction
 
 " gvim  {{{{
 " Gvim上でフォントのサイズを変更する
-NeoBundle 'thinca/vim-fontzoom'
-" デフォルトキーマップを使用しない
-let g:fontzoom_no_default_key_mappings=1
-" F11でフォントズーム
-nnoremap <F11> :Fontzoom +1<CR>
-" F12でフォント小さく
-nnoremap <F12> :Fontzoom -1<CR>
+NeoBundleLazy 'thinca/vim-fontzoom' , {
+      \ 'gui' : 1 , 
+      \ 'autoload' : {
+      \  'commands' : ['Fontzoom']
+      \}}
+if neobundle#tap('thinca/vim-fontzoom') "{{{
+  function! neobundle#hooks.on_source(bundle)
+    " デフォルトキーマップを使用しない
+    let g:fontzoom_no_default_key_mappings=1
+  endfunction
+  " F11でフォントズーム
+  nnoremap <F11> :Fontzoom +1<CR>
+  " F12でフォント小さく
+  nnoremap <F12> :Fontzoom -1<CR>
+  call neobundle#untap()
+endif "}}}
 " }}}
 
 " windows {{{{
-if has("win32") || has("win64")
-  " Uniteでeverythingの呼び出す
-  NeoBundle 'sgur/unite-everything'
-  "フルパスでソート
-  let g:unite_source_everything_sort_by_full_path=1
-  "サーチ対象はフルパス
-  let g:unite_source_everything_full_path_search=1
-  let g:unite_source_everything_limit=1000
-  let g:unite_source_everything_ignore_pattern=""
-endif
+
+" Uniteでeverythingの呼び出す
+NeoBundle 'sgur/unite-everything' , {
+      \ 'disabled' : !g:is_windows, 
+      \ 'autoload' : {
+      \}}
+if neobundle#tap('sgur/unite-everything') "{{{
+  function! neobundle#hooks.on_source(bundle)
+    "フルパスでソート
+    let g:unite_source_everything_sort_by_full_path=1
+    "サーチ対象はフルパス
+    let g:unite_source_everything_full_path_search=1
+    let g:unite_source_everything_limit=1000
+    let g:unite_source_everything_ignore_pattern=""
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
 " }}}
 
 "test {{{{
@@ -490,34 +558,47 @@ endif
 "NeoBundle 'alpaca-tc/alpaca_tags'
 
 "ソースのレイアウト修正に便利なやつ
-NeoBundle 'junegunn/vim-easy-align'
-vmap <Enter> <Plug>(EasyAlign)
-vmap <Leader><Enter> <Plug>(LiveEasyAlign)
-nmap <Leader>a <Plug>(EasyAlign)
-nmap <Leader><Leader>a <Plug>(LiveEasyAlign)
-let g:easy_align_delimiters = {
-      \ '"': { 'pattern': '["]' },
-      \ '>': { 'pattern': '>>\|=>\|>' },
-      \ '/': { 'pattern': '//\+\|/\*\|\*/', 'ignore_groups': ['String'] },
-      \ '#': { 'pattern': '#\+', 'ignore_groups': ['String'], 'delimiter_align': 'l' },
-      \ ']': {
-      \     'pattern':       '[[\]]',
-      \     'left_margin':   0,
-      \     'right_margin':  0,
-      \     'stick_to_left': 0
-      \   },
-      \ ')': {
-      \     'pattern':       '[()]',
-      \     'left_margin':   0,
-      \     'right_margin':  0,
-      \     'stick_to_left': 0
-      \   },
-      \ 'd': {
-      \     'pattern': ' \(\S\+\s*[;=]\)\@=',
-      \     'left_margin': 0,
-      \     'right_margin': 0
-      \   }
-      \ }
+NeoBundleLazy 'junegunn/vim-easy-align' , {
+      \ 'autoload' : {
+      \ 'mappings'  : [
+      \   '<Plug>(EasyAlign)',
+      \   '<Plug>(LiveEasyAlign)',
+      \   '<Plug>(EasyAlign)',
+      \   '<Plug>(LiveEasyAlign)' ],
+      \}}
+if neobundle#tap('junegunn/vim-easy-align') "{{{
+  function! neobundle#hooks.on_source(bundle)
+    let g:easy_align_delimiters = {
+          \ '"': { 'pattern': '["]' },
+          \ '>': { 'pattern': '>>\|=>\|>' },
+          \ '/': { 'pattern': '//\+\|/\*\|\*/', 'ignore_groups': ['String'] },
+          \ '#': { 'pattern': '#\+', 'ignore_groups': ['String'], 'delimiter_align': 'l' },
+          \ ']': {
+          \     'pattern':       '[[\]]',
+          \     'left_margin':   0,
+          \     'right_margin':  0,
+          \     'stick_to_left': 0
+          \   },
+          \ ')': {
+          \     'pattern':       '[()]',
+          \     'left_margin':   0,
+          \     'right_margin':  0,
+          \     'stick_to_left': 0
+          \   },
+          \ 'd': {
+          \     'pattern': ' \(\S\+\s*[;=]\)\@=',
+          \     'left_margin': 0,
+          \     'right_margin': 0
+          \   }
+          \ }
+  endfunction
+  vmap <Enter> <Plug>(EasyAlign)
+  vmap <Leader><Enter> <Plug>(LiveEasyAlign)
+  nmap <Leader>a <Plug>(EasyAlign)
+  nmap <Leader><Leader>a <Plug>(LiveEasyAlign)
+  call neobundle#untap()
+endif "}}}
+
 
 "VIMSHELとかのカラー編集
 NeoBundle 'itchyny/landscape.vim'
@@ -530,33 +611,60 @@ let g:landscape_highlight_full_space = 0
 "NeoBundle 'itchyny/lightline.vim'
 
 "vimをリスタート
-NeoBundle 'tyru/restart.vim'
+NeoBundleLazy 'tyru/restart.vim', {
+      \ 'gui' : 1,
+      \ 'autoload' : {
+      \  'commands' : 'Restart'
+      \ }}
 
 "fyletypeの自動切り替え
-NeoBundle 'Shougo/context_filetype.vim'
-NeoBundle 'osyo-manga/vim-precious'
-let g:precious_enable_switchers = {
-\	"*" : {
-\		"setfiletype" : 0
-\	},
-\	"vim" : {
-\		"setfiletype" : 1
-\	},
-\	"help" : {
-\		"setfiletype" : 1
-\	},
-\	"markdown" : {
-\		"setfiletype" : 1
-\	},
-\}
+NeoBundleLazy 'osyo-manga/vim-precious' , {
+      \ 'depends' : 'Shougo/context_filetype.vim',
+      \ 'autoload' : {
+      \ 'filetypes' : ['vim', 'markdown', 'help', ],
+      \ 'on_source' : ['Shougo/context_filetype.vim'] 
+      \}}
+if neobundle#tap('osyo-manga/vim-precious') "{{{
+  function! neobundle#hooks.on_source(bundle)
+    let g:precious_enable_switchers = {
+          \	"*" : {
+          \		"setfiletype" : 0
+          \	},
+          \	"vim" : {
+          \		"setfiletype" : 1
+          \	},
+          \	"help" : {
+          \		"setfiletype" : 1
+          \	},
+          \	"markdown" : {
+          \		"setfiletype" : 1
+          \	},
+          \}
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
 
 "単語を色付けすることができる
-NeoBundle 't9md/vim-quickhl'
+NeoBundleLazy 't9md/vim-quickhl' , {
+      \ 'autoload' : {
+      \ 'mappings'  : [
+      \   '<Plug>(quickhl-manual-this)',
+      \   '<Plug>(quickhl-manual-this)',
+      \   '<Plug>(quickhl-manual-reset)',
+      \   '<Plug>(quickhl-manual-reset)',
+      \   '<Plug>(quickhl-cword-toggle)'], 
+      \}}
+if neobundle#tap('t9md/vim-quickhl') "{{{
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
 nmap gm <Plug>(quickhl-manual-this)
 xmap gm <Plug>(quickhl-manual-this)
 nmap gM <Plug>(quickhl-manual-reset)
 xmap gM <Plug>(quickhl-manual-reset)
 nmap gj <Plug>(quickhl-cword-toggle)
+  call neobundle#untap()
+endif "}}}
 
 "レジスタを汚さない置換ペースト
 NeoBundle 'kana/vim-operator-user'
@@ -565,10 +673,20 @@ map _  <Plug>(operator-replace)
 
 
 "カラースキームのテスト
-NeoBundle 'cocopon/colorswatch.vim'
+NeoBundleLazy 'cocopon/colorswatch.vim' , {
+      \ 'autoload' : {
+      \ 'commands'  : [ 'ColorSwatchGenerate' ]
+      \}}
+if neobundle#tap('cocopon/colorswatch.vim') "{{{
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
 "}}}
 
 
+call neobundle#end()
 
 filetype plugin indent on     " Required!
 "
@@ -581,3 +699,7 @@ filetype plugin indent on     " Required!
 NeoBundleCheck
 
 " vim:set foldmethod=marker:
+if !has('vim_starting')
+  " Call on_source hook when reloading .vimrc.
+  call neobundle#call_hook('on_source')
+endif

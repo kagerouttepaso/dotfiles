@@ -1,0 +1,18 @@
+snippet     ntap
+abbr        NeobundleTap
+options     head
+  NeoBundleLazy '${1:`getreg('+')=='' ? '<\`0\`>' : getreg('+')`}' , {
+    ${2:\\ 'depends' : '$\{3\}',}
+    \ 'autoload' : {
+      ${12:\\ 'commands'  : [$\{13\}],}
+      ${14:\\ 'mappings'  : [$\{15\}],}
+      ${16:\\ 'filetypes' : [$\{17\}],}
+      ${18:\\ 'on_source' : [$\{19\}] }
+    \}}
+  if neobundle#tap('$1') "{{{
+    function! neobundle#hooks.on_source(bundle)
+      ${20}
+      endfunction
+    call neobundle#untap()
+  endif "}}}
+  ${30}

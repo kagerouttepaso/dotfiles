@@ -13,15 +13,4 @@ cnoremap <Up>  <C-p>
 cnoremap <C-n> <Down>
 cnoremap <Down>  <C-n>
 
-"補完にneocomplcacheを使う
-function! s:meet_neocomplete_requirements()
-  return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
-endfunction
-if s:meet_neocomplete_requirements()
-  " 新しく追加した neocomplete の設定
-  source $DOTVIM_DIR/config/completion.neocomplete.vimrc
-else
-  " 今までの neocomplcache の設定
-  source $DOTVIM_DIR/config/completion.neocomplcache.vimrc
-endif
 
