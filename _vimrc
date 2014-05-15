@@ -1,13 +1,15 @@
-﻿if isdirectory($HOME."/.vim")
-  let $DOTVIM_DIR = $HOME."/.vim"
-elseif isdirectory($HOME."/vimfiles")
-  let $DOTVIM_DIR = $HOME."/vimfiles"
-elseif isdirectory($HOME."/dotfiles/_vim")
-  let $DOTVIM_DIR = $HOME."/dotfiles/_vim"
+﻿" runtimepathの検索
+if has('vim_starting')
+  if isdirectory($HOME."/.vim")
+    let $DOTVIM_DIR = $HOME."/.vim"
+  elseif isdirectory($HOME."/vimfiles")
+    let $DOTVIM_DIR = $HOME."/vimfiles"
+  elseif isdirectory($HOME."/dotfiles/_vim")
+    let $DOTVIM_DIR = $HOME."/dotfiles/_vim"
+  endif
 endif
 
-
-"vunlde.vimで管理してるpluginを読み込む
+"NeoBundleで管理してるpluginを読み込む
 source $DOTVIM_DIR/config/bundle.vimrc
 
 "基本設定
