@@ -705,18 +705,7 @@ if neobundle#tap('unite-tag') "{{{
   call neobundle#untap()
 endif "}}}
 
-NeoBundleLazy 'Shougo/neomru.vim' , { 'depends' : [ 'Shougo/unite.vim' ] }
-if neobundle#tap('neomru.vim') "{{{
-  call neobundle#config({
-        \  'autoload' : {
-        \    'commands'     : ['NeoMRUReload', 'NeoMRUSave'],
-        \    'unite_source' : ['neomru/file', 'neomru/directory'],
-        \  }  
-        \})
-  function! neobundle#hooks.on_source(bundle)
-  endfunction
-  call neobundle#untap()
-endif "}}}
+NeoBundle 'Shougo/neomru.vim'
 
 " Uniteでeverythingの呼び出す
 NeoBundleLazy 'sgur/unite-everything' , { 'depends' : [ 'Shougo/unite.vim' ] }

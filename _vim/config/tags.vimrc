@@ -26,7 +26,9 @@ nnoremap t  <Nop>
 "「飛ぶ」
 nnoremap tt  g<C-]>
 "「戻る」
-nnoremap tb  :<C-u>QB<CR>:pop<CR>
+nnoremap tb  :<C-u>Kwbd<CR>:pop<CR>
 "tags 作成"
-command! Ctags :!ctags -R <CR>
+if g:is_windows
+  command! Ctags :!ctags -R .<CR>
+endif
 
