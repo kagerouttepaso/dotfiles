@@ -98,6 +98,24 @@ if neobundle#tap('monday') "{{{
   call neobundle#untap()
 endif "}}}
 
+"単語を色付けすることができる
+NeoBundleLazy 't9md/vim-quickhl'
+if neobundle#tap('vim-quickhl') "{{{
+  call neobundle#config({
+        \  'autoload' : {
+        \    'mappings'     : ['<Plug>(quickhl-'],
+        \  }
+        \})
+  nmap gm <Plug>(quickhl-manual-this)
+  xmap gm <Plug>(quickhl-manual-this)
+  nmap gM <Plug>(quickhl-manual-reset)
+  xmap gM <Plug>(quickhl-manual-reset)
+  nmap gj <Plug>(quickhl-cword-toggle)
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
 " }}}
 
 " Searching/Moving{{{
@@ -275,7 +293,79 @@ endif "}}}
 " }}}
 
 " Encording {{{
+
+"fyletypeの自動切り替え
+NeoBundleLazy 'osyo-manga/vim-precious' , { 'depends' : [ 'Shougo/context_filetype.vim' ] }
+if neobundle#tap('vim-precious') "{{{
+  call neobundle#config({
+        \  'autoload' : {
+        \    'filetypes' : ['vim', 'markdown', 'help' ],
+        \    'on_source' : ['context_filetype.vim'] 
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+    let g:precious_enable_switchers = {
+          \	"*" : {
+          \		"setfiletype" : 0
+          \	},
+          \	"vim" : {
+          \		"setfiletype" : 1
+          \	},
+          \	"help" : {
+          \		"setfiletype" : 1
+          \	},
+          \	"markdown" : {
+          \		"setfiletype" : 1
+          \	},
+          \}
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
 NeoBundle 'banyan/recognize_charcode.vim'
+
+"ソースのレイアウト修正に便利なやつ
+NeoBundleLazy 'junegunn/vim-easy-align'
+if neobundle#tap('vim-easy-align') "{{{
+  call neobundle#config({
+        \  'autoload' : {
+        \  'mappings'  : [
+        \    '<Plug>(EasyAlign)',
+        \    '<Plug>(LiveEasyAlign)' ],
+        \  }
+        \})
+  vmap <Enter> <Plug>(EasyAlign)
+  vmap <Leader><Enter> <Plug>(LiveEasyAlign)
+  nmap <Leader>a <Plug>(EasyAlign)
+  nmap <Leader><Leader>a <Plug>(LiveEasyAlign)
+  function! neobundle#hooks.on_source(bundle)
+    let g:easy_align_delimiters = {
+          \ '"': { 'pattern': '["]' },
+          \ '>': { 'pattern': '>>\|=>\|>' },
+          \ '/': { 'pattern': '//\+\|/\*\|\*/', 'ignore_groups': ['String'] },
+          \ '#': { 'pattern': '#\+', 'ignore_groups': ['String'], 'delimiter_align': 'l' },
+          \ ']': {
+          \     'pattern':       '[[\]]',
+          \     'left_margin':   0,
+          \     'right_margin':  0,
+          \     'stick_to_left': 0
+          \   },
+          \ ')': {
+          \     'pattern':       '[()]',
+          \     'left_margin':   0,
+          \     'right_margin':  0,
+          \     'stick_to_left': 0
+          \   },
+          \ 'd': {
+          \     'pattern': ' \(\S\+\s*[;=]\)\@=',
+          \     'left_margin': 0,
+          \     'right_margin': 0
+          \   }
+          \ }
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
 " }}}
 
 " Utility {{{
@@ -487,6 +577,20 @@ endif "}}}
 " }}}
 
 " ColorSchema{{{{
+
+"カラースキームのテスト
+NeoBundleLazy 'cocopon/colorswatch.vim'
+if neobundle#tap('colorswatch.vim') "{{{
+  call neobundle#config({
+        \  'autoload' : {
+        \    'commands'     : ['ColorSwatchGenerate'],
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
 " color schema 256
 NeoBundle 'yuroyoro/yuroyoro256.vim'
 NeoBundle 'chriskempson/tomorrow-theme'
@@ -678,125 +782,10 @@ endif "}}}
 
 " }}}
 
-"test {{{{
-
-"ソースのレイアウト修正に便利なやつ
-NeoBundleLazy 'junegunn/vim-easy-align'
-if neobundle#tap('vim-easy-align') "{{{
-  call neobundle#config({
-        \  'autoload' : {
-        \  'mappings'  : [
-        \    '<Plug>(EasyAlign)',
-        \    '<Plug>(LiveEasyAlign)' ],
-        \  }
-        \})
-  vmap <Enter> <Plug>(EasyAlign)
-  vmap <Leader><Enter> <Plug>(LiveEasyAlign)
-  nmap <Leader>a <Plug>(EasyAlign)
-  nmap <Leader><Leader>a <Plug>(LiveEasyAlign)
-  function! neobundle#hooks.on_source(bundle)
-    let g:easy_align_delimiters = {
-          \ '"': { 'pattern': '["]' },
-          \ '>': { 'pattern': '>>\|=>\|>' },
-          \ '/': { 'pattern': '//\+\|/\*\|\*/', 'ignore_groups': ['String'] },
-          \ '#': { 'pattern': '#\+', 'ignore_groups': ['String'], 'delimiter_align': 'l' },
-          \ ']': {
-          \     'pattern':       '[[\]]',
-          \     'left_margin':   0,
-          \     'right_margin':  0,
-          \     'stick_to_left': 0
-          \   },
-          \ ')': {
-          \     'pattern':       '[()]',
-          \     'left_margin':   0,
-          \     'right_margin':  0,
-          \     'stick_to_left': 0
-          \   },
-          \ 'd': {
-          \     'pattern': ' \(\S\+\s*[;=]\)\@=',
-          \     'left_margin': 0,
-          \     'right_margin': 0
-          \   }
-          \ }
-  endfunction
-  call neobundle#untap()
-endif "}}}
-"}}}
-
-"VIMSHELとかのカラー編集
-"NeoBundle 'itchyny/landscape.vim'
-let g:landscape_highlight_url        = 1
-let g:landscape_highlight_todo       = 1
-let g:landscape_highlight_full_space = 0
-"let g:unite_cursor_line_highlight    = 'CursorLine'
-
-"fyletypeの自動切り替え
-NeoBundleLazy 'osyo-manga/vim-precious' , { 'depends' : [ 'Shougo/context_filetype.vim' ] }
-if neobundle#tap('vim-precious') "{{{
-  call neobundle#config({
-        \  'autoload' : {
-        \    'filetypes' : ['vim', 'markdown', 'help' ],
-        \    'on_source' : ['context_filetype.vim'] 
-        \  }
-        \})
-  function! neobundle#hooks.on_source(bundle)
-    let g:precious_enable_switchers = {
-          \	"*" : {
-          \		"setfiletype" : 0
-          \	},
-          \	"vim" : {
-          \		"setfiletype" : 1
-          \	},
-          \	"help" : {
-          \		"setfiletype" : 1
-          \	},
-          \	"markdown" : {
-          \		"setfiletype" : 1
-          \	},
-          \}
-  endfunction
-  call neobundle#untap()
-endif "}}}
-
-
-"単語を色付けすることができる
-NeoBundleLazy 't9md/vim-quickhl'
-if neobundle#tap('vim-quickhl') "{{{
-  call neobundle#config({
-        \  'autoload' : {
-        \    'mappings'     : ['<Plug>(quickhl-'],
-        \  }
-        \})
-  nmap gm <Plug>(quickhl-manual-this)
-  xmap gm <Plug>(quickhl-manual-this)
-  nmap gM <Plug>(quickhl-manual-reset)
-  xmap gM <Plug>(quickhl-manual-reset)
-  nmap gj <Plug>(quickhl-cword-toggle)
-  function! neobundle#hooks.on_source(bundle)
-  endfunction
-  call neobundle#untap()
-endif "}}}
-
 "レジスタを汚さない置換ペースト
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace'
 map _  <Plug>(operator-replace)
-
-"カラースキームのテスト
-NeoBundleLazy 'cocopon/colorswatch.vim'
-if neobundle#tap('colorswatch.vim') "{{{
-  call neobundle#config({
-        \  'autoload' : {
-        \    'commands'     : ['ColorSwatchGenerate'],
-        \  }
-        \})
-  function! neobundle#hooks.on_source(bundle)
-  endfunction
-  call neobundle#untap()
-endif "}}}
-
-"}}}
-
 
 call neobundle#end()
 
