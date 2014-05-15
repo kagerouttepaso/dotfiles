@@ -38,10 +38,6 @@ imap <C-p>  <C-r>0
 vnoremap <C-p> c<C-r>0<Esc>
 "エンターキーで改行
 "nnoremap <Enter> o <Esc>v^d
-"ctrl + q でバッファ閉じる
-nnoremap <C-q> :Kwbd<CR>
-"Qでバッファ閉じる
-nnoremap Q :Kwbd<CR>
 
 "スペースで次のバッファへ、bで前のバッファへ
 noremap <Space> :bn<CR>

@@ -1,18 +1,51 @@
 snippet     ntap
 abbr        NeobundleTap
 options     head
-  NeoBundleLazy '${1:`getreg('+')=='' ? '<\`0\`>' : getreg('+')`}' , {
-    ${2:\\ 'depends' : '$\{3\}',}
-    \ 'autoload' : {
-      ${12:\\ 'commands'  : [$\{13\}],}
-      ${14:\\ 'mappings'  : [$\{15\}],}
-      ${16:\\ 'filetypes' : [$\{17\}],}
-      ${18:\\ 'on_source' : [$\{19\}] }
-    \}}
-  if neobundle#tap('$1') "{{{
+  NeoBundleLazy '${1:`getreg('+')=='' ? '<\`0\`>' : getreg('+')`}' ${2:, \{ 'depends' : [ '$\{3\}' ] \}}
+  if neobundle#tap('${4:`substitute( "$1","a","b","g")`}') "{{{
+    call neobundle#config({
+      ${10}
+    \})
     function! neobundle#hooks.on_source(bundle)
       ${20}
       endfunction
     call neobundle#untap()
   endif "}}}
   ${30}
+
+snippet nautoload
+abbr    NeoBundleLazy_autoload
+    \  'autoload' : {
+    ${1}
+    \  }
+
+snippet ninsert
+abbr    NeoBundleLazy_insert
+    \    'insert'       : ${1:1},
+    ${2}
+
+snippet ncommands
+abbr    NeoBundleLazy_commands
+    \    'commands'     : [${1}],
+    ${2}
+
+snippet nmappings
+abbr    NeoBundleLazy_mappings
+    \    'mappings'     : [${1}],
+    ${2}
+
+snippet nfiletypes
+abbr    NeoBundleLazy_filetypes
+    \    'filetypes'    : [${1}],
+    ${2}
+
+snippet non_source
+abbr    NeoBundleLazy_on_source
+    \    'on_source'    : [${1}],
+    ${2}
+
+snippet nunite_source
+abbr    NeoBundleLazy_unite_source
+    \    'unite_source' : [${1}],
+    ${2}
+
