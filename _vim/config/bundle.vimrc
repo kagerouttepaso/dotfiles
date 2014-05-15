@@ -2,7 +2,7 @@ if has('vim_starting')
   set nocompatible  " Be iMproved
   set runtimepath+=$DOTVIM_DIR/bundle/neobundle.vim/
 endif
-call neobundle#begin(expand('~/.vim/bundle'))
+call neobundle#begin(expand($DOTVIM_DIR.'/bundle'))
 "NeoBundle用の条件判断用の設定
 let g:is_windows = has('win32') || has('win64')
 let g:is_can_use_neocomplete = has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
@@ -413,16 +413,10 @@ if neobundle#tap('gitv') "{{{
   call neobundle#untap()
 endif "}}}
 
-
-" ステータスラインをカッコよくする
-" NeoBundle 'Lokaltog/vim-powerline'
-
 " Redmine on Vim
 "NeoBundle 'mattn/vim-metarw-redmine'
 
-" A framework to read/write fake:path
-"NeoBundle 'kana/vim-metarw'
-" https://github.com/airblade/vim-gitgutter
+" Gitの変更点をわかり易く表示
 NeoBundle 'sgur/vim-gitgutter'
 
 " Doxygenのサポーターらしい
@@ -437,12 +431,6 @@ if neobundle#tap('DoxygenToolkit.vim') "{{{
   endfunction
   call neobundle#untap()
 endif "}}}
-
-" Doxygenのサポーターらしい
-"NeoBundle 'doxygen-support.vim'
-
-"テンプレートファイルを作成する
-NeoBundle 'kagerouttepaso/sonictemplate-vim'
 
 " yankround : 副作用のないYankRing
 NeoBundleLazy 'LeafCage/yankround.vim'
@@ -500,9 +488,6 @@ endif "}}}
 
 " ColorSchema{{{{
 " color schema 256
-"NeoBundle 'desert256.vim'
-"NeoBundle 'mrkn256.vim'
-"NeoBundle 'tomasr/molokai'
 NeoBundle 'yuroyoro/yuroyoro256.vim'
 NeoBundle 'chriskempson/tomorrow-theme'
 NeoBundle 'nanotech/jellybeans.vim'
@@ -591,8 +576,6 @@ if neobundle#tap('unite.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-"NeoBundle 'Shougo/unite-build'
-"NeoBundle 'tsukkee/unite-help'
 NeoBundleLazy 'Shougo/unite-outline' , { 'depends' : [ 'Shougo/unite.vim' ] }
 if neobundle#tap('unite-outline') "{{{
   call neobundle#config({
@@ -605,8 +588,6 @@ if neobundle#tap('unite-outline') "{{{
   call neobundle#untap()
 endif "}}}
 
-"NeoBundle 'basyura/unite-rails'
-"NeoBundle 'thinca/vim-unite-history'
 NeoBundleLazy 'tsukkee/unite-tag' , { 'depends' : [ 'Shougo/unite.vim' ] }
 if neobundle#tap('unite-tag') "{{{
   call neobundle#config({
@@ -618,8 +599,6 @@ if neobundle#tap('unite-tag') "{{{
   endfunction
   call neobundle#untap()
 endif "}}}
-
-"NeoBundle 'choplin/unite-vim_hacks'
 
 NeoBundleLazy 'Shougo/neomru.vim' , { 'depends' : [ 'Shougo/unite.vim' ] }
 if neobundle#tap('neomru.vim') "{{{
@@ -654,6 +633,12 @@ if neobundle#tap('unite-everything') "{{{
   call neobundle#untap()
 endif "}}}
 
+"NeoBundle 'Shougo/unite-build'
+"NeoBundle 'tsukkee/unite-help'
+"NeoBundle 'basyura/unite-rails'
+"NeoBundle 'thinca/vim-unite-history'
+"NeoBundle 'choplin/unite-vim_hacks'
+
 " }}}
 
 " gvim  {{{{
@@ -677,13 +662,23 @@ if neobundle#tap('vim-fontzoom') "{{{
   call neobundle#untap()
 endif "}}}
 
+"vimをリスタート
+NeoBundleLazy 'tyru/restart.vim'
+if neobundle#tap('restart.vim') "{{{
+  call neobundle#config({
+        \  'gui' : 1,
+        \  'autoload' : {
+        \    'commands'     : ['Restart'],
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
 " }}}
 
-
 "test {{{{
-
-"tagsの非同期読み込み
-"NeoBundle 'alpaca-tc/alpaca_tags'
 
 "ソースのレイアウト修正に便利なやつ
 NeoBundleLazy 'junegunn/vim-easy-align'
@@ -729,25 +724,11 @@ endif "}}}
 "}}}
 
 "VIMSHELとかのカラー編集
-NeoBundle 'itchyny/landscape.vim'
+"NeoBundle 'itchyny/landscape.vim'
 let g:landscape_highlight_url        = 1
 let g:landscape_highlight_todo       = 1
 let g:landscape_highlight_full_space = 0
 "let g:unite_cursor_line_highlight    = 'CursorLine'
-
-"vimをリスタート
-NeoBundleLazy 'tyru/restart.vim'
-if neobundle#tap('restart.vim') "{{{
-  call neobundle#config({
-        \  'gui' : 1,
-        \  'autoload' : {
-        \    'commands'     : ['Restart'],
-        \  }
-        \})
-  function! neobundle#hooks.on_source(bundle)
-  endfunction
-  call neobundle#untap()
-endif "}}}
 
 "fyletypeの自動切り替え
 NeoBundleLazy 'osyo-manga/vim-precious' , { 'depends' : [ 'Shougo/context_filetype.vim' ] }
@@ -796,13 +777,10 @@ if neobundle#tap('vim-quickhl') "{{{
   call neobundle#untap()
 endif "}}}
 
-
-
 "レジスタを汚さない置換ペースト
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace'
 map _  <Plug>(operator-replace)
-
 
 "カラースキームのテスト
 NeoBundleLazy 'cocopon/colorswatch.vim'
