@@ -28,11 +28,12 @@ endif
 " Completion {{{
 " 補完 neocomplete.vim : 究極のVim的補完環境
 if g:is_can_use_neocomplete
-  NeoBundleLazy 'Shougo/neocomplete.vim'
+  NeoBundleLazy 'Shougo/neocomplete.vim', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
   if neobundle#tap('neocomplete.vim') "{{{
     call neobundle#config({
           \  'autoload' : {
           \    'insert' : 1,
+          \    'on_source'    : ['neosnippet.vim'],
           \  }
           \})
     function! neobundle#hooks.on_source(bundle)
@@ -42,7 +43,7 @@ if g:is_can_use_neocomplete
   endif "}}}
 else
   " 今までの neocomplcache の設定
-  NeoBundle 'Shougo/neocomplcache.vim'
+  NeoBundle 'Shougo/neocomplcache.vim', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
   source $DOTVIM_DIR/config/completion.neocomplcache.vimrc
 endif
 
@@ -81,7 +82,7 @@ if neobundle#tap('neosnippet.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-NeoBundleLazy 'Shougo/neosnippet-snippets', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
+NeoBundle 'Shougo/neosnippet-snippets'
 " }}}
 
 " Edit {{{
