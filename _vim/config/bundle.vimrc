@@ -472,7 +472,7 @@ endif "}}}
 
 " vim-over : かっちょいい置換
 NeoBundleLazy 'osyo-manga/vim-over'
-if neobundle#tap('osyo-manga/vim-over') "{{{
+if neobundle#tap('vim-over') "{{{
   call neobundle#config({
         \  'autoload' : {
         \    'commands'     : ['OverCommandLine'],
