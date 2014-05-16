@@ -8,8 +8,10 @@ fi
 
 
 if builtin command -v tmux >> /dev/null ; then
-    alias tmux='tmux -2'
-    alias tmuxx='bash ~/.bash/run_tmux.sh'
+    alias tmux='if   [ -x /bin/zsh ];then           SHELL=/bin/zsh;
+                elif [ -x $HOME/local/bin/zsh];then SHELL=$HOME/local/bin/zsh;
+                fi && tmux -2'
+    alias tmuxx='if $(tmux has-session 2> /dev/null);then tmux attach -d else tmux fi'
 fi
 if builtin command -v ssh >> /dev/null ; then
     alias sshx="ssh -XCY"
