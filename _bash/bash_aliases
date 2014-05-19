@@ -9,10 +9,10 @@ fi
 
 if builtin command -v tmux >> /dev/null ; then
     alias tmux='if   [ -x /bin/zsh ];then           SHELL=/bin/zsh;
-                elif [ -x $HOME/local/bin/zsh];then SHELL=$HOME/local/bin/zsh;
-                fi && tmux -2'
-    alias tmuxx='if $(tmux has-session 2> /dev/null); then
-                 tmux attach -d; else tmux; fi'
+elif [ -x $HOME/local/bin/zsh];then SHELL=$HOME/local/bin/zsh;
+fi && tmux -2'
+alias tmuxx='if $(tmux has-session 2> /dev/null); then
+tmux attach -d; else tmux; fi'
 fi
 if builtin command -v ssh >> /dev/null ; then
     alias sshx="ssh -XCY"
@@ -51,52 +51,50 @@ if builtin command -v vim >> /dev/null ; then
 fi
 
 #check arch and export ARCHz
-if builtin command -v uname >> /dev/null ; then
+if builtin command -v uname >> /dev/null && builtin command -v grep >> /dev/null ; then
     echo `uname -sr`
-    if [[ "`uname -sr`" =~ Linux ]] ; then
+    if [ "`uname -sr | grep Linux`"  ] ; then
         export ARCHz="linux"
         echo Linux
-    elif [[ "`uname -sr`" =~ CYGWIN ]] ; then
+        md2html(){
+            if [ "$1" = "" ]; then
+                echo need markdown file path
+                exit
+            fi
+            full_path="$1"
+            filename=${full_path##*/}
+            filename_without_extension=${filename%.*}
+            if [ ${full_path%/*} = ${full_path} ]; then
+                folder_path="."
+            else
+                folder_path=${full_path%/*}
+            fi
+            extension=${folder_path##*.}
+
+            #echo ファイル名
+            #echo $filename
+            #echo 拡張子抜き
+            #echo $filename_without_extension
+            #echo フォルダパス
+            #echo $folder_path
+            #echo 拡張子
+            #echo $extension
+
+            pandoc -t html ${full_path} -s -o ${folder_path}/${filename_without_extension}.html
+            gnome-open ${folder_path}/${filename_without_extension}.html >& /dev/null
+        }
+    elif [ "`uname -sr | grep CYGWIN`" ] ; then
         export ARCHz="cygwin"
         echo Cygwin
+        export DISPLAY=:0.0
+    elif [ "`uname -sr | grep MINGW`" ] ; then
+        export ARCHz="mingw"
+        echo Mingw
     else
         export ARCHz="dummy"
     fi
 else
-export ARCHz="dummy"
-fi
-
-# define
-if [ "${ARCHz}" = "cygwin" ]; then
-    export DISPLAY=:0.0
-elif [ "${ARCHz}" = "linux" ]; then
-    md2html(){
-        if [ "$1" = "" ]; then
-            echo need markdown file path
-            exit
-        fi
-        full_path="$1"
-        filename=${full_path##*/}
-        filename_without_extension=${filename%.*}
-        if [ ${full_path%/*} = ${full_path} ]; then
-            folder_path="."
-        else
-            folder_path=${full_path%/*}
-        fi
-        extension=${folder_path##*.}
-
-        #echo ファイル名
-        #echo $filename
-        #echo 拡張子抜き
-        #echo $filename_without_extension
-        #echo フォルダパス
-        #echo $folder_path
-        #echo 拡張子
-        #echo $extension
-
-        pandoc -t html ${full_path} -s -o ${folder_path}/${filename_without_extension}.html
-        gnome-open ${folder_path}/${filename_without_extension}.html >& /dev/null
-    }
+    export ARCHz="dummy"
 fi
 
 # define ebenv
