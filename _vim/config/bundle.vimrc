@@ -714,7 +714,7 @@ if neobundle#tap('unite-everything') "{{{
   call neobundle#config({
         \ 'disabled' : !g:is_windows, 
         \  'autoload' : {
-        \    'unite_source' : ['everything'],
+        \    'unite_source' : [ 'everything/async', 'everything'],
         \  }
         \})
   function! neobundle#hooks.on_source(bundle)
