@@ -609,7 +609,8 @@ if neobundle#tap('unite.vim') "{{{
         \  'autoload' : {
         \    'commands'     : [
         \      { 'name' : 'Unite', 'complete' : 'customlist,unite#complete_source' }, 
-        \      'Unite', 'UniteWithCursorWord', 'UniteWithInput', 'UniteWithBufferDir'],
+        \      { 'name' : 'UniteWithCursorWord', 'complete' : 'customlist,unite#complete_source' }, 
+        \      'Unite',  'UniteWithInput', 'UniteWithBufferDir'],
         \  }
         \})
   " The prefix key.
@@ -637,6 +638,7 @@ if neobundle#tap('unite.vim') "{{{
   " ファイル検索
   if g:is_windows
     nnoremap <silent>[unite]f  :<C-u>UniteWithCursorWord everything/async -no-quit<CR>
+    nnoremap <silent>[unite]F  :<C-u>Unite everything/async -no-quit<CR>
   else
     nnoremap <silent>[unite]f  :<C-u>Unite find:. -buffer-name=serch-file -no-quit<CR>*<C-r><C-w>*<CR>
   endif
