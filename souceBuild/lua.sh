@@ -31,6 +31,6 @@ fi
 if [ ! -f ${LOCAL_DIR}/lock/lua-5.2.3 ]; then
     cd ${LOCAL_DIR}/src/lua-5.2.3
     make linux
-    make install INSTALL_TOP="${HOME}/local"
+    paco -lD "make install INSTALL_TOP=\"${HOME}/local\""
     touch ${LOCAL_DIR}/lock/lua-5.2.3
 fi

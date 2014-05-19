@@ -17,6 +17,6 @@ if [ ! -f ${LOCAL_DIR}/lock/ncurses-5.9 ]; then
     cd ${LOCAL_DIR}/src/ncurses-5.9
     ./configure --prefix=$LOCAL_DIR
     make
-    make install
+    paco -lD "make install"
     touch ${LOCAL_DIR}/lock/ncurses-5.9
 fi

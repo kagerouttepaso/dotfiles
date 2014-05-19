@@ -37,7 +37,7 @@ if [ ! -f ${LOCAL_DIR}/lock/tmux1.9a ]; then
     cd ${LOCAL_DIR}/src/tmux-1.9a
     ./configure --enable-static --prefix=${LOCAL_DIR} CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
     make
-    make install
+    paco -lD "make install"
     #touch ${LOCAL_DIR}/lock/tmux1.9a
 fi
 

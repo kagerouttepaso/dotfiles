@@ -17,6 +17,6 @@ if [ ! -f ${LOCAL_DIR}/lock/zsh-5.0.2 ]; then
     cd ${LOCAL_DIR}/src/zsh-5.0.2
     ./configure --prefix=$LOCAL_DIR --enable-cflags="-I$LOCAL_DIR/include" --enable-cppflags="-I$LOCAL_DIR/include" --enable-ldflags="-L$LOCAL_DIR/lib"  --enable-multibyte --enable-locale
     make
-    make install
+    paco -lD "make install"
     touch ${LOCAL_DIR}/lock/zsh-5.0.2
 fi

@@ -17,6 +17,6 @@ if [ ! -f ${LOCAL_DIR}/lock/readline-6.3 ]; then
     cd ${LOCAL_DIR}/src/readline-6.3
     ./configure --prefix=$LOCAL_DIR
     make
-    make install
+    paco -lD "make install"
     touch ${LOCAL_DIR}/lock/readline-6.3
 fi

@@ -20,6 +20,6 @@ if [ ! -f ${LOCAL_DIR}/lock/libevent-2.0.21-stable ]; then
     cd ${LOCAL_DIR}/src/libevent-2.0.21-stable
     ./configure --prefix=${LOCAL_DIR}
     make
-    make install
+    paco -lD "make install"
     touch ${LOCAL_DIR}/lock/libevent-2.0.21-stable
 fi

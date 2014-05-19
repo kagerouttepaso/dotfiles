@@ -9,3 +9,6 @@ fi
 if [ ! -d ${LOCAL_DIR}/lock ]; then
     mkdir -p ${LOCAL_DIR}/lock
 fi
+if ! builtin command -v paco >> /dev/null ; then
+    ./paco.sh
+fi
