@@ -21,16 +21,14 @@ if [ ! -d ${LOCAL_DIR}/src/lua-5.2.3 ];then
     gzip -dc ${LOCAL_DIR}/zip/lua-5.2.3.tar.gz | tar xvf -
 fi
 
-build_config=""
 if [ ! -f /usr/local/lib/libncurses.a ] || [ ! -f /usr/local/lib/libreadline.a]; then
-    build_config=${build_config} \
-        MYCFLAGS="-I${HOME}/local/include" \
-        MYLDFLAGS="-L${HOME}/local/lib/"  \
-        MYLIBS="-ltermcap"
+        LOCAL_CFLAGS="-I${HOME}/local/include" \
+        LOCAL_LDFLAGS="-L${HOME}/local/lib/"  \
+        LOCAL_LIBS="-ltermcap"
 fi
 if [ ! -f ${LOCAL_DIR}/lock/lua-5.2.3 ]; then
     cd ${LOCAL_DIR}/src/lua-5.2.3
-    make linux
-    make install INSTALL_TOP="${HOME}/local"
+    make linux MYCFLAGS=${LOCAL_CFLAGS} MYLDFLAGS=${LOCAL_LDFLAGS} MYLIBS=${LOCAL_LIBS}
+    paco -lD "make install INSTALL_TOP=\"${HOME}/local\""
     touch ${LOCAL_DIR}/lock/lua-5.2.3
 fi

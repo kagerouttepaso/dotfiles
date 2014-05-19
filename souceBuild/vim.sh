@@ -2,7 +2,7 @@
 #install vim7.4
 set -e
 
-if builtin command -v lua >> /dev/null ; then
+if ! builtin command -v lua >> /dev/null ; then
     ./lua.sh
 fi
 
@@ -40,6 +40,6 @@ if [ ! -f ${LOCAL_DIR}/lock/vim-7.4 ]; then
     cd ${LOCAL_DIR}/src/vim74
     ./configure ${build_config}
     make
-    make install
+    paco -lD "make install"
     touch ${LOCAL_DIR}/lock/vim-7.4
 fi
