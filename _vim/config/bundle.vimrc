@@ -922,6 +922,23 @@ if neobundle#tap('lightline.vim') "{{{
 
   call neobundle#untap()
 endif "}}}
+
+NeoBundle 'kagerouttepaso/vim-ft-markdown_fold'
+
+"foldの折りたたみのところの文章を変更する
+NeoBundle 'LeafCage/foldCC'
+if neobundle#tap('foldCC') "{{{
+  call neobundle#config({
+        \})
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  set foldtext=FoldCCtext()
+  set foldcolumn=1
+  set fillchars=vert:\|
+  call neobundle#untap()
+endif "}}}
+
+
 call neobundle#end()
 
 filetype plugin indent on     " Required!
