@@ -7,7 +7,6 @@ elseif isdirectory($HOME."/dotfiles/_vim")
   let $DOTVIM_DIR = $HOME."/dotfiles/_vim"
 endif
 set encoding=utf-8    " デフォルトエンコーディング
-set laststatus=2 " 常にステータスラインを表示
 
 "NeoBundleで管理してるpluginを読み込む
 source $DOTVIM_DIR/config/bundle.vimrc
@@ -15,7 +14,7 @@ source $DOTVIM_DIR/config/bundle.vimrc
 "基本設定
 source $DOTVIM_DIR/config/basic.vimrc
 "StatusLine設定
-"source $DOTVIM_DIR/config/statusline.vimrc
+source $DOTVIM_DIR/config/statusline.vimrc
 "インデント設定
 source $DOTVIM_DIR/config/indent.vimrc
 "表示関連
