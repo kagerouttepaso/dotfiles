@@ -244,7 +244,10 @@ NeoBundle 'jQuery'
 NeoBundle 'nginx.vim'
 
 " markdown
-NeoBundle 'tpope/vim-markdown'
+"NeoBundle 'tpope/vim-markdown'
+NeoBundle 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_no_default_key_mappings=1
 
 " coffee script
 NeoBundle 'kchmck/vim-coffee-script'
@@ -297,7 +300,7 @@ endif "}}}
 " Encording {{{
 
 "fyletypeの自動切り替え
-NeoBundleLazy 'osyo-manga/vim-precious' , { 'depends' : [ 'Shougo/context_filetype.vim' ] }
+"NeoBundleLazy 'osyo-manga/vim-precious' , { 'depends' : [ 'Shougo/context_filetype.vim' ] }
 if neobundle#tap('vim-precious') "{{{
   call neobundle#config({
         \  'autoload' : {
@@ -923,6 +926,7 @@ if neobundle#tap('lightline.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
+"markdownのfold設定
 NeoBundle 'kagerouttepaso/vim-ft-markdown_fold'
 
 "foldの折りたたみのところの文章を変更する
