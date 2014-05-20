@@ -245,8 +245,7 @@ NeoBundle 'nginx.vim'
 
 " markdown
 "NeoBundle 'tpope/vim-markdown'
-NeoBundle 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled=1
+NeoBundle 'kagerouttepaso/vim-markdown'
 let g:vim_markdown_no_default_key_mappings=1
 
 " coffee script
@@ -925,9 +924,6 @@ if neobundle#tap('lightline.vim') "{{{
 
   call neobundle#untap()
 endif "}}}
-
-"markdownのfold設定
-NeoBundle 'kagerouttepaso/vim-ft-markdown_fold'
 
 "foldの折りたたみのところの文章を変更する
 NeoBundle 'LeafCage/foldCC'
