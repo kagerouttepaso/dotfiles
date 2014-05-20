@@ -11,4 +11,5 @@ mklink /d %HOME_DIR%\.bash %DOT_DIR%\_bash
 cd %FONG_DIR%
 start ./Inconsolata-Bold.ttf
 start ./Inconsolata-Regular.ttf
+start ./Inconsolata-g-Powerline.ttf
 regedit.exe /s %FONTREG%
