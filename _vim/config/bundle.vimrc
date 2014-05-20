@@ -244,7 +244,9 @@ NeoBundle 'jQuery'
 NeoBundle 'nginx.vim'
 
 " markdown
-NeoBundle 'tpope/vim-markdown'
+"NeoBundle 'tpope/vim-markdown'
+NeoBundle 'kagerouttepaso/vim-markdown'
+let g:vim_markdown_no_default_key_mappings=1
 
 " coffee script
 NeoBundle 'kchmck/vim-coffee-script'
@@ -297,7 +299,7 @@ endif "}}}
 " Encording {{{
 
 "fyletypeの自動切り替え
-NeoBundleLazy 'osyo-manga/vim-precious' , { 'depends' : [ 'Shougo/context_filetype.vim' ] }
+"NeoBundleLazy 'osyo-manga/vim-precious' , { 'depends' : [ 'Shougo/context_filetype.vim' ] }
 if neobundle#tap('vim-precious') "{{{
   call neobundle#config({
         \  'autoload' : {
@@ -922,6 +924,21 @@ if neobundle#tap('lightline.vim') "{{{
 
   call neobundle#untap()
 endif "}}}
+
+"foldの折りたたみのところの文章を変更する
+NeoBundle 'LeafCage/foldCC'
+if neobundle#tap('foldCC') "{{{
+  call neobundle#config({
+        \})
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  set foldtext=FoldCCtext()
+  set foldcolumn=1
+  set fillchars=vert:\|
+  call neobundle#untap()
+endif "}}}
+
+
 call neobundle#end()
 
 filetype plugin indent on     " Required!
