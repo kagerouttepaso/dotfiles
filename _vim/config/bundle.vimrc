@@ -41,6 +41,23 @@ if g:is_can_use_neocomplete
     function! neobundle#hooks.on_source(bundle)
       source $DOTVIM_DIR/config/completion.neocomplete.vimrc
     endfunction
+    augroup neocompleteKeyBind
+      autocmd!
+      " buffer開いたらneoconでcache
+      autocmd BufReadPost,BufEnter,BufWritePost :NeoCompleteBufferMakeCache <buffer>
+      " Enable omni completion.
+      " FileType毎のOmni補完を設定
+      autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
+      autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+      autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
+      autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
+      autocmd FileType xml        setlocal omnifunc=xmlcomplete#CompleteTags
+      autocmd FileType php        setlocal omnifunc=phpcomplete#CompletePHP
+      autocmd FileType c          setlocal omnifunc=ccomplete#Complete
+      autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
+      autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    augroup END
+
     "" Recommended key-mappings.
     " <CR>: close popup and save indent.
     inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>

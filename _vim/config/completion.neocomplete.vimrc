@@ -51,22 +51,6 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 "let g:neocomplete#disable_auto_complete = 1
 "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
-augroup neocompleteKeyBind
-  autocmd!
-  " buffer開いたらneoconでcache
-  autocmd BufReadPost,BufEnter,BufWritePost :NeoCompleteBufferMakeCache <buffer>
-  " Enable omni completion.
-  " FileType毎のOmni補完を設定
-  autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType xml        setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType php        setlocal omnifunc=phpcomplete#CompletePHP
-  autocmd FileType c          setlocal omnifunc=ccomplete#Complete
-  autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-augroup END
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
