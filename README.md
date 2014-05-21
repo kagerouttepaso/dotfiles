@@ -205,7 +205,7 @@ f         |[unite]
 [unite]r  |レジスタ一覧`<C-u>Unite register<CR>`
 [unite]g  |グレップ検索`<C-u>Unite grep:. -buffer-name=serch-buffer -no-quit<CR><C-r><C-w><CR>`
 [unite]f  |ファイル検索(win以外)`<C-u>Unite find:. -buffer-name=serch-file -no-quit<CR>*<C-r><C-w>*<CR>`
-[unite]f  |ファイル検索(win) **日本語が文字化けしてしまう…**<`2`>`<C-u>UniteWithCursorWord everything/async -no-quit<CR>`
+[unite]f  |ファイル検索(win) **日本語が文字化けしてしまう…**`<C-u>UniteWithCursorWord everything/async -no-quit<CR>`
 [unite]s  |ソースリスト`<C-u>Unite source<CR>`
 [unite]o  |アウトラインを展開`<C-u>Unite outline -vertical -buffer-name=outline -no-start-insert<CR>`
 
@@ -213,9 +213,22 @@ f         |[unite]
 キーバインドを変更してある。とりあえず[tmux.conf](./_tmux.conf)と[screenrc](./_screenrc)を見てください。  
 バインドはteratermが`Ctrl+o`screenが`ctrl+a`にバインドされてます
 
+vimのシンタックス
+----
+vimを使ってjavascriptの編集をするときは `hshint` をインストールするとシンタックスのチェックをしてもらえる  
+windows環境でそれを行うときは、[nodejsをダウンロード][Nodejs_HomePage]して下記のコマンドを実行
+
+``` bash:install_nodejs
+npm config set proxy http://proxy.com:port --global
+npm install jshint --global
+```
+
 memo
 ----
-cygwinでctagsを使うときはExuburantCtagsを使わないとうまく行かなそう
+cygwinでctagsを使うときはExuburantCtagsを使わないとうまく行かなそう  
+
+
+
 
 todo
 ----
@@ -228,3 +241,4 @@ todo
 [MinGW_Download]: http://sourceforge.net/projects/mingw/files/ "mingw_download"
 [Kaoriya_Gvim_Download]: http://www.kaoriya.net/software/vim/ "Download Kaoriya Gvim"
 [unite-everything_install]: https://github.com/sgur/unite-everything "unite-everythingのインストール"
+[Nodejs_HomePage]: http://nodejs.org/ "nodejsのホームページ"
