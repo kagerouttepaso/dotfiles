@@ -27,6 +27,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 endif
 
 " Completion {{{
+
 " 補完 neocomplete.vim : 究極のVim的補完環境
 if g:is_can_use_neocomplete
   NeoBundleLazy 'Shougo/neocomplete.vim', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
@@ -40,6 +41,54 @@ if g:is_can_use_neocomplete
     function! neobundle#hooks.on_source(bundle)
       source $DOTVIM_DIR/config/completion.neocomplete.vimrc
     endfunction
+    augroup neocompleteKeyBind
+      autocmd!
+      " buffer開いたらneoconでcache
+      autocmd BufReadPost,BufEnter,BufWritePost :NeoCompleteBufferMakeCache <buffer>
+      " Enable omni completion.
+      " FileType毎のOmni補完を設定
+      autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
+      autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+      autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
+      autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
+      autocmd FileType xml        setlocal omnifunc=xmlcomplete#CompleteTags
+      autocmd FileType php        setlocal omnifunc=phpcomplete#CompletePHP
+      autocmd FileType c          setlocal omnifunc=ccomplete#Complete
+      autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
+      autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    augroup END
+
+    "" Recommended key-mappings.
+    " <CR>: close popup and save indent.
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+      return neocomplete#close_popup() . "\<CR>"
+      " For no inserting <CR> key.
+      "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+    endfunction
+    " <TAB>: completion.
+    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    " <C-h>, <BS>: close popup and delete backword char.
+    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+    " 補完を選択しpopupを閉じる
+    inoremap <expr><C-y>  neocomplete#close_popup()
+    " 補完をキャンセルしpopupを閉じる
+    inoremap <expr><C-e>  neocomplete#cancel_popup()
+    " Close popup by <Space>.
+    "inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+    " For cursor moving in insert mode(Not recommended)
+    "inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+    "inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+    "inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+    "inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+    " Or set this.
+    "let g:neocomplete#enable_cursor_hold_i = 1
+    " Or set this.
+    "let g:neocomplete#enable_insert_char_pre = 1
+
     call neobundle#untap()
   endif "}}}
 else
@@ -47,7 +96,6 @@ else
   NeoBundle 'Shougo/neocomplcache.vim', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
   source $DOTVIM_DIR/config/completion.neocomplcache.vimrc
 endif
-
 
 " neocomplcacheのsinpet補完
 NeoBundleLazy 'Shougo/neosnippet.vim'
@@ -83,10 +131,12 @@ if neobundle#tap('neosnippet.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
+" デフォルトすにペット臭
 NeoBundle 'Shougo/neosnippet-snippets'
 " }}}
 
 " Edit {{{
+
 " 改造したmonday.vim Ctrl+a or Ctrl+x の大幅な拡張
 NeoBundle 'kagerouttepaso/monday'  
 if neobundle#tap('monday') "{{{
@@ -121,6 +171,7 @@ endif "}}}
 " }}}
 
 " Searching/Moving{{{
+
 " grep.vim : 外部のgrep利用。:Grepで対話形式でgrep :Rgrepは再帰
 NeoBundleLazy 'grep.vim'
 if neobundle#tap('grep.vim') "{{{
@@ -147,10 +198,10 @@ if neobundle#tap('open-browser.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-
 " }}}
 
 " Programming {{{
+
 " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
 NeoBundleLazy 'thinca/vim-quickrun'
 if neobundle#tap('vim-quickrun') "{{{
@@ -202,8 +253,6 @@ if neobundle#tap('taglist.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-
-
 " tagsを利用したソースコード閲覧・移動補助機能 tagsファイルの自動生成
 "NeoBundle 'SrcExpl'
 "let g:SrcExpl_isUpdateTags = 0         " tagsをsrcexpl起動時に自動で作成（更新）
@@ -244,9 +293,8 @@ NeoBundle 'jQuery'
 NeoBundle 'nginx.vim'
 
 " markdown
-"NeoBundle 'tpope/vim-markdown'
 NeoBundle 'kagerouttepaso/vim-markdown'
-let g:vim_markdown_no_default_key_mappings=1
+let g:vim_markdown_no_default_key_mappings=1 "キーマップの拡張を行わない
 
 " coffee script
 NeoBundle 'kchmck/vim-coffee-script'
@@ -271,6 +319,7 @@ NeoBundle 'scrooloose/syntastic'
 
 " DockerFile
 NeoBundle 'ekalinin/Dockerfile.vim'
+
 " }}}
 
 " Buffer {{{
@@ -294,16 +343,17 @@ if neobundle#tap('Kwbd.vim') "{{{
   endfunction
   call neobundle#untap()
 endif "}}}
+
 " }}}
 
 " Encording {{{
 
 "fyletypeの自動切り替え
-"NeoBundleLazy 'osyo-manga/vim-precious' , { 'depends' : [ 'Shougo/context_filetype.vim' ] }
+NeoBundleLazy 'osyo-manga/vim-precious' , { 'depends' : [ 'Shougo/context_filetype.vim' ] }
 if neobundle#tap('vim-precious') "{{{
   call neobundle#config({
         \  'autoload' : {
-        \    'filetypes' : ['vim', 'markdown', 'help' ],
+        \    'filetypes' : ['vim', 'markdown', 'help', 'mkd' ],
         \    'on_source' : ['context_filetype.vim'] 
         \  }
         \})
@@ -318,7 +368,7 @@ if neobundle#tap('vim-precious') "{{{
           \	"help" : {
           \		"setfiletype" : 1
           \	},
-          \	"markdown" : {
+          \	"mkd" : {
           \		"setfiletype" : 1
           \	},
           \}
@@ -326,7 +376,12 @@ if neobundle#tap('vim-precious') "{{{
   call neobundle#untap()
 endif "}}}
 
+"文字コードの自動認識
 NeoBundle 'banyan/recognize_charcode.vim'
+
+" }}}
+
+" Utility {{{
 
 "ソースのレイアウト修正に便利なやつ
 NeoBundleLazy 'junegunn/vim-easy-align'
@@ -369,10 +424,6 @@ if neobundle#tap('vim-easy-align') "{{{
   endfunction
   call neobundle#untap()
 endif "}}}
-
-" }}}
-
-" Utility {{{
 
 " vimshell : vimのshell
 NeoBundleLazy 'Shougo/vimshell'
@@ -510,9 +561,6 @@ endif "}}}
 " Redmine on Vim
 "NeoBundle 'mattn/vim-metarw-redmine'
 
-" Gitの変更点をわかり易く表示
-NeoBundle 'sgur/vim-gitgutter'
-
 " Doxygenのサポーターらしい
 NeoBundleLazy 'DoxygenToolkit.vim'
 if neobundle#tap('DoxygenToolkit.vim') "{{{
@@ -550,7 +598,6 @@ if neobundle#tap('yankround.vim') "{{{
   endfunction
   call neobundle#untap()
 endif "}}}
-
 
 " vim-over : かっちょいい置換
 NeoBundleLazy 'osyo-manga/vim-over'
@@ -601,9 +648,11 @@ NeoBundle 'chriskempson/tomorrow-theme'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'w0ng/vim-hybrid'
+
 " }}}
 
 " Unite {{{{
+
 " unite.vim : - すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
 NeoBundleLazy 'Shougo/unite.vim'
 if neobundle#tap('unite.vim') "{{{
@@ -686,6 +735,7 @@ if neobundle#tap('unite.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
+"outline用
 NeoBundleLazy 'Shougo/unite-outline' , { 'depends' : [ 'Shougo/unite.vim' ] }
 if neobundle#tap('unite-outline') "{{{
   call neobundle#config({
@@ -698,6 +748,7 @@ if neobundle#tap('unite-outline') "{{{
   call neobundle#untap()
 endif "}}}
 
+"tag用
 NeoBundleLazy 'tsukkee/unite-tag' , { 'depends' : [ 'Shougo/unite.vim' ] }
 if neobundle#tap('unite-tag') "{{{
   call neobundle#config({
@@ -710,6 +761,7 @@ if neobundle#tap('unite-tag') "{{{
   call neobundle#untap()
 endif "}}}
 
+"file_mru用
 NeoBundle 'Shougo/neomru.vim'
 
 " Uniteでeverythingの呼び出す
@@ -741,6 +793,7 @@ endif "}}}
 " }}}
 
 " gvim  {{{{
+
 " Gvim上でフォントのサイズを変更する
 NeoBundleLazy 'thinca/vim-fontzoom'
 if neobundle#tap('vim-fontzoom') "{{{
@@ -777,11 +830,9 @@ endif "}}}
 
 " }}}
 
-"レジスタを汚さない置換ペースト
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'kana/vim-operator-replace'
-map _  <Plug>(operator-replace)
+" display {{{
 
+"ステータスラインをめっちゃかっこ良くする
 NeoBundle 'itchyny/lightline.vim'
 if neobundle#tap('lightline.vim') "{{{
   call neobundle#config({
@@ -938,6 +989,15 @@ if neobundle#tap('foldCC') "{{{
   call neobundle#untap()
 endif "}}}
 
+" Gitの変更点をわかり易く表示
+NeoBundle 'sgur/vim-gitgutter'
+
+" }}}
+
+"レジスタを汚さない置換ペースト
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'kana/vim-operator-replace'
+map _  <Plug>(operator-replace)
 
 call neobundle#end()
 
