@@ -830,6 +830,27 @@ endif "}}}
 
 " }}}
 
+"検索のステータスをステータスラインに表示
+NeoBundleLazy 'osyo-manga/vim-anzu' 
+if neobundle#tap('vim-anzu') "{{{
+  call neobundle#config({
+        \    'mappings'     : ['<Plug>(anzu-'],
+        \})
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  " mapping
+  nmap n <Plug>(anzu-n)
+  nmap N <Plug>(anzu-N)
+  nmap * <Plug>(anzu-star)
+  nmap # <Plug>(anzu-sharp)
+  " clear status
+  "nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+  nmap <Esc><Esc> :nohlsearch<CR><ESC><Plug>(anzu-clear-search-status)
+
+  call neobundle#untap()
+endif "}}}
+
+
 " display {{{
 
 "ステータスラインをめっちゃかっこ良くする
@@ -837,21 +858,25 @@ NeoBundle 'itchyny/lightline.vim'
 if neobundle#tap('lightline.vim') "{{{
   call neobundle#config({
         \})
-  function! neobundle#hooks.on_source(bundle)
-  endfunction
   let g:lightline = {
         \ 'colorscheme': 'jellybeans',
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
         \   'left': [
         \     ['mode', 'paste'],
-        \     ['fugitive', 'gitgutter', 'filename'],
+        \     ['fugitive', 'gitgutter', 'filename' ],
         \   ],
         \   'right': [
-        \     ['lineinfo', 'syntastic'],
+        \     ['syntastic', 'search_status', 'lineinfo'],
         \     ['percent'],
         \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
         \   ]
+        \ },
+        \ 'component_expand': {
+        \   'syntastic': 'SyntasticStatuslineFlag',
+        \ },
+        \ 'component_type': {
+        \   'syntastic': 'error',
         \ },
         \ 'component_function': {
         \   'modified': 'MyModified',
@@ -862,19 +887,20 @@ if neobundle#tap('lightline.vim') "{{{
         \   'filetype': 'MyFiletype',
         \   'fileencoding': 'MyFileencoding',
         \   'mode': 'MyMode',
-        \   'syntastic': 'SyntasticStatuslineFlag',
         \   'charcode': 'MyCharCode',
         \   'gitgutter': 'MyGitGutter',
         \   'search_status': 'anzu#search_status',
-        \ }}
+        \ }
+        \ }
 
   if has('multi_byte')
     let g:lightline.separator = {'left': '⮀', 'right': '⮂'}
     let g:lightline.subseparator = {'left': '⮁', 'right': '⮃'}
   endif
 
+
   function! MyModified() "{{{
-    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '✘' : &modifiable ? '' : '-'
   endfunction "}}}
 
   function! MyReadonly() "{{{
@@ -914,7 +940,10 @@ if neobundle#tap('lightline.vim') "{{{
   endfunction "}}}
 
   function! MyMode() "{{{
-    return winwidth('.') > 60 ? lightline#mode() : ''
+    return  &ft == 'unite'    ? 'Unite'    :
+          \ &ft == 'vimfiler' ? 'VimFiler' :
+          \ &ft == 'vimshell' ? 'VimShell' :
+          \ winwidth('.') > 60 ? lightline#mode() : ''
   endfunction "}}}
 
   function! MyCharCode() "{{{
@@ -973,6 +1002,15 @@ if neobundle#tap('lightline.vim') "{{{
     return join(ret, ' ')
   endfunction "}}}
 
+  augroup AutoSyntastic "{{{
+    autocmd!
+    autocmd BufWritePost *.h,*.c,*.cpp,*.js call s:syntastic()
+  augroup END
+  function! s:syntastic()
+    SyntasticCheck
+    call lightline#update()
+  endfunction "}}}
+
   call neobundle#untap()
 endif "}}}
 
@@ -990,7 +1028,10 @@ if neobundle#tap('foldCC') "{{{
 endif "}}}
 
 " Gitの変更点をわかり易く表示
-NeoBundle 'sgur/vim-gitgutter'
+NeoBundle 'airblade/vim-gitgutter'
+  let g:gitgutter_sign_added = '✚'
+  let g:gitgutter_sign_modified = '➜'
+  let g:gitgutter_sign_removed = '✘'
 
 " }}}
 
