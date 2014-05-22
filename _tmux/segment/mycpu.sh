@@ -23,7 +23,7 @@ run_segment() {
     fi
 
     if [ -n "$cpu_used" ] && [ -n "$mem_per" ]; then
-        echo "${cpu_used}, ${mem_per}" | awk -F', ' '{printf("C:%.1f%% M:%.1f%%",$1,$2)}'
+        printf "C:%d%% M:%d%%" ${cpu_used} ${mem_per}
         return 0
     else
         return 1
