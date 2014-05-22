@@ -4,6 +4,9 @@
 run_segment() {
 	sleeptime="0.5"
 	iface="eth0"
+    if [ ! -d /sys/class/net/"$iface"/statistics ]; then
+        return 1
+    fi
 	RXB=$(</sys/class/net/"$iface"/statistics/rx_bytes)
 	TXB=$(</sys/class/net/"$iface"/statistics/tx_bytes)
 	sleep "$sleeptime" 
