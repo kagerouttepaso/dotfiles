@@ -21,18 +21,17 @@ let g:neocomplcache_enable_underbar_completion = 1
 
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-    \ 'c' : $HOME.'/.vim/dict/c.dict',
-    \ 'cpp' : $HOME.'/.vim/dict/cpp.dict',
-    \ 'java' : $HOME.'/.vim/dict/java.dict',
+    \ 'default'    : '',
+    \ 'vimshell'   : $HOME.'/.vimshell_hist',
+    \ 'scheme'     : $HOME.'/.gosh_completions',
+    \ 'c'          : $HOME.'/.vim/dict/c.dict',
+    \ 'cpp'        : $HOME.'/.vim/dict/cpp.dict',
+    \ 'java'       : $HOME.'/.vim/dict/java.dict',
     \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
-    \ 'ocaml' : $HOME.'/.vim/dict/ocaml.dict',
-    \ 'perl' : $HOME.'/.vim/dict/perl.dict',
-    \ 'php' : $HOME.'/.vim/dict/php.dict',
-    \ 'scheme' : $HOME.'/.vim/dict/scheme.dict',
-    \ 'vim' : $HOME.'/.vim/dict/vim.dict'
+    \ 'ocaml'      : $HOME.'/.vim/dict/ocaml.dict',
+    \ 'perl'       : $HOME.'/.vim/dict/perl.dict',
+    \ 'php'        : $HOME.'/.vim/dict/php.dict',
+    \ 'vim'        : $HOME.'/.vim/dict/vim.dict',
         \ }
 
 " Define keyword.
