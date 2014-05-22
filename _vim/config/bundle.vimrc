@@ -889,7 +889,7 @@ if neobundle#tap('lightline.vim') "{{{
         \   'mode': 'MyMode',
         \   'charcode': 'MyCharCode',
         \   'gitgutter': 'MyGitGutter',
-        \   'search_status': 'anzu#search_status',
+        \   'search_status': 'MyAnzu',
         \ }
         \ }
 
@@ -928,7 +928,7 @@ if neobundle#tap('lightline.vim') "{{{
   endfunction "}}}
 
   function! MyFileformat() "{{{
-    return winwidth('.') > 70 ? &fileformat : ''
+    return winwidth('.') > 80 ? &fileformat : ''
   endfunction "}}}
 
   function! MyFiletype() "{{{
@@ -936,7 +936,16 @@ if neobundle#tap('lightline.vim') "{{{
   endfunction "}}}
 
   function! MyFileencoding() "{{{
-    return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return winwidth('.') > 80 ? (strlen(&fenc) ? &fenc : &enc) : ''
+  endfunction "}}}
+
+  function! MyAnzu() "{{{
+    try
+      let _ = anzu#search_status()
+      return winwidth('.') > strlen(_)+90 ? _ : ''
+    catch
+    endtry
+    return ''
   endfunction "}}}
 
   function! MyMode() "{{{
@@ -947,7 +956,7 @@ if neobundle#tap('lightline.vim') "{{{
   endfunction "}}}
 
   function! MyCharCode() "{{{
-    if winwidth('.') <= 70
+    if winwidth('.') <= 90
       return ''
     endif 
 
@@ -1004,7 +1013,7 @@ if neobundle#tap('lightline.vim') "{{{
 
   augroup AutoSyntastic "{{{
     autocmd!
-    autocmd BufWritePost *.h,*.c,*.cpp,*.js call s:syntastic()
+    autocmd BufWritePost *.h,*.c,*.cpp,*.js,*.sh call s:syntastic()
   augroup END
   function! s:syntastic()
     SyntasticCheck
