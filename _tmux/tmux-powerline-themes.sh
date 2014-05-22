@@ -46,7 +46,7 @@ if [ -z $TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS ]; then
 		#"now_playing 234 37" \
 		#"cpu 240 136" \
 		"mycpu 240 136" \
-		"load 237 167" \
+		"myload 237 167" \
 		#"tmux_mem_cpu_load 234 136" \
 		"battery 137 127" \
 		"weather 37 255" \
