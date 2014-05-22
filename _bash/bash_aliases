@@ -88,6 +88,7 @@ if builtin command -v uname >> /dev/null && builtin command -v grep >> /dev/null
         export ARCHz="cygwin"
         echo Cygwin
         export DISPLAY=:0.0
+        export PATH="$PATH:$HOME/dotfiles/_apt-cyg"
     elif [ "`uname -sr | grep MINGW`" ] ; then
         export ARCHz="mingw"
         echo Mingw
