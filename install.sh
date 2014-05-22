@@ -19,7 +19,7 @@ if [ ! -f ${PWD_DIR}/_my_proxy_setting ]; then
     touch ${PWD_DIR}/_my_proxy_setting
 fi
 
-DOT_FILES=(oh-my-zsh autojump my_proxy_setting gitconfig vimrc gvimrc zshrc vim screenrc tmux.conf minttyrc bash bashrc)
+DOT_FILES=(oh-my-zsh autojump my_proxy_setting gitconfig vimrc gvimrc zshrc vim screenrc tmux.conf tmux-powerline minttyrc bash bashrc)
 for file in ${DOT_FILES[@]}
 do
     if [ -L ~/.${file} ]; then
