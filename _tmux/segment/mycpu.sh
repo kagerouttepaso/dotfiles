@@ -13,7 +13,7 @@ run_segment() {
         memory_cache=`echo $memory_stat | sed -e "s/^ *\([^ ]\+\) \+\([^ ]\+\) \+\([^ ]\+\) \+\([^ ]\+\).*$/\4/g"`
 
         mem_used=$(echo "scale=1; $mem_total - $memory_buff - $memory_free - $memory_cache " | bc)
-        mem_per=$(echo "scale=1; $mem_used / $mem_total * 100 " | bc)
+        mem_per=$(echo "scale=1; ( $mem_used *100 ) / ( $mem_total ) " | bc)
 
         cpu_used=$(echo "scale=1; 100 - $cpu_idle" | bc)
     elif shell_is_osx; then 
