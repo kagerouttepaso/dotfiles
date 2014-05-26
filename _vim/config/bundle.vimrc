@@ -1059,7 +1059,7 @@ filetype plugin indent on     " Required!
 " :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
 
 " Installation check.
-NeoBundleCheck
+"NeoBundleCheck
 
 " vim:set foldmethod=marker:
 if !has('vim_starting')
