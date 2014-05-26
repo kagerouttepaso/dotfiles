@@ -4,7 +4,9 @@
 
 " colorscheme mrkn256
 " colorscheme yuroyoro256
-colorscheme jellybeans
+if neobundle#is_installed("jellybeans.vim")
+  colorscheme jellybeans
+endif
 
 
 
