@@ -54,7 +54,7 @@ fi
 #check arch and export ARCHz
 if builtin command -v uname >> /dev/null && builtin command -v grep >> /dev/null ; then
     echo `uname -sr`
-    if [ "`uname -sr | grep Linux`"  ] ; then
+    if [ "`uname -sr | grep Linux`" ] ; then
         export ARCHz="linux"
         echo Linux
         md2html(){
@@ -92,6 +92,13 @@ if builtin command -v uname >> /dev/null && builtin command -v grep >> /dev/null
     elif [ "`uname -sr | grep MINGW`" ] ; then
         export ARCHz="mingw"
         echo Mingw
+    elif [ "`uname -sr | grep Darwin`"] ; then
+        export ARCHz="mac"
+        echo mac
+        if [ "${SSH_CLIENT}" != "" ]; then
+            LANG="`defaults read -g AppleLocale | sed 's/@.*$//g'`.UTF-8"
+            export LANG
+        fi
     else
         export ARCHz="dummy"
     fi
