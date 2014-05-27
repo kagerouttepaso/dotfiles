@@ -22,10 +22,9 @@ fi
 
 DOT_FILES=(oh-my-zsh autojump my_proxy_setting gitconfig vimrc gvimrc zshrc vim screenrc tmux.conf tmux-powerline tmux tmux-powerlinerc bash bashrc)
 if builtin command -v uname >> /dev/null ; then
-    #if [[ "`uname -sr`" =~ Linux ]] ; then
-    if [[ "`uname -sr`" =~ CYGWIN ]] ; then
+    if [ "`uname -sr | grep CYGWIN`" ] ; then
         DOT_FILES+=( minttyrc )
-    elif [[ "`uname -sr`" =~ Darwin ]] ; then
+    elif [ "`uname -sr | grep Darwin`" ] ; then
         DOT_FILES+=( profile )
     fi
 fi
