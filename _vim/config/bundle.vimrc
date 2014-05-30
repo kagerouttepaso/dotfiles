@@ -316,6 +316,8 @@ NeoBundle 'kagerouttepaso/textile.vim'
 
 " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
 NeoBundle 'scrooloose/syntastic'
+" Enable this option to tell syntastic to always stick any detected errors into
+let g:syntastic_always_populate_loc_list=1
 
 " DockerFile
 NeoBundle 'ekalinin/Dockerfile.vim'
@@ -698,6 +700,8 @@ if neobundle#tap('unite.vim') "{{{
   " アウトラインを展開
   nnoremap <silent>[unite]t :<C-u>Unite outline -vertical -winwidth=50 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>
   nnoremap <silent>[unite]o :<C-u>Unite outline -vertical -winwidth=50 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>
+  "シンタックスエラーを表示
+  nnoremap <silent>[unite]e  :<C-u>Unite location_list<CR>
   function! neobundle#hooks.on_source(bundle)
     " Start insert.
     let g:unite_enable_start_insert = 1
@@ -787,6 +791,19 @@ if neobundle#tap('unite-everything') "{{{
   let g:unite_source_everything_full_path_search=1
   let g:unite_source_everything_limit=1000
   let g:unite_source_everything_ignore_pattern=""
+  call neobundle#untap()
+endif "}}}
+
+"Unite quickfix
+NeoBundle 'osyo-manga/unite-quickfix' , { 'depends' : [ 'Shougo/unite.vim' ] }
+if neobundle#tap('unite-quickfix') "{{{
+  call neobundle#config({
+        \  'autoload' : {
+        \    'unite_source' : ['location_list'],
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
   call neobundle#untap()
 endif "}}}
 
@@ -1054,6 +1071,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace'
 map _  <Plug>(operator-replace)
+
 
 call neobundle#end()
 
