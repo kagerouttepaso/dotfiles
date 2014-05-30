@@ -132,7 +132,7 @@ if neobundle#tap('neosnippet.vim') "{{{
 endif "}}}
 
 " デフォルトすにペット臭
-NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'kagerouttepaso/neosnippet-snippets'
 " }}}
 
 " Edit {{{
