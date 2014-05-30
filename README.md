@@ -71,6 +71,10 @@ dotfiles    | `C:\Users\UserName`
 - フォントのインストールを行うとかっこいいCygwin、teraterm環境を構築できる。  
   インストールの仕方は[Help][Font_Install]を参照  
   [install.bat](./install.bat)を実行すれば自動で入る
+- mingwについて
+    - [Mingw64のダウンロード][link_mingw_64_download]
+    - [MIngw32とmsysのダウンロード][link_msys_windows_download]
+    - [Node.jsのダウンロード][nodejs_homepage]
 
 コマンド
 --------
@@ -218,7 +222,7 @@ vimのシンタックス
 vimを使ってjavascriptの編集をするときは `hshint` をインストールするとシンタックスのチェックをしてもらえる  
 windows環境でそれを行うときは、[nodejsをダウンロード][Nodejs_HomePage]して下記のコマンドを実行
 
-``` bash:install_nodejs
+``` bash
 npm config set proxy http://proxy.com:port --global
 npm install jshint --global
 ```
@@ -242,3 +246,5 @@ todo
 [Kaoriya_Gvim_Download]: http://www.kaoriya.net/software/vim/ "Download Kaoriya Gvim"
 [unite-everything_install]: https://github.com/sgur/unite-everything "unite-everythingのインストール"
 [Nodejs_HomePage]: http://nodejs.org/ "nodejsのホームページ"
+[link_mingw_64_download]:http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/4.9.0/threads-posix/seh/x86_64-4.9.0-release-posix-seh-rt_v3-rev1.7z/download "mingw64のダウンロード"
+[link_msys_windows_download]:http://sourceforge.net/projects/mingw/files/Installer/mingw-get-setup.exe/download "msysのダウンロード"
