@@ -22,7 +22,8 @@ cd dotfiles
 - exuberant-ctags
 - xclip
 - curl
-- silversearcher-ag
+- ~~silversearcher-ag~~
+- [pt][link_download_pt]
 
 ubuntu12.04以上ならこっちを`git clone`してchefを走らせたほうが賢明です  
 [Chef_work][Chef_work]
@@ -248,3 +249,4 @@ todo
 [Nodejs_HomePage]: http://nodejs.org/ "nodejsのホームページ"
 [link_mingw_64_download]:http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/4.9.0/threads-posix/seh/x86_64-4.9.0-release-posix-seh-rt_v3-rev1.7z/download "mingw64のダウンロード"
 [link_msys_windows_download]:http://sourceforge.net/projects/mingw/files/Installer/mingw-get-setup.exe/download "msysのダウンロード"
+[link_download_pt]: https://github.com/monochromegane/the_platinum_searcher "the platinum servher"
