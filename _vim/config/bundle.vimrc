@@ -132,7 +132,7 @@ if neobundle#tap('neosnippet.vim') "{{{
 endif "}}}
 
 " デフォルトすにペット臭
-NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'kagerouttepaso/neosnippet-snippets'
 " }}}
 
 " Edit {{{
@@ -703,6 +703,12 @@ if neobundle#tap('unite.vim') "{{{
     let g:unite_enable_start_insert = 1
     let g:unite_source_file_mru_limit = 200
     let g:unite_source_grep_max_candidates = 2000
+    if executable('pt')
+      let g:unite_source_grep_command = 'pt'
+      let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+      let g:unite_source_grep_recursive_opt = ''
+      let g:unite_source_grep_encoding = 'utf-8'
+    endif
     if executable('ag')
       let g:unite_source_grep_command = 'ag'
       let g:unite_source_grep_default_opts = '-i --nogroup --nocolor --column --line-numbers'
