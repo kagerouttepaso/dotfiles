@@ -121,63 +121,68 @@ cdcyg     |move to desktop
 * 前回終了したカーソル行に移動
 * 補完にはNeocomplateを使用するが、使えない時はNeocomplecacheを使う
 
+#### vimのシンタックス
+**javascript**
+vimを使ってjavascriptの編集をするときは `hshint` をインストールするとシンタックスのチェックをしてもらえる  
+windows環境でそれを行うときは、[nodejsをダウンロード][Nodejs_HomePage]して下記のコマンドを実行
+
 #### 拡張コマンド
 **挿入モード**  
 
-command   |mean
-:--       |:--
-`<C-p>`     |貼付け
-`<C-j>`     |`<Down>`
-`<C-k>`     |`<Up>`
-`<C-h>`     |`<Left>`
-`<C-l>`     |`<Right>`
-`jj`        |`<esc>`
-`,`         |`,<Space>`
+command | mean
+:--     | :--
+`<C-p>` | 貼付け
+`<C-j>` | `<Down>`
+`<C-k>` | `<Up>`
+`<C-h>` | `<Left>`
+`<C-l>` | `<Right>`
+`jj`    | `<esc>`
+`,`     | `,<Space>`
 
 
 **ノーマルモード**  
 
-command      |mean
-:--          |:--
-`<Space>`    |次のバッファへ
-`b`          |前のバッファへ
-`<C-g><C-g>` |カーソル下の単語をバッファを対象にGrep
-`<C-g><C-r>` |カーソル下の単語をカレントフォルダから再帰的にGrep
-`Ctags`      |:!ctags -R
-`tt`         |タグジャンプ
-`tb`         |現在開いているバッファを閉じてタグスタックをひとつ戻す
-`t1~t9`      |対応したタブ番号へ飛ぶ
-`tn`         |次のタブへ
-`tp`         |前のタブへ
-`tr`         |バッファをタブ展開
-`0`          |行末へ
-`9`          |行頭へ
-`+`          |フレームサイズ増加
-`-`          |フレームサイズ減少
-`(`          |対応するカッコに移動
-`)`          |対応するカッコに移動
-`vy`         |カーソル位置の単語をヤンク
-`<C-j>`      |`<C-w>j`
-`<C-k>`      |`<C-w>k`
-`<C-l>`      |`<C-w>l`
-`<C-h>`      |`<C-w>h`
-`gl`         |`:GitGutterNextHunk`
-`gh`         |`:GitGutterPrevHunk`
-`<C-p>`      |ペーストするレジスタを一つ古いものにする(ペーストした直後のみ)
-`<C-n>`      |ペーストするレジスタを一つ新しいものにする(ペーストした直後のみ)
-`ss`         |置換開始
-`sw`         |カーソル以下の単語を置換
-
+command      | mean
+:--          | :--
+`<Space>`    | 次のバッファへ
+`b`          | 前のバッファへ
+`<C-g><C-g>` | カーソル下の単語をバッファを対象にGrep
+`<C-g><C-r>` | カーソル下の単語をカレントフォルダから再帰的にGrep
+`Ctags`      | :!ctags -R
+`tt`         | タグジャンプ
+`tb`         | 現在開いているバッファを閉じてタグスタックをひとつ戻す
+`t1~t9`      | 対応したタブ番号へ飛ぶ
+`tn`         | 次のタブへ
+`tp`         | 前のタブへ
+`tr`         | バッファをタブ展開
+`0`          | 行末へ
+`9`          | 行頭へ
+`+`          | フレームサイズ増加
+`-`          | フレームサイズ減少
+`(`          | 対応するカッコに移動
+`)`          | 対応するカッコに移動
+`vy`         | カーソル位置の単語をヤンク
+`<C-j>`      | `<C-w>j`
+`<C-k>`      | `<C-w>k`
+`<C-l>`      | `<C-w>l`
+`<C-h>`      | `<C-w>h`
+`gl`         | `:GitGutterNextHunk`
+`gh`         | `:GitGutterPrevHunk`
+`<C-p>`      | ペーストするレジスタを一つ古いものにする(ペーストした直後のみ)
+`<C-n>`      | ペーストするレジスタを一つ新しいものにする(ペーストした直後のみ)
+`ss`         | 置換開始
+`sw`         | カーソル以下の単語を置換
 
 **ビジュアルモード**  
 
-command     |mean
-:--         |:--
-`0`         |行末へ
-`v`         |行末へ
-`9`         |行頭へ
-`sw`        |文書全体で、選択した文章を置換
-`ss`        |選択した範囲を置換
+command  | mean
+:--      | :--
+`0`      | 行末へ
+`v`      | 行末へ
+`9`      | 行頭へ
+`sw`     | 文書全体で、選択した文章を置換
+`ss`     | 選択した範囲を置換
+`<Enter>` | Alignの修正モードへ
 
 **コマンド**  
 
@@ -198,30 +203,30 @@ VimFiler  |VimFilerの起動
 **Unite**  
 Grepの検索エンジンにはagが使えればそちらを使う  
 
-command   |mean
-:--       |:--
-f         |[unite]
-[unite]u  |`<C-u>Unite -no-split<Space>`
-[unite]a  |全部乗せ`<C-u>Unite -buffer-name=all buffer file_mru bookmark file grep:. find:.<CR><C-r><C-w><CR>*<C-r><C-w>*<CR>`
-[unite]b  |バッファ一覧`<C-u>Unite buffer<CR>`
-[unite]h  |最近使用したファイル一覧`<C-u>Unite buffer file_mru<CR>`
-[unite]d  |カレントディレクトリからファイル一覧`<C-u>Unite -buffer-name=files file<CR>`
-[unite]c  |現在のバッファのカレントディレクトリからファイル一覧`<C-u>UniteWithBufferDir -buffer-name=files file<CR>`
-[unite]r  |レジスタ一覧`<C-u>Unite register<CR>`
-[unite]g  |グレップ検索`<C-u>Unite grep:. -buffer-name=serch-buffer -no-quit<CR><C-r><C-w><CR>`
-[unite]f  |ファイル検索(win以外)`<C-u>Unite find:. -buffer-name=serch-file -no-quit<CR>*<C-r><C-w>*<CR>`
-[unite]f  |ファイル検索(win) **日本語が文字化けしてしまう…**`<C-u>UniteWithCursorWord everything/async -no-quit<CR>`
-[unite]s  |ソースリスト`<C-u>Unite source<CR>`
-[unite]o  |アウトラインを展開`<C-u>Unite outline -vertical -buffer-name=outline -no-start-insert<CR>`
+command  | mean
+:--      | :--
+f        | [unite]
+[unite]u | `<C-u>Unite -no-split<Space>`
+[unite]a | 全部乗せ`<C-u>Unite -buffer-name=all buffer file_mru bookmark file grep:. find:.<CR><C-r><C-w><CR>*<C-r><C-w>*<CR>`
+[unite]b | バッファ一覧`<C-u>Unite buffer<CR>`
+[unite]h | 最近使用したファイル一覧`<C-u>Unite buffer file_mru<CR>`
+[unite]d | カレントディレクトリからファイル一覧`<C-u>Unite -buffer-name=files file<CR>`
+[unite]D | Gitのカレントディレクトリからファイル一覧`<C-u>Unite -buffer-name=git_files file_rec/async:! -winheight=15<CR>`
+[unite]c | 現在のバッファのディレクトリからファイル一覧`<C-u>UniteWithBufferDir -buffer-name=files file<CR>`
+[unite]r | レジスタ一覧`<C-u>Unite register<CR>`
+[unite]g | グレップ検索`<C-u>Unite grep:. -buffer-name=serch-buffer -no-quit<CR><C-r><C-w><CR>`
+[unite]G | グレップ検索(対話的)`<C-u>Unite grep  -no-quit<CR>`
+[unite]f | ファイル検索(win以外)`<C-u>Unite find:. -buffer-name=serch-file -no-quit<CR>*<C-r><C-w>*<CR>`
+[unite]f | ファイル検索(win) **日本語が文字化けしてしまう…**`<C-u>UniteWithCursorWord everything/async -no-quit<CR>`
+[unite]F | ファイル検索(win)`<C-u>Unite everything/async -no-quit<CR>`
+[unite]s | ソースリスト`<C-u>Unite source<CR>`
+[unite]o | アウトラインを展開`<C-u>Unite outline -vertical -buffer-name=outline -no-start-insert<CR>`
+[unite]t | アウトラインを展開`<C-u>Unite outline -vertical -winwidth=50 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>`
 
 ### teratermとscreen
 キーバインドを変更してある。とりあえず[tmux.conf](./_tmux.conf)と[screenrc](./_screenrc)を見てください。  
 バインドはteratermが`Ctrl+o`screenが`ctrl+a`にバインドされてます
 
-vimのシンタックス
-----
-vimを使ってjavascriptの編集をするときは `hshint` をインストールするとシンタックスのチェックをしてもらえる  
-windows環境でそれを行うときは、[nodejsをダウンロード][Nodejs_HomePage]して下記のコマンドを実行
 
 ``` bash
 npm config set proxy http://proxy.com:port --global
