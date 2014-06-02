@@ -685,9 +685,9 @@ if neobundle#tap('unite.vim') "{{{
   " レジスタ一覧
   nnoremap <silent>[unite]r  :<C-u>Unite register<CR>
   " グレップ検索
-  nnoremap <silent>[unite]g  :<C-u>Unite grep:. -buffer-name=serch-buffer -no-quit<CR><C-r><C-w><CR>
+  nnoremap <silent>[unite]g  :<C-u>Unite grep:. -buffer-name=grep-search -no-quit<CR><C-r><C-w><CR>
   " グレップ検索
-  nnoremap <silent>[unite]G  :<C-u>Unite grep  -no-quit<CR>
+  nnoremap <silent>[unite]G  :<C-u>Unite grep   -buffer-name=grep-search -no-quit<CR>
   " ファイル検索
   if g:is_windows
     nnoremap <silent>[unite]f  :<C-u>UniteWithCursorWord everything/async -no-quit<CR>
@@ -707,13 +707,15 @@ if neobundle#tap('unite.vim') "{{{
     let g:unite_enable_start_insert = 1
     let g:unite_source_file_mru_limit = 200
     let g:unite_source_grep_max_candidates = 2000
+    let g:unite_update_time=100
+    "grepはwordソートを行う
+    call unite#custom_filters('grep', ['matcher_default', 'sorter_word', 'converter_default'])
     if executable('pt')
       let g:unite_source_grep_command = 'pt'
       let g:unite_source_grep_default_opts = '--nogroup --nocolor --smart-case'
       let g:unite_source_grep_recursive_opt = ''
       let g:unite_source_grep_encoding = 'utf-8'
-    endif
-    if executable('ag')
+    elseif executable('ag')
       let g:unite_source_grep_command = 'ag'
       let g:unite_source_grep_default_opts = '-i --nogroup --nocolor --column --line-numbers'
       let g:unite_source_grep_recursive_opt = ''
