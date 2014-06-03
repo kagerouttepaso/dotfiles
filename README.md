@@ -220,7 +220,7 @@ f        | [unite]
 [unite]f | ファイル検索(win) **日本語が文字化けしてしまう…**`<C-u>UniteWithCursorWord everything/async -no-quit<CR>`
 [unite]F | ファイル検索(win)`<C-u>Unite everything/async -no-quit<CR>`
 [unite]s | ソースリスト`<C-u>Unite source<CR>`
-[unite]o | アウトラインを展開`<C-u>Unite outline -vertical -buffer-name=outline -no-start-insert<CR>`
+[unite]o | アウトラインを展開`<C-u>Unite outline -buffer-name=outline -no-focus -no-start-insert<CR>`
 [unite]t | アウトラインを展開`<C-u>Unite outline -vertical -winwidth=50 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>`
 
 ### teratermとscreen
