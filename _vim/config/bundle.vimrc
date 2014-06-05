@@ -19,9 +19,9 @@ else
 NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
+      \     'cygwin'  : 'make -f make_cygwin.mak',
+      \     'mac'     : 'make -f make_mac.mak',
+      \     'unix'    : 'make -f make_unix.mak',
       \    },
       \ }
 endif
@@ -339,7 +339,7 @@ if neobundle#tap('Kwbd.vim') "{{{
   command! QQ :call QuitBuffer()
   function! QuitBuffer()
     :Kwbd
-    :quit
+    :confirm close
   endfunction
   function! neobundle#hooks.on_source(bundle)
   endfunction
@@ -390,7 +390,7 @@ NeoBundleLazy 'junegunn/vim-easy-align'
 if neobundle#tap('vim-easy-align') "{{{
   call neobundle#config({
         \  'autoload' : {
-        \  'mappings'  : [
+        \  'mappings' : [
         \    '<Plug>(EasyAlign)',
         \    '<Plug>(LiveEasyAlign)' ],
         \  }
@@ -401,27 +401,44 @@ if neobundle#tap('vim-easy-align') "{{{
   nmap <Leader><Leader>a <Plug>(LiveEasyAlign)
   function! neobundle#hooks.on_source(bundle)
     let g:easy_align_delimiters = {
-          \ '"': { 'pattern': '["]' },
-          \ '>': { 'pattern': '>>\|=>\|>' },
-          \ '/': { 'pattern': '//\+\|/\*\|\*/', 'ignore_groups': ['String'] },
-          \ '#': { 'pattern': '#\+', 'ignore_groups': ['String'], 'delimiter_align': 'l' },
-          \ ']': {
-          \     'pattern':       '[[\]]',
-          \     'left_margin':   0,
-          \     'right_margin':  0,
-          \     'stick_to_left': 0
-          \   },
-          \ ')': {
-          \     'pattern':       '[()]',
-          \     'left_margin':   0,
-          \     'right_margin':  0,
-          \     'stick_to_left': 0
-          \   },
-          \ 'd': {
-          \     'pattern': ' \(\S\+\s*[;=]\)\@=',
-          \     'left_margin': 0,
-          \     'right_margin': 0
-          \   }
+          \ ':' : {
+          \     'pattern'       : ':',
+          \     'left_margin'   : 1,
+          \     'right_margin'  : 1,
+          \     'stick_to_left' : 0
+          \ },
+          \ '"' : {
+          \     'pattern' : '["]'
+          \ },
+          \ '>' : {
+          \     'pattern': '>>\|=>\|>'
+          \ },
+          \ '/' : {
+          \     'pattern': '//\+\|/\*\|\*/',
+          \     'ignore_groups': ['String']
+          \ },
+          \ '#' : {
+          \     'pattern': '#\+',
+          \     'ignore_groups': ['String'],
+          \     'delimiter_align': 'l'
+          \ },
+          \ ']' : {
+          \     'pattern'       : '[[\]]',
+          \     'left_margin'   : 0,
+          \     'right_margin'  : 0,
+          \     'stick_to_left' : 0
+          \ },
+          \ ')' : {
+          \     'pattern'       : '[()]',
+          \     'left_margin'   : 0,
+          \     'right_margin'  : 0,
+          \     'stick_to_left' : 0
+          \ },
+          \ 'd' : {
+          \     'pattern'      : ' \(\S\+\s*[;=]\)\@=',
+          \     'left_margin'  : 0,
+          \     'right_margin' : 0
+          \ }
           \ }
   endfunction
   call neobundle#untap()
