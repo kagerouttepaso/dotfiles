@@ -129,42 +129,52 @@ __get_condition_symbol() {
 			hourmin=$(date +%H%M)
 			if [ "$hourmin" -ge "$sunset" -o "$hourmin" -le "$sunrise" ]; then
 				#echo "☽"
-				echo "☾"
+				#echo "☾"
+				echo "月夜"
 			else
 				#echo "☀"
-				echo "☼"
+				#echo "☼"
+				echo "晴"
 			fi
 			;;
-		"rain" | "mixed rain and snow" | "mixed rain and sleet" | "freezing drizzle" | "drizzle" | "light drizzle" | "freezing rain" | "showers" | "mixed rain and hail" | "scattered showers" | "isolated thundershowers" | "thundershowers" | "light rain with thunder" | "light rain" | "rain and snow")
+		"rain" | "mixed rain and snow" | "mixed rain and sleet" | "freezing drizzle" | "drizzle" | "light drizzle" | "freezing rain" | "showers" | "mixed rain and hail" | "scattered showers" | "isolated thundershowers" | "thundershowers" | "light rain with thunder" | "light rain" | "rain and snow" | "light rain shower")
 			#echo "☂"
-			echo "☔"
+			#echo "☔"
+			echo "雨"
 			;;
 		"snow" | "mixed snow and sleet" | "snow flurries" | "light snow showers" | "blowing snow" | "sleet" | "hail" | "heavy snow" | "scattered snow showers" | "snow showers" | "light snow" | "snow/windy" | "snow grains" | "snow/fog")
-			echo "☃"
+			#echo "☃"
 			#echo "❅"
+			echo "雪"
 			;;
 		"cloudy" | "mostly cloudy" | "partly cloudy" | "partly cloudy/windy")
-			echo "☁"
+			#echo "☁"
+			echo "曇"
 			;;
 		"tornado" | "tropical storm" | "hurricane" | "severe thunderstorms" | "thunderstorms" | "isolated thunderstorms" | "scattered thunderstorms")
-			echo "⚡"
+			#echo "⚡"
 			#echo "☈"
+			echo "雷"
 			;;
 		"dust" | "foggy" | "fog" | "haze" | "smoky" | "blustery" | "mist")
-			echo "♨"
+			#echo "♨"
 			#echo "﹌"
 			#echo "〰"
+			echo "霧"
 			;;
 		"windy" | "fair/windy")
 			#echo "⚐"
-			echo "⚑"
+			#echo "⚑"
+			echo "風"
 			;;
 		"clear" | "fair" | "cold")
 			hourmin=$(date +%H%M)
 			if [ "$hourmin" -ge "$sunset" -o "$hourmin" -le "$sunrise" ]; then
-				echo "☾"
+				#echo "☾"
+				echo "月夜"
 			else
-				echo "〇"
+				#echo "〇"
+				echo "晴"
 			fi
 			;;
 		*)
