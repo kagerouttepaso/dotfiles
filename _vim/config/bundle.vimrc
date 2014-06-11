@@ -1069,9 +1069,9 @@ if neobundle#tap('foldCC') "{{{
         \})
   function! neobundle#hooks.on_source(bundle)
   endfunction
-  set foldtext   = FoldCCtext()
-  set foldcolumn = 1
-  set fillchars  = vert:\|
+  set foldtext=FoldCCtext()
+  set foldcolumn=1
+  set fillchars=vert:\|
   call neobundle#untap()
 endif "}}}
 
