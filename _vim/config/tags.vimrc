@@ -24,9 +24,9 @@ set notagbsearch
 "tags-and-searchesを使い易くする
 nnoremap t  <Nop>
 "「飛ぶ」
-nnoremap tt  g<C-]>
+nnoremap tt g<C-]>
 "「戻る」
-nnoremap tb  :<C-u>Kwbd<CR>:pop<CR>
+nnoremap tb :<C-u>Kwbd<CR>:pop<CR>
 "tags 作成"
 if g:is_windows
   command! Ctags :!ctags -R .<CR>

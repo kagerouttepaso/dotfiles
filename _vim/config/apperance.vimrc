@@ -10,7 +10,7 @@ set display=uhex      " 印字不可能文字を16進数で表示
 " 全角スペースの表示
 augroup highlightDoubleByteSpace
   autocmd!
-  autocmd VimEnter,ColorScheme * highlight ZenkakuSpace cterm=underline ctermfg=lightblue gui=underline guibg=LightMagenta
+  autocmd VimEnter,ColorScheme      * highlight ZenkakuSpace cterm=underline ctermfg=lightblue gui=underline guibg=LightMagenta
   autocmd VimEnter,WinEnter,BufRead * match ZenkakuSpace /　/
 augroup END
 
@@ -19,7 +19,7 @@ set cursorline
 " カレントウィンドウにのみ罫線を引く
 augroup cch
   autocmd! cch
-  autocmd WinLeave * set nocursorline
+  autocmd WinLeave         * set nocursorline
   autocmd WinEnter,BufRead * set cursorline
 augroup END
 

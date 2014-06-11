@@ -46,7 +46,7 @@ vnoremap <C-p> c<C-r>0<Esc>
 
 "スペースで次のバッファへ、bで前のバッファへ
 noremap <Space> :bn<CR>
-noremap B :bp<CR>
+noremap B       :bp<CR>
 
 " Ev/Rvでvimrcの編集と反映
 command! Ev edit $MYVIMRC

@@ -3,14 +3,14 @@
 "-------------------------------------------------------------------------------
 
 " カーソルを表示行で移動する。論理行移動は<C-n>,<C-p>
-nnoremap h <Left>
-nnoremap j gj
-nnoremap k gk
-nnoremap l <Right>
+nnoremap h      <Left>
+nnoremap j      gj
+nnoremap k      gk
+nnoremap l      <Right>
 nnoremap <Down> gj
 nnoremap <Up>   gk
-vnoremap j gj
-vnoremap k gk
+vnoremap j      gj
+vnoremap k      gk
 vnoremap <Down> gj
 vnoremap <Up>   gk
 
@@ -49,10 +49,10 @@ cnoremap <C-l> <Right>
 
 
 "フレームサイズを怠惰に変更する
-map <kPlus> <C-W>+
-map <kMinus> <C-W>-
-nnoremap + <C-W>+
-nnoremap - <C-W>-
+map      <kPlus>  <C-W>+
+map      <kMinus> <C-W>-
+nnoremap +        <C-W>+
+nnoremap -        <C-W>-
 
 " 前回終了したカーソル行に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
@@ -66,7 +66,7 @@ nnoremap ( %
 nnoremap ) %
 
 " 最後に変更されたテキストを選択する
-nnoremap gc  `[v`]
+nnoremap gc `[v`]
 vnoremap gc <C-u>normal gc<Enter>
 onoremap gc <C-u>normal gc<Enter>
 
