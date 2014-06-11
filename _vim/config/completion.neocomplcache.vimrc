@@ -21,17 +21,17 @@ let g:neocomplcache_enable_underbar_completion = 1
 
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default'    : '',
-    \ 'vimshell'   : $HOME.'/.vimshell_hist',
-    \ 'scheme'     : $HOME.'/.gosh_completions',
-    \ 'c'          : $HOME.'/.vim/dict/c.dict',
-    \ 'cpp'        : $HOME.'/.vim/dict/cpp.dict',
-    \ 'java'       : $HOME.'/.vim/dict/java.dict',
-    \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
-    \ 'ocaml'      : $HOME.'/.vim/dict/ocaml.dict',
-    \ 'perl'       : $HOME.'/.vim/dict/perl.dict',
-    \ 'php'        : $HOME.'/.vim/dict/php.dict',
-    \ 'vim'        : $HOME.'/.vim/dict/vim.dict',
+    \ 'default':    '',
+    \ 'vimshell':   $HOME.'/.vimshell_hist',
+    \ 'scheme':     $HOME.'/.gosh_completions',
+    \ 'c':          $HOME.'/.vim/dict/c.dict',
+    \ 'cpp':        $HOME.'/.vim/dict/cpp.dict',
+    \ 'java':       $HOME.'/.vim/dict/java.dict',
+    \ 'javascript': $HOME.'/.vim/dict/javascript.dict',
+    \ 'ocaml':      $HOME.'/.vim/dict/ocaml.dict',
+    \ 'perl':       $HOME.'/.vim/dict/perl.dict',
+    \ 'php':        $HOME.'/.vim/dict/php.dict',
+    \ 'vim':        $HOME.'/.vim/dict/vim.dict',
         \ }
 
 " Define keyword.
@@ -53,15 +53,15 @@ function! s:my_cr_function()
   "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction
 " <TAB>: completion.
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-h>   neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>    neocomplcache#smart_close_popup()."\<C-h>"
     " 補完を選択しpopupを閉じる
-inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-y>   neocomplcache#close_popup()
     " 補完を選択しpopupを閉じる
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><C-e>   neocomplcache#cancel_popup()
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
 
@@ -92,10 +92,10 @@ augroup neocomplecacheKeyBind
   autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType php        setlocal omnifunc=phpcomplete#CompletePHP
-  autocmd FileType c          setlocal omnifunc=ccomplete#Complete
-  autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
+  autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType php           setlocal omnifunc=phpcomplete#CompletePHP
+  autocmd FileType c             setlocal omnifunc=ccomplete#Complete
+  autocmd FileType ruby          setlocal omnifunc=rubycomplete#Complete
 augroup END
 
 " Enable heavy omni completion.
@@ -103,7 +103,7 @@ if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_omni_patterns.c   = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " For perlomni.vim setting.
@@ -114,23 +114,23 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
 "インクルードパスの指定
 let g:neocomplcache_include_paths = {
-  \ 'cpp'  : '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include',
-  \ 'c'    : '.,/usr/include',
-  \ 'ruby' : '.,$HOME/.rvm/rubies/**/lib/ruby/1.8/',
+  \ 'cpp':  '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include',
+  \ 'c':    '.,/usr/include',
+  \ 'ruby': '.,$HOME/.rvm/rubies/**/lib/ruby/1.8/',
   \ }
 "インクルード文のパターンを指定
 let g:neocomplcache_include_patterns = {
-  \ 'cpp' : '^\s*#\s*include',
-  \ 'ruby' : '^\s*require',
-  \ 'perl' : '^\s*use',
+  \ 'cpp':  '^\s*#\s*include',
+  \ 'ruby': '^\s*require',
+  \ 'perl': '^\s*use',
   \ }
 "インクルード先のファイル名の解析パターン
 let g:neocomplcache_include_exprs = {
-  \ 'ruby' : substitute(v:fname,'::','/','g')
+  \ 'ruby': substitute(v:fname,'::','/','g')
   \ }
 " ファイルを探す際に、この値を末尾に追加したファイルも探す。
 let g:neocomplcache_include_suffixes = {
-  \ 'ruby' : '.rb',
-  \ 'haskell' : '.hs'
+  \ 'ruby':    '.rb',
+  \ 'haskell': '.hs'
   \ }
 

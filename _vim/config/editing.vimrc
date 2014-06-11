@@ -25,8 +25,8 @@ augroup MyXML
 augroup END
 
 "  Insert mode中で単語単位/行単位の削除をアンドゥ可能にする
-inoremap <C-u>  <C-g>u<C-u>
-inoremap <C-w>  <C-g>u<C-w>
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
 
 " :Ptでインデントモード切替
 command! Pt :set paste!
