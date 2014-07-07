@@ -25,3 +25,5 @@
   driver = true
 [push]
 	default = current
+[url "https://"]
+	insteadOf = git://
