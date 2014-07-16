@@ -17,9 +17,10 @@
 	helper = cache --timeout=3600
 [user]
 	name = kitsunai
-	email = goth.wasawasa@gmail.com
+	email = kitsunai@sanritz.co.jp
 [http]
 	postBuffer = 524288000
+	proxy = http://172.16.2.9:80
 [merge "ours"]
   name = "Keep ours merge"
   driver = true
