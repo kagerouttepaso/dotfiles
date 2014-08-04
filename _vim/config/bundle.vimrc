@@ -193,8 +193,13 @@ if neobundle#tap('open-browser.vim') "{{{
   call neobundle#config({
         \  'autoload': {
         \    'commands': ['OpenBrowser', 'OpenBrowserSearch'],
+        \  'mappings': [
+        \    '<Plug>(openbrowser-open)',
+        \    '<Plug>(openbrowser-smart-search)' ],
         \  }
         \})
+  vmap gx <Plug>(openbrowser-smart-search)
+  nmap gx <Plug>(openbrowser-smart-search)
   function! neobundle#hooks.on_source(bundle)
   endfunction
   call neobundle#untap()
