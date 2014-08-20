@@ -451,8 +451,8 @@ NeoBundleLazy 'Shougo/vimshell'
 if neobundle#tap('vimshell') "{{{
   call neobundle#config({
         \ 'autoload': {
-        \   'commands': [ 'VimShell', 'VimShellExecute', 'VimShellInteractive',
-        \                 'VimShellTerminal', 'VimShellPop'],
+        \   'commands': [ 'VimShell',         'VimShellExecute', 'VimShellInteractive',
+        \                 'VimShellTerminal', 'VimShellPop',     'VimShellBufferDir'],
         \   'mappings': ['<Plug>(vimshell_'],
         \ }
         \})
