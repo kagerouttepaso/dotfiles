@@ -12,7 +12,7 @@
      echo 'filename not found'; \
      exit; \
    fi; \
-   if [ ! -d ./.git ]; then  \
+   if [ ! -d ./.git ]; then \
      echo 'current dir is not top level dir'; \
      exit; \
    fi; \
