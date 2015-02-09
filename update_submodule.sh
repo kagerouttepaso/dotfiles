@@ -5,9 +5,9 @@ SUBMODULES=(./_autojump ./_oh-my-zsh ./_vim/bundle/neobundle.vim ./_apt-cyg ./_t
 for module in ${SUBMODULES[@]}
 do
     cd ${PWD_DIR}/${module}
-    sh -c "echo \"update ${module}\";git fetch ; git rebase origin/master;git gc > /dev/null" &
+    sh -c "echo \"update ${module}\";git fetch ; git rebase origin/master;git gc --aggressive --prune=now > /dev/null" &
 done
 wait
 
 cd ${PWD_DIR}
-git fetch; git gc
+git fetch; git gc --aggressive --prune=now

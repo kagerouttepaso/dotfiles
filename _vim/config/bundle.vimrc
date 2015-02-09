@@ -848,7 +848,7 @@ if neobundle#tap('vim-fontzoom') "{{{
         \  }
         \})
   " F11でフォントズーム
-  nnoremap <F11>: Fontzoom +1<CR>
+  nnoremap <F11> :Fontzoom +1<CR>
   " F12でフォント小さく
   nnoremap <F12> :Fontzoom -1<CR>
   function! neobundle#hooks.on_source(bundle)
