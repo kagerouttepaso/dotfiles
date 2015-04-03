@@ -89,6 +89,10 @@ if builtin command -v uname >> /dev/null && builtin command -v grep >> /dev/null
         echo Cygwin
         export DISPLAY=:0.0
         export PATH="$PATH:$HOME/dotfiles/_apt-cyg"
+        if builtin command -v java >> /dev/null ; then
+            alias javac="javac -J-Dfile.encoding=UTF-8"
+            alias java="java -Dfile.encoding=UTF-8"
+        fi
     elif [ "`uname -sr | grep MINGW`" ] ; then
         export ARCHz="mingw"
         echo Mingw
