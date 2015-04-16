@@ -33,7 +33,7 @@ endif
 
 " 補完 neocomplete.vim : 究極のVim的補完環境
 if g:is_can_use_neocomplete
-  NeoBundle 'Shougo/neocomplete.vim', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
+  NeoBundleLazy 'Shougo/neocomplete.vim', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
   if neobundle#tap('neocomplete.vim') "{{{
     call neobundle#config({
           \  'autoload': {
@@ -101,7 +101,7 @@ else
 endif
 
 " neocomplcacheのsinpet補完
-NeoBundle 'Shougo/neosnippet.vim'
+NeoBundleLazy 'Shougo/neosnippet.vim'
 if neobundle#tap('neosnippet.vim') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -154,7 +154,7 @@ if neobundle#tap('monday') "{{{
 endif "}}}
 
 "単語を色付けすることができる
-NeoBundle 't9md/vim-quickhl'
+NeoBundleLazy 't9md/vim-quickhl'
 if neobundle#tap('vim-quickhl') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -176,7 +176,7 @@ endif "}}}
 " Searching/Moving{{{
 
 " grep.vim : 外部のgrep利用。:Grepで対話形式でgrep :Rgrepは再帰
-NeoBundle 'grep.vim'
+NeoBundleLazy 'grep.vim'
 if neobundle#tap('grep.vim') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -189,7 +189,7 @@ if neobundle#tap('grep.vim') "{{{
 endif "}}}
 
 " open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
-NeoBundle 'tyru/open-browser.vim'
+NeoBundleLazy 'tyru/open-browser.vim'
 if neobundle#tap('open-browser.vim') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -211,7 +211,7 @@ endif "}}}
 " Programming {{{
 
 " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
-NeoBundle 'thinca/vim-quickrun'
+NeoBundleLazy 'thinca/vim-quickrun'
 if neobundle#tap('vim-quickrun') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -224,7 +224,7 @@ if neobundle#tap('vim-quickrun') "{{{
 endif "}}}
 
 " vim-ruby : VimでRubyを扱う際の最も基本的な拡張機能
-NeoBundle 'vim-ruby/vim-ruby'
+NeoBundleLazy 'vim-ruby/vim-ruby'
 if neobundle#tap('vim-ruby') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -238,7 +238,7 @@ endif "}}}
 
 
 " ソースコード上のメソッド宣言、変数宣言の一覧を表示
-NeoBundle 'taglist.vim'
+NeoBundleLazy 'taglist.vim'
 if neobundle#tap('taglist.vim') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -336,7 +336,7 @@ NeoBundle 'ekalinin/Dockerfile.vim'
 " Buffer {{{
 
 "  Kwbd.vim : レイアウトを崩さずにバッファを削除
-NeoBundle 'rgarver/Kwbd.vim'
+NeoBundleLazy 'rgarver/Kwbd.vim'
 if neobundle#tap('Kwbd.vim') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -360,7 +360,7 @@ endif "}}}
 " Encording {{{
 
 "fyletypeの自動切り替え
-NeoBundle 'osyo-manga/vim-precious' , { 'depends' : [ 'Shougo/context_filetype.vim' ] }
+NeoBundleLazy 'osyo-manga/vim-precious' , { 'depends' : [ 'Shougo/context_filetype.vim' ] }
 if neobundle#tap('vim-precious') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -395,7 +395,7 @@ NeoBundle 'banyan/recognize_charcode.vim'
 " Utility {{{
 
 "ソースのレイアウト修正に便利なやつ
-NeoBundle 'junegunn/vim-easy-align'
+NeoBundleLazy 'junegunn/vim-easy-align'
 if neobundle#tap('vim-easy-align') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -448,7 +448,7 @@ if neobundle#tap('vim-easy-align') "{{{
 endif "}}}
 
 " vimshell : vimのshell
-NeoBundle 'Shougo/vimshell'
+NeoBundleLazy 'Shougo/vimshell'
 if neobundle#tap('vimshell') "{{{
   call neobundle#config({
         \ 'autoload': {
@@ -499,7 +499,7 @@ if neobundle#tap('vimshell') "{{{
 endif "}}}
 
 " vimfiler : vimのファイラ
-NeoBundle 'Shougo/vimfiler' , { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'Shougo/vimfiler' , { 'depends' : [ 'Shougo/unite.vim' ] }
 if neobundle#tap('vimfiler') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -512,11 +512,41 @@ if neobundle#tap('vimfiler') "{{{
   call neobundle#untap()
 endif "}}}
 
+" vim-altercmd : Ex command拡張
+"NeoBundle 'tyru/vim-altercmd'
+
+" vim Interface to Web API
+"NeoBundle 'mattn/webapi-vim'
+
+" cecutil.vim : 他のpluginのためのutillity1
+"NeoBundle 'cecutil'
+
+" urilib.vim : vim scriptからURLを扱うライブラリ
+"NeoBundle 'tyru/urilib.vim'
+
+" ステータスラインに顔文字を表示
+" NeoBundle 'mattn/hahhah-vim'
+
+" utillity
+"NeoBundle 'L9'
+
+" Buffer管理のLibrary
+"NeoBundle 'thinca/vim-openbuf'
+
+" vimdoc 日本語
+"NeoBundle 'yuroyoro/vimdoc_ja'
+
+" vim上のtwitter client
+"NeoBundle 'TwitVim'
+
+" Lingrのclient
+"NeoBundle 'tsukkee/lingr-vim'
+
 " vimからGit操作する
 NeoBundle 'tpope/vim-fugitive'
 
 " tigよりすごいgitk的なもの
-NeoBundle 'gregsexton/gitv' , { 'depends' : [ 'tpope/vim-fugitive' ] }
+NeoBundleLazy 'gregsexton/gitv' , { 'depends' : [ 'tpope/vim-fugitive' ] }
 if neobundle#tap('gitv') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -550,8 +580,11 @@ if neobundle#tap('gitv') "{{{
   call neobundle#untap()
 endif "}}}
 
+" Redmine on Vim
+"NeoBundle 'mattn/vim-metarw-redmine'
+
 " Doxygenのサポーターらしい
-NeoBundle 'DoxygenToolkit.vim'
+NeoBundleLazy 'DoxygenToolkit.vim'
 if neobundle#tap('DoxygenToolkit.vim') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -564,7 +597,7 @@ if neobundle#tap('DoxygenToolkit.vim') "{{{
 endif "}}}
 
 " yankround : 副作用のないYankRing
-NeoBundle 'LeafCage/yankround.vim'
+NeoBundleLazy 'LeafCage/yankround.vim'
 if neobundle#tap('yankround.vim') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -589,7 +622,7 @@ if neobundle#tap('yankround.vim') "{{{
 endif "}}}
 
 " vim-over : かっちょいい置換
-NeoBundle 'osyo-manga/vim-over'
+NeoBundleLazy 'osyo-manga/vim-over'
 if neobundle#tap('vim-over') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -619,7 +652,7 @@ endif "}}}
 " ColorSchema{{{{
 
 "カラースキームのテスト
-NeoBundle 'cocopon/colorswatch.vim'
+NeoBundleLazy 'cocopon/colorswatch.vim'
 if neobundle#tap('colorswatch.vim') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -735,7 +768,7 @@ if neobundle#tap('unite.vim') "{{{
 endif "}}}
 
 "outline用
-NeoBundle 'Shougo/unite-outline' , { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'Shougo/unite-outline' , { 'depends' : [ 'Shougo/unite.vim' ] }
 if neobundle#tap('unite-outline') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -748,7 +781,7 @@ if neobundle#tap('unite-outline') "{{{
 endif "}}}
 
 "tag用
-NeoBundle 'tsukkee/unite-tag' , { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'tsukkee/unite-tag' , { 'depends' : [ 'Shougo/unite.vim' ] }
 if neobundle#tap('unite-tag') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -807,7 +840,7 @@ endif "}}}
 " gvim  {{{{
 
 " Gvim上でフォントのサイズを変更する
-NeoBundle 'thinca/vim-fontzoom'
+NeoBundleLazy 'thinca/vim-fontzoom'
 if neobundle#tap('vim-fontzoom') "{{{
   call neobundle#config({
         \  'gui': 1 ,
@@ -827,7 +860,7 @@ if neobundle#tap('vim-fontzoom') "{{{
 endif "}}}
 
 "vimをリスタート
-NeoBundle 'tyru/restart.vim'
+NeoBundleLazy 'tyru/restart.vim'
 if neobundle#tap('restart.vim') "{{{
   call neobundle#config({
         \  'gui': 1,
@@ -843,7 +876,7 @@ endif "}}}
 " }}}
 
 "検索のステータスをステータスラインに表示
-NeoBundle 'osyo-manga/vim-anzu' 
+NeoBundleLazy 'osyo-manga/vim-anzu' 
 if neobundle#tap('vim-anzu') "{{{
   call neobundle#config({
         \    'mappings': ['<Plug>(anzu-'],
