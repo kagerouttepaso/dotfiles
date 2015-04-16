@@ -108,3 +108,6 @@ fi
 
 # my setting
 source ~/.bash/bash_aliases
+if builtin command -v autojump >> /dev/null ; then
+    . /usr/share/autojump/autojump.sh
+fi

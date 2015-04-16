@@ -2,7 +2,9 @@
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.bash/bash_aliases
-
+if builtin command -v autojump >> /dev/null ; then
+    . /usr/share/autojump/autojump.zsh
+fi
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
