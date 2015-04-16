@@ -7,20 +7,6 @@
   m = merge
   di = diff --color-words
   sta = status --short --branch
-  obliterate = "!f () { \
-    if [ \"$1\" = \"\" ]; then \
-     echo 'filename not found'; \
-     exit; \
-   fi; \
-   if [ ! -d ./.git ]; then \
-     echo 'current dir is not top level dir'; \
-     exit; \
-   fi; \
-   git filter-branch -f --index-filter \"git rm -rf --cached --ignore-unmatch $1\" --prune-empty -- --all && \
-   rm -rf ./.git/refs/original && \
-   git reflog expire --expire=now --all && \
-   git gc --aggressive --prune=now; \
-   };f"
 [core]
 	editor = vim -c \"set fenc=utf-8\"
 [merge]
@@ -31,9 +17,10 @@
 	helper = cache --timeout=3600
 [user]
 	name = kitsunai
-	email = goth.wasawasa@gmail.com
+	email = kitsunai@sanritz.co.jp
 [http]
 	postBuffer = 524288000
+	proxy = http://172.16.2.9:80
 [merge "ours"]
   name = "Keep ours merge"
   driver = true

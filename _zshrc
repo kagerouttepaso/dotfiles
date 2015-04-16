@@ -3,11 +3,6 @@
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.bash/bash_aliases
 
-#autojump configuration
-if [ -f ~/.autojump/bin/autojump.zsh ]; then
-    source ~/.autojump/bin/autojump.zsh
-fi
-
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
