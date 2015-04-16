@@ -6,6 +6,9 @@ if [ -d ~/local/bin ]; then
     PATH=~/local/bin:$PATH
 fi
 
+if builtin command -v autojump >> /dev/null ; then
+    . /usr/share/autojump/autojump.sh
+fi
 
 if builtin command -v tmux >> /dev/null ; then
     alias tmux='if   [ -x /bin/zsh ];then           SHELL=/bin/zsh; 
@@ -120,3 +123,4 @@ fi
 # if you  use autojump, you must source autojump.* in ~/.autojump/bin/
 PATH=$PATH:~/.autojump/bin
 fpath=(~/.autojump/bin $fpath)
+
