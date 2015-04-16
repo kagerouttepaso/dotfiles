@@ -676,7 +676,7 @@ NeoBundle 'w0ng/vim-hybrid'
 " Unite {{{{
 
 " unite.vim : - すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
-NeoBundleLazy 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite.vim'
 if neobundle#tap('unite.vim') "{{{
   call neobundle#config({
         \  'autoload': {
