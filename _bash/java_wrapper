@@ -1,0 +1,126 @@
+#!/bin/bash
+# -*- shell-script -*-
+# Ver.1.3.5 : 2010.10.9 TAKAHASHI,Toru
+
+# 事前条件
+# 1) 環境変数JAVA_HOMEが適切に設定されている
+#    例) JAVA_HOME=C:/java/jdk1.6.0
+# 2) JDKの各コマンド(例:javac.exe)から.exeを除いた名前(例:javac)の
+#    シンボリックリンクファイルが作成されている
+#    例) /usr/local/bin/javac -> java_wrapper
+# 3) JDKのコマンドへのパスよりも2)のシンボリックリンクファイルへの
+#    パスが先に環境変数PATHに設定されている
+#
+# 本スクリプトでシンボリックリンク作成を行うこともできます。
+#    $ java_wrapper createsymlinks
+#    カレントディレクトリに2)のシンボリックリンクを作成します。
+
+
+# レジストリからJDKがインストールされているパスを取得する関数
+function get_jdkpath_from_registory() {
+    java_ver=$(regtool get "/machine/SOFTWARE/JavaSoft/Java Development Kit/CurrentVersion")
+    if [[ $java_ver ]]; then
+	javahome=$(regtool get "/machine/SOFTWARE/JavaSoft/Java Development Kit/$java_ver/JavaHome")
+	if [[ $javahome ]]; then
+	    JAVA_HOME=$(cygpath "$javahome")
+	    return 1
+	fi
+    fi
+    return 0
+}
+
+# Java系コマンドのうち標準コマンドラインオプションを持つコマンドの
+# コマンドライン引数のパスをCygwin形式からWindows形式に変換する関数
+function general_parse_arg() {
+    while case $# in
+    0) false;;
+    1) true;;
+    esac
+      do
+      arg="$1"; shift
+      case $arg in
+	  -classpath | -cp | -sourcepath | -bootclasspath | -extdirs | -endorseddirs)
+	      ARGS="$ARGS $arg"
+	      if [[ ( ! "$1" = "" ) && ( ! ${1:0:1} = "-" ) ]]; then
+		  ARGS="$ARGS `cygpath -p -w -s $1`"
+		  shift
+	      fi
+	      ;;
+	  -d | -s | -jar)
+	      ARGS="$ARGS $arg"
+	      if [[ ( ! "$1" = "" ) && ( ! ${1:0:1} = "-" ) ]];then
+		  ARGS="$ARGS `cygpath -ws $1`"
+		  shift
+	      fi
+	      ;;
+	  *)
+	      ARGS="$ARGS $arg"
+	      ;;
+      esac
+    done
+}
+
+#
+# スクリプトのmain処理部
+#
+if [[ -z "$JAVA_HOME" ]]; then
+    echo "JAVA_HOME not defined, search from registory."
+    get_jdkpath_from_registory
+    if [[ $? -eq 0 ]]; then
+	echo "cannot find JDK in registory."
+	exit 1;
+    fi
+    echo "Found JDK in $JAVA_HOME"
+fi
+
+WIN32JDKDIR=`cygpath "$JAVA_HOME"`
+CMD=`basename $0 .exe`
+PROGRAM=$WIN32JDKDIR/bin/$CMD
+
+# シンボリックリンク作成処理
+if [[ "$1" = "createsymlinks" ]]; then
+    for command in `/bin/ls "$JAVA_HOME"/bin/*.exe`; do
+	ln -s $0 `basename $command .exe`
+    done
+    exit 0;
+fi
+ 
+if [[ ! -e "$PROGRAM" ]]; then
+    echo "$PROGRAM not found."
+    exit 1;
+fi
+
+if [[ -n "$CLASSPATH" ]]; then
+    CLASSPATH=`cygpath -p -w "$CLASSPATH"`
+fi
+
+ARGS=""
+
+# 標準コマンドラインオプションを持つものは、general_parse_arg関数に
+# 処理を委ねる。標準コマンドラインオプションに従わないコマンドは
+# 個別に引数処理を実施する。
+case $CMD in
+    jar)
+	#コマンドライン処理がうまく書けないので暫定オリジナルコマンドを呼び出し
+	#$PROGRAM $*
+	# 実験
+	# cygpathがパス文字列以外だと入力文字列をそのまま返すことを利用し
+	# -で始まるオプション以外を全てcygpathに通してしまう
+	for arg in $*; do
+	    case $arg in
+		-*)
+		    ARGS="$ARGS $arg"
+		    ;;
+		*)
+		    ARGS="$ARGS `cygpath -w $arg`"
+		    ;;
+	    esac
+	done
+	;;
+    *)
+	general_parse_arg $*
+	;;
+esac
+
+#echo CLASSPATH=$CLASSPATH CMD=$CMD PROGRAM=$PROGRAM ARGS=$ARGS
+exec "$PROGRAM" $ARGS
