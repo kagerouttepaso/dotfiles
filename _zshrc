@@ -6,6 +6,10 @@ if builtin command -v autojump >> /dev/null ; then
     . /usr/share/autojump/autojump.zsh
 fi
 
+if [ -f /opt/ros/indigo/setup.zsh ]; then
+    source /opt/ros/indigo/setup.zsh
+fi
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each

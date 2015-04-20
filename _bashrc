@@ -111,3 +111,7 @@ source ~/.bash/bash_aliases
 if builtin command -v autojump >> /dev/null ; then
     . /usr/share/autojump/autojump.sh
 fi
+
+if [ -f /opt/ros/indigo/setup.bash ]; then
+    source /opt/ros/indigo/setup.bash
+fi
