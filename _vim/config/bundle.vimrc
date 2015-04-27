@@ -100,6 +100,59 @@ else
   source $DOTVIM_DIR/config/completion.neocomplcache.vimrc
 endif
 
+" C++用オムニ補完
+NeoBundleLazy 'osyo-manga/vim-marching', { 'depends' : [ 'Shougo/neocomplete.vim'] }
+if neobundle#tap('vim-marching') "{{{
+  call neobundle#config({
+        \  'autoload': {
+        \    'insert(':   1,
+        \    'filetypes': ['cpp'],
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+    if has('win32') || has('win64')
+      " clang コマンドの設定
+      "let g:marching_clang_command = "c:/clang.exe"
+      " インクルードディレクトリのパスを設定
+      let g:marching_include_paths = [
+            \ "c:/mingw64/x86_64-w64-mingw32/include/c++"
+            \]
+    endif
+    " オプションを追加する
+    " filetype=cpp に対して設定する場合
+    "let g:marching_clang_command_option = {
+    "      \ "cpp" : "-std=gnu++1y"
+    "      \}
+    let g:marching_clang_command_option = "-std=c++1y"
+    " neocomplete.vim と併用して使用する場合
+    let g:marching_enable_neocomplete = 1
+    if !exists('g:neocomplete#force_omni_input_patterns')
+      let g:neocomplete#force_omni_input_patterns ={}
+    endif
+    let g:neocomplete#force_omni_input_patterns.cpp =
+          \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+  endfunction
+endif  "}}}
+
+" Ruby用オムニ補完
+NeoBundleLazy 'osyo-manga/vim-monster', { 'depends' : [ 'Shougo/neocomplete.vim'] }
+if neobundle#tap('vim-monster') "{{{
+  call neobundle#config({
+        \  'autoload': {
+        \    'insert(':   1,
+        \    'filetypes': ['ruby'],
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+    " Set async completion.
+    let g:monster#completion#rcodetools#backend = "async_rct_complete"
+    " Use neocomplete.vim
+    let g:neocomplete#sources#omni#input_patterns = {
+          \   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
+          \}
+  endfunction
+endif  "}}}
+
 " neocomplcacheのsinpet補完
 NeoBundleLazy 'Shougo/neosnippet.vim'
 if neobundle#tap('neosnippet.vim') "{{{
@@ -136,6 +189,10 @@ endif "}}}
 
 " デフォルトすにペット臭
 NeoBundle 'kagerouttepaso/neosnippet-snippets'
+
+"Chef用のスニペット集
+NeoBundle 'kagerouttepaso/neosnippet_chef_recipe_snippet'
+
 " }}}
 
 " Edit {{{
