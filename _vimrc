@@ -8,6 +8,15 @@ elseif isdirectory($HOME."/dotfiles/_vim")
 endif
 set encoding=utf-8    " デフォルトエンコーディング
 
+command! MessCopy call s:messcopy()
+function! s:messcopy()
+    redir @+>
+    silent messages
+    redir END
+    " Copy to selection too.
+    call setreg('*', getreg('+', 1), getregtype('+'))
+endfunction
+
 "NeoBundleで管理してるpluginを読み込む
 source $DOTVIM_DIR/config/bundle.vimrc
 
@@ -39,3 +48,4 @@ source $DOTVIM_DIR/config/misc.vimrc
 source $DOTVIM_DIR/config/plugins.vimrc
 "tab周りの設定
 source $DOTVIM_DIR/config/tab.vimrc
+
