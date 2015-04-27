@@ -206,6 +206,33 @@ if neobundle#tap('open-browser.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
+"テキストオブジェクトの拡張
+NeoBundle 'kana/vim-operator-user'
+
+"レジスタを汚さない置換ペースト
+NeoBundle 'kana/vim-operator-replace'
+map _  <Plug>(operator-replace)
+
+"検索のステータスをステータスラインに表示
+NeoBundleLazy 'osyo-manga/vim-anzu' 
+if neobundle#tap('vim-anzu') "{{{
+  call neobundle#config({
+        \    'mappings': ['<Plug>(anzu-'],
+        \})
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  " mapping
+  nmap n <Plug>(anzu-n)
+  nmap N <Plug>(anzu-N)
+  nmap * <Plug>(anzu-star)
+  nmap # <Plug>(anzu-sharp)
+  " clear status
+  "nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+  nmap <Esc><Esc> :nohlsearch<CR><ESC><Plug>(anzu-clear-search-status)
+
+  call neobundle#untap()
+endif "}}}
+
 " }}}
 
 " Programming {{{
@@ -875,27 +902,6 @@ endif "}}}
 
 " }}}
 
-"検索のステータスをステータスラインに表示
-NeoBundleLazy 'osyo-manga/vim-anzu' 
-if neobundle#tap('vim-anzu') "{{{
-  call neobundle#config({
-        \    'mappings': ['<Plug>(anzu-'],
-        \})
-  function! neobundle#hooks.on_source(bundle)
-  endfunction
-  " mapping
-  nmap n <Plug>(anzu-n)
-  nmap N <Plug>(anzu-N)
-  nmap * <Plug>(anzu-star)
-  nmap # <Plug>(anzu-sharp)
-  " clear status
-  "nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
-  nmap <Esc><Esc> :nohlsearch<CR><ESC><Plug>(anzu-clear-search-status)
-
-  call neobundle#untap()
-endif "}}}
-
-
 " display {{{
 
 "ステータスラインをめっちゃかっこ良くする
@@ -1089,10 +1095,10 @@ NeoBundle 'airblade/vim-gitgutter'
 
 " }}}
 
-"レジスタを汚さない置換ペースト
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'kana/vim-operator-replace'
-map _  <Plug>(operator-replace)
+" test  {{{
+
+" }}}
+
 
 
 call neobundle#end()
