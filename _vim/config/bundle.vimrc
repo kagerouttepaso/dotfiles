@@ -1,7 +1,7 @@
 if has('vim_starting')
   set nocompatible  " Be iMproved
   set runtimepath+=$DOTVIM_DIR/bundle/neobundle.vim/
-  "set maxfuncdepth=1000
+  "set maxfuncdepth=1000 "このコメントを取るとvim-overが死ぬ
 endif
 call neobundle#begin(expand($DOTVIM_DIR.'/bundle'))
 "NeoBundle用の条件判断用の設定
@@ -16,17 +16,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 if g:is_windows
   " win環境は香り屋バンドル版を使う
 else
-  let vimproc_updcmd = has('win64') ?
-        \ 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
-  execute "NeoBundle 'Shougo/vimproc.vim', " . string({
-        \ 'build' : {
-        \     'windows': vimproc_updcmd,
-        \     'cygwin':  'make -f make_cygwin.mak',
-        \     'mac':     'make -f make_mac.mak',
-        \     'unix':    'gmake',
-        \     'linux':   'make',
-        \    },
-        \ })
+  NeoBundle 'Shougo/vimproc.vim', {
+        \   'build' : {
+        \     'cygwin': 'make -f make_cygwin.mak',
+        \     'mac':    'make -f make_mac.mak',
+        \     'linux':  'make',
+        \     'unix':   'gmake',
+        \   }
+        \ }
 endif
 
 " Completion {{{
