@@ -1,7 +1,7 @@
 if has('vim_starting')
   set nocompatible  " Be iMproved
   set runtimepath+=$DOTVIM_DIR/bundle/neobundle.vim/
-  set maxfuncdepth=1000
+  "set maxfuncdepth=1000 "このコメントを取るとvim-overが死ぬ
 endif
 call neobundle#begin(expand($DOTVIM_DIR.'/bundle'))
 "NeoBundle用の条件判断用の設定
@@ -16,17 +16,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 if g:is_windows
   " win環境は香り屋バンドル版を使う
 else
-  let vimproc_updcmd = has('win64') ?
-        \ 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
-  execute "NeoBundle 'Shougo/vimproc.vim', " . string({
-        \ 'build' : {
-        \     'windows': vimproc_updcmd,
-        \     'cygwin':  'make -f make_cygwin.mak',
-        \     'mac':     'make -f make_mac.mak',
-        \     'unix':    'gmake',
-        \     'linux':   'make',
-        \    },
-        \ })
+  NeoBundle 'Shougo/vimproc.vim', {
+        \   'build' : {
+        \     'cygwin': 'make -f make_cygwin.mak',
+        \     'mac':    'make -f make_mac.mak',
+        \     'linux':  'make',
+        \     'unix':   'gmake',
+        \   }
+        \ }
 endif
 
 " Completion {{{
@@ -100,6 +97,59 @@ else
   source $DOTVIM_DIR/config/completion.neocomplcache.vimrc
 endif
 
+" C++用オムニ補完
+NeoBundleLazy 'osyo-manga/vim-marching', { 'depends' : [ 'Shougo/neocomplete.vim'] }
+if neobundle#tap('vim-marching') "{{{
+  call neobundle#config({
+        \  'autoload': {
+        \    'insert(':   1,
+        \    'filetypes': ['cpp'],
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+    if has('win32') || has('win64')
+      " clang コマンドの設定
+      "let g:marching_clang_command = "c:/clang.exe"
+      " インクルードディレクトリのパスを設定
+      let g:marching_include_paths = [
+            \ "c:/mingw64/x86_64-w64-mingw32/include/c++"
+            \]
+    endif
+    " オプションを追加する
+    " filetype=cpp に対して設定する場合
+    "let g:marching_clang_command_option = {
+    "      \ "cpp" : "-std=gnu++1y"
+    "      \}
+    let g:marching_clang_command_option = "-std=c++1y"
+    " neocomplete.vim と併用して使用する場合
+    let g:marching_enable_neocomplete = 1
+    if !exists('g:neocomplete#force_omni_input_patterns')
+      let g:neocomplete#force_omni_input_patterns ={}
+    endif
+    let g:neocomplete#force_omni_input_patterns.cpp =
+          \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+  endfunction
+endif  "}}}
+
+" Ruby用オムニ補完
+NeoBundleLazy 'osyo-manga/vim-monster', { 'depends' : [ 'Shougo/neocomplete.vim'] }
+if neobundle#tap('vim-monster') "{{{
+  call neobundle#config({
+        \  'autoload': {
+        \    'insert(':   1,
+        \    'filetypes': ['ruby'],
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+    " Set async completion.
+    let g:monster#completion#rcodetools#backend = "async_rct_complete"
+    " Use neocomplete.vim
+    let g:neocomplete#sources#omni#input_patterns = {
+          \   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
+          \}
+  endfunction
+endif  "}}}
+
 " neocomplcacheのsinpet補完
 NeoBundleLazy 'Shougo/neosnippet.vim'
 if neobundle#tap('neosnippet.vim') "{{{
@@ -136,6 +186,10 @@ endif "}}}
 
 " デフォルトすにペット臭
 NeoBundle 'kagerouttepaso/neosnippet-snippets'
+
+"Chef用のスニペット集
+NeoBundle 'kagerouttepaso/neosnippet_chef_recipe_snippet'
+
 " }}}
 
 " Edit {{{
@@ -203,6 +257,33 @@ if neobundle#tap('open-browser.vim') "{{{
   nmap gx <Plug>(openbrowser-smart-search)
   function! neobundle#hooks.on_source(bundle)
   endfunction
+  call neobundle#untap()
+endif "}}}
+
+"テキストオブジェクトの拡張
+NeoBundle 'kana/vim-operator-user'
+
+"レジスタを汚さない置換ペースト
+NeoBundle 'kana/vim-operator-replace'
+map _  <Plug>(operator-replace)
+
+"検索のステータスをステータスラインに表示
+NeoBundleLazy 'osyo-manga/vim-anzu' 
+if neobundle#tap('vim-anzu') "{{{
+  call neobundle#config({
+        \    'mappings': ['<Plug>(anzu-'],
+        \})
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  " mapping
+  nmap n <Plug>(anzu-n)
+  nmap N <Plug>(anzu-N)
+  nmap * <Plug>(anzu-star)
+  nmap # <Plug>(anzu-sharp)
+  " clear status
+  "nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+  nmap <Esc><Esc> :nohlsearch<CR><ESC><Plug>(anzu-clear-search-status)
+
   call neobundle#untap()
 endif "}}}
 
@@ -875,27 +956,6 @@ endif "}}}
 
 " }}}
 
-"検索のステータスをステータスラインに表示
-NeoBundleLazy 'osyo-manga/vim-anzu' 
-if neobundle#tap('vim-anzu') "{{{
-  call neobundle#config({
-        \    'mappings': ['<Plug>(anzu-'],
-        \})
-  function! neobundle#hooks.on_source(bundle)
-  endfunction
-  " mapping
-  nmap n <Plug>(anzu-n)
-  nmap N <Plug>(anzu-N)
-  nmap * <Plug>(anzu-star)
-  nmap # <Plug>(anzu-sharp)
-  " clear status
-  "nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
-  nmap <Esc><Esc> :nohlsearch<CR><ESC><Plug>(anzu-clear-search-status)
-
-  call neobundle#untap()
-endif "}}}
-
-
 " display {{{
 
 "ステータスラインをめっちゃかっこ良くする
@@ -1089,26 +1149,12 @@ NeoBundle 'airblade/vim-gitgutter'
 
 " }}}
 
-"レジスタを汚さない置換ペースト
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'kana/vim-operator-replace'
-map _  <Plug>(operator-replace)
+" test  {{{
+
+" }}}
+
 
 
 call neobundle#end()
 
 filetype plugin indent on     " Required!
-"
-" Brief help
-" :NeoBundleList          - list configured bundles
-" :NeoBundleInstall(!)    - install(update) bundles
-" :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-
-" Installation check.
-"NeoBundleCheck
-
-" vim:set foldmethod=marker:
-if !has('vim_starting')
-  " Call on_source hook when reloading .vimrc.
-  call neobundle#call_hook('on_source')
-endif
