@@ -1,7 +1,7 @@
 if has('vim_starting')
   set nocompatible  " Be iMproved
   set runtimepath+=$DOTVIM_DIR/bundle/neobundle.vim/
-  set maxfuncdepth=1000
+  "set maxfuncdepth=1000
 endif
 call neobundle#begin(expand($DOTVIM_DIR.'/bundle'))
 "NeoBundle用の条件判断用の設定
@@ -1161,17 +1161,3 @@ NeoBundle 'airblade/vim-gitgutter'
 call neobundle#end()
 
 filetype plugin indent on     " Required!
-"
-" Brief help
-" :NeoBundleList          - list configured bundles
-" :NeoBundleInstall(!)    - install(update) bundles
-" :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-
-" Installation check.
-"NeoBundleCheck
-
-" vim:set foldmethod=marker:
-if !has('vim_starting')
-  " Call on_source hook when reloading .vimrc.
-  call neobundle#call_hook('on_source')
-endif
