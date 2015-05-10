@@ -48,4 +48,3 @@ source $DOTVIM_DIR/config/misc.vimrc
 source $DOTVIM_DIR/config/plugins.vimrc
 "tab周りの設定
 source $DOTVIM_DIR/config/tab.vimrc
-
