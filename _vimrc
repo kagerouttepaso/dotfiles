@@ -42,9 +42,7 @@ source $DOTVIM_DIR/config/colors.vimrc
 source $DOTVIM_DIR/config/editing.vimrc
 "エンコーディング関連
 source $DOTVIM_DIR/config/encoding.vimrc
-"その他
+"その他 (自作のSyntax登録など)
 source $DOTVIM_DIR/config/misc.vimrc
-"プラグインに依存するアレ
-source $DOTVIM_DIR/config/plugins.vimrc
 "tab周りの設定
 source $DOTVIM_DIR/config/tab.vimrc

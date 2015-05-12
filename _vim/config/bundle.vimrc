@@ -260,13 +260,6 @@ if neobundle#tap('open-browser.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-"テキストオブジェクトの拡張
-NeoBundle 'kana/vim-operator-user'
-
-"レジスタを汚さない置換ペースト
-NeoBundle 'kana/vim-operator-replace'
-map _  <Plug>(operator-replace)
-
 "検索のステータスをステータスラインに表示
 NeoBundleLazy 'osyo-manga/vim-anzu' 
 if neobundle#tap('vim-anzu') "{{{
@@ -287,6 +280,15 @@ if neobundle#tap('vim-anzu') "{{{
   call neobundle#untap()
 endif "}}}
 
+" }}}
+" Text-object {{{
+
+"テキストオブジェクトの拡張
+NeoBundle 'kana/vim-operator-user'
+
+"レジスタを汚さない置換ペースト
+NeoBundle 'kana/vim-operator-replace'
+map _  <Plug>(operator-replace)
 " }}}
 
 " Programming {{{
@@ -872,7 +874,8 @@ if neobundle#tap('unite-tag') "{{{
   function! neobundle#hooks.on_source(bundle)
   endfunction
   call neobundle#untap()
-endif "}}}
+endif
+ "}}}
 
 "file_mru用
 NeoBundle 'Shougo/neomru.vim'

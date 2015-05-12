@@ -28,11 +28,16 @@ command! ESolMt :call EndSolutionMT()
 "colorscheme hybrid
 "set transparency=230
 
-colorscheme jellybeans
+if neobundle#is_installed("jellybeans.vim")
+  colorscheme jellybeans
+endif
+
+"半透明にして更にかっこよく
 set transparency=220
 
 "イカスフォントを使用する
 set guifont=Inconsolata-g\ for\ Powerline:h13
+
 "全角と半角のある文字は全角で表示
 set ambiwidth=double
 

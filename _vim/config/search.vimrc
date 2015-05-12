@@ -22,24 +22,7 @@ set hlsearch   " 検索文字をハイライト
 " カーソル下のキーワードをヘルプでひく
 "nnoremap <C-i><C-i> :<C-u>help<Space><C-r><C-w><Enter>
 
-" :Gb <args> でGrepBufferする
-command! -nargs=1 Gb :GrepBuffer <args>
-" カーソル下の単語をGrepBufferする
-nnoremap <C-g><C-g> :<C-u>GrepBuffer<Space><C-r><C-w><Enter>
-
-" :Gr <args>でカレントディレクトリ以下を再帰的にgrepする
-command! -nargs=1 Gr :Rgrep <args> *<Enter><CR>
-" カーソル下の単語をgrepする
-nnoremap <silent> <C-g><C-r> :<C-u>Rgrep<Space><C-r><C-w> *<Enter><CR>
-
 " 検索外のディレクトリ、ファイルパターン
 let Grep_Skip_Dirs = '.svn .git .hg patches'
 let Grep_Skip_Files = '*.bak *~ tags *.pe32 *.efi *.pdb *.obj *.map *.lib *.dll *.sec *.Fv *.dummy *.ffs *.idb'
 
-"if has("win32") || has("win64")
-"  let Grgp_Path = 'C:\MinGW\msys\1.0\bin\grep.exe'
-"  let Fgrep_Path = 'C:\MinGW\msys\1.0\bin\grep.exe -F'
-"  let Egrep_Path = 'C:\MinGW\msys\1.0\bin\grep.exe -E'
-"  let Grep_Find_Path = 'C:\MinGW\msys\1.0\bin\find.exe'
-"  let Grep_Shell_Quote_Char = ""
-"endif
