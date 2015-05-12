@@ -21,12 +21,30 @@ set notagbsearch
 " nnoremap <C-t>j  ;<C-u>execute 'tabnext' 1 + (tabpagenr() + v:count1 - 1) % tabpagenr('$')<CR>
 " nnoremap <C-t>k  gT
 
-"tags-and-searchesを使い易くする
-nnoremap t  <Nop>
-"「飛ぶ」
-nnoremap tt g<C-]>
-"「戻る」
-nnoremap tb :<C-u>Kwbd<CR>:pop<CR>
+
+
+if neobundle#is_installed("unite-tag")
+  autocmd BufEnter *
+  \   if empty(&buftype)
+  \|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag <CR>
+  \|      nnoremap tt :<C-u>UniteWithCursorWord -immediately tag<CR>
+  \|  endif
+  autocmd BufEnter *
+  \   if empty(&buftype)
+  \|      nnoremap <buffer> <C-t> :<C-u>Unite jump<CR>
+  \|      nnoremap tb :<C-u>Unite jump -force-immediately<CR>
+  \|      nnoremap tB :<C-u>Kwbd<CR>:<C-u>Unite jump -select=2<CR>
+  \|  endif
+else
+  "tags-and-searchesを使い易くする
+  nnoremap t  <Nop>
+  "「飛ぶ」
+  nnoremap tt <C-]>
+  "「戻る」
+  nnoremap tb :<C-u>Kwbd<CR><C-t>
+endif
+
+
 "tags 作成"
 if g:is_windows
   command! Ctags :!ctags -R .<CR>
