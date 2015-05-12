@@ -812,7 +812,8 @@ if neobundle#tap('unite.vim') "{{{
     let g:unite_source_grep_max_candidates = 2000
     let g:unite_update_time                = 100
     "grepはwordソートを行う
-    call unite#custom_filters('grep', ['matcher_default', 'sorter_word', 'converter_default'])
+    call unite#custom#source('grep', 'sorters',    'sorter_word')
+    "grepに使うアプリ設定
     if executable('pt')
       let g:unite_source_grep_command       = 'pt'
       let g:unite_source_grep_default_opts  = '--nogroup --nocolor --smart-case'
