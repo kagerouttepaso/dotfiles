@@ -289,6 +289,10 @@ NeoBundle 'kana/vim-operator-user'
 "レジスタを汚さない置換ペースト
 NeoBundle 'kana/vim-operator-replace'
 map _  <Plug>(operator-replace)
+
+"選択した単語の周りに括弧をつける
+NeoBundle 'tpope/vim-surround'
+
 " }}}
 
 " Programming {{{
