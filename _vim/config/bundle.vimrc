@@ -1,3 +1,4 @@
+"Bundlem周りの設定
 if has('vim_starting')
   set nocompatible  " Be iMproved
   set runtimepath+=$DOTVIM_DIR/bundle/neobundle.vim/

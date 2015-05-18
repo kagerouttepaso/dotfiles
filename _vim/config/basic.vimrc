@@ -48,9 +48,6 @@ vnoremap <C-p> c<C-r>0<Esc>
 noremap <Space> :bn<CR>
 noremap B       :bp<CR>
 
-" Ev/Rvでvimrcの編集と反映
-command! Ev edit $MYVIMRC
-command! Rv source $MYVIMRC
 
 set helpfile=$VIMRUNTIME/doc/help.txt
 
