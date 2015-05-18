@@ -793,9 +793,9 @@ if neobundle#tap('unite.vim') "{{{
   " レジスタ一覧
   nnoremap <silent>[unite]r :<C-u>Unite register<CR>
   " グレップ検索
-  nnoremap <silent>[unite]g :<C-u>Unite grep -buffer-name=grep-search -no-quit<CR><CR><C-r><C-w><CR>
+  nnoremap <silent>[unite]g :<C-u>UniteWithCursorWord grep -buffer-name=grep-search -no-quit -no-wrap<CR>
   " グレップ検索
-  nnoremap <silent>[unite]G :<C-u>Unite grep -buffer-name=grep-search -no-quit<CR>
+  nnoremap <silent>[unite]G :<C-u>Unite grep -buffer-name=grep-search -no-quit -no-wrap<CR>
   " すべてのソースを表示
   nnoremap <silent>[unite]s :<C-u>Unite source<CR>
   " アウトラインを展開
