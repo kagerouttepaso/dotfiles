@@ -32,7 +32,7 @@ if neobundle#is_installed("unite-tag")
   autocmd BufEnter *
   \   if empty(&buftype)
   \|      nnoremap <buffer> <C-t> :<C-u>Unite jump<CR>
-  \|      nnoremap tb :<C-u>Unite jump -force-immediately<CR>
+  \|      nnoremap tb :<C-u>Unite jump<CR>
   \|      nnoremap tB :<C-u>Kwbd<CR>:<C-u>Unite jump -select=2<CR>
   \|  endif
 else
