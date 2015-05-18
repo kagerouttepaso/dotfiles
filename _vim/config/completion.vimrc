@@ -13,4 +13,3 @@ cnoremap <Up>   <C-p>
 cnoremap <C-n>  <Down>
 cnoremap <Down> <C-n>
 
-

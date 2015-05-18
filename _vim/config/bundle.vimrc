@@ -1,7 +1,8 @@
+"Bundlem周りの設定
 if has('vim_starting')
   set nocompatible  " Be iMproved
   set runtimepath+=$DOTVIM_DIR/bundle/neobundle.vim/
-  "set maxfuncdepth=1000 "このコメントを取るとvim-overが死ぬ
+  set maxfuncdepth=190 "これ以上値を増やすとvim-overが死ぬ
 endif
 call neobundle#begin(expand($DOTVIM_DIR.'/bundle'))
 "NeoBundle用の条件判断用の設定
@@ -260,13 +261,6 @@ if neobundle#tap('open-browser.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-"テキストオブジェクトの拡張
-NeoBundle 'kana/vim-operator-user'
-
-"レジスタを汚さない置換ペースト
-NeoBundle 'kana/vim-operator-replace'
-map _  <Plug>(operator-replace)
-
 "検索のステータスをステータスラインに表示
 NeoBundleLazy 'osyo-manga/vim-anzu' 
 if neobundle#tap('vim-anzu') "{{{
@@ -286,6 +280,19 @@ if neobundle#tap('vim-anzu') "{{{
 
   call neobundle#untap()
 endif "}}}
+
+" }}}
+" Text-object {{{
+
+"テキストオブジェクトの拡張
+NeoBundle 'kana/vim-operator-user'
+
+"レジスタを汚さない置換ペースト
+NeoBundle 'kana/vim-operator-replace'
+map _  <Plug>(operator-replace)
+
+"選択した単語の周りに括弧をつける
+NeoBundle 'tpope/vim-surround'
 
 " }}}
 
@@ -786,9 +793,9 @@ if neobundle#tap('unite.vim') "{{{
   " レジスタ一覧
   nnoremap <silent>[unite]r :<C-u>Unite register<CR>
   " グレップ検索
-  nnoremap <silent>[unite]g :<C-u>Unite grep:. -buffer-name=grep-search -no-quit<CR><C-r><C-w><CR>
+  nnoremap <silent>[unite]g :<C-u>UniteWithCursorWord grep -buffer-name=grep-search -no-quit -no-wrap<CR>
   " グレップ検索
-  nnoremap <silent>[unite]G :<C-u>Unite grep   -buffer-name=grep-search -no-quit<CR>
+  nnoremap <silent>[unite]G :<C-u>Unite grep -buffer-name=grep-search -no-quit -no-wrap<CR>
   " すべてのソースを表示
   nnoremap <silent>[unite]s :<C-u>Unite source<CR>
   " アウトラインを展開
@@ -810,7 +817,8 @@ if neobundle#tap('unite.vim') "{{{
     let g:unite_source_grep_max_candidates = 2000
     let g:unite_update_time                = 100
     "grepはwordソートを行う
-    call unite#custom_filters('grep', ['matcher_default', 'sorter_word', 'converter_default'])
+    call unite#custom#source('grep', 'sorters',    'sorter_word')
+    "grepに使うアプリ設定
     if executable('pt')
       let g:unite_source_grep_command       = 'pt'
       let g:unite_source_grep_default_opts  = '--nogroup --nocolor --smart-case'
@@ -872,7 +880,8 @@ if neobundle#tap('unite-tag') "{{{
   function! neobundle#hooks.on_source(bundle)
   endfunction
   call neobundle#untap()
-endif "}}}
+endif
+ "}}}
 
 "file_mru用
 NeoBundle 'Shougo/neomru.vim'

@@ -1,4 +1,6 @@
-﻿" runtimepathの検索
+﻿"日本語
+
+" runtimepathの検索
 if isdirectory($HOME."/.vim")
   let $DOTVIM_DIR = $HOME."/.vim"
 elseif isdirectory($HOME."/vimfiles")
@@ -8,6 +10,7 @@ elseif isdirectory($HOME."/dotfiles/_vim")
 endif
 set encoding=utf-8    " デフォルトエンコーディング
 
+"デバッグ用 messageの出力をコピー
 command! MessCopy call s:messcopy()
 function! s:messcopy()
     redir @+>
@@ -17,9 +20,12 @@ function! s:messcopy()
     call setreg('*', getreg('+', 1), getregtype('+'))
 endfunction
 
+"Evでvimrcの編集
+command! Ev edit $MYVIMRC
+
+
 "NeoBundleで管理してるpluginを読み込む
 source $DOTVIM_DIR/config/bundle.vimrc
-
 "基本設定
 source $DOTVIM_DIR/config/basic.vimrc
 "StatusLine設定
@@ -42,10 +48,7 @@ source $DOTVIM_DIR/config/colors.vimrc
 source $DOTVIM_DIR/config/editing.vimrc
 "エンコーディング関連
 source $DOTVIM_DIR/config/encoding.vimrc
-"その他
+"その他 (自作のSyntax登録など)
 source $DOTVIM_DIR/config/misc.vimrc
-"プラグインに依存するアレ
-source $DOTVIM_DIR/config/plugins.vimrc
 "tab周りの設定
 source $DOTVIM_DIR/config/tab.vimrc
-

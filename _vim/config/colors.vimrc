@@ -2,13 +2,9 @@
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
 
-" colorscheme mrkn256
-" colorscheme yuroyoro256
 if neobundle#is_installed("jellybeans.vim")
   colorscheme jellybeans
 endif
-
-
 
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"
@@ -26,17 +22,5 @@ elseif &term =~ "xterm-color"
   set t_Sb=[4%dm
 endif
 
-"ポップアップメニューのカラーを設定
-"hi Pmenu guibg=#666666
-"hi PmenuSel guibg=#8cd0d3 guifg=#666666
-"hi PmenuSbar guibg=#333333
-
 " ハイライト on
 syntax enable
-" 補完候補の色づけ for vim7
-" hi Pmenu ctermbg=255 ctermfg=0 guifg=#000000 guibg=#999999
-" hi PmenuSel ctermbg=blue ctermfg=black
-"hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222 gui=reverse guifg=#3399ff guibg=#f0e68c
-" hi PmenuSbar ctermbg=0 ctermfg=9
-" hi PmenuSbar ctermbg=255 ctermfg=0 guifg=#000000 guibg=#FFFFFF
-
