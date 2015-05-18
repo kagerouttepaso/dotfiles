@@ -2,7 +2,7 @@
 if has('vim_starting')
   set nocompatible  " Be iMproved
   set runtimepath+=$DOTVIM_DIR/bundle/neobundle.vim/
-  "set maxfuncdepth=1000 "このコメントを取るとvim-overが死ぬ
+  set maxfuncdepth=190 "これ以上値を増やすとvim-overが死ぬ
 endif
 call neobundle#begin(expand($DOTVIM_DIR.'/bundle'))
 "NeoBundle用の条件判断用の設定
