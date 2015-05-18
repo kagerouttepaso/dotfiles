@@ -104,7 +104,7 @@ if neobundle#tap('vim-marching') "{{{
   call neobundle#config({
         \  'autoload': {
         \    'insert(':   1,
-        \    'filetypes': ['cpp'],
+        \    'filetypes': ['cpp', 'c'],
         \  }
         \})
   function! neobundle#hooks.on_source(bundle)
@@ -115,12 +115,15 @@ if neobundle#tap('vim-marching') "{{{
       let g:marching_include_paths = [
             \ "c:/mingw64/x86_64-w64-mingw32/include/c++"
             \]
+    elseif has('win32unix')
+      let g:marching_include_paths = filter(
+      \ split(glob('/usr/include/c++/*'), '\n') +
+      \ split(glob('/usr/include/*/c++/*'), '\n') +
+      \ split(glob('/usr/include/*/'), '\n'),
+      \ 'isdirectory(v:val)')
     endif
     " オプションを追加する
     " filetype=cpp に対して設定する場合
-    "let g:marching_clang_command_option = {
-    "      \ "cpp" : "-std=gnu++1y"
-    "      \}
     let g:marching_clang_command_option = "-std=c++1y"
     " neocomplete.vim と併用して使用する場合
     let g:marching_enable_neocomplete = 1
