@@ -47,6 +47,7 @@ endif
 
 "tags 作成"
 if g:is_windows
-  command! Ctags :!ctags -R .<CR>
+  command! Ctags :!ctags -R --jcode=utf8 .
+  command! CtagsSjis :!ctags -R .
 endif
 
