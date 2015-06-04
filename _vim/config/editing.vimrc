@@ -15,6 +15,8 @@ nmap ye ;let @"=expand("<cword>")<CR>
 
 " Tabキーを空白に変換
 set expandtab
+" Shift+TabでTabを挿入
+inoremap <S-Tab> <C-V><Tab>
 
 " コンマの後に自動的にスペースを挿入
 inoremap , ,<Space>
