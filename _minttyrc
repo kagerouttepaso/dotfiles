@@ -1,8 +1,8 @@
 BoldAsFont=yes
-FontHeight=13
+FontHeight=11
 Locale=C
 Charset=UTF-8
-Font=Inconsolata-g for Powerline
+Font=Hack
 CursorType=block
 AllowBlinking=yes
 Term=xterm-256color
