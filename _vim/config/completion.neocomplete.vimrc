@@ -59,34 +59,34 @@ endif
 let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.c    = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp  = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.cpp  = 
+      \'[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
 
 "インクルードパスの指定
 if has("win32") || has("win64")
-  let g:neocomplete#sources#include#paths ={
+  let g:neoinclude#paths ={
         \ 'cpp':  '.,C:/MinGW//include',
         \ 'c':    '.,C:/MinGW//include',
         \ 'ruby': '.,C:/Ruby200/lib/ruby/2.0.0/',
         \ }
 else
-  let g:neocomplete#sources#include#paths ={
-        \ 'cpp':  '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include',
-        \ 'c':    '.,/usr/include',
+  let g:neoinclude#paths ={
+        \ 'cpp':  '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include,/opt/ros/indigo/include',
+        \ 'c':    '.,/usr/include,/opt/ros/indigo/include',
         \ 'ruby': '.,$HOME/.rvm/rubies/**/lib/ruby/1.8/',
         \ }
 endif
 
 "インクルード文のパターンを指定
-let g:neocomplete#sources#include#patterns = {
+let g:neoinclude#patterns = {
   \ 'cpp':  '^\s*#\s*include',
   \ 'c':    '^\s*#\s*include',
   \ 'ruby': '^\s*require',
   \ 'perl': '^\s*use',
   \ }
 "インクルード先のファイル名の解析パターン
-let g:neocomplete#sources#include#exprs = {
+let g:neoinclude#exprs = {
   \ 'ruby': substitute(v:fname,'::','/','g')
   \ }
 

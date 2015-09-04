@@ -31,6 +31,7 @@ endif
 
 " 補完 neocomplete.vim : 究極のVim的補完環境
 if g:is_can_use_neocomplete
+  NeoBundle 'Shougo/neoinclude.vim'
   NeoBundleLazy 'Shougo/neocomplete.vim', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
   if neobundle#tap('neocomplete.vim') "{{{
     call neobundle#config({
@@ -117,21 +118,26 @@ if neobundle#tap('vim-marching') "{{{
             \]
     elseif has('win32unix')
       let g:marching_include_paths = filter(
-      \ split(glob('/usr/include/c++/*'), '\n') +
-      \ split(glob('/usr/include/*/c++/*'), '\n') +
-      \ split(glob('/usr/include/*/'), '\n'),
-      \ 'isdirectory(v:val)')
+            \ split(glob('/usr/include/c++/*'), '\n') +
+            \ split(glob('/usr/include/*/c++/*'), '\n') +
+            \ split(glob('/usr/include/*/'), '\n'),
+            \ 'isdirectory(v:val)')
+    else
+      let g:marching_include_paths = filter(
+            \ split(glob('/usr/include/c++/*'), '\n') +
+            \ split(glob('/usr/include/*/c++/*'), '\n') +
+            \ split(glob('/usr/include/*/'), '\n'),
+            \ 'isdirectory(v:val)')
+      call add(g:marching_include_paths, "/opt/ros/indigo/include")
     endif
     " オプションを追加する
     " filetype=cpp に対して設定する場合
+    let g:marching#clang_command#options = {
+          \	"cpp" : "-std=gnu++1y"
+          \}
     let g:marching_clang_command_option = "-std=c++1y"
     " neocomplete.vim と併用して使用する場合
     let g:marching_enable_neocomplete = 1
-    if !exists('g:neocomplete#force_omni_input_patterns')
-      let g:neocomplete#force_omni_input_patterns ={}
-    endif
-    let g:neocomplete#force_omni_input_patterns.cpp =
-          \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
   endfunction
 endif  "}}}
 
