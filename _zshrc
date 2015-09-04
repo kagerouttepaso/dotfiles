@@ -6,7 +6,9 @@ if builtin command -v autojump >> /dev/null ; then
     . /usr/share/autojump/autojump.zsh
 fi
 
-if [ -f /opt/ros/indigo/setup.zsh ]; then
+if [ -f ~/catkin_ws/devel/setup.zsh ]; then
+    source ~/catkin_ws/devel/setup.zsh
+elif [ -f /opt/ros/indigo/setup.zsh ]; then
     source /opt/ros/indigo/setup.zsh
 fi
 
