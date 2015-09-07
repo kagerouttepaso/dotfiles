@@ -20,3 +20,5 @@ endif
 
 " ハイライト on
 syntax enable
+
+colorscheme hybrid
