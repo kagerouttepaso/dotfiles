@@ -1161,15 +1161,16 @@ if neobundle#tap('lightline.vim') "{{{
 endif "}}}
 
 "foldの折りたたみのところの文章を変更する
-NeoBundle 'LeafCage/foldCC'
-if neobundle#tap('foldCC') "{{{
+NeoBundle 'LeafCage/foldCC.vim'
+if neobundle#tap('foldCC.vim') "{{{
   call neobundle#config({
         \})
   function! neobundle#hooks.on_source(bundle)
+    set foldtext=FoldCCtext()
+"    set foldcolumn=1
+"    set fillchars=vert:\|
+    set foldmethod=marker
   endfunction
-  set foldtext=FoldCCtext()
-  set foldcolumn=1
-  set fillchars=vert:\|
   call neobundle#untap()
 endif "}}}
 
