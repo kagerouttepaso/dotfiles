@@ -91,9 +91,6 @@ let g:neoinclude#exprs = {
   \ }
 
 " for rsense
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
 let g:rsenseUseOmniFunc = 1
 let g:rsenseHome        = expand('~/src/rsense-0.3')
 

@@ -129,18 +129,19 @@ if neobundle#tap('vim-marching') "{{{
             \ 'isdirectory(v:val)')
     else
       let g:marching_include_paths = filter(
+            \ split(glob('/opt/ros/indigo/include/*'), '\n') +
             \ split(glob('/usr/include/c++/*'), '\n') +
             \ split(glob('/usr/include/*/c++/*'), '\n') +
             \ split(glob('/usr/include/*/'), '\n'),
             \ 'isdirectory(v:val)')
-      call add(g:marching_include_paths, "/opt/ros/indigo/include")
+      let g:marching_backend = "clang_command"
     endif
     " オプションを追加する
     " filetype=cpp に対して設定する場合
     let g:marching#clang_command#options = {
           \	"cpp" : "-std=gnu++1y"
           \}
-    let g:marching_clang_command_option = "-std=c++1y"
+    "let g:marching_clang_command_option = "-std=c++1y"
     " neocomplete.vim と併用して使用する場合
     let g:marching_enable_neocomplete = 1
   endfunction
