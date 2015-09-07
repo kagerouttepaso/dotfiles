@@ -832,8 +832,6 @@ if neobundle#tap('unite.vim') "{{{
     let g:unite_source_file_mru_limit      = 200
     let g:unite_source_grep_max_candidates = 2000
     let g:unite_update_time                = 100
-    "grepはwordソートを行う
-    call unite#custom#source('grep', 'sorters',    'sorter_word')
     "grepに使うアプリ設定
     if executable('pt')
       let g:unite_source_grep_command       = 'pt'
@@ -1181,5 +1179,10 @@ NeoBundle 'airblade/vim-gitgutter'
 
 
 call neobundle#end()
+
+if neobundle#is_installed("unite.vim")
+    "grepはwordソートを行う
+    call unite#custom#source('grep', 'sorters',    'sorter_word')
+endif
 
 filetype plugin indent on     " Required!
