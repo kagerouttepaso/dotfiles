@@ -2,10 +2,6 @@
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
 
-if neobundle#is_installed("jellybeans.vim")
-  colorscheme jellybeans
-endif
-
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"
   " 256色

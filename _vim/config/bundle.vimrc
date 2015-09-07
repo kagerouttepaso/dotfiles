@@ -768,6 +768,13 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'w0ng/vim-hybrid'
 
+if neobundle#tap('vim-hybrid') "{{{
+  function! neobundle#hooks.on_source(bundle)
+    colorscheme hybrid
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
 " }}}
 
 " Unite {{{{

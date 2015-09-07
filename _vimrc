@@ -42,8 +42,6 @@ source $DOTVIM_DIR/config/tags.vimrc
 source $DOTVIM_DIR/config/search.vimrc
 "移動関連
 source $DOTVIM_DIR/config/moving.vimrc
-"Color関連
-source $DOTVIM_DIR/config/colors.vimrc
 "編集関連
 source $DOTVIM_DIR/config/editing.vimrc
 "エンコーディング関連
@@ -52,3 +50,5 @@ source $DOTVIM_DIR/config/encoding.vimrc
 source $DOTVIM_DIR/config/misc.vimrc
 "tab周りの設定
 source $DOTVIM_DIR/config/tab.vimrc
+"Color関連
+source $DOTVIM_DIR/config/colors.vimrc

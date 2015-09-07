@@ -28,9 +28,7 @@ command! ESolMt :call EndSolutionMT()
 "colorscheme hybrid
 "set transparency=230
 
-if neobundle#is_installed("jellybeans.vim")
-  colorscheme jellybeans
-endif
+colorscheme hybrid
 
 "半透明にして更にかっこよく
 set transparency=220
