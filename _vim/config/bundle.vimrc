@@ -46,7 +46,59 @@ if g:is_can_use_neocomplete
           \  }
           \})
     function! neobundle#hooks.on_source(bundle)
-      source $DOTVIM_DIR/config/completion.neocomplete.vimrc
+      " AutoComplPopを無効にする
+      let g:acp_enableAtStartup = 0
+      " neocompleteを有効にする
+      let g:neocomplete#enable_at_startup = 1
+      " smarrt case有効化。 大文字が入力されるまで大文字小文字の区別を無視する
+      let g:neocomplete#enable_smart_case = 1
+      " シンタックスをキャッシュするときの最小文字長を3に
+      let g:neocomplete#min_keyword_length = 3
+      " neocompleteを自動的にロックするバッファ名のパターン
+      let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+      " 補完が自動で開始される文字数
+      let g:neocomplete#auto_completion_start_length = 2
+      "ポップアップメニューで表示される候補の数。初期値は100
+      "let g:neocomplete#max_list = 30
+
+      " Define dictionary.
+      let g:neocomplete#sources#dictionary#dictionaries = {
+            \ 'default':    '',
+            \ 'vimshell':   $HOME.'/.vimshell_hist',
+            \ 'scala':      $HOME.'/.vim/bundle/vim-scala/dict/scala.dict',
+            \ 'c':          $HOME.'/.vim/dict/c.dict',
+            \ 'cpp':        $HOME.'/.vim/dict/cpp.dict',
+            \ 'java':       $HOME.'/.vim/dict/java.dict',
+            \ 'javascript': $HOME.'/.vim/dict/javascript.dict',
+            \ 'lua':        $HOME.'/.vim/dict/lua.dict',
+            \ 'ocaml':      $HOME.'/.vim/dict/ocaml.dict',
+            \ 'perl':       $HOME.'/.vim/dict/perl.dict',
+            \ 'php':        $HOME.'/.vim/dict/php.dict',
+            \ 'scheme':     $HOME.'/.vim/dict/scheme.dict',
+            \ 'vim':        $HOME.'/.vim/dict/vim.dict'
+            \ }
+
+      " Define keyword.
+      if !exists('g:neocomplete#keyword_patterns')
+        let g:neocomplete#keyword_patterns = {}
+      endif
+      let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+
+      " Enable heavy omni completion.
+      if !exists('g:neocomplete#sources#omni#input_patterns')
+        let g:neocomplete#sources#omni#input_patterns = {}
+      endif
+      let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+      let g:neocomplete#sources#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
+      let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+      " for rsense
+      let g:rsenseUseOmniFunc = 1
+      let g:rsenseHome        = expand('~/src/rsense-0.3')
+
     endfunction
     augroup neocompleteKeyBind
       autocmd!
@@ -60,7 +112,6 @@ if g:is_can_use_neocomplete
       autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
       autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
       autocmd FileType php           setlocal omnifunc=phpcomplete#CompletePHP
-      autocmd FileType c             setlocal omnifunc=ccomplete#Complete
       autocmd FileType ruby          setlocal omnifunc=rubycomplete#Complete
       autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
     augroup END
@@ -144,6 +195,14 @@ if neobundle#tap('vim-marching') "{{{
     "let g:marching_clang_command_option = "-std=c++1y"
     " neocomplete.vim と併用して使用する場合
     let g:marching_enable_neocomplete = 1
+
+    " Enable heavy omni completion.
+    if !exists('g:neocomplete#sources#omni#input_patterns')
+      let g:neocomplete#sources#omni#input_patterns = {}
+    endif
+    let g:neocomplete#sources#omni#input_patterns.c    = '[^.[:digit:] *\t]\%(\.\|->\)'
+    let g:neocomplete#sources#omni#input_patterns.cpp  = 
+          \'[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
   endfunction
 endif  "}}}
 
@@ -172,6 +231,31 @@ if neobundle#tap('neoinclude.vim') "{{{
   call neobundle#config({
         \})
   function! neobundle#hooks.on_source(bundle)
+    "インクルードパスの指定
+    if has("win32") || has("win64")
+      let g:neoinclude#paths ={
+            \ 'cpp':  '.,C:/MinGW//include',
+            \ 'c':    '.,C:/MinGW//include',
+            \ 'ruby': '.,C:/Ruby200/lib/ruby/2.0.0/',
+            \ }
+    else
+      let g:neoinclude#paths ={
+            \ 'cpp':  '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include,/opt/ros/indigo/include',
+            \ 'c':    '.,/usr/include,/opt/ros/indigo/include',
+            \ 'ruby': '.,$HOME/.rvm/rubies/**/lib/ruby/1.8/',
+            \ }
+    endif
+    "インクルード文のパターンを指定
+    let g:neoinclude#patterns = {
+          \ 'cpp':  '^\s*#\s*include',
+          \ 'c':    '^\s*#\s*include',
+          \ 'ruby': '^\s*require',
+          \ 'perl': '^\s*use',
+          \ }
+    "インクルード先のファイル名の解析パターン
+    let g:neoinclude#exprs = {
+          \ 'ruby': substitute(v:fname,'::','/','g')
+          \ }
   endfunction
   call neobundle#untap()
 endif "}}}
@@ -307,6 +391,7 @@ if neobundle#tap('vim-anzu') "{{{
 endif "}}}
 
 " }}}
+
 " Text-object {{{
 
 "テキストオブジェクトの拡張
@@ -904,7 +989,7 @@ if neobundle#tap('unite-tag') "{{{
   endfunction
   call neobundle#untap()
 endif
- "}}}
+"}}}
 
 "file_mru用
 NeoBundle 'Shougo/neomru.vim'
@@ -1167,8 +1252,8 @@ if neobundle#tap('foldCC.vim') "{{{
         \})
   function! neobundle#hooks.on_source(bundle)
     set foldtext=FoldCCtext()
-"    set foldcolumn=1
-"    set fillchars=vert:\|
+    "    set foldcolumn=1
+    "    set fillchars=vert:\|
     set foldmethod=marker
   endfunction
   call neobundle#untap()
@@ -1176,9 +1261,9 @@ endif "}}}
 
 " Gitの変更点をわかり易く表示
 NeoBundle 'airblade/vim-gitgutter'
-  let g:gitgutter_sign_added    = '✚'
-  let g:gitgutter_sign_modified = '➜'
-  let g:gitgutter_sign_removed  = '✘'
+let g:gitgutter_sign_added    = '✚'
+let g:gitgutter_sign_modified = '➜'
+let g:gitgutter_sign_removed  = '✘'
 
 " }}}
 
@@ -1191,8 +1276,8 @@ NeoBundle 'airblade/vim-gitgutter'
 call neobundle#end()
 
 if neobundle#is_installed("unite.vim")
-    "grepはwordソートを行う
-    call unite#custom#source('grep', 'sorters',    'sorter_word')
+  "grepはwordソートを行う
+  call unite#custom#source('grep', 'sorters',    'sorter_word')
 endif
 
 filetype plugin indent on     " Required!
