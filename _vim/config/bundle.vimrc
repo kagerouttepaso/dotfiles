@@ -31,8 +31,13 @@ endif
 
 " 補完 neocomplete.vim : 究極のVim的補完環境
 if g:is_can_use_neocomplete
-  NeoBundle 'Shougo/neoinclude.vim'
-  NeoBundleLazy 'Shougo/neocomplete.vim', { 'depends' : [ 'Shougo/neosnippet.vim' ] }
+  NeoBundleLazy 'Shougo/neocomplete.vim', { 
+        \ 'depends' : [ 
+        \    'Shougo/neosnippet.vim' , 
+        \    'Shougo/neoinclude.vim'
+        \ ] 
+        \}
+
   if neobundle#tap('neocomplete.vim') "{{{
     call neobundle#config({
           \  'autoload': {
@@ -159,6 +164,16 @@ if neobundle#tap('vim-monster') "{{{
           \}
   endfunction
 endif  "}}}
+
+" インクルードディレクトリ管理
+NeoBundleLazy 'Shougo/neoinclude.vim'
+if neobundle#tap('neoinclude.vim') "{{{
+  call neobundle#config({
+        \})
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  call neobundle#untap()
+endif "}}}
 
 " neocomplcacheのsinpet補完
 NeoBundleLazy 'Shougo/neosnippet.vim'
