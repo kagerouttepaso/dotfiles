@@ -1125,8 +1125,8 @@ if neobundle#tap('lightline.vim') "{{{
         \ }
 
   if has('multi_byte')
-    let g:lightline.separator    = {'left': '⮀', 'right': '⮂'}
-    let g:lightline.subseparator = {'left': '⮁', 'right': '⮃'}
+    let g:lightline.separator    = {'left': '', 'right': ''}
+    let g:lightline.subseparator = {'left': '', 'right': ''}
   endif
 
 
@@ -1135,7 +1135,7 @@ if neobundle#tap('lightline.vim') "{{{
   endfunction "}}}
 
   function! MyReadonly() "{{{
-    return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '⭤' : ''
+    return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '' : ''
   endfunction "}}}
 
   function! MyFilename() "{{{
@@ -1146,12 +1146,11 @@ if neobundle#tap('lightline.vim') "{{{
           \ ''   != expand('%:t') ? expand('%:t') : '[No Name]') .
           \ (''  != MyModified()  ? ' ' . MyModified() : '')
   endfunction "}}}
-
   function! MyFugitive() "{{{
     try
       if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
         let _ = fugitive#head()
-        return strlen(_) ? '⭠ '._ : ''
+        return strlen(_) ? ' '._ : ''
       endif
     catch
     endtry
@@ -1278,6 +1277,15 @@ let g:gitgutter_sign_removed  = '✘'
 
 " test  {{{
 
+"powerline
+"█
+"
+"
+"
+"
+"
+"
+"
 " }}}
 
 
