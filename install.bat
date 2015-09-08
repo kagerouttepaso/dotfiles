@@ -12,8 +12,8 @@ cd %FONT_DIR%
 start .\Inconsolata-Bold.ttf
 start .\Inconsolata-Regular.ttf
 start .\Inconsolata-g-Powerline.ttf
-start .\Hack-Bold.otf
-start .\Hack-BoldOblique.otf
-start .\Hack-Regular.otf
-start .\Hack-RegularOblique.otf
+start .\Hack-Bold.ttf
+start .\Hack-BoldOblique.ttf
+start .\Hack-Regular.ttf
+start .\Hack-RegularOblique.ttf
 regedit.exe /s %FONTREG%
