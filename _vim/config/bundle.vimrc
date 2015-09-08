@@ -6,12 +6,6 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand($DOTVIM_DIR.'/bundle'))
 
-"NeoBundle用の条件判断用の設定
-"windowsかどうかの判定
-let g:is_windows             = has('win32') || has('win64')
-"Luaが使用可能かどうかの判定
-let g:is_can_use_neocomplete = has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
-
 
 
 " Base {{{
@@ -595,7 +589,7 @@ if neobundle#tap('vim-precious') "{{{
 endif "}}}
 
 "文字コードの自動認識
-NeoBundle 'banyan/recognize_charcode.vim'
+"NeoBundle 'banyan/recognize_charcode.vim'
 
 " }}}
 

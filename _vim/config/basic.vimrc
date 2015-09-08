@@ -18,7 +18,13 @@ set cmdheight=2                  " コマンドラインは2行
 set showmode                     " 現在のモードを表示
 set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 "set modelines=0                 " モードラインは無効
-set ambiwidth="double"           " unicodeのambiguous widthな文字は全角文字として表示
+if g:is_mac
+  set ambiwidth=single             " unicodeのambiguous widthな文字は全角文字として表示
+elseif g:is_windows
+  set ambiwidth=double             " unicodeのambiguous widthな文字は全角文字として表示
+elseif g:is_cygwin
+  set ambiwidth=single             " unicodeのambiguous widthな文字は全角文字として表示
+endif
 
 " OSのクリップボードを使用する
 if has("mac")
