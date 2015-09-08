@@ -15,7 +15,7 @@ if builtin command -v tmux >> /dev/null ; then
     alias tmuxx='if $(tmux has-session 2> /dev/null); then
                       tmux attach -d; 
                  else tmux; fi'
-    alias tmux_noambw='export TMUX_POWERLINE_NOT_USE_AMBIWIDTH=true && tmuxx'
+    alias tmux_terateam='export TMUX_POWERLINE_NOT_USE_AMBIWIDTH=true && tmuxx'
 fi
 if builtin command -v ssh >> /dev/null ; then
     alias sshx="ssh -XCY"
