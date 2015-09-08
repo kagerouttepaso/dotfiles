@@ -906,7 +906,7 @@ if neobundle#tap('unite.vim') "{{{
   " レジスタ一覧
   nnoremap <silent>[unite]r :<C-u>Unite register<CR>
   " グレップ検索
-  nnoremap <silent>[unite]g :<C-u>UniteWithCursorWord grep -buffer-name=grep-search -no-quit -no-wrap<CR><CR>
+  nnoremap <silent>[unite]g :<C-u>UniteWithCursorWord grep -buffer-name=grep-search -no-quit -no-wrap<CR>
   " グレップ検索
   nnoremap <silent>[unite]G :<C-u>Unite grep -buffer-name=grep-search -no-quit -no-wrap<CR>
   " すべてのソースを表示
@@ -1261,8 +1261,8 @@ if neobundle#tap('foldCC.vim') "{{{
     set foldtext=FoldCCtext()
     "    set foldcolumn=1
     "    set fillchars=vert:\|
-    set foldmethod=marker
   endfunction
+  set foldmethod=marker
   call neobundle#untap()
 endif "}}}
 
