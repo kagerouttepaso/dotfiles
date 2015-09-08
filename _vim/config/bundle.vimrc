@@ -168,14 +168,14 @@ if neobundle#tap('vim-marching') "{{{
         \  }
         \})
   function! neobundle#hooks.on_source(bundle)
-    if has('win32') || has('win64')
+    if g:is_windows
       " clang コマンドの設定
       "let g:marching_clang_command = "c:/clang.exe"
       " インクルードディレクトリのパスを設定
       let g:marching_include_paths = [
             \ "c:/mingw64/x86_64-w64-mingw32/include/c++"
             \]
-    elseif has('win32unix')
+    elseif g:is_cygwin
       let g:marching_include_paths = filter(
             \ split(glob('/usr/include/c++/*'), '\n') +
             \ split(glob('/usr/include/*/c++/*'), '\n') +
@@ -235,7 +235,7 @@ if neobundle#tap('neoinclude.vim') "{{{
         \})
   function! neobundle#hooks.on_source(bundle)
     "インクルードパスの指定
-    if has("win32") || has("win64")
+    if g:is_windows
       let g:neoinclude#paths ={
             \ 'cpp':  '.,C:/MinGW//include',
             \ 'c':    '.,C:/MinGW//include',
@@ -662,7 +662,7 @@ if neobundle#tap('vimshell') "{{{
     let g:vimshell_vimshrc_path = expand($DOTVIM_DIR.'/vimshrc')
     let g:vimshell_user_prompt  = 'fnamemodify(getcwd(), ":~")'
     "let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
-    if has('win32') || has('win64')
+    if g:is_windows
       " Display user name on Windows.
       let g:vimshell_prompt = $USERNAME."% "
     else
@@ -850,7 +850,7 @@ endif "}}}
 
 " }}}
 
-" ColorSchema{{{{
+" ColorSchema{{{
 
 "カラースキームのテスト
 NeoBundleLazy 'cocopon/colorswatch.vim'
@@ -874,7 +874,7 @@ NeoBundle 'w0ng/vim-hybrid'
 
 " }}}
 
-" Unite {{{{
+" Unite {{{
 
 " unite.vim : - すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
 NeoBundle 'Shougo/unite.vim'
@@ -1038,7 +1038,7 @@ endif "}}}
 
 " }}}
 
-" gvim  {{{{
+" gvim  {{{
 
 " Gvim上でフォントのサイズを変更する
 NeoBundleLazy 'thinca/vim-fontzoom'
@@ -1290,5 +1290,3 @@ if neobundle#is_installed("unite.vim")
   "grepはwordソートを行う
   call unite#custom#source('grep', 'sorters',    'sorter_word')
 endif
-
-filetype plugin indent on     " Required!

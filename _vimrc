@@ -26,12 +26,15 @@ command! Ev edit $MYVIMRC
 "NeoBundle用の条件判断用の設定
 "windowsかどうかの判定
 let g:is_windows             = has('win32') || has('win64')
-"Luaが使用可能かどうかの判定
-let g:is_can_use_neocomplete = has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+"cygwinかどうかの判定
 let g:is_cygwin              = has('win32unix')
+"macかどうかのはんてい
 let g:is_mac                 = !g:is_windows
       \ && (has('mac') || has('macunix') || has('gui_macvim') ||
       \   (!isdirectory('/proc') && executable('sw_vers')))
+let g:is_gui                 = has('gui')
+"Luaが使用可能かどうかの判定
+let g:is_can_use_neocomplete = has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 
 "NeoBundleで管理してるpluginを読み込む
 source $DOTVIM_DIR/config/bundle.vimrc

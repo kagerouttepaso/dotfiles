@@ -4,7 +4,6 @@ source $VIMRUNTIME/delmenu.vim
 set langmenu=ja_jp.utf-8
 source $VIMRUNTIME/menu.vim
 
-
 "ソリューションのミーティング用設定
 function! SolutionMT()
   set guifont=Hack:h21
@@ -38,6 +37,9 @@ set guifont=Hack:h13
 
 "全角と半角のある文字は全角で表示
 set ambiwidth=double
+
+"フォールドはマーカで区切る
+set foldmethod=marker
 
 set novisualbell
 if has("win32")
