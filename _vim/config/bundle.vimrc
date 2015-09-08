@@ -1084,7 +1084,7 @@ if neobundle#tap('lightline.vim') "{{{
   call neobundle#config({
         \})
   let g:lightline = {
-        \ 'colorscheme': 'jellybeans',
+        \ 'colorscheme': 'hybrid',
         \ 'mode_map':    {'c': 'NORMAL'},
         \ 'active': {
         \   'left': [
@@ -1119,8 +1119,13 @@ if neobundle#tap('lightline.vim') "{{{
         \ }
 
   if has('multi_byte')
-    let g:lightline.separator    = {'left': '', 'right': ''}
-    let g:lightline.subseparator = {'left': '', 'right': ''}
+    let g:lightline = {
+          \ 'component': {
+          \   'lineinfo': ' %3l:%-2v',
+          \ },
+          \ 'separator': { 'left': '', 'right': '' },
+          \ 'subseparator': { 'left': '', 'right': '' }
+          \ }
   endif
 
 
