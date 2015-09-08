@@ -109,9 +109,11 @@ fi
 # my setting
 source ~/.bash/bash_aliases
 if builtin command -v autojump >> /dev/null ; then
-    . /usr/share/autojump/autojump.sh
+    . /usr/share/autojump/autojump.bash
 fi
 
-if [ -f /opt/ros/indigo/setup.bash ]; then
+if [ -f ~/catkin_ws/devel/setup.bash ]; then
+    source ~/catkin_ws/devel/setup.bash
+elif [ -f /opt/ros/indigo/setup.bash ]; then
     source /opt/ros/indigo/setup.bash
 fi
