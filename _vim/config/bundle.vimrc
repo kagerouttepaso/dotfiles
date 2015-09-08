@@ -1,24 +1,30 @@
-"Bundlem周りの設定
+"NeoBundlem周りの設定
 if has('vim_starting')
   set nocompatible  " Be iMproved
   set runtimepath+=$DOTVIM_DIR/bundle/neobundle.vim/
   set maxfuncdepth=190 "これ以上値を増やすとvim-overが死ぬ
 endif
 call neobundle#begin(expand($DOTVIM_DIR.'/bundle'))
+
 "NeoBundle用の条件判断用の設定
+"windowsかどうかの判定
 let g:is_windows             = has('win32') || has('win64')
+"Luaが使用可能かどうかの判定
 let g:is_can_use_neocomplete = has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 
 
-" Let NeoBundle manage NeoBundle
+
+" Base {{{
+
+" NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" vimproc : vimから非同期実行
+" vimproc : vimから非同期実行 {{{
 if g:is_windows
   " win環境は香り屋バンドル版を使う
 else
   NeoBundle 'Shougo/vimproc.vim', {
-        \   'build' : {
+        \   'build': {
         \     'cygwin': 'make -f make_cygwin.mak',
         \     'mac':    'make -f make_mac.mak',
         \     'linux':  'make',
@@ -26,6 +32,9 @@ else
         \   }
         \ }
 endif
+"}}}
+
+"}}}
 
 " Completion {{{
 
@@ -325,13 +334,13 @@ if neobundle#tap('vim-quickhl') "{{{
         \    'mappings': ['<Plug>(quickhl-'],
         \  }
         \})
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
   nmap gm <Plug>(quickhl-manual-this)
   xmap gm <Plug>(quickhl-manual-this)
   nmap gM <Plug>(quickhl-manual-reset)
   xmap gM <Plug>(quickhl-manual-reset)
   nmap gj <Plug>(quickhl-cword-toggle)
-  function! neobundle#hooks.on_source(bundle)
-  endfunction
   call neobundle#untap()
 endif "}}}
 
