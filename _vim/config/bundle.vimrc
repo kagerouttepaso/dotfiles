@@ -1084,40 +1084,39 @@ if neobundle#tap('lightline.vim') "{{{
   call neobundle#config({
         \})
   let g:lightline = {
-        \ 'mode_map':    {'c': 'NORMAL'},
-        \ 'active': {
-        \   'left': [
-        \     ['mode', 'paste'],
-        \     ['fugitive', 'gitgutter', 'filename' ],
-        \   ],
-        \   'right': [
-        \     ['syntastic', 'search_status', 'lineinfo'],
-        \     ['percent'],
-        \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
-        \   ]
-        \ },
-        \ 'component_expand': {
-        \   'syntastic': 'SyntasticStatuslineFlag',
-        \ },
-        \ 'component_type': {
-        \   'syntastic': 'error',
-        \ },
-        \ 'component_function': {
-        \   'modified':      'MyModified',
-        \   'readonly':      'MyReadonly',
-        \   'fugitive':      'MyFugitive',
-        \   'filename':      'MyFilename',
-        \   'fileformat':    'MyFileformat',
-        \   'filetype':      'MyFiletype',
-        \   'fileencoding':  'MyFileencoding',
-        \   'mode':          'MyMode',
-        \   'charcode':      'MyCharCode',
-        \   'gitgutter':     'MyGitGutter',
-        \   'search_status': 'MyAnzu',
-        \ }
-        \ }
-
         \  'colorscheme': 'powerline',
+        \  'mode_map': {'c': 'NORMAL'},
+        \  'active': {
+        \    'left': [
+        \      ['mode',     'paste'],
+        \      ['fugitive', 'gitgutter', 'filename' ],
+        \    ],
+        \    'right': [
+        \      ['syntastic', 'search_status', 'lineinfo'],
+        \      ['percent'],
+        \      ['charcode', 'fileformat', 'fileencoding', 'filetype'],
+        \    ],
+        \  },
+        \  'component_expand': {
+        \    'syntastic': 'SyntasticStatuslineFlag',
+        \  },
+        \  'component_type': {
+        \    'syntastic': 'error',
+        \  },
+        \  'component_function': {
+        \    'modified':      'MyModified',
+        \    'readonly':      'MyReadonly',
+        \    'fugitive':      'MyFugitive',
+        \    'filename':      'MyFilename',
+        \    'fileformat':    'MyFileformat',
+        \    'filetype':      'MyFiletype',
+        \    'fileencoding':  'MyFileencoding',
+        \    'mode':          'MyMode',
+        \    'charcode':      'MyCharCode',
+        \    'gitgutter':     'MyGitGutter',
+        \    'search_status': 'MyAnzu',
+        \  }
+        \}
   if has('multi_byte')
     let g:lightline.component ={
           \    'lineinfo': ' %3l:%-2v',
@@ -1127,14 +1126,13 @@ if neobundle#tap('lightline.vim') "{{{
   endif
 
 
+
   function! MyModified() "{{{
     return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '✘' : &modifiable ? '' : '-'
   endfunction "}}}
-
   function! MyReadonly() "{{{
     return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '' : ''
   endfunction "}}}
-
   function! MyFilename() "{{{
     return  (''  != MyReadonly()  ? MyReadonly() . ' ' : '') .
           \ (&ft == 'vimfiler'    ? vimfiler#get_status_string():
@@ -1153,19 +1151,15 @@ if neobundle#tap('lightline.vim') "{{{
     endtry
     return ''
   endfunction "}}}
-
   function! MyFileformat() "{{{
     return winwidth('.') > 80 ? &fileformat : ''
   endfunction "}}}
-
   function! MyFiletype() "{{{
     return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
   endfunction "}}}
-
   function! MyFileencoding() "{{{
     return winwidth('.') > 80 ? (strlen(&fenc) ? &fenc : &enc) : ''
   endfunction "}}}
-
   function! MyAnzu() "{{{
     try
       let _ = anzu#search_status()
@@ -1174,14 +1168,12 @@ if neobundle#tap('lightline.vim') "{{{
     endtry
     return ''
   endfunction "}}}
-
   function! MyMode() "{{{
     return  &ft == 'unite'    ? 'Unite'    :
           \ &ft == 'vimfiler' ? 'VimFiler' :
           \ &ft == 'vimshell' ? 'VimShell' :
           \ winwidth('.') > 60 ? lightline#mode() : ''
   endfunction "}}}
-
   function! MyCharCode() "{{{
     if winwidth('.') <= 90
       return ''
@@ -1216,7 +1208,6 @@ if neobundle#tap('lightline.vim') "{{{
 
     return "'". char ."' ". nr
   endfunction "}}}
-
   function! MyGitGutter() "{{{
     if ! exists('*GitGutterGetHunkSummary')
           \ || ! get(g:, 'gitgutter_enabled', 0)
