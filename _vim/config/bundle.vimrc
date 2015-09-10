@@ -1084,7 +1084,6 @@ if neobundle#tap('lightline.vim') "{{{
   call neobundle#config({
         \})
   let g:lightline = {
-        \ 'colorscheme': 'hybrid',
         \ 'mode_map':    {'c': 'NORMAL'},
         \ 'active': {
         \   'left': [
@@ -1118,14 +1117,13 @@ if neobundle#tap('lightline.vim') "{{{
         \ }
         \ }
 
+        \  'colorscheme': 'powerline',
   if has('multi_byte')
-    let g:lightline = {
-          \ 'component': {
-          \   'lineinfo': ' %3l:%-2v',
-          \ },
-          \ 'separator': { 'left': '', 'right': '' },
-          \ 'subseparator': { 'left': '', 'right': '' }
-          \ }
+    let g:lightline.component ={
+          \    'lineinfo': ' %3l:%-2v',
+          \}
+    let g:lightline.separator    = { 'left': '', 'right': '' }
+    let g:lightline.subseparator = { 'left': '', 'right': '' }
   endif
 
 
@@ -1226,9 +1224,9 @@ if neobundle#tap('lightline.vim') "{{{
       return ''
     endif
     let symbols = [
-          \ g:gitgutter_sign_added . ' ',
-          \ g:gitgutter_sign_modified . ' ',
-          \ g:gitgutter_sign_removed . ' '
+          \ g:gitgutter_sign_added   .'',
+          \ g:gitgutter_sign_modified.'',
+          \ g:gitgutter_sign_removed .''
           \ ]
     let hunks = GitGutterGetHunkSummary()
     let ret = []
@@ -1239,7 +1237,6 @@ if neobundle#tap('lightline.vim') "{{{
     endfor
     return join(ret, ' ')
   endfunction "}}}
-
   augroup AutoSyntastic "{{{
     autocmd!
     autocmd BufWritePost *.h,*.c,*.cpp,*.js,*.sh call s:syntastic()
