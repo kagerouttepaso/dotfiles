@@ -1256,15 +1256,29 @@ endif "}}}
 
 " Gitの変更点をわかり易く表示
 NeoBundle 'airblade/vim-gitgutter'
-if g:is_teraterm
-  let g:gitgutter_sign_added    = '+'
-  let g:gitgutter_sign_modified = '*'
-  let g:gitgutter_sign_removed  = '-'
-else 
-  let g:gitgutter_sign_added    = '✚'
-  let g:gitgutter_sign_modified = '➜'
-  let g:gitgutter_sign_removed  = '✘'
-endif
+if neobundle#tap('vim-gitgutter') "{{{
+  call neobundle#config({
+        \})
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+
+  " gl, ghでGitの差分に飛ぶ
+  nnoremap <silent> gl :<C-u>GitGutterNextHunk<CR>
+  nnoremap <silent> gh :<C-u>GitGutterPrevHunk<CR>
+
+  if g:is_teraterm
+    let g:gitgutter_sign_added    = '+'
+    let g:gitgutter_sign_modified = '*'
+    let g:gitgutter_sign_removed  = '-'
+  else 
+    let g:gitgutter_sign_added    = '✚'
+    let g:gitgutter_sign_modified = '➜'
+    let g:gitgutter_sign_removed  = '✘'
+  endif
+
+  call neobundle#untap()
+endif "}}}
+
 
 " }}}
 

@@ -14,10 +14,6 @@ vnoremap k      gk
 vnoremap <Down> gj
 vnoremap <Up>   gk
 
-" gl, ghでGitの差分に飛ぶ
-nnoremap <silent> gl :<C-u>GitGutterNextHunk<CR>
-nnoremap <silent> gh :<C-u>GitGutterPrevHunk<CR>
-
 " 0, 9で行頭、行末へ
 nnoremap 9 ^
 nnoremap 0 $
