@@ -39,7 +39,10 @@ nnoremap +        <C-W>+
 nnoremap -        <C-W>-
 
 " 前回終了したカーソル行に移動
-autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+augroup BufReadPost_
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+augroup END
 
 " 最後に編集された位置に移動
 nnoremap gb '[
@@ -72,3 +75,6 @@ nnoremap <BS> <C-w>h
 
 " insert mode でjjでesc
 inoremap jj <Esc>
+
+" 今開いているファイルのパスをカレントディレクトリと設定する
+command! CdCurrent :cd %:p:h

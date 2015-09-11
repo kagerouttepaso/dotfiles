@@ -22,19 +22,21 @@ set notagbsearch
 " nnoremap <C-t>k  gT
 
 
-
 if neobundle#is_installed("unite-tag")
-  autocmd BufEnter *
-  \   if empty(&buftype)
-  \|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag <CR>
-  \|      nnoremap tt :<C-u>UniteWithCursorWord -immediately tag<CR>
-  \|  endif
-  autocmd BufEnter *
-  \   if empty(&buftype)
-  \|      nnoremap <buffer> <C-t> :<C-u>Unite jump<CR>
-  \|      nnoremap tb :<C-u>Unite jump<CR>
-  \|      nnoremap tB :<C-u>Kwbd<CR>:<C-u>Unite jump -select=2<CR>
-  \|  endif
+  augroup UniteTagJump
+    autocmd!
+    autocmd BufEnter *
+          \   if empty(&buftype)
+          \|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag <CR>
+          \|      nnoremap tt :<C-u>UniteWithCursorWord -immediately tag<CR>
+          \|  endif
+    autocmd BufEnter *
+          \   if empty(&buftype)
+          \|      nnoremap <buffer> <C-t> :<C-u>Unite jump<CR>
+          \|      nnoremap tb :<C-u>Unite jump<CR>
+          \|      nnoremap tB :<C-u>Kwbd<CR>:<C-u>Unite jump -select=2<CR>
+          \|  endif
+  augroup END
 else
   "tags-and-searchesを使い易くする
   nnoremap t  <Nop>

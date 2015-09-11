@@ -28,7 +28,7 @@ command! Ev edit $MYVIMRC
 let g:is_windows             = has('win32') || has('win64')
 "cygwinかどうかの判定
 let g:is_cygwin              = has('win32unix')
-"macかどうかのはんてい
+"macかどうかの判定
 let g:is_mac                 = !g:is_windows
       \ && (has('mac') || has('macunix') || has('gui_macvim') ||
       \   (!isdirectory('/proc') && executable('sw_vers')))

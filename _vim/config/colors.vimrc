@@ -2,6 +2,9 @@
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
 
+syntax enable      " ハイライト on
+colorscheme hybrid " カラースキーム
+
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"
   " 256色
@@ -18,7 +21,3 @@ elseif &term =~ "xterm-color"
   set t_Sb=[4%dm
 endif
 
-" ハイライト on
-syntax enable
-
-colorscheme hybrid

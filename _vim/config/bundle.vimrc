@@ -817,7 +817,10 @@ if neobundle#tap('yankround.vim') "{{{
   function! neobundle#hooks.on_source(bundle)
     " 貼り付け文字列をハイライト
     let g:yankround_use_region_hl=1
-    autocmd ColorScheme * highlight YankRoundRegion guibg=#302028
+    augroup YankRoundColorScheme
+      autocmd!
+      autocmd ColorScheme * highlight YankRoundRegion guibg=#302028
+    augroup END
   endfunction
   call neobundle#untap()
 endif "}}}

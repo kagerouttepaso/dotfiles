@@ -20,13 +20,14 @@ inoremap <S-Tab> <C-V><Tab>
 
 " コンマの後に自動的にスペースを挿入
 inoremap , ,<Space>
+
 " XMLの閉タグを自動挿入
 augroup MyXML
   autocmd!
   autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
-"  Insert mode中で単語単位/行単位の削除をアンドゥ可能にする
+" Insert mode中で単語単位/行単位の削除をアンドゥ可能にする
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
 
@@ -41,7 +42,6 @@ nmap y0 y$
 " y9で行頭までヤンク
 nmap y9 y^
 
-"
 " 括弧を自動補完
 "inoremap { {}<LEFT>
 "inoremap [ []<LEFT>
@@ -71,8 +71,6 @@ augroup autoReplaseOnSave
   autocmd!
   autocmd BufWritePre * :call BufWriteFile()
 augroup END
-" 保存時にtabをスペースに変換する
-"autocmd BufWritePre * :%s/\t/  /ge
 
 " 日時の自動入力
 inoremap <expr> ,df strftime('%Y/%m/%d %H:%M:%S')

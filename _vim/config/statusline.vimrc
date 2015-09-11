@@ -2,12 +2,8 @@
 " ステータスライン StatusLine
 "-------------------------------------------------------------------------------
 set laststatus=2 " 常にステータスラインを表示
-
-"カーソルが何行目の何列目に置かれているかを表示する
-set ruler
-
-"vimデフォルトの -- insert -- みたいなものを表示しない
-set noshowmode
+set ruler        " カーソルが何行目の何列目に置かれているかを表示する
+set noshowmode   " vimデフォルトの -- insert -- みたいなものを表示しない
 
 " vim-powerlineでフォントにパッチを当てないなら以下をコメントアウト
 let g:Powerline_symbols = 'fancy'
