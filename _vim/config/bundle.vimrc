@@ -1269,15 +1269,10 @@ if neobundle#tap('vim-gitgutter') "{{{
   nnoremap <silent> gl :<C-u>GitGutterNextHunk<CR>
   nnoremap <silent> gh :<C-u>GitGutterPrevHunk<CR>
 
-  if g:is_teraterm
-    let g:gitgutter_sign_added    = '+'
-    let g:gitgutter_sign_modified = '*'
-    let g:gitgutter_sign_removed  = '-'
-  else 
-    let g:gitgutter_sign_added    = '✚'
-    let g:gitgutter_sign_modified = '➜'
-    let g:gitgutter_sign_removed  = '✘'
-  endif
+  let g:gitgutter_sign_added            = '+'
+  let g:gitgutter_sign_modified         = '*'
+  let g:gitgutter_sign_removed          = '-'
+  let g:gitgutter_sign_modified_removed = '-*'
 
   call neobundle#untap()
 endif "}}}
