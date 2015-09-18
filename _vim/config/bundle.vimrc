@@ -935,7 +935,7 @@ if neobundle#tap('unite.vim') "{{{
     "grepに使うアプリ設定
     if executable('pt')
       let g:unite_source_grep_command       = 'pt'
-      let g:unite_source_grep_default_opts  = '--nogroup --nocolor --smart-case'
+      let g:unite_source_grep_default_opts  = '--nogroup --nocolor --smart-case --parallel'
       let g:unite_source_grep_recursive_opt = ''
       let g:unite_source_grep_encoding      = 'utf-8'
     elseif executable('ag')
