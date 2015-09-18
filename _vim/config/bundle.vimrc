@@ -951,12 +951,12 @@ if neobundle#tap('unite.vim') "{{{
       " Overwrite settings.
       "
       " ESCキーを2回押すと終了する
-      nmap     <buffer><ESC>      <Plug>(unite_exit)
-      nmap     <buffer><ESC><ESC> <Plug>(unite_exit)
+      nmap     <buffer><ESC>      <Plug>(unite_all_exit)
+      imap     <buffer><ESC>      <Plug>(unite_all_exit)
       imap     <buffer><C-q>      <Plug>(unite_exit)
       nmap     <buffer><C-q>      <Plug>(unite_exit)
-      imap     <buffer>Q          <Plug>(unite_exit)
-      nmap     <buffer>Q          <Plug>(unite_exit)
+      imap     <buffer>Q          <Plug>(unite_all_exit)
+      nmap     <buffer>Q          <Plug>(unite_all_exit)
       "インサートモード終了
       imap     <buffer>jj         <Plug>(unite_insert_leave)
       imap     <buffer><C-w>      <Plug>(unite_delete_backward_path)
