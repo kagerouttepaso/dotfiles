@@ -13,11 +13,11 @@ set encoding=utf-8    " デフォルトエンコーディング
 "デバッグ用 messageの出力をコピー
 command! MessCopy call s:messcopy()
 function! s:messcopy()
-    redir @+>
-    silent messages
-    redir END
-    " Copy to selection too.
-    call setreg('*', getreg('+', 1), getregtype('+'))
+  redir @+>
+  silent messages
+  redir END
+  " Copy to selection too.
+  call setreg('*', getreg('+', 1), getregtype('+'))
 endfunction
 
 "Evでvimrcの編集
