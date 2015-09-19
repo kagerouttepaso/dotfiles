@@ -1281,6 +1281,7 @@ endif "}}}
 " }}}
 
 " test  {{{
+NeoBundle 'tpope/vim-surround'
 
 "powerline
 "█
