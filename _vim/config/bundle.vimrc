@@ -184,9 +184,9 @@ if neobundle#tap('vim-marching') "{{{
     else
       let g:marching_include_paths = filter(
             \ split(glob('/opt/ros/indigo/include/*'), '\n') +
-            \ split(glob('/usr/include/c++/*'), '\n') +
-            \ split(glob('/usr/include/*/c++/*'), '\n') +
-            \ split(glob('/usr/include/*/'), '\n'),
+            \ split(glob('/usr/include/c++/*'),        '\n') +
+            \ split(glob('/usr/include/*/c++/*'),      '\n') +
+            \ split(glob('/usr/include/*/'),           '\n'),
             \ 'isdirectory(v:val)')
       let g:marching_backend = "clang_command"
     endif
