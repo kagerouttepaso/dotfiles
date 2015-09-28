@@ -21,12 +21,12 @@ function! EndSolutionMT()
 endfunction
 command! ESolMt :call EndSolutionMT()
 
-"カラースキームの設定
-"colorscheme yuroyoro256
-"set transparency=214
-"colorscheme hybrid
-"set transparency=230
 
+" syntaxをonにする
+syntax on
+
+"カラースキーム
+set background=dark
 colorscheme hybrid
 
 "半透明にして更にかっこよく

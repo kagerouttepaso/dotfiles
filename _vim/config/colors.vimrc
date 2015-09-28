@@ -2,8 +2,9 @@
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
 
-syntax enable      " ハイライト on
-colorscheme hybrid " カラースキーム
+syntax enable       " ハイライト on
+set background=dark "カラーはdark調で
+colorscheme hybrid  " カラースキーム
 
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"
