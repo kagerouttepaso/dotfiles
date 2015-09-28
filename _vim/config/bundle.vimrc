@@ -949,22 +949,22 @@ if neobundle#tap('unite.vim') "{{{
     augroup END
     function! s:unite_my_settings()
       " Overwrite settings.
-      "
-      " ESCキーを2回押すと終了する
-      nmap     <buffer><ESC>      <Plug>(unite_all_exit)
-      imap     <buffer><ESC>      <Plug>(unite_all_exit)
-      imap     <buffer><C-q>      <Plug>(unite_exit)
-      nmap     <buffer><C-q>      <Plug>(unite_exit)
-      imap     <buffer>Q          <Plug>(unite_all_exit)
-      nmap     <buffer>Q          <Plug>(unite_all_exit)
+      
+      " Uniteの戻るコマンドを追加
+      "nmap     <buffer><ESC> <Plug>(unite_exit)
+      "imap     <buffer><ESC> <Plug>(unite_exit)
+      imap     <buffer><C-q> <Plug>(unite_exit)
+      nmap     <buffer><C-q> <Plug>(unite_exit)
+      imap     <buffer>Q     <Plug>(unite_exit)
       "インサートモード終了
-      imap     <buffer>jj         <Plug>(unite_insert_leave)
-      imap     <buffer><C-w>      <Plug>(unite_delete_backward_path)
+      imap     <buffer>jj    <Plug>(unite_insert_leave)
+      imap     <buffer><C-w> <Plug>(unite_delete_backward_path)
       "ノーマルモード中にCtrl + hjkl でウィンドウ移動
-      nnoremap <buffer><C-h>      <C-w>h
-      nnoremap <buffer><C-j>      <C-w>j
-      nnoremap <buffer><C-k>      <C-w>k
-      nnoremap <buffer><C-l>      <C-w>l
+      nnoremap <buffer><C-h> <C-w>h
+      nnoremap <buffer><C-j> <C-w>j
+      nnoremap <buffer><C-k> <C-w>k
+      nnoremap <buffer><C-l> <C-w>l
+
     endfunction
   endfunction
   call neobundle#untap()
