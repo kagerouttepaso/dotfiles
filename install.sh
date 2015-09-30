@@ -20,7 +20,6 @@ if [ ! -f ${PWD_DIR}/_my_proxy_setting ]; then
     touch ${PWD_DIR}/_my_proxy_setting
 fi
 
-
 DOT_FILES=(oh-my-zsh my_proxy_setting gitconfig vimrc gvimrc zshrc vim screenrc tmux.conf tmux-powerline tmux tmux-powerlinerc bash bashrc)
 if builtin command -v uname >> /dev/null ; then
     if [ "`uname -sr | grep CYGWIN`" ] ; then

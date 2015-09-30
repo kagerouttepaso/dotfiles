@@ -7,7 +7,7 @@ if [ -d ~/local/bin ]; then
     PATH=~/local/bin:$PATH
 fi
 
-
+# tmux config
 if builtin command -v tmux >> /dev/null ; then
     alias tmux='if   [ -x /bin/zsh ];then           SHELL=/bin/zsh; 
                 elif [ -x $HOME/local/bin/zsh ];then SHELL=$HOME/local/bin/zsh;
@@ -17,6 +17,8 @@ if builtin command -v tmux >> /dev/null ; then
                  else tmux; fi'
     alias tmux_terateam='export TMUX_POWERLINE_NOT_USE_AMBIWIDTH=true && tmuxx'
 fi
+
+# ssh config
 if builtin command -v ssh >> /dev/null ; then
     alias sshx="ssh -XCY"
     if [ -x /usr/bin/vim ] || [ -x /bin/vim ] ; then
@@ -24,6 +26,7 @@ if builtin command -v ssh >> /dev/null ; then
     fi
 fi
 
+# docker config
 if builtin command -v docker.io >> /dev/null ; then
     alias docker="docker.io"
 fi
@@ -36,6 +39,7 @@ if builtin command -v docker >> /dev/null ; then
     fi
 fi
 
+# git config
 if builtin command -v git >> /dev/null ; then
     alias gitc="git checkout"
     alias gitb="git branch"
@@ -55,33 +59,35 @@ if builtin command -v uname >> /dev/null && builtin command -v grep >> /dev/null
     if [ "`uname -sr | grep Linux`" ] ; then
         export ARCHz="linux"
         echo Linux
-        md2html(){
-            if [ "$1" = "" ]; then
-                echo need markdown file path
-                exit
-            fi
-            full_path="$1"
-            filename=${full_path##*/}
-            filename_without_extension=${filename%.*}
-            if [ ${full_path%/*} = ${full_path} ]; then
-                folder_path="."
-            else
-                folder_path=${full_path%/*}
-            fi
-            extension=${folder_path##*.}
+        if builtin command -v pandoc >> /dev/null ; then
+            md2html(){
+                if [ "$1" = "" ]; then
+                    echo need markdown file path
+                    exit
+                fi
+                full_path="$1"
+                filename=${full_path##*/}
+                filename_without_extension=${filename%.*}
+                if [ ${full_path%/*} = ${full_path} ]; then
+                    folder_path="."
+                else
+                    folder_path=${full_path%/*}
+                fi
+                extension=${folder_path##*.}
 
-            #echo ファイル名
-            #echo $filename
-            #echo 拡張子抜き
-            #echo $filename_without_extension
-            #echo フォルダパス
-            #echo $folder_path
-            #echo 拡張子
-            #echo $extension
+                #echo ファイル名
+                #echo $filename
+                #echo 拡張子抜き
+                #echo $filename_without_extension
+                #echo フォルダパス
+                #echo $folder_path
+                #echo 拡張子
+                #echo $extension
 
-            pandoc -t html ${full_path} -s -o ${folder_path}/${filename_without_extension}.html
-            gnome-open ${folder_path}/${filename_without_extension}.html >& /dev/null
-        }
+                pandoc -t html ${full_path} -s -o ${folder_path}/${filename_without_extension}.html
+                gnome-open ${folder_path}/${filename_without_extension}.html >& /dev/null
+            }
+        fi
     elif [ "`uname -sr | grep CYGWIN`" ] ; then
         export ARCHz="cygwin"
         echo Cygwin

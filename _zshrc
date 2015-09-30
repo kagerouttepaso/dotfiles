@@ -1,4 +1,5 @@
 # Example aliases
+# vim:filetype=zsh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.bash/bash_aliases
@@ -82,12 +83,29 @@ fi
 if builtin command -v docker.io >> /dev/null ; then
     plugins+=(docker)
 fi
+if builtin command -v docker >> /dev/null ; then
+    plugins+=(docker)
+fi
 if builtin command -v vagrant >> /dev/null ; then
     plugins+=(vagrant)
 fi
 if builtin command -v mosh >> /dev/null ; then
     plugins+=(mosh)
 fi
+
+# _oh-my-zsh/plugins/brew/
+# _oh-my-zsh/plugins/bundler/
+# _oh-my-zsh/plugins/common-aliases/
+# _oh-my-zsh/plugins/gem/
+# _oh-my-zsh/plugins/github/
+# _oh-my-zsh/plugins/gitignore/
+# _oh-my-zsh/plugins/knife/
+# _oh-my-zsh/plugins/knife_ssh/
+# _oh-my-zsh/plugins/node/
+# _oh-my-zsh/plugins/python/
+# _oh-my-zsh/plugins/ubuntu/
+# _oh-my-zsh/plugins/vim-interaction/
+# _oh-my-zsh/plugins/yum/
 
 source $ZSH/oh-my-zsh.sh
 
