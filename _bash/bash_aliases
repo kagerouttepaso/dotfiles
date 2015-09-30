@@ -29,7 +29,8 @@ if builtin command -v docker.io >> /dev/null ; then
 fi
 if builtin command -v docker >> /dev/null ; then
     if builtin command -v sed >> /dev/null ; then
-        alias docker_rm_exit_containers="docker ps -aqf 'status=exited' | xargs --no-run-if-empty docker rm -v "
+        alias docker_rm_exit_containers="docker ps -aqf 'status=exited' | xargs --no-run-if-empty docker rm -v && \
+                                         docker ps -aqf 'status=created' | xargs --no-run-if-empty docker rm -v "
         alias docker_rm_noneimage="docker images -qf 'dangling=true' | xargs --no-run-if-empty docker rmi"
         alias docker_clean="docker_rm_exit_containers && docker_rm_noneimage"
     fi
