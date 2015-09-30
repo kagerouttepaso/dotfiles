@@ -34,20 +34,8 @@ endif
 
 " 補完 neocomplete.vim : 究極のVim的補完環境
 if g:is_can_use_neocomplete
-  NeoBundleLazy 'Shougo/neocomplete.vim', { 
-        \ 'depends' : [ 
-        \    'Shougo/neosnippet.vim' , 
-        \    'Shougo/neoinclude.vim'
-        \ ] 
-        \}
-
+  NeoBundle 'Shougo/neocomplete.vim'
   if neobundle#tap('neocomplete.vim') "{{{
-    call neobundle#config({
-          \  'autoload': {
-          \    'insert':    1,
-          \    'on_source': ['neosnippet.vim'],
-          \  }
-          \})
     function! neobundle#hooks.on_source(bundle)
       " AutoComplPopを無効にする
       let g:acp_enableAtStartup = 0
@@ -59,7 +47,6 @@ if g:is_can_use_neocomplete
       let g:neocomplete#min_keyword_length = 3
       " neocompleteを自動的にロックするバッファ名のパターン
       let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
       " 補完が自動で開始される文字数
       let g:neocomplete#auto_completion_start_length = 2
       "ポップアップメニューで表示される候補の数。初期値は100
@@ -88,25 +75,40 @@ if g:is_can_use_neocomplete
       endif
       let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-
-      " Enable heavy omni completion.
-      if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-      endif
-      let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-      let g:neocomplete#sources#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
-      let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-
-      " for rsense
-      let g:rsenseUseOmniFunc = 1
-      let g:rsenseHome        = expand('~/src/rsense-0.3')
-
     endfunction
+
+    " Plugin key-mappings.
+    inoremap <expr><C-g>     neocomplete#undo_completion()
+    inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+    "" Recommended key-mappings.
+    " <CR>: close popup and save indent.
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+      return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+      " For no inserting <CR> key.
+      "return pumvisible() ? "\<C-y>" : "\<CR>"
+    endfunction
+    " <TAB>: completion.
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    " <C-h>, <BS>: close popup and delete backword char.
+    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+    " Close popup by <Space>.
+    "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+    " AutoComplPop like behavior.
+    "let g:neocomplete#enable_auto_select = 1
+    " Shell like behavior(not recommended).
+    "set completeopt+=longest
+    "let g:neocomplete#enable_auto_select = 1
+    "let g:neocomplete#disable_auto_complete = 1
+    "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
     augroup neocompleteKeyBind
       autocmd!
       " buffer開いたらneoconでcache
-      autocmd BufReadPost,BufEnter,BufWritePost :NeoCompleteBufferMakeCache <buffer>
+      "autocmd BufReadPost,BufEnter,BufWritePost :NeoCompleteBufferMakeCache <buffer>
       " Enable omni completion.
       " FileType毎のOmni補完を設定
       autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
@@ -119,36 +121,13 @@ if g:is_can_use_neocomplete
       autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
     augroup END
 
-    "" Recommended key-mappings.
-    " <CR>: close popup and save indent.
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function()
-      return neocomplete#close_popup() . "\<CR>"
-      " For no inserting <CR> key.
-      "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-    endfunction
-    " <TAB>: completion.
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-    inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
-    " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><C-h>   neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS>    neocomplete#smart_close_popup()."\<C-h>"
-    " 補完を選択しpopupを閉じる
-    inoremap <expr><C-y>   neocomplete#close_popup()
-    " 補完をキャンセルしpopupを閉じる
-    inoremap <expr><C-e>   neocomplete#cancel_popup()
-    " Close popup by <Space>.
-    "inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-    " For cursor moving in insert mode(Not recommended)
-    "inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-    "inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-    "inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-    "inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-    " Or set this.
-    "let g:neocomplete#enable_cursor_hold_i = 1
-    " Or set this.
-    "let g:neocomplete#enable_insert_char_pre = 1
+    " Enable heavy omni completion.
+    if !exists('g:neocomplete#sources#omni#input_patterns')
+      let g:neocomplete#sources#omni#input_patterns = {}
+    endif
+    let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+    let g:neocomplete#sources#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
+    let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
     call neobundle#untap()
   endif "}}}
@@ -229,10 +208,8 @@ if neobundle#tap('vim-monster') "{{{
 endif  "}}}
 
 " インクルードディレクトリ管理
-NeoBundleLazy 'Shougo/neoinclude.vim'
+NeoBundle 'Shougo/neoinclude.vim'
 if neobundle#tap('neoinclude.vim') "{{{
-  call neobundle#config({
-        \})
   function! neobundle#hooks.on_source(bundle)
     "インクルードパスの指定
     if g:is_windows
@@ -264,36 +241,29 @@ if neobundle#tap('neoinclude.vim') "{{{
 endif "}}}
 
 " neocomplcacheのsinpet補完
-NeoBundleLazy 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet.vim'
 if neobundle#tap('neosnippet.vim') "{{{
-  call neobundle#config({
-        \  'autoload': {
-        \    'insert':       1,
-        \    'filetypes':    ['nsnippet'],
-        \    'commands':     ['NeoSnippetEdit', 'NeoSnippetSource'],
-        \    'unite_source': ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
-        \  }
-        \})
   function! neobundle#hooks.on_source(bundle)
     " ユーザー定義スニペット保存ディレクトリ
     let g:neosnippet#snippets_directory=expand($DOTVIM_DIR.'/snippets')
   endfunction
+
   " Plugin key-mappings.
-  imap <C-k> <Plug>(neosnippet_expand_or_jump)
-  smap <C-k> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k> <Plug>(neosnippet_expand_target)
+  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k>     <Plug>(neosnippet_expand_target)
   " SuperTab like snippets behavior.
-  imap <expr><TAB> pumvisible() ?
-        \ "\<C-n>" : neosnippet#jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: "\<TAB>"
-  smap <expr><TAB> neosnippet#jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \ : "\<TAB>"
-  " For snippet_complete marker.
+  "imap <expr><TAB>
+  " \ pumvisible() ? "\<C-n>" :
+  " \ neosnippet#expandable_or_jumpable() ?
+  " \    "\<TAB>" : "\<Plug>(neosnippet_expand_or_jump)"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+  " For conceal markers.
   if has('conceal')
-    set conceallevel=2 concealcursor=i
+    set conceallevel=2 concealcursor=niv
   endif
+
   call neobundle#untap()
 endif "}}}
 
