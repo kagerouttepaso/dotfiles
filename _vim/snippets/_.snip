@@ -1,0 +1,15 @@
+snippet     date_euro
+options     word
+    `strftime("%d/%b/%Y")`
+
+snippet     codeheader
+abbr        CurrentFileName
+options     head
+  Filename : `expand("%")`
+  No : `line(".")`
+  ${1}
+
+snippet     filename_relative
+abbr        CurrentFileName
+options     head
+  `expand("%")` ${0}

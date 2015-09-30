@@ -267,11 +267,13 @@ if neobundle#tap('neosnippet.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
-" デフォルトすにペット臭
-NeoBundle 'kagerouttepaso/neosnippet-snippets'
+" デフォルトスニペット集
+NeoBundle 'Shougo/neosnippet-snippets'
 
 "Chef用のスニペット集
 NeoBundle 'kagerouttepaso/neosnippet_chef_recipe_snippet'
+
+"NeoBundle "honza/vim-snippets"
 
 " }}}
 

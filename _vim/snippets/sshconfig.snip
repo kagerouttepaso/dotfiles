@@ -1,0 +1,24 @@
+snippet     Hostc
+abbr        HostComplete
+options     head
+  Host ${1:#:name}
+  HostName ${2}
+  Port ${3:22}
+  permitlocalcommand yes
+  localcommand tmux rename-window %n
+  forwardx11 yes
+  forwardx11trusted yes
+  User ${4:User}
+
+snippet     Hostp
+abbr        HostProxy
+options     head
+  Host ${1:#:name}
+  HostName ${2}
+  Port ${3:22}
+  permitlocalcommand yes
+  localcommand tmux rename-window %n
+  forwardx11 yes
+  forwardx11trusted yes
+  proxycommand ssh ${4:ProxyHostName} nc %h %p
+  User ${4:User}
