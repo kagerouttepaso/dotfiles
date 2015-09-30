@@ -611,16 +611,18 @@ if neobundle#tap('vim-easy-align') "{{{
   nmap <Leader><Leader>a <Plug>(LiveEasyAlign)
   function! neobundle#hooks.on_source(bundle)
     let g:easy_align_delimiters = {
-          \ '"': {
-          \     'pattern': '["]'
-          \ },
-          \ '>': {
-          \     'pattern': '>>\|=>\|>'
-          \ },
-          \ '/': {
-          \     'pattern':       '//\+\|/\*\|\*/',
+          \ '"': { 
+          \     'pattern':       '"',
+          \     'filter':        'v/^\s*"/',
           \     'ignore_groups': ['String']
           \ },
+          \ '>': { 
+          \     'pattern': '>>\|=>\|>' 
+          \ },
+          \ '/': {
+          \     'pattern':         '//\+\|/\*\|\*/',
+          \     'delimiter_align': 'l',
+          \     'ignore_groups':   ['!Comment'] },
           \ '#': {
           \     'pattern':         '#\+',
           \     'ignore_groups':   ['String'],
@@ -630,19 +632,29 @@ if neobundle#tap('vim-easy-align') "{{{
           \     'pattern':       '[[\]]',
           \     'left_margin':   0,
           \     'right_margin':  0,
-          \     'stick_to_left': 0
-          \ },
+          \     'stick_to_left': 0,
+          \  },
           \ ')': {
           \     'pattern':       '[()]',
           \     'left_margin':   0,
           \     'right_margin':  0,
-          \     'stick_to_left': 0
-          \ },
+          \     'stick_to_left': 0,
+          \   },
           \ 'd': {
           \     'pattern':      ' \(\S\+\s*[;=]\)\@=',
           \     'left_margin':  0,
-          \     'right_margin': 0
-          \ }
+          \     'right_margin': 0,
+          \   },
+          \ "'": { 
+          \     'pattern':       "'",
+          \     'filter':        "v/^\s*'/",
+          \     'ignore_groups': ['String']
+          \ },
+          \ 't': {
+          \     'pattern':       '\t',
+          \     'left_margin':   0,
+          \     'right_margin':  0,
+          \ },
           \ }
   endfunction
   call neobundle#untap()
