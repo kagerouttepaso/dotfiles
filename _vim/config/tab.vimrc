@@ -4,7 +4,6 @@ function! s:SID_PREFIX()
 endfunction
 
 
-
 " Set tabline.
 function! s:my_tabline()  "{{{
   let s = ''

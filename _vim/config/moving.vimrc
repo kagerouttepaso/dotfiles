@@ -28,9 +28,9 @@ inoremap <C-l> <Right>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 
-"<space>j, <space>kで画面送り
-"noremap <Space>j <C-f>
-"noremap <Space>k <C-b>
+"スペースで次のバッファへ、bで前のバッファへ
+noremap <Space> :bn<CR>
+noremap B       :bp<CR>
 
 "フレームサイズを怠惰に変更する
 map      <kPlus>  <C-W>+
@@ -52,14 +52,6 @@ nnoremap gp ']
 nnoremap ( %
 nnoremap ) %
 
-"" 最後に変更されたテキストを選択する
-"nnoremap gc `[v`]
-"vnoremap gc <C-u>normal gc<Enter>
-"onoremap gc <C-u>normal gc<Enter>
-
-" カーソル位置の単語をyankする
-"nnoremap vy vawy
-
 " 矩形選択で自由に移動する
 set virtualedit+=block
 
@@ -75,6 +67,3 @@ nnoremap <BS> <C-w>h
 
 " insert mode でjjでesc
 inoremap jj <Esc>
-
-" 今開いているファイルのパスをカレントディレクトリと設定する
-command! CdCurrent :cd %:p:h

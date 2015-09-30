@@ -4,7 +4,7 @@
 set laststatus=2 " 常にステータスラインを表示
 set ruler        " カーソルが何行目の何列目に置かれているかを表示する
 set noshowmode   " vimデフォルトの -- insert -- みたいなものを表示しない
-
-" vim-powerlineでフォントにパッチを当てないなら以下をコメントアウト
-let g:Powerline_symbols = 'fancy'
-set t_Co=256
+"set showmode    " 現在のモードを表示
+set showcmd      " コマンドをステータス行に表示
+"set cmdheight=2 " コマンドラインは2行
+"set modelines=0 " モードラインは無効

@@ -36,6 +36,33 @@ endif
 if g:is_can_use_neocomplete
   NeoBundle 'Shougo/neocomplete.vim'
   if neobundle#tap('neocomplete.vim') "{{{
+    " Plugin key-mappings.
+    inoremap <expr><C-g>     neocomplete#undo_completion()
+    inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+    "" Recommended key-mappings.
+    " <CR>: close popup and save indent.
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+      return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+      " For no inserting <CR> key.
+      "return pumvisible() ? "\<C-y>" : "\<CR>"
+    endfunction
+    " <TAB>: completion.
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    " <C-h>, <BS>: close popup and delete backword char.
+    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+    " Close popup by <Space>.
+    "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+    " AutoComplPop like behavior.
+    "let g:neocomplete#enable_auto_select = 1
+    " Shell like behavior(not recommended).
+    "set completeopt+=longest
+    "let g:neocomplete#enable_auto_select = 1
+    "let g:neocomplete#disable_auto_complete = 1
+    "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
     function! neobundle#hooks.on_source(bundle)
       " AutoComplPopを無効にする
       let g:acp_enableAtStartup = 0
@@ -76,34 +103,6 @@ if g:is_can_use_neocomplete
       let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
     endfunction
-
-    " Plugin key-mappings.
-    inoremap <expr><C-g>     neocomplete#undo_completion()
-    inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-    "" Recommended key-mappings.
-    " <CR>: close popup and save indent.
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function()
-      return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-      " For no inserting <CR> key.
-      "return pumvisible() ? "\<C-y>" : "\<CR>"
-    endfunction
-    " <TAB>: completion.
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-    " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-    " Close popup by <Space>.
-    "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-    " AutoComplPop like behavior.
-    "let g:neocomplete#enable_auto_select = 1
-    " Shell like behavior(not recommended).
-    "set completeopt+=longest
-    "let g:neocomplete#enable_auto_select = 1
-    "let g:neocomplete#disable_auto_complete = 1
-    "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
     augroup neocompleteKeyBind
       autocmd!
@@ -183,9 +182,9 @@ if neobundle#tap('vim-marching') "{{{
       let g:neocomplete#sources#omni#input_patterns = {}
     endif
     let g:neocomplete#sources#omni#input_patterns.c    = '[^.[:digit:] *\t]\%(\.\|->\)'
-    let g:neocomplete#sources#omni#input_patterns.cpp  = 
-          \'[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+    let g:neocomplete#sources#omni#input_patterns.cpp  = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
   endfunction
+  call neobundle#untap()
 endif  "}}}
 
 " Ruby用オムニ補完
@@ -201,10 +200,9 @@ if neobundle#tap('vim-monster') "{{{
     " Set async completion.
     let g:monster#completion#rcodetools#backend = "async_rct_complete"
     " Use neocomplete.vim
-    let g:neocomplete#sources#omni#input_patterns = {
-          \   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
-          \}
+    let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
   endfunction
+  call neobundle#untap()
 endif  "}}}
 
 " インクルードディレクトリ管理
@@ -243,11 +241,6 @@ endif "}}}
 " neocomplcacheのsinpet補完
 NeoBundle 'Shougo/neosnippet.vim'
 if neobundle#tap('neosnippet.vim') "{{{
-  function! neobundle#hooks.on_source(bundle)
-    " ユーザー定義スニペット保存ディレクトリ
-    let g:neosnippet#snippets_directory=expand($DOTVIM_DIR.'/snippets')
-  endfunction
-
   " Plugin key-mappings.
   imap <C-k>     <Plug>(neosnippet_expand_or_jump)
   smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -259,6 +252,11 @@ if neobundle#tap('neosnippet.vim') "{{{
   " \    "\<TAB>" : "\<Plug>(neosnippet_expand_or_jump)"
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+  function! neobundle#hooks.on_source(bundle)
+    " ユーザー定義スニペット保存ディレクトリ
+    let g:neosnippet#snippets_directory=expand($DOTVIM_DIR.'/snippets')
+  endfunction
   " For conceal markers.
   if has('conceal')
     set conceallevel=2 concealcursor=niv
@@ -300,13 +298,13 @@ if neobundle#tap('vim-quickhl') "{{{
         \    'mappings': ['<Plug>(quickhl-'],
         \  }
         \})
-  function! neobundle#hooks.on_source(bundle)
-  endfunction
   nmap gm <Plug>(quickhl-manual-this)
   xmap gm <Plug>(quickhl-manual-this)
   nmap gM <Plug>(quickhl-manual-reset)
   xmap gM <Plug>(quickhl-manual-reset)
   nmap gj <Plug>(quickhl-cword-toggle)
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
   call neobundle#untap()
 endif "}}}
 
@@ -351,8 +349,6 @@ if neobundle#tap('vim-anzu') "{{{
   call neobundle#config({
         \    'mappings': ['<Plug>(anzu-'],
         \})
-  function! neobundle#hooks.on_source(bundle)
-  endfunction
   " mapping
   nmap n <Plug>(anzu-n)
   nmap N <Plug>(anzu-N)
@@ -361,6 +357,8 @@ if neobundle#tap('vim-anzu') "{{{
   " clear status
   "nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
   nmap <Esc><Esc> :nohlsearch<CR><ESC><Plug>(anzu-clear-search-status)
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
 
   call neobundle#untap()
 endif "}}}
@@ -828,8 +826,9 @@ if neobundle#tap('vim-over') "{{{
   " virtualモード中は選択した文章で置き換え
   vnoremap <silent>sS y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
   function! neobundle#hooks.on_source(bundle)
-    " <C-l> を <C-f> に
-    " <C-h> を <C-b> に割り当てる
+    " <C-l> カーソルを右に
+    " <C-h> カーソルを左に
+    " <C-p> クリップボードの内容を貼り付け
     let g:over_command_line_key_mappings = {
           \  "\<C-l>": "\<C-f>",
           \  "\<C-h>": "\<C-b>",
@@ -1116,8 +1115,6 @@ if neobundle#tap('lightline.vim') "{{{
     let g:lightline.subseparator = { 'left': '', 'right': '' }
   endif
 
-
-
   function! MyModified() "{{{
     return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '✘' : &modifiable ? '' : '-'
   endfunction "}}}
@@ -1250,18 +1247,15 @@ NeoBundle 'airblade/vim-gitgutter'
 if neobundle#tap('vim-gitgutter') "{{{
   call neobundle#config({
         \})
-  function! neobundle#hooks.on_source(bundle)
-  endfunction
-
   " gl, ghでGitの差分に飛ぶ
   nnoremap <silent> gl :<C-u>GitGutterNextHunk<CR>
   nnoremap <silent> gh :<C-u>GitGutterPrevHunk<CR>
-
-  let g:gitgutter_sign_added            = '+'
-  let g:gitgutter_sign_modified         = '*'
-  let g:gitgutter_sign_removed          = '-'
-  let g:gitgutter_sign_modified_removed = '-*'
-
+  function! neobundle#hooks.on_source(bundle)
+    let g:gitgutter_sign_added            = '+'
+    let g:gitgutter_sign_modified         = '*'
+    let g:gitgutter_sign_removed          = '-'
+    let g:gitgutter_sign_modified_removed = '-*'
+  endfunction
   call neobundle#untap()
 endif "}}}
 
@@ -1269,24 +1263,28 @@ endif "}}}
 " }}}
 
 " test  {{{
-NeoBundle 'tpope/vim-surround'
 
-"powerline
-"█
-"
-"
-"
-"
-"
-"
-"
+
 " }}}
 
+" powerline text {{{
+"  █
+"  
+"  
+"  
+"  
+"  
+"  
+"  
+" }}}
 
 
 call neobundle#end()
 
+" neobundle#end()後に設定しないといけないプラグインの設定
+
+"Uniteの設定
 if neobundle#is_installed("unite.vim")
   "grepはwordソートを行う
-  call unite#custom#source('grep', 'sorters',    'sorter_word')
+  call unite#custom#source('grep', 'sorters', 'sorter_word')
 endif

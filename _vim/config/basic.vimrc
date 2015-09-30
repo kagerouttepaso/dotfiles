@@ -11,23 +11,18 @@ set hidden                       " 編集中でも他のファイルを開ける
 set backspace=indent,eol,start   " バックスペースでなんでも消せるように
 set formatoptions=lmoq           " テキスト整形オプション，マルチバイト系を追加
 set vb t_vb=                     " ビープをならさない
-set novisualbell                 " 画面点滅させない
 set browsedir=buffer             " Exploreの初期ディレクトリ
 "set whichwrap=b,s,h,l,<,>,[,]   " カーソルを行頭、行末で止まらないようにする
-set showcmd                      " コマンドをステータス行に表示
-"set cmdheight=2                  " コマンドラインは2行
-set showmode                     " 現在のモードを表示
 set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
-"set modelines=0                 " モードラインは無効
 
 if g:is_teraterm
-  set ambiwidth=double           " unicodeのambiguous widthな文字は全角文字として表示
+  set ambiwidth=double           " terateamはdoubleじゃないと化ける
 elseif g:is_mac
-  set ambiwidth=single           " unicodeのambiguous widthな文字は全角文字として表示
+  set ambiwidth=single           " macは開発業務でしか使わないのでsingle
 elseif g:is_windows
-  set ambiwidth=double           " unicodeのambiguous widthな文字は全角文字として表示
+  set ambiwidth=double           " windowsはメールのテキスト編集を考えdouble
 elseif g:is_cygwin
-  set ambiwidth=single           " unicodeのambiguous widthな文字は全角文字として表示
+  set ambiwidth=single           " cygwinは使うフォント(Hack)の関係でsingleでまとめてある
 endif
 
 " OSのクリップボードを使用する
@@ -56,14 +51,6 @@ filetype plugin on
 let g:gvimrc_local_finish=1
 let g:vimrc_local_finish=1
 
-"挿入モードでCtrl+pを押すとクリップボードの内容を貼り付けられるようにする "
-imap <C-p>  <C-r>0
-"選択モード中にCtrl+pで選択している場所を削除してコピーしていた文章を貼り付け
-vnoremap <C-p> c<C-r>0<Esc>
-"エンターキーで改行
-nnoremap <Enter> o <Esc>v^d
-
-"スペースで次のバッファへ、bで前のバッファへ
-noremap <Space> :bn<CR>
-noremap B       :bp<CR>
+" 今開いているファイルのパスをカレントディレクトリと設定する
+command! CdCurrent :cd %:p:h
 

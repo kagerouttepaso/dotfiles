@@ -9,6 +9,7 @@ set cursorline   " カーソル行をハイライト
 set display=uhex " 印字不可能文字を16進数で表示
 set lazyredraw   " コマンド実行中は再描画しない
 set ttyfast      " 高速ターミナル接続を行う
+set novisualbell " 画面点滅させない
 
 set listchars=tab:>.,trail:_,extends:>,precedes:< " 不可視文字の表示形式
 
@@ -18,7 +19,6 @@ augroup highlightDoubleByteSpace
   autocmd VimEnter,ColorScheme      * highlight ZenkakuSpace cterm=underline ctermfg=lightblue gui=underline guibg=LightMagenta
   autocmd VimEnter,WinEnter,BufRead * match ZenkakuSpace /　/
 augroup END
-
 
 " カレントウィンドウにのみ罫線を引く
 augroup cch
