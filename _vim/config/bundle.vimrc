@@ -846,6 +846,7 @@ if neobundle#tap('vim-over') "{{{
     let g:over_command_line_key_mappings = {
           \  "\<C-l>": "\<C-f>",
           \  "\<C-h>": "\<C-b>",
+          \  "\<C-p>": "\<C-v>",
           \}
   endfunction
   call neobundle#untap()
