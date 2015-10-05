@@ -1034,7 +1034,6 @@ endif "}}}
 NeoBundleLazy 'thinca/vim-fontzoom'
 if neobundle#tap('vim-fontzoom') "{{{
   call neobundle#config({
-        \  'gui': 1 ,
         \  'autoload': {
         \    'commands': ['Fontzoom']
         \  }
@@ -1054,7 +1053,6 @@ endif "}}}
 NeoBundleLazy 'tyru/restart.vim'
 if neobundle#tap('restart.vim') "{{{
   call neobundle#config({
-        \  'gui': 1,
         \  'autoload': {
         \    'commands': ['Restart'],
         \  }
