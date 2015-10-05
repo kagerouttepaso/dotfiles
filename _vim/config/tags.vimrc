@@ -51,5 +51,7 @@ endif
 if g:is_windows
   command! Ctags :!ctags -R --jcode=utf8 .
   command! CtagsSjis :!ctags -R .
+else
+  command! Ctags :!ctags -R .
 endif
 
