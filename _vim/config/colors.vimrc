@@ -22,3 +22,5 @@ elseif &term =~ "xterm-color"
   set t_Sb=[4%dm
 endif
 
+" 結局カラーは256色にしてしまう
+set t_Co=256
