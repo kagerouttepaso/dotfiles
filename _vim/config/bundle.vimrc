@@ -914,6 +914,9 @@ if neobundle#tap('unite.vim') "{{{
     nnoremap <silent>[unite]f :<C-u>Unite find:. -buffer-name=serch-file -no-quit<CR>*<C-r><C-w>*<CR>
   endif
   function! neobundle#hooks.on_source(bundle)
+    if g:is_cygwin
+      let g:unite_source_grep_command = '/bin/grep.exe'
+    endif
     " Start insert.
     let g:unite_enable_start_insert        = 1
     let g:unite_source_file_mru_limit      = 200

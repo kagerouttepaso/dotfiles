@@ -3,8 +3,13 @@
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.bash/bash_aliases
-if builtin command -v autojump >> /dev/null ; then
-    . /usr/share/autojump/autojump.zsh
+if [ "`uname -sr | grep CYGWIN`" ] ; then
+    [[ -s ${HOME}/.autojump/etc/profile.d/autojump.sh ]] && source ${HOME}/.autojump/etc/profile.d/autojump.sh
+    autoload -U compinit && compinit -u
+else
+    if builtin command -v autojump >> /dev/null ; then
+        . /usr/share/autojump/autojump.zsh
+    fi
 fi
 
 if [ -f ~/catkin_ws/devel/setup.zsh ]; then
@@ -12,6 +17,7 @@ if [ -f ~/catkin_ws/devel/setup.zsh ]; then
 elif [ -f /opt/ros/indigo/setup.zsh ]; then
     source /opt/ros/indigo/setup.zsh
 fi
+
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
