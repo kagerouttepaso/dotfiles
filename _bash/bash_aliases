@@ -26,6 +26,13 @@ if builtin command -v ssh >> /dev/null ; then
     fi
 fi
 
+#tree config
+if builtin command -v tree >> /dev/null ; then
+    if builtin command -v perl >> /dev/null ; then
+        alias treex="tree -NF | perl -pe 's/^├── //g; s/^└── //g; s/^│\xc2\xa0\xc2\xa0\x20//g; s/├── /\t/g; s/│\xc2\xa0\xc2\xa0\x20/\t/g; s/└── /\t/g; s/    /\t/g; s/\*$//g; s/^\.\n//g;'"
+    fi
+fi
+
 # docker config
 if builtin command -v docker.io >> /dev/null ; then
     alias docker="docker.io"
