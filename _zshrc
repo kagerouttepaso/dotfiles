@@ -68,7 +68,12 @@ if builtin command -v tmux >> /dev/null ; then
     plugins+=(tmux tmuxinator)
 fi
 if builtin command -v ssh-agent >> /dev/null ; then
-    plugins+=(ssh-agent)
+    if [ "`uname -sr | grep CYGWIN`" ] ; then
+        #not load ssh-agent
+        ;
+    else
+        plugins+=(ssh-agent)
+    fi
 fi
 if builtin command -v rbenv >> /dev/null ; then
     plugins+=(rbenv)
