@@ -8,6 +8,9 @@ options     head
   localcommand tmux rename-window %n
   forwardx11 yes
   forwardx11trusted yes
+  Compression yes
+  UserKnownHostsFile ${4:~/.ssh/known_hosts}
+  IdentityFile ${4:~/.ssh/id_rsa}
   User ${4:User}
 
 snippet     Hostp
@@ -20,5 +23,6 @@ options     head
   localcommand tmux rename-window %n
   forwardx11 yes
   forwardx11trusted yes
+  Compression yes
   proxycommand ssh ${4:ProxyHostName} nc %h %p
   User ${4:User}
