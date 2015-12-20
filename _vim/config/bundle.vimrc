@@ -1218,8 +1218,8 @@ if neobundle#tap('lightline.vim') "{{{
     return join(ret, ' ')
   endfunction "}}}
   augroup AutoSyntastic "{{{
-    autocmd!
-    autocmd BufWritePost *.h,*.c,*.cpp,*.js,*.sh call s:syntastic()
+    "autocmd!
+    "autocmd BufWritePost *.h,*.c,*.cpp,*.js,*.sh call s:syntastic()
   augroup END
   function! s:syntastic()
     SyntasticCheck
