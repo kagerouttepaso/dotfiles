@@ -17,3 +17,7 @@ augroup myFiletypes
   autocmd BufNewFile,BufRead *.vfr setfiletype cpp
   autocmd BufNewFile,BufRead *.hfr setfiletype cpp
 augroup END
+
+"便利コマンド
+"XMLファイルを整形する
+command! FairingXml :%s/></>\r</g | filetype indent on | setf xml | normal gg=G
