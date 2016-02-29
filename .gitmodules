@@ -7,6 +7,3 @@
 [submodule "_tmux-powerline"]
 	path = _tmux-powerline
 	url = https://github.com/erikw/tmux-powerline
-[submodule "_apt-cyg"]
-	path = _apt-cyg
-	url = https://github.com/transcode-open/apt-cyg
