@@ -961,11 +961,10 @@ if neobundle#tap('unite.vim') "{{{
 endif "}}}
 
 "outline用
-NeoBundleLazy 'Shougo/unite-outline' , { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundle 'Shougo/unite-outline' , { 'depends' : [ 'Shougo/unite.vim' ] }
 if neobundle#tap('unite-outline') "{{{
   call neobundle#config({
         \  'autoload': {
-        \    'unite_sources': ['outline'],
         \  }
         \})
   function! neobundle#hooks.on_source(bundle)
@@ -974,11 +973,10 @@ if neobundle#tap('unite-outline') "{{{
 endif "}}}
 
 "tag用
-NeoBundleLazy 'tsukkee/unite-tag' , { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundle 'tsukkee/unite-tag' , { 'depends' : [ 'Shougo/unite.vim' ] }
 if neobundle#tap('unite-tag') "{{{
   call neobundle#config({
         \  'autoload': {
-        \    'unite_source': ['tag'],
         \  }
         \})
   function! neobundle#hooks.on_source(bundle)
@@ -996,7 +994,6 @@ if neobundle#tap('unite-everything') "{{{
   call neobundle#config({
         \ 'disabled': !g:is_windows,
         \  'autoload': {
-        \    'unite_source': [ 'everything/async', 'everything'],
         \  }
         \})
   function! neobundle#hooks.on_source(bundle)
@@ -1015,7 +1012,6 @@ NeoBundle 'osyo-manga/unite-quickfix' , { 'depends' : [ 'Shougo/unite.vim' ] }
 if neobundle#tap('unite-quickfix') "{{{
   call neobundle#config({
         \  'autoload': {
-        \    'unite_source': ['location_list'],
         \  }
         \})
   function! neobundle#hooks.on_source(bundle)
