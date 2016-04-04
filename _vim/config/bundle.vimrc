@@ -34,7 +34,8 @@ endif
 
 " 補完 neocomplete.vim : 究極のVim的補完環境
 if g:is_can_use_neocomplete
-  NeoBundle 'Shougo/neocomplete.vim'
+  NeoBundle 'Konfekt/FastFold'
+  NeoBundle 'Shougo/neocomplete.vim', { 'depends' : [ 'Konfekt/FastFold' ] }
   if neobundle#tap('neocomplete.vim') "{{{
     " Plugin key-mappings.
     inoremap <expr><C-g>     neocomplete#undo_completion()
