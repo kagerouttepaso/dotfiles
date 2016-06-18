@@ -6,7 +6,7 @@ source $VIMRUNTIME/menu.vim
 
 "ソリューションのミーティング用設定
 function! SolutionMT()
-  set guifont=Hack:h21
+  set guifont=Ricty_Diminished_Discord:h21
   set transparency=255
   colorscheme zellner
   syntax off
@@ -14,7 +14,7 @@ endfunction
 command! SolMt :call SolutionMT()
 
 function! EndSolutionMT()
-  set guifont=Hack:h13
+  set guifont=Ricty_Diminished_Discord:h13
   colorscheme jellybeans
   set transparency=220
   syntax on
@@ -33,7 +33,7 @@ colorscheme hybrid
 set transparency=220
 
 "イカスフォントを使用する
-set guifont=Hack:h13
+set guifont=Ricty_Diminished_Discord:h13
 
 "全角と半角のある文字は全角で表示
 set ambiwidth=double
