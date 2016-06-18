@@ -149,10 +149,11 @@ if neobundle#tap('vim-marching') "{{{
   function! neobundle#hooks.on_source(bundle)
     if g:is_windows
       " clang コマンドの設定
-      "let g:marching_clang_command = "c:/clang.exe"
+      let g:marching_clang_command = "c:/msys64/mingw64/bin/clang.exe"
       " インクルードディレクトリのパスを設定
       let g:marching_include_paths = [
-            \ "c:/mingw64/x86_64-w64-mingw32/include/c++"
+            \ "c:/msys64/mingw64/include/c++/5.4.0/", 
+            \ "./include"
             \]
     elseif g:is_cygwin
       let g:marching_include_paths = filter(
