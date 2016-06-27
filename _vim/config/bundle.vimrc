@@ -1110,8 +1110,8 @@ if neobundle#tap('lightline.vim') "{{{
     let g:lightline.component ={
           \    'lineinfo': ' %3l:%-2v',
           \}
-    let g:lightline.separator    = { 'left': '', 'right': '' }
-    let g:lightline.subseparator = { 'left': '', 'right': '' }
+    let g:lightline.separator    = { 'left': '>', 'right': '<' }
+    let g:lightline.subseparator = { 'left': '|', 'right': '|' }
   endif
 
   function! MyModified() "{{{
