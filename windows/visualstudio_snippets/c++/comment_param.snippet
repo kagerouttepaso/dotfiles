@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>comment param</Title>
+      <Shortcut>comparam</Shortcut>
+      <Description>XMLコメントparam</Description>
+      <Author>yuki kitsunai</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>param</ID>
+          <ToolTip>引数名</ToolTip>
+          <Default>引数名</Default>
+        </Literal>
+        <Literal>
+          <ID>summary</ID>
+          <ToolTip>説明文</ToolTip>
+          <Default>説明</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="cpp">
+        <![CDATA[///<param name="$param$">$summary$</param>$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
