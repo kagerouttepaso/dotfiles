@@ -122,12 +122,22 @@ if g:is_can_use_neocomplete
     augroup END
 
     " Enable heavy omni completion.
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-      let g:neocomplete#sources#omni#input_patterns = {}
+    
+    " for vim-marching
+    "if !exists('g:neocomplete#sources#omni#input_patterns')
+    "  let g:neocomplete#sources#omni#input_patterns = {}
+    "endif
+    "let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+    "let g:neocomplete#sources#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
+    "let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+    "for vim-clang
+    if !exists('g:neocomplete#force_omni_input_patterns')
+      let g:neocomplete#force_omni_input_patterns = {}
     endif
-    let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-    let g:neocomplete#sources#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
-    let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+    let g:neocomplete#force_overwrite_completefunc = 1
+    let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+    let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
     call neobundle#untap()
   endif "}}}
@@ -138,7 +148,59 @@ else
 endif
 
 " C++用オムニ補完
-NeoBundleLazy 'osyo-manga/vim-marching', { 'depends' : [ 'Shougo/neocomplete.vim'] }
+NeoBundleLazy 'justmao945/vim-clang', { 'depends' : [ 'Shougo/neocomplete.vim'] }
+if neobundle#tap('vim-clang') "{{{
+  call neobundle#config({
+        \  'autoload': {
+        \    'insert(':   1,
+        \    'filetypes': ['cpp', 'c'],
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+    " disable auto completion for vim-clanG
+    let g:clang_auto = 0
+    let g:clang_complete_auto = 0
+    let g:clang_auto_select = 0
+    let g:clang_use_library = 1
+
+    " default 'longest' can not work with neocomplete
+    let g:clang_c_completeopt   = 'menuone'
+    let g:clang_cpp_completeopt = 'menuone'
+
+    if executable('clang-3.6')
+      let g:clang_exec = 'clang-3.6'
+    elseif executable('clang-3.5')
+      let g:clang_exec = 'clang-3.5'
+    elseif executable('clang-3.4')
+      let g:clang_exec = 'clang-3.4'
+    else
+      let g:clang_exec = 'clang'
+    endif
+
+    if executable('clang-format-3.6')
+      let g:clang_format_exec = 'clang-format-3.6'
+    elseif executable('clang-format-3.5')
+      let g:clang_format_exec = 'clang-format-3.5'
+    elseif executable('clang-format-3.4')
+      let g:clang_format_exec = 'clang-format-3.4'
+    else
+      let g:clang_format_exec = 'clang-format'
+    endif
+
+    let g:clang_c_options = '-std=c11'
+    let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+
+    if g:is_windows
+    elseif g:is_cygwin
+    else
+    endif
+
+  endfunction
+  call neobundle#untap()
+endif  "}}}
+
+" C++用オムニ補完
+"NeoBundleLazy 'osyo-manga/vim-marching', { 'depends' : [ 'Shougo/neocomplete.vim'] }
 if neobundle#tap('vim-marching') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -941,7 +1003,7 @@ if neobundle#tap('unite.vim') "{{{
     augroup END
     function! s:unite_my_settings()
       " Overwrite settings.
-      
+
       " Uniteの戻るコマンドを追加
       "nmap     <buffer><ESC> <Plug>(unite_exit)
       "imap     <buffer><ESC> <Plug>(unite_exit)
