@@ -9,6 +9,7 @@ elseif isdirectory($HOME."/dotfiles/_vim")
   let $DOTVIM_DIR = $HOME."/dotfiles/_vim"
 endif
 set encoding=utf-8    " デフォルトエンコーディング
+let g:dotvim_dir=$DOTVIM_DIR
 
 "デバッグ用 messageの出力をコピー
 command! MessCopy call s:messcopy()
