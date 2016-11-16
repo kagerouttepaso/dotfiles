@@ -27,8 +27,8 @@ command! FairingXml :%s/></>\r</g | filetype indent on | setf xml | normal gg=G
 let g:markdown_css_filt_path=dotvim_dir. "/markdown.css"
 function! s:convert_pdf() abort
   let file_name = expand("%")
-  let code = "markdown-pdf -s " . g:markdown_css_filt_path . " " . file_name
+  let code = "markdown-pdf -s " . g:markdown_css_filt_path . " -f 'A4' " . file_name
   let ret = system(code)
-  echo ret
+  echo code
 endfunction
 command! ConvertPdf :call s:convert_pdf()
