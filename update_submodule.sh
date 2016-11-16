@@ -1,7 +1,7 @@
 #!/bin/bash
 PWD_DIR=`pwd`
 
-SUBMODULES=(./_oh-my-zsh ./_vim/bundle/neobundle.vim ./_tmux-powerline)
+SUBMODULES=(./_oh-my-zsh ./_vim/bundle/neobundle.vim ./_tmux-powerline ./_apt-cyg)
 for module in ${SUBMODULES[@]}
 do
     cd ${PWD_DIR}/${module}
