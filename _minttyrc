@@ -19,3 +19,4 @@ BellTaskbar=no
 ClicksTargetApp=yes
 ScrollMod=off
 BackspaceSendsBS=no
+BellType=0
