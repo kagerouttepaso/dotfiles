@@ -29,6 +29,8 @@ if neobundle#is_installed("unite-tag")
           \   if empty(&buftype)
           \|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag <CR>
           \|      nnoremap tt :<C-u>UniteWithCursorWord -immediately tag<CR>
+"          \|      nnoremap <buffer>> <C-]> :GtagsCursor<CR>
+"          \|      nnoremap tt :GtagsCursor<CR>
           \|  endif
     autocmd BufEnter *
           \   if empty(&buftype)

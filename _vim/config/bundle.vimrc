@@ -65,12 +65,19 @@ if g:is_can_use_neocomplete
     "let g:neocomplete#disable_auto_complete = 1
     "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
     function! neobundle#hooks.on_source(bundle)
+      "call neocomplete#custom#source('_', 'matchers',
+      "      \ ['matcher_fuzzy', 'matcher_length'])
+      call neocomplete#custom#source('_', 'sorters',
+            \ ['sorter_rank'])
       " AutoComplPopを無効にする
       let g:acp_enableAtStartup = 0
       " neocompleteを有効にする
       let g:neocomplete#enable_at_startup = 1
       " smarrt case有効化。 大文字が入力されるまで大文字小文字の区別を無視する
       let g:neocomplete#enable_smart_case = 1
+      " 大文字は大文字のみヒット、小文字は大文字にもヒット
+      let g:neocomplete#enable_camel_case = 1
+      let g:neocomplete#enable_camel_case_completion = 1
       " シンタックスをキャッシュするときの最小文字長を3に
       let g:neocomplete#min_keyword_length = 3
       " neocompleteを自動的にロックするバッファ名のパターン
@@ -79,6 +86,9 @@ if g:is_can_use_neocomplete
       let g:neocomplete#auto_completion_start_length = 2
       "ポップアップメニューで表示される候補の数。初期値は100
       "let g:neocomplete#max_list = 30
+      "ファジー検索を有効
+      let g:neocomplete#enable_fuzzy_completion=1
+      let g:neocomplete#enable_auto_delemiter=1
 
       " Define dictionary.
       let g:neocomplete#sources#dictionary#dictionaries = {
@@ -136,8 +146,8 @@ if g:is_can_use_neocomplete
       let g:neocomplete#force_omni_input_patterns = {}
     endif
     let g:neocomplete#force_overwrite_completefunc = 1
-    let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-    let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+    let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+    let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 
     call neobundle#untap()
   endif "}}}
@@ -482,7 +492,7 @@ endif "}}}
 
 
 " ソースコード上のメソッド宣言、変数宣言の一覧を表示
-NeoBundleLazy 'taglist.vim'
+"NeoBundleLazy 'taglist.vim'
 if neobundle#tap('taglist.vim') "{{{
   call neobundle#config({
         \  'autoload': {
