@@ -157,6 +157,46 @@ else
   source $DOTVIM_DIR/config/completion.neocomplcache.vimrc
 endif
 
+NeoBundleLazy 'rhysd/vim-clang-format', { 'depends' : ['kana/vim-operator-user'] }
+if neobundle#tap('vim-clang-format') "{{{
+  call neobundle#config({
+        \  'autoload': {
+        \    'insert(':   1,
+        \    'filetypes': ['cpp', 'c'],
+        \    'commands': ['ClangFormat'],
+        \  }
+        \})
+  command! Cf :ClangFormat
+  function! neobundle#hooks.on_source(bundle)
+
+    if executable('clang-format-3.6')
+      let g:clang_format#command = 'clang-format-3.6'
+    elseif executable('clang-format-3.5')
+      let g:clang_format#command = 'clang-format-3.5'
+    elseif executable('clang-format-3.4')
+      let g:clang_format#command = 'clang-format-3.4'
+    elseif executable('clang-format-3.7')
+      let g:clang_format#command = 'clang-format-3.7'
+    elseif executable('clang-format-3.8')
+      let g:clang_format#command = 'clang-format-3.8'
+    else
+      let g:clang_format#command = 'clang-format'
+    endif
+
+    "Googleのコーディングスタイルを適用する
+    let g:clang_format#code_style = "google"
+    "コーディングフォーマットの上書き
+    let g:clang_format#style_options = {
+            \ 'Standard' : 'Cpp11',
+            \ }
+    ".clang_formatを探さない
+    let g:clang_format#detect_style_file = 0
+    " ファイル保存時自動でフォーマット
+    let g:clang_format#auto_format = 1
+  endfunction
+  call neobundle#untap()
+endif  "}}}
+
 " C++用オムニ補完
 NeoBundleLazy 'justmao945/vim-clang', { 'depends' : [ 'Shougo/neocomplete.vim'] }
 if neobundle#tap('vim-clang') "{{{
