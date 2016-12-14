@@ -1,0 +1,9 @@
+snippet include_guard
+alias   inc_guard
+prev_word '^'
+abbr    #ifndef HOGE #define HOGE #endif
+    #ifndef ${1}`toupper( substitute( fnamemodify(expand('%'),':t'), "\\.", "_", "g" ) )."_"`
+    #define $1`toupper( substitute( fnamemodify(expand('%'),':t'), "\\.", "_", "g" ) )."_"`
+    ${0}
+    #endif // $1`toupper( substitute( fnamemodify(expand('%'),':t'), "\\.", "_", "g" ) )."_"`
+
