@@ -1,2 +1,3 @@
-#!/bin/bash.exe
-cat pkgs | xargs apt-cyg install 
+#!/bin/bash
+apt-cyg update
+cat ./pkgs | xargs apt-cyg install 

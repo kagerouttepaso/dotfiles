@@ -1,6 +1,13 @@
 #!/bin/bash
 PWD_DIR=`pwd`
 
+if [ "`uname -sr | grep CYGWIN`" ] ; then
+    echo update cygwin package list..
+    cd cygwin
+    ./update_list.sh
+    cd ${PWD_DIR}
+fi
+
 SUBMODULES=(./_oh-my-zsh ./_vim/bundle/neobundle.vim ./_tmux-powerline ./_apt-cyg)
 for module in ${SUBMODULES[@]}
 do

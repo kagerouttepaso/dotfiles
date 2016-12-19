@@ -316,6 +316,7 @@ libXext6
 libXfixes-devel
 libXfixes3
 libXfont1
+libXfont2_2
 libXft-devel
 libXft2
 libXi-devel
@@ -666,6 +667,7 @@ libtirpc-common
 libtirpc1
 libtool
 libtxc_dxtn
+libunique1.0_0
 libunistring2
 libuuid-devel
 libuuid1
@@ -849,6 +851,7 @@ perl-XML-SAX
 perl-XML-SAX-Base
 perl-XML-SAX-Expat
 perl-XML-Simple
+perl-XSLoader
 perl-YAML
 perl-libwww-perl
 perl_autorebase
