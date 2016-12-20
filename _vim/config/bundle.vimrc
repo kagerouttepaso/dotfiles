@@ -187,7 +187,7 @@ if neobundle#tap('vim-clang-format') "{{{
     let g:clang_format#code_style = "google"
     "コーディングフォーマットの上書き
     let g:clang_format#style_options = {
-            \ 'Standard' : 'Cpp11',
+            \ 'Standard' : 'Cpp03',
             \ }
     ".clang_formatを探さない
     let g:clang_format#detect_style_file = 0

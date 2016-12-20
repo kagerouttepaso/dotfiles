@@ -7,3 +7,14 @@ abbr    #ifndef HOGE #define HOGE #endif
     ${0}
     #endif // $1`toupper( substitute( fnamemodify(expand('%'),':t'), "\\.", "_", "g" ) )."_"`
 
+snippet todo_comment
+alias  todo
+abbr // TODO(kitsunai): *****
+  // TODO(kitsunai): ${1}
+
+snippet ifdefined_guard
+alias ifdef_guard
+abbr #if defined(_DEBUG)
+  #if defined(${1:_DEBUG})
+  ${0}
+  #endif // $1
