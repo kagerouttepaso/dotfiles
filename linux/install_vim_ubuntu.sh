@@ -10,46 +10,52 @@ if [ ! -d ./vim ]; then
 fi
 cd vim 
 git fetch
-git reset --hard HEAD
-git clean -fdx
+
 
 LATEST_VIM_VERTION=`git tag | tail -n1`
 echo ------- install vim ${LATEST_VIM_VERTION} !!!! ------
 sleep 3
+
+LATEST_VIM_VERTION_HASH=`git rev-parse ${LATEST_VIM_VERTION}`
+HEAD_HASH=`git rev-parse HEAD`
+if [ "${LATEST_VIM_VERTION_HASH}" != "${HEAD_HASH}" ]; then
+    git reset --hard HEAD
+    git clean -fdx
+fi
 git checkout ${LATEST_VIM_VERTION}
 
 # コンフィグはubuntu16.04 vim-gtk3のものを参考にした
 # https://launchpad.net/ubuntu/+source/vim/2:8.0.0095-1ubuntu2/+build/11526657
 ./configure \
- --prefix=/usr/local \
- --mandir=/usr/local/share/man \
- --enable-gui=gtk2 \
- --with-features=huge \
- --without-local-dir \
- --with-compiledby="kagerouttepaso" \
- --enable-fail-if-missing \
- --enable-cscope \
- --enable-gpm \
- --enable-selinux \
- --disable-smack \
- --enable-multibyte \
- --enable-acl \
- --with-x \
- --enable-xim \
- --enable-gtk2-check \
- --disable-gnome-check \
- --disable-motif-check \
- --disable-athena-check \
- --disable-fontset \
- --enable-luainterp \
- --disable-mzschemeinterp \
- --enable-perlinterp \
- --enable-python3interp \
- --with-python3-config-dir="${PYTHON3_CONFIG_DIR}" \
- --disable-pythoninterp \
- --enable-rubyinterp \
- --enable-tclinterp \
- --with-tclsh=/usr/bin/tclsh
+    --prefix=/usr/local \
+    --mandir=/usr/local/share/man \
+    --enable-gui=gtk2 \
+    --with-features=huge \
+    --without-local-dir \
+    --with-compiledby="kagerouttepaso" \
+    --enable-fail-if-missing \
+    --enable-cscope \
+    --enable-gpm \
+    --enable-selinux \
+    --disable-smack \
+    --enable-multibyte \
+    --enable-acl \
+    --with-x \
+    --enable-xim \
+    --enable-gtk2-check \
+    --disable-gnome-check \
+    --disable-motif-check \
+    --disable-athena-check \
+    --disable-fontset \
+    --enable-luainterp \
+    --disable-mzschemeinterp \
+    --enable-perlinterp \
+    --enable-python3interp \
+    --with-python3-config-dir="${PYTHON3_CONFIG_DIR}" \
+    --disable-pythoninterp \
+    --enable-rubyinterp \
+    --enable-tclinterp \
+    --with-tclsh=/usr/bin/tclsh
 
 CPUS=`cat /proc/cpuinfo | grep -c processor`
 make -j ${CPUS}
