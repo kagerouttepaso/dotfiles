@@ -1,0 +1,12 @@
+delete      namespace_anonymous
+options     head
+snippet     namespace_anonymous
+abbr        namespace {} // anonymous nomespace
+    namespace {
+        ${0:TARGET}
+    }  // anonymous nomespace
+
+delete  std_cout_endl
+snippet cout
+abbr    std::cout << **** << std::endl;
+  std::cout << ${0:TARGET} << std::endl;

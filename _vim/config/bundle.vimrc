@@ -63,7 +63,9 @@ if g:is_can_use_neocomplete
     "set completeopt+=longest
     "let g:neocomplete#enable_auto_select = 1
     "let g:neocomplete#disable_auto_complete = 1
-    "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+    "inoremap <expr><TAB>  pumvisible() ? "\<Down>" :
+    " \ neocomplete#start_manual_complete()
+    
     function! neobundle#hooks.on_source(bundle)
       "call neocomplete#custom#source('_', 'matchers',
       "      \ ['matcher_fuzzy', 'matcher_length'])
@@ -71,13 +73,14 @@ if g:is_can_use_neocomplete
             \ ['sorter_rank'])
       " AutoComplPopを無効にする
       let g:acp_enableAtStartup = 0
+      " 自動選択は行わない
+      let g:neocomplete#enable_auto_select = 0
       " neocompleteを有効にする
       let g:neocomplete#enable_at_startup = 1
       " smarrt case有効化。 大文字が入力されるまで大文字小文字の区別を無視する
       let g:neocomplete#enable_smart_case = 1
       " 大文字は大文字のみヒット、小文字は大文字にもヒット
       let g:neocomplete#enable_camel_case = 1
-      let g:neocomplete#enable_camel_case_completion = 1
       " シンタックスをキャッシュするときの最小文字長を3に
       let g:neocomplete#min_keyword_length = 3
       " neocompleteを自動的にロックするバッファ名のパターン
@@ -85,7 +88,7 @@ if g:is_can_use_neocomplete
       " 補完が自動で開始される文字数
       let g:neocomplete#auto_completion_start_length = 2
       "ポップアップメニューで表示される候補の数。初期値は100
-      "let g:neocomplete#max_list = 30
+      let g:neocomplete#max_list = 200
       "ファジー検索を有効
       let g:neocomplete#enable_fuzzy_completion=1
       let g:neocomplete#enable_auto_delemiter=1
@@ -140,14 +143,6 @@ if g:is_can_use_neocomplete
     "let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
     "let g:neocomplete#sources#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
     "let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-    "for vim-clang
-    if !exists('g:neocomplete#force_omni_input_patterns')
-      let g:neocomplete#force_omni_input_patterns = {}
-    endif
-    let g:neocomplete#force_overwrite_completefunc = 1
-    let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
-    let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 
     call neobundle#untap()
   endif "}}}
@@ -209,13 +204,29 @@ if neobundle#tap('vim-clang') "{{{
   function! neobundle#hooks.on_source(bundle)
     " disable auto completion for vim-clanG
     let g:clang_auto = 0
-    let g:clang_complete_auto = 0
-    let g:clang_auto_select = 0
-    let g:clang_use_library = 1
+    "let g:clang_use_library = 1
+    
+    let g:clang_diagsopt = ''
 
     " default 'longest' can not work with neocomplete
     let g:clang_c_completeopt   = 'menuone'
     let g:clang_cpp_completeopt = 'menuone'
+
+    let g:clang_c_options = '-std=c11'
+    let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+
+    " use neocomplete
+    if !exists('g:neocomplete#force_omni_input_patterns')
+      let g:neocomplete#force_omni_input_patterns = {}
+    endif
+    let g:neocomplete#force_omni_input_patterns.c =
+          \ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+    let g:neocomplete#force_omni_input_patterns.cpp =
+          \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+    let g:neocomplete#force_omni_input_patterns.objc =
+          \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)'
+    let g:neocomplete#force_omni_input_patterns.objcpp =
+          \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)\|\h\w*::\w*'
 
     if executable('clang-3.6')
       let g:clang_exec = 'clang-3.6'
@@ -245,8 +256,7 @@ if neobundle#tap('vim-clang') "{{{
       let g:clang_format_exec = 'clang-format'
     endif
 
-    let g:clang_c_options = '-std=c11'
-    let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+
 
     if g:is_windows
     elseif g:is_cygwin
