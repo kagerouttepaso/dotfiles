@@ -687,7 +687,7 @@ else
   let g:syntastic_cpp_compiler = 'clang'
 endif
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-let g:syntastic_cpp_config_file = ".clang"
+let g:syntastic_cpp_config_file = ".clang_complete"
 
 " DockerFile
 NeoBundle 'ekalinin/Dockerfile.vim'
