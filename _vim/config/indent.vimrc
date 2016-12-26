@@ -5,6 +5,10 @@ set autoindent   " 自動でインデント
 "set paste        " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
 set smartindent  " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
 set cindent      " Cプログラムファイルの自動インデントを始める
+if v:version >= 800
+  "行の折り返し後の先頭にインデントを適用する
+  set breakindent
+endif
 
 " softtabstopはTabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，BSにも影響する
 set tabstop=2 shiftwidth=2 softtabstop=0
