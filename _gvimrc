@@ -46,3 +46,7 @@ set noshowmode
 
 set novisualbell
 set vb t_vb=
+
+
+set enc=utf-8
+"set rop=type:directx,renmode:5
