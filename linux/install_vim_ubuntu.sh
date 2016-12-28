@@ -2,8 +2,9 @@
 sudo apt-get build-dep vim
 
 sudo apt-get install python3-dev
-PYTHON3_CONFIG_CODE="import distutils.sysconfig; print(distutils.sysconfig.get_config_var('LIBPL'))"
-PYTHON3_CONFIG_DIR=`python3  -c "${PYTHON3_CONFIG_CODE}"`
+PYTHON_CONFIG_CODE="import distutils.sysconfig; print(distutils.sysconfig.get_config_var('LIBPL'))"
+PYTHON3_CONFIG_DIR=`python3  -c "${PYTHON_CONFIG_CODE}"`
+PYTHON2_CONFIG_DIR=`python -c "${PYTHON_CONFIG_CODE}"`
 
 if [ ! -d ./vim ]; then
     git clone https://github.com/vim/vim.git vim
@@ -50,13 +51,15 @@ git checkout ${LATEST_VIM_VERTION}
     --enable-luainterp \
     --disable-mzschemeinterp \
     --enable-perlinterp \
-    --enable-python3interp \
-    --with-python3-config-dir="${PYTHON3_CONFIG_DIR}" \
-    --disable-pythoninterp \
+    --enable-pythoninterp \
+    --with-python-config-dir="${PYTHON2_CONFIG_DIR}" \
     --enable-rubyinterp \
     --enable-tclinterp \
     --with-tclsh=/usr/bin/tclsh
 
+    #--enable-python3interp \
+    #--with-python3-config-dir="${PYTHON3_CONFIG_DIR}" \
+    #--disable-pythoninterp \
 CPUS=`cat /proc/cpuinfo | grep -c processor`
 make -j ${CPUS}
 sudo make install

@@ -91,7 +91,7 @@ if g:is_can_use_neocomplete
       let g:neocomplete#max_list = 200
       "ファジー検索を有効
       let g:neocomplete#enable_fuzzy_completion=1
-      let g:neocomplete#enable_auto_delemiter=1
+      let g:neocomplete#enable_auto_delimiter=1
 
       " Define dictionary.
       let g:neocomplete#sources#dictionary#dictionaries = {
@@ -187,15 +187,15 @@ if neobundle#tap('vim-clang-format') "{{{
     ".clang_formatを探さない
     let g:clang_format#detect_style_file = 0
     " ファイル保存時自動でフォーマット
-    let g:clang_format#auto_format = 1
+    "let g:clang_format#auto_format = 1
   endfunction
   call neobundle#untap()
 endif  "}}}
 
 " C++用オムニ補完
-NeoBundle 'Rip-Rip/clang_complete', { 'depends' : [ 'Shougo/neocomplete.vim'],
-      \ 'rev' : 'support-python3'
-      \ }
+NeoBundle 'Rip-Rip/clang_complete', { 'depends' : [ 'Shougo/neocomplete.vim'] }
+      " \ 'rev' : 'support-python3'
+      " \ }
 if neobundle#tap('clang_complete') "{{{
   call neobundle#config({
         \  'autoload': {
@@ -221,8 +221,12 @@ if neobundle#tap('clang_complete') "{{{
     let g:clang_auto_select = 0
     let g:clang_omnicppcomplete_compliance = 0
     let g:clang_make_default_keymappings = 0
+    let g:clang_debug = 1
     "let g:clang_use_library = 1
 
+    let g:clang_complete_copen = 1
+    let g:clang_hl_errors = 1
+    let g:clang_user_options = '-std=c++11 -stdlib=libc++'
 
     if g:is_windows
     elseif g:is_cygwin
