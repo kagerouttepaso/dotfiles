@@ -187,7 +187,7 @@ if neobundle#tap('vim-clang-format') "{{{
     ".clang_formatを探さない
     let g:clang_format#detect_style_file = 0
     " ファイル保存時自動でフォーマット
-    "let g:clang_format#auto_format = 1
+    let g:clang_format#auto_format = 1
   endfunction
   call neobundle#untap()
 endif  "}}}
