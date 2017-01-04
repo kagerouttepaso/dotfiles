@@ -7,3 +7,6 @@
 [submodule "_apt-cyg"]
 	path = _apt-cyg
 	url = https://github.com/transcode-open/apt-cyg
+[submodule "_zplug"]
+	path = _zplug
+	url = https://github.com/zplug/zplug
