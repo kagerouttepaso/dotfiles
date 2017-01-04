@@ -44,6 +44,10 @@ else
     # cd強化
     zplug "b4b4r07/enhancd", use:init.sh
 fi
+#履歴から補完
+zplug "zsh-users/zsh-history-substring-search" 
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 #gitignore 作成
 zplug "voronkovich/gitignore.plugin.zsh"
 #gitステータス表示
@@ -62,6 +66,11 @@ zplug "plugins/git",  from:oh-my-zsh, as:plugin
 #zplug "plugins/vagrant" , from:oh-my-zsh, as:plugin
 zplug "plugin/docker",  from:oh-my-zsh, as:plugin
 zplug "plugins/colorize", from:oh-my-zsh, as:plugin
+
+zplug "lib/history", from:oh-my-zsh
+zplug "lib/directories", from:oh-my-zsh
+zplug "lib/completion", from:oh-my-zsh
+
 
 echo zplug plugins check
 if ! zplug check --verbose; then
