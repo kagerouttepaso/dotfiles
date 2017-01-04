@@ -18,13 +18,36 @@ elif [ -f /opt/ros/indigo/setup.zsh ]; then
     source /opt/ros/indigo/setup.zsh
 fi
 
+echo zplug init
 export ZPLUG_HOME=~/.zplug
 source ~/.zplug/init.zsh
 
+echo load plugins
+if [ "`uname -sr | grep CYGWIN`" ] ; then
+    zplug "themes/dst", from:oh-my-zsh
+    zplug "lib/theme-and-appearance", from:oh-my-zsh
+    zplug "lib/git", from:oh-my-zsh
+    zplug "lib/functions", from:oh-my-zsh
+else
+    # fzf
+    zplug "junegunn/fzf-bin", \
+        as:command, \
+        rename-to:"fzf", \
+        from:gh-r
+    #プロンプト
+    zplug "mafredri/zsh-async", from:github, defer:0  # Load this first
+    zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+    # zshのunite的存在(要fzf)
+    zplug "mollifier/anyframe"
+    # git rootへ移動
+    zplug "mollifier/cd-gitroot"
+    # cd強化
+    zplug "b4b4r07/enhancd", use:init.sh
+fi
 #gitignore 作成
 zplug "voronkovich/gitignore.plugin.zsh"
 #gitステータス表示
-zplug "arialdomartini/oh-my-git", use:"prompt.sh"
+#zplug "arialdomartini/oh-my-git", use:"prompt.sh"
 # コマンド履歴を使った入力補完
 zplug "zsh-users/zsh-autosuggestions" 
 bindkey "^ " autosuggest-accept
@@ -32,39 +55,24 @@ bindkey "^ " autosuggest-accept
 zplug "zsh-users/zsh-completions"
 # シンタックスハイライト
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
-# zshのunite的存在(要fzf)
-zplug "mollifier/anyframe"
-# git rootへ移動
-zplug "mollifier/cd-gitroot"
-# fzf
-zplug "junegunn/fzf-bin", \
-    as:command, \
-    rename-to:"fzf", \
-    from:gh-r
-# cd強化
-zplug "b4b4r07/enhancd", use:init.sh
 # zshから引き継ぎ
 zplug "plugins/git",  from:oh-my-zsh, as:plugin
-zplug "plugins/tmux" , from:oh-my-zsh, as:plugin
-zplug "plugins/tmuxinator" , from:oh-my-zsh, as:plugin
-zplug "plugins/vagrant" , from:oh-my-zsh, as:plugin
+#zplug "plugins/tmux" , from:oh-my-zsh, as:plugin
+#zplug "plugins/tmuxinator" , from:oh-my-zsh, as:plugin
+#zplug "plugins/vagrant" , from:oh-my-zsh, as:plugin
 zplug "plugin/docker",  from:oh-my-zsh, as:plugin
 zplug "plugins/colorize", from:oh-my-zsh, as:plugin
-#zplug "themes/dst", from:oh-my-zsh
-#zplug "lib/theme-and-appearance", from:oh-my-zsh
-#zplug "lib/git", from:oh-my-zsh
-#zplug "lib/functions", from:oh-my-zsh
-#プロンプト
-zplug "mafredri/zsh-async", from:github, defer:0  # Load this first
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
+echo zplug plugins check
 if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  fi
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
 fi
+echo zplug plugins load
 zplug load
+echo finished
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -72,7 +80,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls="ls --color=auto"
     #alias dir="dir --color=auto"
     #alias vdir="vdir --color=auto"
-
     alias grep="grep --color=auto"
     alias fgrep="fgrep --color=auto"
     alias egrep="egrep --color=auto"
