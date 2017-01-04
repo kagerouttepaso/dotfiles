@@ -118,3 +118,4 @@ if [ -f ~/catkin_ws/devel/setup.bash ]; then
 elif [ -f /opt/ros/indigo/setup.bash ]; then
     source /opt/ros/indigo/setup.bash
 fi
+

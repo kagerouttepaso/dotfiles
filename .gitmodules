@@ -1,9 +1,6 @@
 [submodule "_vim/bundle/neobundle.vim"]
 	path = _vim/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim.git
-[submodule "oh-my-zsh"]
-	path = _oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "_tmux-powerline"]
 	path = _tmux-powerline
 	url = https://github.com/erikw/tmux-powerline

@@ -18,108 +18,68 @@ elif [ -f /opt/ros/indigo/setup.zsh ]; then
     source /opt/ros/indigo/setup.zsh
 fi
 
+export ZPLUG_HOME=~/.zplug
+source ~/.zplug/init.zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="dst"
+#gitignore 作成
+zplug "voronkovich/gitignore.plugin.zsh"
+#gitステータス表示
+zplug "arialdomartini/oh-my-git", use:"prompt.sh"
+# コマンド履歴を使った入力補完
+zplug "zsh-users/zsh-autosuggestions" 
+bindkey "^ " autosuggest-accept
+# 選択拡張
+zplug "zsh-users/zsh-completions"
+# シンタックスハイライト
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+# zshのunite的存在(要fzf)
+zplug "mollifier/anyframe"
+# git rootへ移動
+zplug "mollifier/cd-gitroot"
+# fzf
+zplug "junegunn/fzf-bin", \
+    as:command, \
+    rename-to:"fzf", \
+    from:gh-r
+# cd強化
+zplug "b4b4r07/enhancd", use:init.sh
+# zshから引き継ぎ
+zplug "plugins/git",  from:oh-my-zsh, as:plugin
+zplug "plugins/tmux" , from:oh-my-zsh, as:plugin
+zplug "plugins/tmuxinator" , from:oh-my-zsh, as:plugin
+zplug "plugins/vagrant" , from:oh-my-zsh, as:plugin
+zplug "plugin/docker",  from:oh-my-zsh, as:plugin
+zplug "plugins/colorize", from:oh-my-zsh, as:plugin
+#zplug "themes/dst", from:oh-my-zsh
+#zplug "lib/theme-and-appearance", from:oh-my-zsh
+#zplug "lib/git", from:oh-my-zsh
+#zplug "lib/functions", from:oh-my-zsh
+#プロンプト
+zplug "mafredri/zsh-async", from:github, defer:0  # Load this first
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
-
-stty stop undef
-
-#ヒストリに重複を許さない
-setopt hist_ignore_all_dups
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(cp)
-if builtin command -v tmux >> /dev/null ; then
-    plugins+=(tmux tmuxinator)
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
 fi
-if builtin command -v ssh-agent >> /dev/null ; then
-    if [ "`uname -sr | grep CYGWIN`" ] ; then
-        #not load ssh-agent
-        ;
-    else
-        plugins+=(ssh-agent)
-    fi
-fi
-if builtin command -v rbenv >> /dev/null ; then
-    plugins+=(rbenv)
-fi
-if builtin command -v git >> /dev/null ; then
-    plugins+=(git git-flow)
-    alias gserch="cat $ZSH/plugins/git/git.plugin.zsh |grep alias| grep "
-fi
-if builtin command -v ruby >> /dev/null ; then
-    plugins+=(bundler gem ruby knife)
-fi
-if builtin command -v screen >> /dev/null ; then
-    plugins+=(screen)
-fi
-if builtin command -v svn >> /dev/null ; then
-    plugins+=(svn)
-fi
-if builtin command -v docker.io >> /dev/null ; then
-    plugins+=(docker)
-fi
-if builtin command -v docker >> /dev/null ; then
-    plugins+=(docker)
-fi
-if builtin command -v vagrant >> /dev/null ; then
-    plugins+=(vagrant)
-fi
-if builtin command -v mosh >> /dev/null ; then
-    plugins+=(mosh)
+zplug load
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls="ls --color=auto"
+    #alias dir="dir --color=auto"
+    #alias vdir="vdir --color=auto"
+
+    alias grep="grep --color=auto"
+    alias fgrep="fgrep --color=auto"
+    alias egrep="egrep --color=auto"
 fi
 
-# _oh-my-zsh/plugins/brew/
-# _oh-my-zsh/plugins/bundler/
-# _oh-my-zsh/plugins/common-aliases/
-# _oh-my-zsh/plugins/gem/
-# _oh-my-zsh/plugins/github/
-# _oh-my-zsh/plugins/gitignore/
-# _oh-my-zsh/plugins/knife/
-# _oh-my-zsh/plugins/knife_ssh/
-# _oh-my-zsh/plugins/node/
-# _oh-my-zsh/plugins/python/
-# _oh-my-zsh/plugins/ubuntu/
-# _oh-my-zsh/plugins/vim-interaction/
-# _oh-my-zsh/plugins/yum/
+# some more ls aliases
+alias ll="ls -alF"
+alias la="ls -A"
+alias l="ls -CF"
 
-source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-
-PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
