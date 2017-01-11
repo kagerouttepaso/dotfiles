@@ -1,10 +1,9 @@
 #!/bin/bash
+source ./common_params.sh
+
 sudo apt-get build-dep vim
 
 sudo apt-get install python3-dev
-PYTHON_CONFIG_CODE="import distutils.sysconfig; print(distutils.sysconfig.get_config_var('LIBPL'))"
-PYTHON3_CONFIG_DIR=`python3  -c "${PYTHON_CONFIG_CODE}"`
-PYTHON2_CONFIG_DIR=`python -c "${PYTHON_CONFIG_CODE}"`
 
 if [ ! -d ./vim ]; then
     git clone https://github.com/vim/vim.git vim
@@ -12,18 +11,16 @@ fi
 cd vim 
 git fetch
 
+source ../common_git_params.sh
 
-LATEST_VIM_VERTION=`git tag | tail -n1`
-echo ------- install vim ${LATEST_VIM_VERTION} !!!! ------
+echo ------- install vim ${LATEST_TAG_VERSION} !!!! ------
 sleep 3
 
-LATEST_VIM_VERTION_HASH=`git rev-parse ${LATEST_VIM_VERTION}`
-HEAD_HASH=`git rev-parse HEAD`
-if [ "${LATEST_VIM_VERTION_HASH}" != "${HEAD_HASH}" ]; then
-    git reset --hard HEAD
+if [ "${LATEST_TAG_VERSION_HASH}" != "${HEAD_HASH}" ]; then
     git clean -fdx
+    git reset --hard HEAD
 fi
-git checkout ${LATEST_VIM_VERTION}
+git checkout ${LATEST_TAG_VERSION}
 
 # コンフィグはubuntu16.04 vim-gtk3のものを参考にした
 # https://launchpad.net/ubuntu/+source/vim/2:8.0.0095-1ubuntu2/+build/11526657
@@ -53,6 +50,8 @@ git checkout ${LATEST_VIM_VERTION}
     --enable-perlinterp \
     --enable-pythoninterp \
     --with-python-config-dir="${PYTHON2_CONFIG_DIR}" \
+    --enable-python3interp \
+    --with-python3-config-dir="${PYTHON3_CONFIG_DIR}" \
     --enable-rubyinterp \
     --enable-tclinterp \
     --with-tclsh=/usr/bin/tclsh
@@ -60,6 +59,5 @@ git checkout ${LATEST_VIM_VERTION}
     #--enable-python3interp \
     #--with-python3-config-dir="${PYTHON3_CONFIG_DIR}" \
     #--disable-pythoninterp \
-CPUS=`cat /proc/cpuinfo | grep -c processor`
 make -j ${CPUS}
 sudo make install

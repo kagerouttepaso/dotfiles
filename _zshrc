@@ -24,10 +24,6 @@ source ~/.zplug/init.zsh
 
 echo load plugins
 if [ "`uname -sr | grep CYGWIN`" ] ; then
-    zplug "themes/dst", from:oh-my-zsh
-    zplug "lib/theme-and-appearance", from:oh-my-zsh
-    zplug "lib/git", from:oh-my-zsh
-    zplug "lib/functions", from:oh-my-zsh
 else
     # fzf
     zplug "junegunn/fzf-bin", \
@@ -35,8 +31,8 @@ else
         rename-to:"fzf", \
         from:gh-r
     #プロンプト
-    zplug "mafredri/zsh-async", from:github, defer:0  # Load this first
-    zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+    #zplug "mafredri/zsh-async", from:github, defer:0  # Load this first
+    #zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
     # zshのunite的存在(要fzf)
     zplug "mollifier/anyframe"
     # git rootへ移動
@@ -44,6 +40,12 @@ else
     # cd強化
     zplug "b4b4r07/enhancd", use:init.sh
 fi
+
+# テーマは引き続きoh-my-zshのものを...
+zplug "themes/dst", from:oh-my-zsh
+zplug "lib/theme-and-appearance", from:oh-my-zsh
+zplug "lib/git", from:oh-my-zsh
+zplug "lib/functions", from:oh-my-zsh
 #履歴から補完
 zplug "zsh-users/zsh-history-substring-search" 
 bindkey '^[[A' history-substring-search-up

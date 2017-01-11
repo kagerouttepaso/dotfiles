@@ -1032,6 +1032,7 @@ if neobundle#tap('vim-over') "{{{
   call neobundle#untap()
 endif "}}}
 
+NeoBundle 'thinca/vim-qfreplace'
 " }}}
 
 " ColorSchema{{{
@@ -1088,13 +1089,13 @@ if neobundle#tap('unite.vim') "{{{
   " 現在のバッファのカレントディレクトリからファイル一覧
   nnoremap <silent>[unite]c :<C-u>UniteWithBufferDir -buffer-name=files file -winheight=15<CR>
   " レジスタ一覧
-  nnoremap <silent>[unite]r :<C-u>Unite register<CR>
+  "nnoremap <silent>[unite]r :<C-u>Unite register<CR>
   " グレップ検索
   nnoremap <silent>[unite]g :<C-u>UniteWithCursorWord grep -buffer-name=grep-search -no-quit -no-wrap<CR>
   " グレップ検索
   nnoremap <silent>[unite]G :<C-u>Unite grep -buffer-name=grep-search -no-quit -no-wrap<CR>
   " すべてのソースを表示
-  nnoremap <silent>[unite]s :<C-u>Unite source<CR>
+  "nnoremap <silent>[unite]s :<C-u>Unite source<CR>
   " アウトラインを展開
   nnoremap <silent>[unite]t :<C-u>Unite outline -vertical -winwidth=50 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>
   nnoremap <silent>[unite]o :<C-u>Unite outline -buffer-name=outline -no-start-insert<CR>
@@ -1178,6 +1179,27 @@ if neobundle#tap('unite-tag') "{{{
   call neobundle#untap()
 endif
 "}}}
+
+NeoBundleLazy 'kagerouttepaso/vim-rtags', { 'depends' : ['Shougo/unite.vim'] }
+if neobundle#tap('vim-rtags') "{{{
+  call neobundle#config({
+        \  'autoload': {
+        \    'filetypes': ['cpp', 'c']
+        \  }
+        \})
+  " 定義へジャンプ
+  nnoremap <silent>[unite]s :<C-u>Unite<Space>-immediately<Space>rtags/symbol<CR><c-r><c-w><CR>
+  " 参照へジャンプ
+  nnoremap <silent>[unite]r :<C-u>Unite<Space>rtags/references -buffer-name=tag-ref -no-wrap<CR>
+  " クラス・関数定義内にいたらその先頭へジャンプ
+  "nnoremap <silent> <F5> :call rtags#JumpToParent()<CR>
+  function! neobundle#hooks.on_source(bundle)
+    let g:rtagsUseLocationList = 0
+    let g:rtagsUseDefaultMappings = 0
+  endfunction
+  call neobundle#untap()
+endif  "}}}
+
 
 "file_mru用
 NeoBundle 'Shougo/neomru.vim'
