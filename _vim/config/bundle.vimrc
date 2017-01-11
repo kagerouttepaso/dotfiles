@@ -547,10 +547,25 @@ endif "}}}
 " Text-object {{{
 
 "テキストオブジェクトの拡張
+NeoBundle 'kana/vim-textobj-user'
+"インデントを選択 ai, ii
+NeoBundle 'kana/vim-textobj-indent' , { 'depends' : [ 'kana/vim-textobj-user' ] }
+"関数を選択を選択 af, if
+NeoBundle 'kana/vim-textobj-function' , { 'depends' : [ 'kana/vim-textobj-user' ] }
+""とか(とかキにせず選択 ab, ib
+NeoBundle 'osyo-manga/vim-textobj-multiblock' , { 'depends' : [ 'kana/vim-textobj-user' ] }
+omap ab <Plug>(textobj-multiblock-a)
+omap ib <Plug>(textobj-multiblock-i)
+xmap ab <Plug>(textobj-multiblock-a)
+xmap ib <Plug>(textobj-multiblock-i)
+"I, Aで矩形にtextbockを選択
+NeoBundle 'osyo-manga/vim-textobj-blockwise' , { 'depends' : [ 'kana/vim-textobj-user' ] }
+
+"オペレーター拡張
 NeoBundle 'kana/vim-operator-user'
 
 "レジスタを汚さない置換ペースト
-NeoBundle 'kana/vim-operator-replace'
+NeoBundle 'kana/vim-operator-replace', { 'depends' : [ 'kana/vim-operator-user' ] }
 map _  <Plug>(operator-replace)
 
 "選択した単語の周りに括弧をつける
