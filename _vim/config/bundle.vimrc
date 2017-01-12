@@ -522,6 +522,24 @@ if neobundle#tap('open-browser.vim') "{{{
   call neobundle#untap()
 endif "}}}
 
+NeoBundleLazy 'kannokanno/previm' , { 'depends' : [ 'tyru/open-browser.vim' ] }
+if neobundle#tap('previm') "{{{
+  call neobundle#config({
+        \  'autoload': {
+        \    'filetypes': ['markdown', 'mkd' ],
+        \    'commands': ['PrevimOpen']
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+    " リアルタイムにプレビューする
+    let g:previm_enable_realtime = 1
+    " デフォルトのCSSを使わず、独自のCSSのみ適用する
+    let g:previm_disable_default_css = 1
+    let g:previm_custom_css_path = g:markdown_css_filt_path
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
 "検索のステータスをステータスラインに表示
 NeoBundleLazy 'osyo-manga/vim-anzu' 
 if neobundle#tap('vim-anzu') "{{{

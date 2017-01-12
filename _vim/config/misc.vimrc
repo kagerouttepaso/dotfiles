@@ -24,7 +24,6 @@ command! FairingXml :%s/></>\r</g | filetype indent on | setf xml | normal gg=G
 
 "markdownをPDFに変換(markdown-pdfコマンドが必要)
 "npm install -g markdown-pdf
-let g:markdown_css_filt_path=dotvim_dir. "/markdown.css"
 function! s:convert_pdf() abort
   let file_name = expand("%")
   let code = "markdown-pdf -s " . g:markdown_css_filt_path . " -f 'A4' " . file_name
