@@ -39,7 +39,8 @@ let g:is_can_use_neocomplete = has('lua') && (v:version > 703 || (v:version == 7
 "tmuxがambiwidthを使用しない設定で起動していた時
 let g:is_teraterm=$TMUX_POWERLINE_NOT_USE_AMBIWIDTH == "true"
 "markdownのCSSファイルパス
-let g:markdown_css_filt_path=dotvim_dir. "/markdown.css"
+let g:markdown_css_filt_path=dotvim_dir. "/css/default.css"
+let g:qiita_css_filt_path=dotvim_dir. "/css/qiita.css"
 
 "NeoBundleで管理してるpluginを読み込む
 source $DOTVIM_DIR/config/bundle.vimrc
