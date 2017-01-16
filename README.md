@@ -24,7 +24,12 @@ cd dotfiles
 - curl
 - ~~silversearcher-ag~~
 - [pt][link_download_pt]
-
+- clang
+- [rtags][link_github_rtags]
+- npm
+  * mermaid
+  * markdown-pdf
+  
 ubuntu12.04以上ならこっちを`git clone`してchefを走らせたほうが賢明です  
 [Chef_work][Chef_work]
 
@@ -229,7 +234,6 @@ f        | [unite]
 キーバインドを変更してある。とりあえず[tmux.conf](./_tmux.conf)と[screenrc](./_screenrc)を見てください。  
 バインドはteratermが`Ctrl+o`screenが`ctrl+a`にバインドされてます
 
-
 ``` bash
 npm config set proxy http://proxy.com:port --global
 npm install jshint --global
@@ -239,12 +243,8 @@ memo
 ----
 cygwinでctagsを使うときはExuburantCtagsを使わないとうまく行かなそう  
 
-
-
-
 todo
 ----
-
 
 
 [Chef_work]: https://github.com/kagerouttepaso/chef_work "#:title"
@@ -257,3 +257,4 @@ todo
 [link_mingw_64_download]:http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/4.9.0/threads-posix/seh/x86_64-4.9.0-release-posix-seh-rt_v3-rev1.7z/download "mingw64のダウンロード"
 [link_msys_windows_download]:http://sourceforge.net/projects/mingw/files/Installer/mingw-get-setup.exe/download "msysのダウンロード"
 [link_download_pt]: https://github.com/monochromegane/the_platinum_searcher "the platinum servher"
+[link_github_rtags]: https://github.com/Andersbakken/rtags "rtags github repo"

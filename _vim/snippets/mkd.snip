@@ -4,3 +4,30 @@ options head
   \`\`\` ${1:#:language}
   ${0:#:code_snippet}
   \`\`\`
+
+
+delete      mermaid_flowcharts
+options     head
+snippet     mermaid_flowcharts
+abbr mermaid flowchart
+options head
+  \`\`\`mermaid
+  %% see https://github.com/knsv/mermaid/wiki
+  graph ${1:TB}
+    subgraph sample
+      a[test] --> b(B)
+      b -.-> c((C))
+      c ==>|comment| d{D}
+      d --- a
+    end
+    ${0}
+    classDef red fill:#f66,stroke:#333,stroke-width:2px;
+    classDef orange fill:#f96,stroke:#333,stroke-width:2px;
+    classDef pink fill:#f69,stroke:#333,stroke-width:2px;
+    classDef green fill:#6f6,stroke:#333,stroke-width:2px;
+    classDef warmgreen fill:#9f6,stroke:#333,stroke-width:2px;
+    classDef lightgreen fill:#6f9,stroke:#333,stroke-width:2px;
+    classDef blue fill:#66f,stroke:#333,stroke-width:2px;
+    classDef purple fill:#96f,stroke:#333,stroke-width:2px;
+    class a,d red
+  \`\`\`
