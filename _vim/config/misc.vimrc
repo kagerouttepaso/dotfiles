@@ -33,8 +33,27 @@ command! FairingCss : call s:fairing_css() | filetype indent on | setf css | nor
 "npm install -g markdown-pdf
 function! s:convert_pdf() abort
   let file_name = expand("%")
-  let code = "markdown-pdf -s " . g:markdown_css_filt_path . " -f 'A4' " . file_name
+  let code = "markdown-pdf "
+        \ ."-s " .g:markdown_css_filt_path ." "
+        \ ."-f 'A4' " 
+        \ . file_name
   let ret = system(code)
   echo code
 endfunction
 command! ConvertPdf :call s:convert_pdf()
+
+"markdownをdocxに変換(pandocコマンドが必要)
+" https://github.com/jgm/pandoc/releases
+function! s:convert_docx() abort
+  let file_name = expand("%")
+  let docx_name = expand("%:r")
+  let code = "pandoc "
+        \ ."-f markdown_github "
+        \ ."-t docx " 
+        \ ."--reference-docx " .g:markdown_dox_filt_path ." "
+        \ ."-o " . docx_name . ".docx "
+        \ .file_name ." "
+  let ret = system(code)
+  echomsg code
+endfunction
+command! ConvertDocx :call s:convert_docx()

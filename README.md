@@ -18,7 +18,7 @@ cd dotfiles
 - git
 - tmux
 - zsh
-- pandoc
+- [pandoc][link_pandoc_releace]
 - exuberant-ctags
 - xclip
 - curl
@@ -258,3 +258,4 @@ todo
 [link_msys_windows_download]:http://sourceforge.net/projects/mingw/files/Installer/mingw-get-setup.exe/download "msysのダウンロード"
 [link_download_pt]: https://github.com/monochromegane/the_platinum_searcher "the platinum servher"
 [link_github_rtags]: https://github.com/Andersbakken/rtags "rtags github repo"
+[link_pandoc_releace]: https://github.com/jgm/pandoc/releases "download pandoc"
