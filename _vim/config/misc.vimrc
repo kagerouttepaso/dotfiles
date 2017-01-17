@@ -38,7 +38,7 @@ function! s:convert_pdf() abort
         \ ."-f 'A4' " 
         \ . file_name
   let ret = system(code)
-  echo code
+  echomsg code
 endfunction
 command! ConvertPdf :call s:convert_pdf()
 
