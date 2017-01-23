@@ -23,9 +23,9 @@ augroup END
 command! FairingXml :%s/></>\r</g | filetype indent on | setf xml | normal gg=G
 
 function! s:fairing_css() abort
-  %s/{/ {/g
-  %s/}/}/g
-  %s/;/;/g
+  :%s/{/ {/g
+  :%s/}/}/g
+  :%s/;/;/g
 endfunction
 command! FairingCss : call s:fairing_css() | filetype indent on | setf css | normal gg=G
 
