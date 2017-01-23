@@ -3,7 +3,7 @@ source ./common_params.sh
 
 sudo apt-get build-dep vim
 
-sudo apt-get install python3-dev
+sudo apt-get install python3-dev python-dev
 
 if [ ! -d ./vim ]; then
     git clone https://github.com/vim/vim.git vim
