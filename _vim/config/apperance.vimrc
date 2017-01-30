@@ -20,6 +20,11 @@ augroup highlightDoubleByteSpace
   autocmd VimEnter,WinEnter,BufRead * match ZenkakuSpace /　/
 augroup END
 
+augroup highlightMkdLf
+  autocmd VimEnter,ColorScheme      * highlight SpaceKaigyo cterm=underline ctermfg=lightblue gui=underline guibg=LightMagenta
+  autocmd VimEnter,WinEnter,BufRead * match SpaceKaigyo /  \n/
+augroup END
+
 " カレントウィンドウにのみ罫線を引く
 augroup cch
   autocmd! cch
