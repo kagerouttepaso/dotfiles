@@ -183,6 +183,7 @@ if neobundle#tap('vim-clang-format') "{{{
     "コーディングフォーマットの上書き
     let g:clang_format#style_options = {
             \ 'Standard' : 'Cpp03',
+            \ 'ColumnLimit' : '120',
             \ }
     ".clang_formatを探さない
     let g:clang_format#detect_style_file = 0
@@ -711,20 +712,35 @@ NeoBundle 'scrooloose/syntastic'
 " Enable this option to tell syntastic to always stick any detected errors into
 let g:syntastic_always_populate_loc_list=1
 if executable('clang-3.6')
-  let g:syntastic_cpp_compiler = 'clang-3.6'
+  let g:syntastic_c_compiler = 'clang-3.6'
 elseif executable('clang-3.5')
-  let g:syntastic_cpp_compiler = 'clang-3.5'
+  let g:syntastic_c_compiler = 'clang-3.5'
 elseif executable('clang-3.4')
-  let g:syntastic_cpp_compiler = 'clang-3.4'
+  let g:syntastic_c_compiler = 'clang-3.4'
 elseif executable('clang-3.7')
-  let g:syntastic_cpp_compiler = 'clang-3.7'
+  let g:syntastic_c_compiler = 'clang-3.7'
 elseif executable('clang-3.8')
-  let g:syntastic_cpp_compiler = 'clang-3.8'
+  let g:syntastic_c_compiler = 'clang-3.8'
 else
-  let g:syntastic_cpp_compiler = 'clang'
+  let g:syntastic_c_compiler = 'clang'
+endif
+if executable('clang++-3.6')
+  let g:syntastic_cpp_compiler = 'clang++-3.6'
+elseif executable('clang++-3.5')
+  let g:syntastic_cpp_compiler = 'clang++-3.5'
+elseif executable('clang++-3.4')
+  let g:syntastic_cpp_compiler = 'clang++-3.4'
+elseif executable('clang++-3.7')
+  let g:syntastic_cpp_compiler = 'clang++-3.7'
+elseif executable('clang++-3.8')
+  let g:syntastic_cpp_compiler = 'clang++-3.8'
+else
+  let g:syntastic_cpp_compiler = 'clang++'
 endif
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:syntastic_cpp_config_file = ".clang_complete"
+let g:syntastic_clang_check_config_file = g:syntastic_cpp_config_file
+let g:syntastic_cpp_checkers = ["clang_check", "gcc"]
 
 " DockerFile
 NeoBundle 'ekalinin/Dockerfile.vim'
