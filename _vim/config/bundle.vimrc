@@ -164,16 +164,16 @@ if neobundle#tap('vim-clang-format') "{{{
   command! Cf :ClangFormat
   function! neobundle#hooks.on_source(bundle)
 
-    if executable('clang-format-3.6')
+    if executable('clang-format-3.8')
+      let g:clang_format#command = 'clang-format-3.8'
+    elseif executable('clang-format-3.7')
+      let g:clang_format#command = 'clang-format-3.7'
+    elseif executable('clang-format-3.6')
       let g:clang_format#command = 'clang-format-3.6'
     elseif executable('clang-format-3.5')
       let g:clang_format#command = 'clang-format-3.5'
     elseif executable('clang-format-3.4')
       let g:clang_format#command = 'clang-format-3.4'
-    elseif executable('clang-format-3.7')
-      let g:clang_format#command = 'clang-format-3.7'
-    elseif executable('clang-format-3.8')
-      let g:clang_format#command = 'clang-format-3.8'
     else
       let g:clang_format#command = 'clang-format'
     endif
@@ -274,35 +274,33 @@ if neobundle#tap('vim-clang') "{{{
     let g:neocomplete#force_omni_input_patterns.objcpp =
           \ '\[\h\w*\s\h\?\|\h\w*\%(\.\|->\)\|\h\w*::\w*'
 
-    if executable('clang-3.6')
+    if executable('clang-3.8')
+      let g:clang_exec = 'clang-3.8'
+    elseif executable('clang-3.7')
+      let g:clang_exec = 'clang-3.7'
+    elseif executable('clang-3.6')
       let g:clang_exec = 'clang-3.6'
     elseif executable('clang-3.5')
       let g:clang_exec = 'clang-3.5'
     elseif executable('clang-3.4')
       let g:clang_exec = 'clang-3.4'
-    elseif executable('clang-3.7')
-      let g:clang_exec = 'clang-3.7'
-    elseif executable('clang-3.8')
-      let g:clang_exec = 'clang-3.8'
     else
       let g:clang_exec = 'clang'
     endif
 
-    if executable('clang-format-3.6')
+    if executable('clang-format-3.8')
+      let g:clang_format_exec = 'clang-format-3.8'
+    elseif executable('clang-format-3.7')
+      let g:clang_format_exec = 'clang-format-3.7'
+    elseif executable('clang-format-3.6')
       let g:clang_format_exec = 'clang-format-3.6'
     elseif executable('clang-format-3.5')
       let g:clang_format_exec = 'clang-format-3.5'
     elseif executable('clang-format-3.4')
       let g:clang_format_exec = 'clang-format-3.4'
-    elseif executable('clang-format-3.7')
-      let g:clang_format_exec = 'clang-format-3.7'
-    elseif executable('clang-format-3.8')
-      let g:clang_format_exec = 'clang-format-3.8'
     else
       let g:clang_format_exec = 'clang-format'
     endif
-
-
 
     if g:is_windows
     elseif g:is_cygwin
