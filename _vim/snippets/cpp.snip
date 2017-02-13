@@ -6,6 +6,14 @@ abbr        namespace {} // anonymous nomespace
         ${0:TARGET}
     }  // anonymous nomespace
 
+delete      namespace_t_lint
+options     head
+snippet     namespace_t
+abbr        namespace {} // anonymous nomespace
+    namespace ${1:target}{
+        ${0:TARGET}
+    }  // nomespace $1
+
 delete  std_cout_endl
 snippet cout
 abbr    std::cout << **** << std::endl;
@@ -15,4 +23,11 @@ delete  unused_parameter
 snippet unused
 abbr    (void)(***);
   (void)(${1:unused_parameter}); //unused
+  ${0}
+
+delete  constructor_guard
+snippet constructor
+  private:
+    ${1:FooClass}($1 const&); // = delete;
+    $1& operator=($1 const&); // = delete;
   ${0}
