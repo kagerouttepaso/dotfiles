@@ -144,6 +144,20 @@ if g:is_can_use_neocomplete
     "let g:neocomplete#sources#omni#input_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
     "let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
+    " for use vim-rtags
+    "function! SetupNeocomleteForCppWithRtags()
+    "  " Enable heavy omni completion.
+    "  setlocal omnifunc=RtagsCompleteFunc
+
+    "  if !exists('g:neocomplete#sources#omni#input_patterns')
+    "    let g:neocomplete#sources#omni#input_patterns = {}
+    "  endif
+    "  let l:cpp_patterns='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+    "  let g:neocomplete#sources#omni#input_patterns.cpp = l:cpp_patterns 
+    "  set completeopt+=longest,menuone
+    "endfunction
+
+
     call neobundle#untap()
   endif "}}}
 else
@@ -709,29 +723,30 @@ NeoBundle 'kagerouttepaso/textile.vim'
 NeoBundle 'scrooloose/syntastic'
 " Enable this option to tell syntastic to always stick any detected errors into
 let g:syntastic_always_populate_loc_list=1
-if executable('clang-3.6')
+
+if executable('clang-3.8')
+  let g:syntastic_c_compiler = 'clang-3.8'
+elseif executable('clang-3.7')
+  let g:syntastic_c_compiler = 'clang-3.7'
+elseif executable('clang-3.6')
   let g:syntastic_c_compiler = 'clang-3.6'
 elseif executable('clang-3.5')
   let g:syntastic_c_compiler = 'clang-3.5'
 elseif executable('clang-3.4')
   let g:syntastic_c_compiler = 'clang-3.4'
-elseif executable('clang-3.7')
-  let g:syntastic_c_compiler = 'clang-3.7'
-elseif executable('clang-3.8')
-  let g:syntastic_c_compiler = 'clang-3.8'
 else
   let g:syntastic_c_compiler = 'clang'
 endif
-if executable('clang++-3.6')
+if executable('clang++-3.8')
+  let g:syntastic_cpp_compiler = 'clang++-3.8'
+elseif executable('clang++-3.7')
+  let g:syntastic_cpp_compiler = 'clang++-3.7'
+elseif executable('clang++-3.6')
   let g:syntastic_cpp_compiler = 'clang++-3.6'
 elseif executable('clang++-3.5')
   let g:syntastic_cpp_compiler = 'clang++-3.5'
 elseif executable('clang++-3.4')
   let g:syntastic_cpp_compiler = 'clang++-3.4'
-elseif executable('clang++-3.7')
-  let g:syntastic_cpp_compiler = 'clang++-3.7'
-elseif executable('clang++-3.8')
-  let g:syntastic_cpp_compiler = 'clang++-3.8'
 else
   let g:syntastic_cpp_compiler = 'clang++'
 endif
@@ -1227,7 +1242,7 @@ if neobundle#tap('unite-tag') "{{{
 endif
 "}}}
 
-NeoBundleLazy 'kagerouttepaso/vim-rtags', { 'depends' : ['Shougo/unite.vim'] }
+NeoBundleLazy 'lyuts/vim-rtags', { 'depends' : ['Shougo/unite.vim'] }
 if neobundle#tap('vim-rtags') "{{{
   call neobundle#config({
         \  'autoload': {
