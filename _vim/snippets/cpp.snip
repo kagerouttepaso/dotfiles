@@ -1,18 +1,18 @@
 delete      namespace_anonymous
 options     head
 snippet     namespace_anonymous
-abbr        namespace {} // anonymous nomespace
+abbr        namespace {} // anonymous namespace
     namespace {
         ${0:TARGET}
-    }  // anonymous nomespace
+    }  // anonymous namespace
 
 delete      namespace_t_lint
 options     head
 snippet     namespace_t
-abbr        namespace {} // anonymous nomespace
+abbr        namespace {} // anonymous namespace
     namespace ${1:target}{
         ${0:TARGET}
-    }  // nomespace $1
+    }  // namespace $1
 
 delete  std_cout_endl
 snippet cout
