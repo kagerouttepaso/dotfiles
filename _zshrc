@@ -39,6 +39,8 @@ else
     zplug "mollifier/cd-gitroot"
     # cd強化
     zplug "b4b4r07/enhancd", use:init.sh
+    alias history-run='history  | sed "s/^ \+[^ ]* \(.*\)/\1/" | fzf --tac | bash - '
+    alias history-memo='history | sed "s/^ \+[^ ]* \(.*\)/\1/" | fzf -m --tac -0 | vim - '
 fi
 
 # テーマは引き続きoh-my-zshのものを...
