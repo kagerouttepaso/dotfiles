@@ -1,7 +1,7 @@
 #!/bin//bash
 source ./common_params.sh
 
-sudo apt-get install clang-3.8 libclang-3.8-dev cmake
+sudo apt install clang-3.8 libclang-3.8-dev cmake
 
 if [ ! -d ./rtags ]; then
     git clone https://github.com/Andersbakken/rtags
