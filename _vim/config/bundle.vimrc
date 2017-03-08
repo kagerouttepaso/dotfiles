@@ -1553,6 +1553,86 @@ endif "}}}
 "  
 " }}}
 
+" Python {{{
+
+" Python補完
+NeoBundleLazy 'davidhalter/jedi-vim' , { 'depends' : [ 'Shougo/neocomplete.vim' ] }
+if neobundle#tap('judi-vim') "{{{
+  call neobundle#config({
+        \  'autoload': {
+        \    'filetypes': ['python' ]
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+    autocmd FileType python setlocal omnifunc=jedi#completions
+    "let g:jedi#popup_select_first=0
+    if !exists('g:neocomplete#force_omni_input_patterns')
+      let g:neocomplete#force_omni_input_patterns = {}
+    endif
+    "let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+    let g:neocomplete#force_omni_input_patterns.python = '\h\w*\|[^. \t]\.\w*'
+    let g:jedi#auto_vim_configuration = 0
+    " ドキュメントの表示
+    "let g:jedi#popup_on_dot = 0
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
+" Lint自動補正
+NeoBundleLazy 'tell-k/vim-autopep8'
+if neobundle#tap('vim-autopep8') "{{{
+  call neobundle#config({
+        \  'autoload': {
+        \    'filetypes': ['python'],
+        \    'commands': ['Autopep8']
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+    " diff画面は表示しない
+    let g:autopep8_disable_show_diff=0
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
+" インデント管理
+NeoBundleLazy 'tweekmonster/braceless.vim'
+if neobundle#tap('braceless.vim') "{{{
+  call neobundle#config({
+        \  'autoload': {
+        \    'filetypes': ['python']
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+    autocmd FileType python BracelessEnable +fold +indent
+    " +fold          折り畳み設定を有効化
+    " +highlight     インデントハイライトを有効化
+    " +highlight-cc  インデントハイライトを有効化（colorcolumnのみを使用）
+    " +highlight-cc2 インデントハイライトを有効化（colorcolumnも使用）
+    " +indent        オートインデントの有効化
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
+" インデント可視化
+NeoBundleLazy 'nathanaelkane/vim-indent-guides'
+if neobundle#tap('vim-indent-guides') "{{{
+  call neobundle#config({
+        \  'autoload': {
+        \    'filetypes': ['python']
+        \  }
+        \})
+  function! neobundle#hooks.on_source(bundle)
+    " 自動起動
+    let g:indent_guides_enable_on_vim_startup = 1
+    " 可視化サイズ
+    " let g:indent_guides_guide_size = 1
+    " デフォルトマッピング無効化
+    let g:indent_guides_default_mapping = 0
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
+" }}}
 
 call neobundle#end()
 
