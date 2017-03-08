@@ -1556,11 +1556,11 @@ endif "}}}
 " Python {{{
 
 " Python補完
-NeoBundleLazy 'davidhalter/jedi-vim' , { 'depends' : [ 'Shougo/neocomplete.vim' ] }
+NeoBundle 'davidhalter/jedi-vim' , { 'depends' : [ 'Shougo/neocomplete.vim' ] }
 if neobundle#tap('judi-vim') "{{{
   call neobundle#config({
         \  'autoload': {
-        \    'filetypes': ['python' ]
+        \    'filetypes': ['python']
         \  }
         \})
   function! neobundle#hooks.on_source(bundle)
@@ -1603,7 +1603,7 @@ if neobundle#tap('braceless.vim') "{{{
         \  }
         \})
   function! neobundle#hooks.on_source(bundle)
-    autocmd FileType python BracelessEnable +fold +indent
+    autocmd FileType python BracelessEnable +fold +indent +highlight-cc
     " +fold          折り畳み設定を有効化
     " +highlight     インデントハイライトを有効化
     " +highlight-cc  インデントハイライトを有効化（colorcolumnのみを使用）
@@ -1614,7 +1614,7 @@ if neobundle#tap('braceless.vim') "{{{
 endif "}}}
 
 " インデント可視化
-NeoBundleLazy 'nathanaelkane/vim-indent-guides'
+"NeoBundleLazy 'nathanaelkane/vim-indent-guides'
 if neobundle#tap('vim-indent-guides') "{{{
   call neobundle#config({
         \  'autoload': {
