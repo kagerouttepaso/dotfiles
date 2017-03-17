@@ -23,6 +23,8 @@ DOT_FILES=(apt-cyg my_proxy_setting gitconfig vimrc gvimrc zshrc vim screenrc tm
 if builtin command -v uname >> /dev/null ; then
     if [ "`uname -sr | grep CYGWIN`" ] ; then
         DOT_FILES+=( minttyrc )
+    elif [ "`uname -sr | grep MINGW`" ] ; then
+        DOT_FILES+=( minttyrc )
     elif [ "`uname -sr | grep Darwin`" ] ; then
         DOT_FILES+=( profile )
     fi

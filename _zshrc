@@ -23,8 +23,7 @@ export ZPLUG_HOME=~/.zplug
 source ~/.zplug/init.zsh
 
 echo load plugins
-if [ "`uname -sr | grep CYGWIN`" ] ; then
-else
+if [ "`uname -sr | grep Linux`" ] ; then
     # fzf
     zplug "junegunn/fzf-bin", \
         as:command, \
@@ -41,6 +40,8 @@ else
     zplug "b4b4r07/enhancd", use:init.sh
     alias history-run='history  | sed "s/^ \+[^ ]* \(.*\)/\1/" | fzf --tac | bash - '
     alias history-memo='history | sed "s/^ \+[^ ]* \(.*\)/\1/" | fzf -m --tac -0 | vim - '
+elif [ "`uname -sr | grep MINGW`" ] ; then
+    export DISPLAY=127.0.0.1:0
 fi
 
 # テーマは引き続きoh-my-zshのものを...
