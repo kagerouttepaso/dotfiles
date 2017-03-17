@@ -35,6 +35,13 @@ ubuntu12.04以上ならこっちを`git clone`してchefを走らせたほうが
 
 Windows環境
 -----------
+### MSYS2
+- [ここからダウンロード](https://sourceforge.net/projects/msys2/files/latest/download)
+- 環境変数に下記の環境変数を追加して使おう
+    - `MSYS2_PATH_TYPE=inherit`
+    - `MSYS=winsymlinks:nativestrict`
+- X11転送使うときはXming使うこと。xmingは`./windows/choco/install_packages.bat`使ってインストール
+
 ### Cygwin
 Windows環境でも基本的に必要パッケージをインストールして**やること** のコマンドを入れれば問題ない。  
 x11のパッケージセットをインストールすればssh接続先のクリップボードの共有もできる用になっています  
