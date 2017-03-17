@@ -30,21 +30,21 @@ cd dotfiles
   * mermaid
   * markdown-pdf
   
-ubuntu12.04以上ならこっちを`git clone`してchefを走らせたほうが賢明です  
-[Chef_work][Chef_work]
+~~ubuntu12.04以上ならこっちを`git clone`してchefを走らせたほうが賢明です  
+[Chef_work][Chef_work]~~
 
 Windows環境
 -----------
 ### MSYS2
 - [ここからダウンロード](https://sourceforge.net/projects/msys2/files/latest/download)
-- 環境変数に下記の環境変数を追加して使おう
-    - `MSYS2_PATH_TYPE=inherit`
-    - `MSYS=winsymlinks:nativestrict`
-- X11転送使うときはXming使うこと。xmingは`./windows/choco/install_packages.bat`使ってインストール
+- [/MSYS2/register_msys2_env.bat](/MSYS2/register_msys2_env.bat)使って環境変数を登録
+- [/MSYS2/register_right_click.reg](/MSYS2/register_right_click.reg)使って右クリックメニュー登録
+- X11転送使うときはXming使うこと。xmingは[/windows/choco/install_packages.bat](/windows/choco/install_packages.bat)使ってインストール
 
 ### Cygwin
 Windows環境でも基本的に必要パッケージをインストールして**やること** のコマンドを入れれば問題ない。  
-x11のパッケージセットをインストールすればssh接続先のクリップボードの共有もできる用になっています  
+x11のパッケージセットをインストールすればssh接続先のクリップボードの共有もできる用になっています   
+**Cygwinを使うのをやめました**
 
 ####入れるパッケージ
 - git
