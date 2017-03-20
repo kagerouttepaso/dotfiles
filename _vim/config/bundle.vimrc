@@ -208,6 +208,8 @@ if neobundle#tap('vim-clang-format') "{{{
 endif  "}}}
 
 " C++用オムニ補完
+if g:is_cygwin
+else
 NeoBundle 'Rip-Rip/clang_complete', { 'depends' : [ 'Shougo/neocomplete.vim'] }
       " \ 'rev' : 'support-python3'
       " \ }
@@ -251,6 +253,7 @@ if neobundle#tap('clang_complete') "{{{
   endfunction
   call neobundle#untap()
 endif  "}}}
+endif
 
 " C++用オムニ補完
 "NeoBundleLazy 'justmao945/vim-clang', { 'depends' : [ 'Shougo/neocomplete.vim'] }
