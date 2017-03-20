@@ -1,3 +1,3 @@
 #!/bin/bash
 pacman -Syu
-pacman -S make gcc colordiff tmux zsh
+pacman -S make gcc colordiff tmux zsh git
