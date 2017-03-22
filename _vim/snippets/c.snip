@@ -18,3 +18,11 @@ abbr #if defined(_DEBUG)
   #if defined(${1:_DEBUG})
   ${0}
   #endif // $1
+
+snippet     formy
+alias       forr
+options     head
+abbr        for (size_t i, , ++i) {}
+    for (${1:size_t} ${2:i} = ${3:0}; $2 < ${4}; ++$2) {
+        ${0:#:TARGET}
+    }
