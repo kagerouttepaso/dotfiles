@@ -1,10 +1,10 @@
 #!/bin/bash
 source ../linux/common_params.sh
-UNAME=`uname | grep MSYS`
 
+UNAME=`uname | grep MSYS`
 if [ -z ${UNAME} ]; then
     echo Please run msys env
-    exit
+#    exit
 fi
 
 if [ ! -d ./vim ]; then
