@@ -246,6 +246,7 @@ if neobundle#tap('clang_complete') "{{{
     let g:clang_user_options = '-std=c++11 -stdlib=libc++'
 
     if g:is_windows
+      let g:clang_library_path='c:/Program\ Files/LLVM/bin/libclang.dll'
     elseif g:is_cygwin
     else
       let g:clang_library_path='/usr/lib/llvm-3.8/lib/libclang.so.1'
