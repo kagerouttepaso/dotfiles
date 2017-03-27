@@ -10,6 +10,7 @@
   sta = status --short --branch
 [core]
 	editor = vim -c \"set fenc=utf-8\"
+	autocrlf = false
 [merge]
 	ff = false
 	tool = vimdiff

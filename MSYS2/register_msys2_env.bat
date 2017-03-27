@@ -1,8 +1,8 @@
-rem ã‚·ãƒ³ãƒœãƒªãƒƒã‚¯æœ‰åŠ¹(mintty.exeã‚’ç®¡ç†è€…ã¨ã—ã¦å®Ÿè¡Œã™ã‚‹ã‚ˆã†è¨­å®šã—ãªã„ã¨æ„å‘³ãŒãªã„)
+rem ƒVƒ“ƒ{ƒŠƒbƒN—LŒø(mintty.exe‚ğŠÇ—Ò‚Æ‚µ‚ÄÀs‚·‚é‚æ‚¤İ’è‚µ‚È‚¢‚ÆˆÓ–¡‚ª‚È‚¢)
 setx MSYS "winsymlinks:nativestrict"
-rem PATHã®è¨­å®šã‚’å¼•ãç¶™ã
+rem PATH‚Ìİ’è‚ğˆø‚«Œp‚®
 setx MSYS2_PATH_TYPE "inherit"
-rem MINGW64ã‚’é¸æŠ
+rem MINGW64‚ğ‘I‘ğ
 setx MSYSTEM "MINGW64"
-rem mintty.exeã‚’å‘¼ã³å‡ºã—ãŸå ´æ‰€ã‚’ã‚«ãƒ¬ãƒ³ãƒˆãƒ•ã‚©ãƒ«ãƒ€ã¨ã™ã‚‹
+rem mintty.exe‚ğŒÄ‚Ño‚µ‚½êŠ‚ğƒJƒŒƒ“ƒgƒtƒHƒ‹ƒ_‚Æ‚·‚é
 setx CHERE_INVOKING "enabled_from_arguments"
