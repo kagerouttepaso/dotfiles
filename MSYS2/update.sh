@@ -3,4 +3,4 @@
 pacman -Syu
 
 # apt-get autoremove
-pacman -Qdtq | pacman -Rs -
+pacman -Rns $(pacman -Qdtq)
