@@ -31,6 +31,9 @@ endif
 "}}}
 
 " Completion {{{
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
 
 " 補完 neocomplete.vim : 究極のVim的補完環境
 if g:is_can_use_neocomplete
