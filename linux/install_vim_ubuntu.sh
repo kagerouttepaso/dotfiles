@@ -1,7 +1,7 @@
 #!/bin/bash
 source ./common_params.sh
 
-sudo apt build-dep vim
+sudo apt-get build-dep vim
 
 sudo apt install python3-dev python-dev
 
