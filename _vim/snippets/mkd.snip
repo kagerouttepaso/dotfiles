@@ -31,3 +31,9 @@ options head
     classDef purple fill:#96f,stroke:#333,stroke-width:2px;
     class a,d red
   \`\`\`
+
+snippet linklocal
+abbr [link](link)
+options word
+    [${1:#:link}]($1)${0}
+
