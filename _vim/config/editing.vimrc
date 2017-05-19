@@ -31,6 +31,10 @@ imap <C-p>  <C-r>0
 "選択モード中にCtrl+pで選択している場所を削除してコピーしていた文章を貼り付け
 vnoremap <C-p> c<C-r>0<Esc>
 
+"ブロック選択モード時のインクリメントで範囲選択が消えない
+vnoremap <c-a> <c-a>gv
+vnoremap <c-x> <c-x>gv
+
 "エンターキーで改行
 nnoremap <Enter> o <Esc>
 

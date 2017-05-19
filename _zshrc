@@ -40,6 +40,9 @@ if [ "`uname -sr | grep Linux`" ] ; then
     zplug "b4b4r07/enhancd", use:init.sh
     alias history-run='history  | sed "s/^ \+[^ ]* \(.*\)/\1/" | fzf --tac | bash - '
     alias history-memo='history | sed "s/^ \+[^ ]* \(.*\)/\1/" | fzf -m --tac -0 | vim - '
+    # 複数コマンド一撃
+    zplug "greymd/tmux-xpanes"
+    alias mytop='xpanes -e "watch -n 1 df -h" "vmstat 1" "htop"'
 elif [ "`uname -sr | grep MINGW`" ] ; then
     export DISPLAY=127.0.0.1:0
 fi
