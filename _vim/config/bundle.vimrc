@@ -1649,4 +1649,5 @@ call neobundle#end()
 if neobundle#is_installed("unite.vim")
   "grepはwordソートを行う
   call unite#custom#source('grep', 'sorters', 'sorter_word')
+  call unite#custom#source('rtags/referencesgrep', 'sorters', 'sorter_word')
 endif
