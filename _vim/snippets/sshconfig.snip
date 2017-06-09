@@ -9,6 +9,8 @@ options     head
   forwardx11 yes
   forwardx11trusted yes
   Compression yes
+  CompressionLevel 9
+  Ciphers arcfour256
   UserKnownHostsFile ${4:~/.ssh/known_hosts}
   IdentityFile ${4:~/.ssh/id_rsa}
   User ${4:User}
@@ -24,5 +26,7 @@ options     head
   forwardx11 yes
   forwardx11trusted yes
   Compression yes
+  CompressionLevel 9
+  Ciphers arcfour256
   proxycommand ssh ${4:ProxyHostName} nc %h %p
   User ${4:User}
