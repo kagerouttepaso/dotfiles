@@ -8,7 +8,7 @@ if [ "`uname -sr | grep CYGWIN`" ] ; then
     cd ${PWD_DIR}
 fi
 
-SUBMODULES=(./_oh-my-zsh ./_vim/bundle/neobundle.vim ./_tmux-powerline ./_apt-cyg)
+SUBMODULES=(./_vim/bundle/neobundle.vim ./_tmux-powerline ./_apt-cyg)
 for module in ${SUBMODULES[@]}
 do
     cd ${PWD_DIR}/${module}
