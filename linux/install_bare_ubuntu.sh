@@ -9,10 +9,10 @@ if [ ! -d ./Bear ]; then
 fi
 cd Bear
 git fetch
+source ../common_git_params.sh
 
 echo ------- install Bear ${LATEST_TAG_VERSION} !!!! ------
 sleep 5
-source ../common_git_params.sh
 
 if [ "${LATEST_TAG_VERSION_HASH}" != "{HEAD_HASH}" ]; then
     git clean -fdx
