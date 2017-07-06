@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash -xeu
 PWD_DIR=`pwd`
 
 #need apps

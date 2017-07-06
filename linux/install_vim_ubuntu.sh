@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/bash -eu 
 source ./common_params.sh
 
-sudo apt-get build-dep vim
+sudo apt-get build-dep vim-gtk3
 
 sudo apt install python3-dev python-dev
 
@@ -27,7 +27,7 @@ git checkout ${LATEST_TAG_VERSION}
 ./configure \
     --prefix=/usr/local \
     --mandir=/usr/local/share/man \
-    --enable-gui=gtk2 \
+    --enable-gui=gtk3 \
     --with-features=huge \
     --without-local-dir \
     --with-compiledby="kagerouttepaso" \

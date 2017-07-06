@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eu
 PWD_DIR=`pwd`
 
 if [ "`uname -sr | grep CYGWIN`" ] ; then
@@ -8,7 +8,7 @@ if [ "`uname -sr | grep CYGWIN`" ] ; then
     cd ${PWD_DIR}
 fi
 
-SUBMODULES=(./_vim/bundle/neobundle.vim ./_tmux-powerline ./_apt-cyg)
+SUBMODULES=(./_vim/bundle/neobundle.vim ./_tmux-powerline ./_apt-cyg ./_zplug)
 for module in ${SUBMODULES[@]}
 do
     cd ${PWD_DIR}/${module}

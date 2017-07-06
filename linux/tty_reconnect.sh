@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eu
 # 既存プロセスの標準出力と標準エラーを奪う http://bit.ly/1neWKth
 
 # ターゲットのPID

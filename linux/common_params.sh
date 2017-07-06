@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eu
 PYTHON_CONFIG_CODE="import distutils.sysconfig; print(distutils.sysconfig.get_config_var('LIBPL'))"
 if builtin command -v python3 ; then
     PYTHON3_CONFIG_DIR=`python3 -c "${PYTHON_CONFIG_CODE}"`

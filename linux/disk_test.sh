@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eu
 
 FILENAME=/tmp/test_test
 SIZE=500M

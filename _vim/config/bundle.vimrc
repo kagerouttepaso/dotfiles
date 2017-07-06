@@ -761,8 +761,9 @@ elseif executable('clang++-3.4')
 else
   let g:syntastic_cpp_compiler = 'clang++'
 endif
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
 let g:syntastic_cpp_config_file = ".clang_complete"
+let g:syntastic_cppcheck_config_file = g:syntastic_cpp_config_file
 let g:syntastic_clang_check_config_file = g:syntastic_cpp_config_file
 let g:syntastic_cpp_checkers = ["clang_check", "gcc"]
 

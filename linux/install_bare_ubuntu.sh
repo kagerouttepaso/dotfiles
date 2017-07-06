@@ -1,4 +1,4 @@
-#!/bin//bash
+#!/bin/bash -eu
 source ./common_params.sh
 
 sudo apt install clang-3.8 libclang-3.8-dev cmake
