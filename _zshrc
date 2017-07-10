@@ -48,10 +48,16 @@ elif [ "`uname -sr | grep MINGW`" ] ; then
 fi
 
 # テーマは引き続きoh-my-zshのものを...
-zplug "themes/dst", from:oh-my-zsh
-zplug "lib/theme-and-appearance", from:oh-my-zsh
-zplug "lib/git", from:oh-my-zsh
-zplug "lib/functions", from:oh-my-zsh
+# zplug "themes/dst", from:oh-my-zsh
+# zplug "lib/theme-and-appearance", from:oh-my-zsh
+# zplug "lib/git", from:oh-my-zsh
+# zplug "lib/functions", from:oh-my-zsh
+# Make sure prompt is able to be generated properly.
+zplug "robbyrussell/oh-my-zsh"
+setopt prompt_subst
+zplug "adambiggs/zsh-theme", use:adambiggs.zsh-theme
+zplug 'caiogondim/bullet-train.zsh', as:theme
+
 #履歴から補完
 zplug "zsh-users/zsh-history-substring-search" 
 bindkey '^[[A' history-substring-search-up
