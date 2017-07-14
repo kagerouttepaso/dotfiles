@@ -168,7 +168,7 @@ __get_condition_symbol() {
 			fi
 			;;
 		*)
-			echo "?"
+			echo "$condition"
 			;;
 	esac
 }
