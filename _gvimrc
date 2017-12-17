@@ -34,7 +34,7 @@ colorscheme hybrid
 set transparency=220
 
 "イカスフォントを使用する
-set guifont=Ricty_Diminished_for_Powerline:h13
+set guifont=Hack:h11
 
 "全角と半角のある文字は全角で表示
 set ambiwidth=double

@@ -5,6 +5,7 @@ SET FONT_DIR=%DOT_DIR%\font
 SET FONTREG=%FONT_DIR%\SetDouble-byteCharacter.reg
 mklink %HOME_DIR%\_vimrc  %DOT_DIR%\_vimrc
 mklink %HOME_DIR%\_gvimrc %DOT_DIR%\_gvimrc
+mklink %HOME_DIR%\_vsvimrc %DOT_DIR%\_vsvimrc
 mklink %HOME_DIR%\.gitconfig %DOT_DIR%\_gitconfig
 mklink %HOME_DIR%\.bashrc %DOT_DIR%\_bashrc
 mklink /d %HOME_DIR%\.bash %DOT_DIR%\_bash
