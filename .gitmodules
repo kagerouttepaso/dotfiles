@@ -6,7 +6,7 @@
 	url = https://github.com/erikw/tmux-powerline
 [submodule "_apt-cyg"]
 	path = _apt-cyg
-	url = https://github.com/transcode-open/apt-cyg
+	url = https://github.com/kou1okada/apt-cyg.git
 [submodule "_zplug"]
 	path = _zplug
 	url = https://github.com/zplug/zplug
