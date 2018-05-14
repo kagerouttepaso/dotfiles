@@ -37,7 +37,7 @@ White=211,215,207
 WhiteBold=238,238,236
 
 BoldAsFont=yes
-FontHeight=10
+FontHeight=11
 Locale=C
 Charset=UTF-8
 Font=Ricty Diminished for Powerline
