@@ -10,3 +10,6 @@
 [submodule "_zplug"]
 	path = _zplug
 	url = https://github.com/zplug/zplug
+[submodule "_cmder-powerline"]
+	path = _cmder-powerline
+	url = https://github.com/AmrEldib/cmder-powerline-prompt.git
