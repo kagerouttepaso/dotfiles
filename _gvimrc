@@ -34,7 +34,13 @@ colorscheme hybrid
 set transparency=220
 
 "イカスフォントを使用する
-set guifont=Hack:h11
+set guifont=cica:h11
+
+"印刷用のフォント設定
+set printfont=Cica:h8
+
+"レンダリングにはdirectXを使う
+set renderoptions=type:directx,renmode:5
 
 "全角と半角のある文字は全角で表示
 set ambiwidth=double
