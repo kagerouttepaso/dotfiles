@@ -1399,11 +1399,11 @@ if neobundle#tap('lightline.vim') "{{{
           \    'lineinfo': ' %3l:%-2v',
           \}
     if g:is_windows
-      let g:lightline.separator    = { 'left': ' ', 'right': '' }
-      let g:lightline.subseparator = { 'left': ' ', 'right': '' }
+      let g:lightline.separator    = { 'left': ' ', 'right': '' }
+      let g:lightline.subseparator = { 'left': ' ', 'right': '' }
     else
-      let g:lightline.separator    = { 'left': ' ', 'right': ' ' }
-      let g:lightline.subseparator = { 'left': ' ', 'right': ' ' }
+      let g:lightline.separator    = { 'left': ' ', 'right': ' ' }
+      let g:lightline.subseparator = { 'left': ' ', 'right': ' ' }
     endif
   endif
 
@@ -1432,10 +1432,10 @@ if neobundle#tap('lightline.vim') "{{{
     return ''
   endfunction "}}}
   function! MyFileformat() "{{{
-    return winwidth('.') > 80 ? &fileformat : ''
+    return winwidth(0) > 80 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
   endfunction "}}}
   function! MyFiletype() "{{{
-    return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
   endfunction "}}}
   function! MyFileencoding() "{{{
     return winwidth('.') > 80 ? (strlen(&fenc) ? &fenc : &enc) : ''
@@ -1551,6 +1551,15 @@ if neobundle#tap('vim-gitgutter') "{{{
   call neobundle#untap()
 endif "}}}
 
+" アイコンを表示
+NeoBundle 'ryanoasis/vim-devicons'
+if neobundle#tap('vim-devicons') "{{{
+  call neobundle#config({
+        \})
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  call neobundle#untap()
+endif "}}}
 
 " }}}
 
@@ -1568,6 +1577,10 @@ endif "}}}
 "  
 "  
 "  
+"  
+"  
+"  
+"  
 " }}}
 
 " Python {{{
