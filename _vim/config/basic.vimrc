@@ -22,7 +22,7 @@ elseif g:is_mac
 elseif g:is_windows
   set ambiwidth=double           " windowsはメールのテキスト編集を考えdouble
 elseif g:is_cygwin
-  set ambiwidth=single           " cygwinは使うフォント(Hack)の関係でsingleでまとめてある
+  set ambiwidth=double           " cygwinは使うフォント(cica)の関係でdoubleでまとめてある
 endif
 
 " OSのクリップボードを使用する
