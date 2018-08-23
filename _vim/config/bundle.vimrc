@@ -1398,20 +1398,15 @@ if neobundle#tap('lightline.vim') "{{{
     let g:lightline.component ={
           \    'lineinfo': ' %3l:%-2v',
           \}
-    if g:is_windows
-      let g:lightline.separator    = { 'left': ' ', 'right': '' }
-      let g:lightline.subseparator = { 'left': ' ', 'right': '' }
-    else
-      let g:lightline.separator    = { 'left': ' ', 'right': ' ' }
-      let g:lightline.subseparator = { 'left': ' ', 'right': ' ' }
-    endif
+    let g:lightline.separator    = { 'left': '', 'right': '' }
+    let g:lightline.subseparator = { 'left': '', 'right': '' }
   endif
 
   function! MyModified() "{{{
-    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '✘' : &modifiable ? '' : '-'
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '' : &modifiable ? '' : '-'
   endfunction "}}}
   function! MyReadonly() "{{{
-    return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '' : ''
+    return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '' : ''
   endfunction "}}}
   function! MyFilename() "{{{
     return  (''  != MyReadonly()  ? MyReadonly() . ' ' : '') .
@@ -1425,7 +1420,7 @@ if neobundle#tap('lightline.vim') "{{{
     try
       if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
         let _ = fugitive#head()
-        return strlen(_) ? ' '._ : ''
+        return strlen(_) ? ''._ : ''
       endif
     catch
     endtry
@@ -1569,18 +1564,27 @@ endif "}}}
 " }}}
 
 " powerline text {{{
-"  █
 "  
 "  
 "  
-"  
-"  
-"  
-"  
-"  
-"  
-"  
-"  
+"  
+"  
+"  
+"  
+"  
+"  
+"  
+"  
+"  
+"  
+"  
+"  
+"  
+"  
+"  
+"  
+"  
+"  
 " }}}
 
 " Python {{{
