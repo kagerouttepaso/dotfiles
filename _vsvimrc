@@ -5,3 +5,14 @@ set clipboard=unnamed,unnamedplus,autoselect
 " insert mode でjjでesc
 inoremap jj <Esc>
 nnoremap Q  :<C-u>q<CR>
+
+set ignorecase " 大文字小文字無視
+set smartcase  " 検索文字列に大文字が含まれている場合は区別して検索する
+set incsearch  " インクリメンタルサーチ
+set hlsearch   " 検索文字をハイライト
+
+" insertモードを抜けるとIMEオフ
+set noimdisable
+set iminsert=0 imsearch=0
+set noimcmdline
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
