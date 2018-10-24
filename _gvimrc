@@ -6,7 +6,7 @@ source $VIMRUNTIME/menu.vim
 
 "ソリューションのミーティング用設定
 function! SolutionMT()
-  set guifont=Ricty_Diminished_for_Powerline:h21
+  set guifont=cica:h24
   set transparency=255
   colorscheme zellner
   syntax off
@@ -15,9 +15,9 @@ command! SolMt :call SolutionMT()
 
 
 function! EndSolutionMT()
-  set guifont=Ricty_Diminished_for_Powerline:h13
-  colorscheme jellybeans
+  set guifont=cica:h12
   set transparency=220
+  colorscheme jellybeans
   syntax on
 endfunction
 command! ESolMt :call EndSolutionMT()
@@ -34,7 +34,7 @@ colorscheme hybrid
 set transparency=220
 
 "イカスフォントを使用する
-set guifont=cica:h11
+set guifont=cica:h12
 
 "印刷用のフォント設定
 set printfont=Cica:h8
@@ -53,7 +53,6 @@ set noshowmode
 
 set novisualbell
 set vb t_vb=
-
 
 set enc=utf-8
 "set rop=type:directx,renmode:5
