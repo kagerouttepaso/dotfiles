@@ -57,3 +57,4 @@ ClicksTargetApp=yes
 ScrollMod=off
 BackspaceSendsBS=no
 BellType=0
+FontWeight=400
