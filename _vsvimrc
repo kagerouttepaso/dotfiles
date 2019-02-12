@@ -6,6 +6,9 @@ set clipboard=unnamed,unnamedplus,autoselect
 inoremap jj <Esc>
 nnoremap Q  :<C-u>q<CR>
 
+"Escの2回押しでハイライト消去
+nmap <ESC><ESC> :nohlsearch<CR><ESC>
+
 set ignorecase " 大文字小文字無視
 set smartcase  " 検索文字列に大文字が含まれている場合は区別して検索する
 set incsearch  " インクリメンタルサーチ
@@ -16,3 +19,12 @@ set noimdisable
 set iminsert=0 imsearch=0
 set noimcmdline
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+
+"ビジュアルモード時vで行末まで選択
+vnoremap v $h
+
+" 0, 9で行頭、行末へ
+nnoremap 9 ^
+nnoremap 0 $
+vnoremap 9 ^
+vnoremap 0 $
