@@ -34,7 +34,7 @@ colorscheme hybrid
 set transparency=220
 
 "イカスフォントを使用する
-set guifont=cica:h12
+set guifont=cica:h13.5
 
 "印刷用のフォント設定
 set printfont=Cica:h8
