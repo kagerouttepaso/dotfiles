@@ -596,6 +596,8 @@ libportaudio2
 libpq5
 libprocps-ng5
 libprocps-ng6
+libprotobuf13
+libprotobuf14
 libproxy1
 libpsl5
 libpstoedit0
@@ -687,6 +689,7 @@ make
 man-db
 mcpp
 mintty
+mosh
 mysql-common
 ncurses
 noto-cjk-fonts-common
