@@ -1,32 +1,63 @@
 # vim:filetype=gitconfig
 [color]
-  ui = auto
+	ui = auto
 [alias]
-  ch = checkout
-  s = status
-  br = branch
-  m = merge
-  di = diff --color-words
-  sta = status --short --branch
-[core]
-	editor = vim -c \"set fenc=utf-8\"
-	autocrlf = false
+	ch = checkout
+	s = status
+	br = branch
+	m = merge
+	di = diff --color-words
+	sta = status --short --branch
 [merge]
+	tool = vsdiffmerge
 	ff = false
-	tool = vimdiff
 [pull]
 	rebase = true
+[push]
+	default = current
+[http]
+	postBuffer = 524288000
+[url "https://"]
+	insteadOf = git://
+[diff]
+	guitool = winmerge
+[core]
+	editor = \"C:/Program Files (x86)/GitExtensions/GitExtensions.exe\" fileeditor
+	autocrlf = false
+	preloadindex = true
+	fscache =true
 [credential]
 	helper = cache --timeout=3600
+[gc]
+	auto = 256
+[mergetool "p4merge"]
+	path = C:/Program Files/Perforce/p4merge.exe
+	cmd = \"C:/Program Files/Perforce/p4merge.exe\" \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[difftool "p4merge"]
+	path = C:/Program Files/Perforce/p4merge.exe
+	cmd = \"C:/Program Files/Perforce/p4merge.exe\" \"$LOCAL\" \"$REMOTE\"
+[difftool "sourcetree"]
+	cmd = 'C:/Program Files/WinMerge/WinMergeU.exe' \"$LOCAL\" \"$REMOTE\"
+	cmd = 'C:/ProgramC:/Program Files/Perforce/p4merge.exe
+	cmd = 'C:/Program
+	cmd = '/C:/Program
+[mergetool "sourcetree"]
+	cmd = '' \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+	cmd = 'C:/ProgramC:/Program Files/Perforce/p4merge.exe
+	cmd = 'C:/Program
+	cmd = '/C:/Program
+	trustExitCode = true
+[difftool "winmerge"]
+	path = C:/Program Files/WinMerge/winmergeu.exe
+	cmd = \"C:/Program Files/WinMerge/winmergeu.exe\" -e -u \"$LOCAL\" \"$REMOTE\"
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[mergetool "vsdiffmerge"]
+	path = C:/Program Files/WinMerge/winmergeu.exe
+	cmd = \"C:/Program Files/WinMerge/winmergeu.exe\" -e -ub -fm -am -wl -wr -dl theirs -dm base -dr mine \"$REMOTE\" \"$BASE\" \"$LOCAL\" -o \"$MERGED\"
 [user]
 	name = kitsunai
 	email = goth.wasawasa@gmail.com
-[http]
-	postBuffer = 524288000
-[merge "ours"]
-  name = "Keep ours merge"
-  driver = true
-[push]
-	default = current
-[url "https://"]
-	insteadOf = git://
