@@ -15,6 +15,7 @@ set browsedir=buffer             " Exploreの初期ディレクトリ
 "set whichwrap=b,s,h,l,<,>,[,]   " カーソルを行頭、行末で止まらないようにする
 set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 set noendofline                  " ファイル末尾に改行を追加しない
+set nofixeol                     " ファイル末尾に改行を追加しない
 
 if g:is_teraterm
   set ambiwidth=double           " terateamはdoubleじゃないと化ける
