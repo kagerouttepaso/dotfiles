@@ -497,10 +497,10 @@ if neobundle#tap('vim-quickhl') "{{{
         \    'mappings': ['<Plug>(quickhl-'],
         \  }
         \})
-  nmap gm <Plug>(quickhl-manual-this)
-  xmap gm <Plug>(quickhl-manual-this)
-  nmap gM <Plug>(quickhl-manual-reset)
-  xmap gM <Plug>(quickhl-manual-reset)
+  nmap <C-n>n <Plug>(quickhl-manual-this)
+  xmap <C-n>n <Plug>(quickhl-manual-this)
+  nmap <C-n><C-n> <Plug>(quickhl-manual-reset)
+  xmap <C-n><C-n> <Plug>(quickhl-manual-reset)
   nmap gj <Plug>(quickhl-cword-toggle)
   function! neobundle#hooks.on_source(bundle)
   endfunction

@@ -1,4 +1,4 @@
-let mapleader = ","              " キーマップリーダー
+let mapleader = "\<space>"        " キーマップリーダー
 set scrolloff=5                  " スクロール時の余白確保
 set clipboard=unnamed,unnamedplus,autoselect
 
@@ -28,3 +28,13 @@ nnoremap 9 ^
 nnoremap 0 $
 vnoremap 9 ^
 vnoremap 0 $
+
+" leader+nで次のバッファへ、bで前のバッファへ
+nnoremap <leader>n  gt
+nnoremap <leader>b  gT
+
+" leader+hjklでウィンドウ移動
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+nnoremap <leader>h <C-w>h

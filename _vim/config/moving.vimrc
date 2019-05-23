@@ -29,8 +29,8 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 
 "スペースで次のバッファへ、bで前のバッファへ
-noremap <Space> :bn<CR>
-noremap B       :bp<CR>
+nnoremap <leader>n  :bn<CR>
+nnoremap <leader>b  :bp<CR>
 
 "フレームサイズを怠惰に変更する
 map      <kPlus>  <C-W>+
@@ -58,12 +58,11 @@ set virtualedit+=block
 "ビジュアルモード時vで行末まで選択
 vnoremap v $h
 
-" CTRL-hjklでウィンドウ移動
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <BS> <C-w>h
+" leader+hjklでウィンドウ移動
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
 
 " insert mode でjjでesc
 inoremap jj <Esc>
