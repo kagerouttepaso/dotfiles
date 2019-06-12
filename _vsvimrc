@@ -4,7 +4,6 @@ set clipboard=unnamed,unnamedplus,autoselect
 
 " insert mode でjjでesc
 inoremap jj <Esc>
-nnoremap Q  :<C-u>q<CR>
 
 "Escの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>

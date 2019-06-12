@@ -901,6 +901,28 @@ if neobundle#tap('vim-easy-align') "{{{
   call neobundle#untap()
 endif "}}}
 
+" コード移動
+NeoBundleLazy 'easymotion/vim-easymotion'
+if neobundle#tap('vim-easymotion') "{{{
+  call neobundle#config({
+        \  'autoload': {
+        \    'mappings': ['<Plug>(easymotion-'],
+        \  }
+        \})
+
+  map <Leader><Leader> <Plug>(easymotion-prefix)
+
+  nmap s <Plug>(easymotion-overwin-f)
+
+  " デフォルト設定無効
+  let g:EasyMotion_do_mapping = 0
+  let g:EasyMotion_smartcase = 1
+
+  function! neobundle#hooks.on_source(bundle)
+  endfunction
+  call neobundle#untap()
+endif "}}}
+
 " vimshell : vimのshell
 NeoBundleLazy 'Shougo/vimshell'
 if neobundle#tap('vimshell') "{{{
@@ -1087,12 +1109,12 @@ if neobundle#tap('vim-over') "{{{
         \  }
         \})
   " ssで置換開始
-  vnoremap <silent>ss :OverCommandLine<CR>s///g<Left><Left><Left>
-  nnoremap <silent>ss :OverCommandLine<CR>%s///g<Left><Left><Left>
+  vnoremap <silent>mm :OverCommandLine<CR>s///g<Left><Left><Left>
+  nnoremap <silent>mm :OverCommandLine<CR>%s///g<Left><Left><Left>
   " swでカーソル以下の単語を置換
-  nnoremap <silent>sS :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
+  nnoremap <silent>mM :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
   " virtualモード中は選択した文章で置き換え
-  vnoremap <silent>sS y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
+  vnoremap <silent>mM y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
   function! neobundle#hooks.on_source(bundle)
     " <C-l> カーソルを右に
     " <C-h> カーソルを左に
