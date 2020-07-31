@@ -1,8 +1,7 @@
-dotfiles
-========
+# dotfiles
 
-How to Use
-----------
+## How to Use
+
 **やること**  
 
 ``` bash
@@ -27,26 +26,29 @@ cd dotfiles
 - clang
 - [rtags][link_github_rtags]
 - npm
-  * mermaid
-  * markdown-pdf
+  - mermaid
+  - markdown-pdf
   
 ~~ubuntu12.04以上ならこっちを`git clone`してchefを走らせたほうが賢明です  
 [Chef_work][Chef_work]~~
 
-Windows環境
------------
+## Windows環境
+
 ### MSYS2
+
 - [ここからダウンロード](https://sourceforge.net/projects/msys2/files/latest/download)
 - [/MSYS2/register_msys2_env.bat](/MSYS2/register_msys2_env.bat)使って環境変数を登録
 - [/MSYS2/register_right_click.reg](/MSYS2/register_right_click.reg)使って右クリックメニュー登録
 - X11転送使うときはXming使うこと。xmingは[/windows/choco/install_packages.bat](/windows/choco/install_packages.bat)使ってインストール
 
 ### Cygwin
+
 Windows環境でも基本的に必要パッケージをインストールして**やること** のコマンドを入れれば問題ない。  
-x11のパッケージセットをインストールすればssh接続先のクリップボードの共有もできる用になっています   
+x11のパッケージセットをインストールすればssh接続先のクリップボードの共有もできる用になっています  
 **Cygwinを使うのをやめました**
 
-####入れるパッケージ
+#### 入れるパッケージ
+
 - git
 - zsh
 - ctags
@@ -55,11 +57,12 @@ x11のパッケージセットをインストールすればssh接続先のク�
 - openssh
 - tmux
 
-
 ### teraterm
+
 [設定ファイル](./windows/TERATERM.INI) を読みこめばいい感じになる  
 
 ### 香り屋版Gvimへの対応
+
 1. Source Treeをダウンロードしてインストール、この`Dotfiles`を好きなところにCloneしてくる。  
 2. [install.bat](./install.bat) を管理者権限で実行
    手順は[unite-everythingのヘルプ][unite-everything_install]を参照
@@ -80,17 +83,17 @@ dotfiles    | `C:\Users\UserName`
 `./_vim`    | `.vim`
 
 ### その他メモ
+
 - シンボリックリンクを貼るのには[このアプリ][Linux_shell_extension]を使用するといい感じです
 - フォントのインストールを行うとかっこいいCygwin、teraterm環境を構築できる。  
   インストールの仕方は[Help][Font_Install]を参照  
   [install.bat](./install.bat)を実行すれば自動で入る
 - mingwについて
-    - [Mingw64のダウンロード][link_mingw_64_download]
-    - [MIngw32とmsysのダウンロード][link_msys_windows_download]
-    - [Node.jsのダウンロード][nodejs_homepage]
+  - [Mingw64のダウンロード][link_mingw_64_download]
+  - [MIngw32とmsysのダウンロード][link_msys_windows_download]
+  - [Node.jsのダウンロード][nodejs_homepage]
 
-コマンド
---------
+## コマンド
 自前で設定したコマンドとか
 
 ### zsh
@@ -120,25 +123,29 @@ command   | mean
 cdcyg     |move to desktop
 
 ### vim
+
 #### 主な変更
-* バックアップ取らない
-* スワップ作らない
-* バックスペースで色々消せる
-* ビープ音鳴らさない
-* モードを表示
-* マウスを使用する
-* クリップボードを使用する
-* 全角スペースを表示
-* tagsファイルは6回階層上のものまで読み込む
-* 前回終了したカーソル行に移動
-* 補完にはNeocomplateを使用するが、使えない時はNeocomplecacheを使う
+
+- バックアップ取らない
+- スワップ作らない
+- バックスペースで色々消せる
+- ビープ音鳴らさない
+- モードを表示
+- マウスを使用する
+- クリップボードを使用する
+- 全角スペースを表示
+- tagsファイルは6回階層上のものまで読み込む
+- 前回終了したカーソル行に移動
+- 補完にはNeocomplateを使用するが、使えない時はNeocomplecacheを使う
 
 #### vimのシンタックス
+
 **javascript**
 vimを使ってjavascriptの編集をするときは `hshint` をインストールするとシンタックスのチェックをしてもらえる  
 windows環境でそれを行うときは、[nodejsをダウンロード][Nodejs_HomePage]して下記のコマンドを実行
 
 #### 拡張コマンド
+
 **挿入モード**  
 
 command | mean
@@ -150,7 +157,6 @@ command | mean
 `<C-l>` | `<Right>`
 `jj`    | `<esc>`
 `,`     | `,<Space>`
-
 
 **ノーマルモード**  
 
@@ -238,6 +244,7 @@ f        | [unite]
 [unite]t | アウトラインを展開`<C-u>Unite outline -vertical -winwidth=50 -buffer-name=outline -no-focus -no-start-insert -no-quit<CR>`
 
 ### teratermとscreen
+
 キーバインドを変更してある。とりあえず[tmux.conf](./_tmux.conf)と[screenrc](./_screenrc)を見てください。  
 バインドはteratermが`Ctrl+o`screenが`ctrl+a`にバインドされてます
 
@@ -246,13 +253,11 @@ npm config set proxy http://proxy.com:port --global
 npm install jshint --global
 ```
 
-memo
-----
+## memo
+
 cygwinでctagsを使うときはExuburantCtagsを使わないとうまく行かなそう  
 
-todo
-----
-
+## todo
 
 [Chef_work]: https://github.com/kagerouttepaso/chef_work "#:title"
 [Linux_Shell_Extension]: http://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html#download "シンボリックリンクを貼れるイカスソフト"
@@ -266,3 +271,8 @@ todo
 [link_download_pt]: https://github.com/monochromegane/the_platinum_searcher "the platinum servher"
 [link_github_rtags]: https://github.com/Andersbakken/rtags "rtags github repo"
 [link_pandoc_releace]: https://github.com/jgm/pandoc/releases "download pandoc"
+
+## OSS
+
+- ./vscode\github-markdown.css
+  MIT : https://github.com/sindresorhus/github-markdown-css
