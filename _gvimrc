@@ -6,7 +6,8 @@ source $VIMRUNTIME/menu.vim
 
 "ソリューションのミーティング用設定
 function! SolutionMT()
-  set guifont=cica:h24
+  "set guifont=cica:h24
+  set guifont=UD_デジタル_教科書体_N-R:h24
   set transparency=255
   colorscheme zellner
   syntax off
@@ -15,7 +16,7 @@ command! SolMt :call SolutionMT()
 
 
 function! EndSolutionMT()
-  set guifont=cica:h12
+  set guifont=HackGenNerd:h12
   set transparency=220
   colorscheme jellybeans
   syntax on
@@ -34,16 +35,16 @@ colorscheme hybrid
 set transparency=220
 
 "イカスフォントを使用する
-set guifont=cica:h13.5
+set guifont=HackGenNerd:h12
 
 "印刷用のフォント設定
-set printfont=Cica:h8
+set printfont=HackGenNerd:h8
 
 "レンダリングにはdirectXを使う
 set renderoptions=type:directx,renmode:5
 
 "全角と半角のある文字は全角で表示
-set ambiwidth=double
+"set ambiwidth=double
 
 "フォールドはマーカで区切る
 set foldmethod=marker
