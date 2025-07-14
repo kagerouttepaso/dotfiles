@@ -1,4 +1,3 @@
-# vim:filetype=gitconfig
 [color]
 	ui = auto
 [alias]
@@ -11,6 +10,7 @@
 [merge]
 	tool = vsdiffmerge
 	ff = false
+	guitool = winmerge
 [pull]
 	rebase = true
 [push]
@@ -22,12 +22,11 @@
 [diff]
 	guitool = winmerge
 [core]
-	editor = \"C:/Program Files (x86)/GitExtensions/GitExtensions.exe\" fileeditor
+	editor = \"C:/Program Files/Microsoft VS Code/code.exe\" --wait
 	autocrlf = false
 	preloadindex = true
-	fscache =true
-[credential]
-	helper = cache --timeout=3600
+	fscache = true
+	fsmonitor = true
 [gc]
 	auto = 256
 [mergetool "p4merge"]
@@ -59,5 +58,24 @@
 	path = C:/Program Files/WinMerge/winmergeu.exe
 	cmd = \"C:/Program Files/WinMerge/winmergeu.exe\" -e -ub -fm -am -wl -wr -dl theirs -dm base -dr mine \"$REMOTE\" \"$BASE\" \"$LOCAL\" -o \"$MERGED\"
 [user]
-	name = kitsunai
-	email = goth.wasawasa@gmail.com
+	name = daisuke kitsunai
+	email = daisuke_kitsunai@myway.co.jp
+[mergetool "winmerge"]
+	path = C:/Program Files (x86)/WinMerge/winmergeu.exe
+	cmd = \"C:/Program Files (x86)/WinMerge/winmergeu.exe\" -e -u  -wl -wr -fm -dl \"Mine: $LOCAL\" -dm \"Merged: $BASE\" -dr \"Theirs: $REMOTE\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" -o \"$MERGED\"
+[fetch]
+	prune = true
+[rebase]
+	autoStash = false
+	autosquash = false
+	updateRefs = false
+[difftool "vscode"]
+	path = C:/Program Files/Microsoft VS Code/code.exe
+	cmd = \"C:/Program Files/Microsoft VS Code/code.exe\" --wait --diff \"$LOCAL\" \"$REMOTE\"
+[mergetool "vscode"]
+	path = C:/Program Files/Microsoft VS Code/code.exe
+	cmd = \"C:/Program Files/Microsoft VS Code/code.exe\" --wait \"$MERGED\"
+[credential]
+	helper = manager-core
+[safe]
+	directory = '%(prefix)///PC-441-KITSUNAI/work/git/PCubeAutomaticCalibrator'

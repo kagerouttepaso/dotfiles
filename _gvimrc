@@ -6,8 +6,7 @@ source $VIMRUNTIME/menu.vim
 
 "ソリューションのミーティング用設定
 function! SolutionMT()
-  "set guifont=cica:h24
-  set guifont=UD_デジタル_教科書体_N-R:h24
+  set guifont=hackgennerd:h24
   set transparency=255
   colorscheme zellner
   syntax off
