@@ -2,7 +2,7 @@ set vb t_vb=                     " ビープをならさない
 set noendofline                  " ファイル末尾に改行を追加しない
 set nofixeol                     " ファイル末尾に改行を追加しない
 
-let mapleader = "\<space>"        " キーマップリーダー
+" let mapleader = "\<space>"        " キーマップリーダー
 set scrolloff=5                  " スクロール時の余白確保
 set clipboard=unnamed,unnamedplus,autoselect
 
@@ -27,14 +27,16 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 vnoremap v $h
 
 " 0, 9で行頭、行末へ
-nnoremap 9 ^
-nnoremap 0 $
-vnoremap 9 ^
-vnoremap 0 $
+" nnoremap 9 ^
+" nnoremap 0 $
+" vnoremap 9 ^
+" vnoremap 0 $
 
 " leader+nで次のバッファへ、bで前のバッファへ
 nnoremap <leader>n  gt
 nnoremap <leader>b  gT
+nnoremap gn  gt
+nnoremap gb  gT
 
 " leader+hjklでウィンドウ移動
 nnoremap <leader>j <C-w>j
