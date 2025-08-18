@@ -39,7 +39,7 @@ nnoremap gn  gt
 nnoremap gb  gT
 
 " leader+hjklでウィンドウ移動
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>l <C-w>l
-nnoremap <leader>h <C-w>h
+nnoremap gj <C-w>j
+nnoremap gk <C-w>k
+nnoremap gl <C-w>l
+nnoremap gh <C-w>h
